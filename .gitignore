@@ -1,2 +1,4 @@
 Windows/Babel/Babel.opensdf
 Windows/Babel/Babel.sdf
+*.sdf
+*.suo
