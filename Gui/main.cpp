@@ -14,6 +14,5 @@ int main(int argc, char *argv[])
     gui->init();
     //Connection w;
     //w.show();
-
     return a.exec();
 }

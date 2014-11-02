@@ -123,12 +123,72 @@ void    Home::addContact()
 
 void    Home::invitContact()
 {
+  UNetwork *srv;
+  ABabelSound sound;
+  BabelEncoder encode;
+  int id1;
+  float *buffer;
+  float *tmp2;
+  unsigned char *tmp;
 
+  srv = new UNetwork(AF_INET, SOCK_DGRAM, (char*)"UDP");
+  srv->bindSocket((char *)"2000");
+  if (!sound.initializePA())
+    std::cerr << "Error on InitPa()" << std::endl;
+  if (!(sound.initializeInput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  if (!(sound.initializeOutput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  sound.openStream();
+  sound.startStream();
+  encode.opusEncoderCreate();
+  encode.opusDecoderCreate();
+  while (1) {
+    if (!(sound.readStream()))
+      std::cerr << "Error on writeStream()" << std::endl;
+    buffer = sound.getRecordedSamples();
+    sound.writeStream(buffer, 480);
+    // tmp = encode.encodeFrame(buffer, 480);
+    // int i;
+    // for (i = 0; tmp[i]; i++);
+    // srv->sendToSocket(id1, (void *)tmp, i); // revoir à id1                                                           
+    // id1 = srv->recvFromSocket(); //premier recu, socket settée sur id1                                             
+    // sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
+  }
 }
 
 void    Home::callContact()
 {
+  UNetwork *clt;
+  ABabelSound sound;
+  BabelEncoder encode;
+  int id2;
+  float *buffer;
+  unsigned char *tmp;
 
+  clt = new UNetwork(AF_INET, SOCK_DGRAM, (char*)"UDP");
+  id2 = clt->connectToSocket((char *)"2000", (char*)SERV_ADDR_IP); //host port   
+  if (!sound.initializePA())
+    std::cerr << "Error on InitPa()" << std::endl;
+  if (!(sound.initializeInput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  if (!(sound.initializeOutput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  sound.openStream();
+  sound.startStream();
+  encode.opusEncoderCreate();
+  encode.opusDecoderCreate();
+  while (1) {
+    if (!(sound.readStream()))
+      std::cerr << "Error on writeStream()" << std::endl;
+    buffer = sound.getRecordedSamples();
+    tmp = encode.encodeFrame(buffer, 480);
+    int i;
+    for (i = 0; tmp[i]; i++);
+    clt->sendToSocket(id2, (void *)tmp, i); //envoie à id2 séttée sur une socket par connect
+    clt->recvFromSocket();// recoit de n'importe qui qui connait
+    sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
+  }
 }
 
 void    Home::videoCallContact()

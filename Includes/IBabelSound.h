@@ -1,18 +1,17 @@
-#ifndef	__IBABELSOUND_H__
-#define __IBABELSOUND_H__
+#ifndef				_IBABEL_SOUND_H__
+# define			_IBABEL_SOUND_H__
 
-class IBabelSound
+class				IBabelSound
 {
-public:
-   virtual bool initializePA(void)=0;
-   virtual bool initializeOutput(void)=0;
-   virtual bool initializeInput(void)=0;
-   virtual bool readStream(void)=0;
-   virtual bool writeStream(void)=0;
-
 protected:
-private:
-
+	virtual bool		initializePA() = 0;
+	virtual bool		initializeOutput() = 0;
+	virtual bool		initializeInput() = 0;
+	virtual bool		openStream() = 0;
+	virtual bool		startStream() = 0;
+	virtual bool		readStream() = 0;
+	virtual bool		writeStream(float *, int) = 0;
+	virtual bool		closeStream() = 0;
 };
 
-#endif
+#endif // !_IBABEL_SOUND_H__

@@ -1,121 +1,120 @@
+//
+// BabelSound.cpp for Babel in /home/kersale/rendu/babel/Modules/PortAudio
+// 
+// Made by Elliot Kersalé
+// Login   <kersal_e@epitech.net>
+// 
+// Started on  Sun Nov  2 18:34:20 2014 Elliot Kersalé
+// Last update Sun Nov  2 18:35:22 2014 Elliot Kersalé
+//
+
 #include "../../Includes/BabelSound.h"
 
-IModule * BabelSound::createObject(void)
+ABabelSound::ABabelSound()
 {
-   // TODO : implement
+  _stream = NULL;
 }
 
-bool BabelSound::initializePA(void)
+ABabelSound::~ABabelSound()
 {
-   // TODO : implement
 }
 
-bool BabelSound::initializeOutput(void)
+bool			ABabelSound::printError(const int &error)
 {
-   // TODO : implement
+  std::cerr << Pa_GetErrorText(error) << std::endl;
+  return (false);
 }
 
-bool BabelSound::initializeInput(void)
+bool            ABabelSound::initializePA()
 {
-   // TODO : implement
+  int			error = 0;
+  
+  if ((error = Pa_Initialize()) != paNoError)
+    return (printError(error));
+  return (true);
 }
 
-bool BabelSound::readStream(void)
+bool            ABabelSound::openStream()
 {
-   // TODO : implement
+  int error = 0;
+
+  if ((error = Pa_OpenStream(&_stream, &_inputParam, &_outputParam, SAMPLE_RATE,
+			     FRAMES_PER_BUFFER, paClipOff, NULL, NULL)) != paNoError)
+    return (printError(error));
+  return (true);
 }
 
-bool BabelSound::writeStream(void)
+bool            ABabelSound::startStream()
 {
-   // TODO : implement
+  int			error = 0;
+  
+  if ((error = Pa_StartStream(_stream)) != paNoError)
+    return (printError(error));
+  (void)error;
+  return (true);
 }
 
-bool BabelSound::openStream(void)
+
+bool            ABabelSound::initializeInput()
 {
-   // TODO : implement
+  if ((_inputParam.device = Pa_GetDefaultInputDevice()) == paNoDevice) {
+    std::cerr << "Pa_GetDefaultInputDevice() failed" << std::endl;
+    return (false);
+  }
+  _inputParam.channelCount = 2;
+  _inputParam.sampleFormat = PA_SAMPLE_TYPE;
+  _inputParam.suggestedLatency = Pa_GetDeviceInfo(_inputParam.device)->defaultLowInputLatency;
+  _inputParam.hostApiSpecificStreamInfo = NULL;
+  return (true);
 }
 
-bool BabelSound::readFile(void)
+bool            ABabelSound::initializeOutput()
 {
-   // TODO : implement
+  if ((_outputParam.device = Pa_GetDefaultOutputDevice()) == paNoDevice) {
+    std::cerr << "Pa_GetDefaultOutputDevice() failed" << std::endl;
+    return (false);
+  }
+  _outputParam.channelCount = 2;
+  _outputParam.sampleFormat = PA_SAMPLE_TYPE;
+  _outputParam.suggestedLatency = Pa_GetDeviceInfo(_outputParam.device)->defaultLowInputLatency;
+  _outputParam.hostApiSpecificStreamInfo = NULL;
+  return (true);
 }
 
-bool BabelSound::writeFile(void)
+bool            ABabelSound::readStream()
 {
-   // TODO : implement
+  int			error = 0;
+
+  if ((_recordedSamples = (SAMPLE *)malloc(FRAMES_PER_BUFFER * sizeof(SAMPLE) * NUM_CHANNELS)) == NULL) {
+    std::cerr << "malloc() failed : error on allocating memory" << std::endl;
+    return (false);
+  }
+  for (int i = 0; i<FRAMES_PER_BUFFER; i++)
+    _recordedSamples[i] = 0;
+  if ((error = Pa_ReadStream(_stream, _recordedSamples, FRAMES_PER_BUFFER)) != paNoError)
+    return (printError(error));
+  return (true);
 }
 
-bool BabelSound::printError(void) const
+float		*ABabelSound::getRecordedSamples()
 {
-   // TODO : implement
+  return (_recordedSamples);
 }
 
-PaStream * BabelSound::get_stream(void) const
+bool		ABabelSound::closeStream()
 {
-   return _stream;
+  int		error = 0;
+  
+  if ((error = Pa_CloseStream(_stream)) != paNoError)
+    return (printError(error));
+  return (true);
 }
 
-int BabelSound::get_readBufferSize(void) const
+bool            ABabelSound::writeStream(float *recordedSamples, int i)
 {
-   return _readBufferSize;
-}
+  int		error = 0;
 
-PaStreamParameters BabelSound::get_inputParams(void) const
-{
-   return _inputParams;
-}
-
-PaStreamParameters BabelSound::get_outputParams(void) const
-{
-   return _outputParams;
-}
-
-unsigned char * BabelSound::get_readBuffer(void) const
-{
-   return _readBuffer;
-}
-
-void BabelSound::set_stream(PaStream * new_stream)
-{
-   _stream = new_stream;
-}
-
-void BabelSound::set_readBufferSize(int new_readBufferSize)
-{
-   _readBufferSize = new_readBufferSize;
-}
-
-void BabelSound::set_inputParams(PaStreamParameters new_inputParams)
-{
-   _inputParams = new_inputParams;
-}
-
-void BabelSound::set_outputParams(PaStreamParameters new_outputParams)
-{
-   _outputParams = new_outputParams;
-}
-
-void BabelSound::set_readBuffer(unsigned char * new_readBuffer)
-{
-   _readBuffer = new_readBuffer;
-}
-
-BabelSound::BabelSound()
-{
-   _stream = NULL;
-   _readBuffer = NULL;
-}
-
-BabelSound::BabelSound(const BabelSound& oldBabelSound)
-{
-   _stream = oldBabelSound._stream;
-   _readBufferSize = oldBabelSound._readBufferSize;
-   _inputParams = oldBabelSound._inputParams;
-   _outputParams = oldBabelSound._outputParams;
-   _readBuffer = oldBabelSound._readBuffer;
-}
-
-BabelSound::~BabelSound()
-{
-   // TODO : implement
+  if ((error = Pa_WriteStream(_stream, recordedSamples, i)) != paNoError)
+    return (printError(error));
+  return (true);
 }

@@ -4,6 +4,13 @@
 #include    <QMainWindow>
 #include    <QHBoxLayout>
 #include    <QMessageBox>
+#include <iostream>
+#include "UNetwork.h"
+#include "BabelSound.h"
+#include "BabelEncoder.h"
+
+
+#define SERV_ADDR_IP "127.0.0.1"
 
 
 namespace Ui {
