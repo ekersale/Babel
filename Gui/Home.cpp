@@ -140,8 +140,8 @@ void	Home::threadCall()
   buffer = sound.getRecordedSamples();
   tmp = encode.encodeFrame(buffer, 480);
   int i;
-  for (i = 0; tmp[i]; i++);
-  srv->sendToSocket(id, tmp, i); // revoir à id1
+  //  for (i = 0; tmp[i]; i++);
+  srv->sendToSocket(id, tmp, 480); // revoir à id1
   (void)buffer;
   (void)tmp;
  //  }
@@ -187,7 +187,7 @@ void Home::threadReceive()
   tmp = encode.encodeFrame(buffer, 480);
   int i;
   for (i = 0; tmp[i]; i++);
-  clt->sendToSocket(id, tmp, i); //envoie à id2 séttée sur une socket par connect
+  clt->sendToSocket(id, tmp, 480); //envoie à id2 séttée sur une socket par connect
   clt->recvFromSocket();// recoit de n'importe qui qui connait
   sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
   (void)buffer;
