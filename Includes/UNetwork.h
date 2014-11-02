@@ -9,7 +9,7 @@
 #define __Client_UNetwork_h
 
 #include	"INetwork.h"
-#include	"ClientInfo.h"
+#include	"UClientInfo.h"
 #include	<arpa/inet.h>
 #include	<netinet/in.h>
 #include	<stdio.h>
@@ -30,36 +30,32 @@ typedef struct	sockaddr_in saddrin;
 class UNetwork : public INetwork
 {
 public:
-   virtual bool	bindSocket(char *);
-   virtual void closeSocket(int);
-   virtual bool createSocket(char *proto, int type);
-   virtual int *& get_buffer(void);
-   virtual char *& get_string(void);
-   //tronc commun
-
-   virtual bool listenSocket(int);
-   virtual int  acceptSocket(void);
-   virtual int  connectSocket(char *, char *);
-   virtual bool recvSocket(int);
-   virtual bool sendSocket(int, void *, int);
-   //tcp
-
-   virtual int connectToSocket(char *, char *);
-   virtual bool sendToSocket(int, void *, int);
-   virtual int recvFromSocket(void);
-   virtual int UDPDuplicate(ClientInfo *, int &);
-   //udp
-
-   UNetwork(int family, int type, char *proto);
-   UNetwork(const UNetwork& oldUNetwork);
-   virtual ~UNetwork();
+  virtual bool	bindSocket(std::string);
+  virtual void	closeSocket(int);
+  virtual bool	createSocket(std::string, int &);
+  virtual char	*& get_buffer(void);
+  //tronc commun
+  
+  virtual bool	listenSocket(int);
+  virtual int	acceptSocket(void);
+  virtual int	connectSocket(std::string, std::string);
+  virtual bool	recvSocket(int);
+  virtual bool	sendSocket(int , void *, size_t);
+  //tcp
+  
+  virtual int	connectToSocket(std::string, std::string);
+  virtual bool	sendToSocket(int, void *, size_t);
+  virtual int	recvFromSocket(void);
+  virtual int	UDPDuplicate(ClientInfo *, int &);
+  //udp
+  
+  UNetwork(int, int, std::string, size_t = 512);
+  UNetwork(const UNetwork& oldUNetwork);
+  virtual ~UNetwork();
 
 protected:
    int		_family;//tronc commun
-
-   ClientInfo	_itself;//UDP
-   ClientInfo	_other;//UDP
-
+   size_t	_len;
    int		_id;
    std::map<int, ClientInfo *> _connected; //<id, fd> //tcp
 

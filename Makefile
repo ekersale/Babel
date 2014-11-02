@@ -49,7 +49,7 @@ SOURCES       = Gui/main.cpp \
 		Gui/Connection.cpp \
 		Gui/Subscribe.cpp \
 		Gui/Home.cpp \
-		Modules/Network/ClientInfo.cpp \
+		Modules/Network/UClientInfo.cpp \
 		Modules/Network/UNetwork.cpp \
 		Modules/Opus/BabelEncoder.cpp \
 		Modules/PortAudio/BabelSound.cpp moc_Connection.cpp \
@@ -59,7 +59,7 @@ OBJECTS       = main.o \
 		Connection.o \
 		Subscribe.o \
 		Home.o \
-		ClientInfo.o \
+		UClientInfo.o \
 		UNetwork.o \
 		BabelEncoder.o \
 		BabelSound.o \
@@ -292,7 +292,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/Babel1.0.0 || mkdir -p .tmp/Babel1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Babel1.0.0/ && $(COPY_FILE) --parents Includes/Connection.h Includes/Subscribe.h Includes/Home.h Includes/IGui.h Includes/BabelEncoder.h Includes/IBabelEncoder.h Includes/UNetwork.h Includes/BabelSound.h Includes/IBabelSound.h Includes/IModule.h Includes/INetwork.h Includes/ClientInfo.h .tmp/Babel1.0.0/ && $(COPY_FILE) --parents Gui/main.cpp Gui/Connection.cpp Gui/Subscribe.cpp Gui/Home.cpp Modules/Network/ClientInfo.cpp Modules/Network/UNetwork.cpp Modules/Opus/BabelEncoder.cpp Modules/PortAudio/BabelSound.cpp .tmp/Babel1.0.0/ && $(COPY_FILE) --parents Gui/Ui/Connection.ui Gui/Ui/Subscribe.ui Gui/Ui/Home.ui .tmp/Babel1.0.0/ && (cd `dirname .tmp/Babel1.0.0` && $(TAR) Babel1.0.0.tar Babel1.0.0 && $(COMPRESS) Babel1.0.0.tar) && $(MOVE) `dirname .tmp/Babel1.0.0`/Babel1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Babel1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Babel1.0.0/ && $(COPY_FILE) --parents Includes/Connection.h Includes/Subscribe.h Includes/Home.h Includes/IGui.h Includes/BabelEncoder.h Includes/IBabelEncoder.h Includes/UNetwork.h Includes/BabelSound.h Includes/IBabelSound.h Includes/IModule.h Includes/INetwork.h Includes/UClientInfo.h .tmp/Babel1.0.0/ && $(COPY_FILE) --parents Gui/main.cpp Gui/Connection.cpp Gui/Subscribe.cpp Gui/Home.cpp Modules/Network/UClientInfo.cpp Modules/Network/UNetwork.cpp Modules/Opus/BabelEncoder.cpp Modules/PortAudio/BabelSound.cpp .tmp/Babel1.0.0/ && $(COPY_FILE) --parents Gui/Ui/Connection.ui Gui/Ui/Subscribe.ui Gui/Ui/Home.ui .tmp/Babel1.0.0/ && (cd `dirname .tmp/Babel1.0.0` && $(TAR) Babel1.0.0.tar Babel1.0.0 && $(COMPRESS) Babel1.0.0.tar) && $(MOVE) `dirname .tmp/Babel1.0.0`/Babel1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Babel1.0.0
 
 
 clean:compiler_clean 
@@ -669,7 +669,7 @@ moc_Home.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qdialog.h \
 		Includes/UNetwork.h \
 		Includes/INetwork.h \
-		Includes/ClientInfo.h \
+		Includes/UClientInfo.h \
 		Includes/BabelSound.h \
 		Includes/IBabelSound.h \
 		Includes/BabelEncoder.h \
@@ -952,7 +952,7 @@ Connection.o: Gui/Connection.cpp Includes/IGui.h \
 		/usr/include/qt5/QtWidgets/qgridlayout.h \
 		Includes/UNetwork.h \
 		Includes/INetwork.h \
-		Includes/ClientInfo.h \
+		Includes/UClientInfo.h \
 		Includes/BabelSound.h \
 		Includes/IBabelSound.h \
 		Includes/BabelEncoder.h \
@@ -1292,7 +1292,7 @@ Home.o: Gui/Home.cpp Includes/Home.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
 		Includes/UNetwork.h \
 		Includes/INetwork.h \
-		Includes/ClientInfo.h \
+		Includes/UClientInfo.h \
 		Includes/BabelSound.h \
 		Includes/IBabelSound.h \
 		Includes/BabelEncoder.h \
@@ -1353,12 +1353,12 @@ Home.o: Gui/Home.cpp Includes/Home.h \
 		/usr/include/qt5/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
 
-ClientInfo.o: Modules/Network/ClientInfo.cpp Includes/ClientInfo.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ClientInfo.o Modules/Network/ClientInfo.cpp
+UClientInfo.o: Modules/Network/UClientInfo.cpp Includes/UClientInfo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o UClientInfo.o Modules/Network/UClientInfo.cpp
 
 UNetwork.o: Modules/Network/UNetwork.cpp Includes/UNetwork.h \
 		Includes/INetwork.h \
-		Includes/ClientInfo.h
+		Includes/UClientInfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o UNetwork.o Modules/Network/UNetwork.cpp
 
 BabelEncoder.o: Modules/Opus/BabelEncoder.cpp Includes/BabelEncoder.h \

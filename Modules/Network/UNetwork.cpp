@@ -7,16 +7,16 @@
 
 #include		"../../Includes/UNetwork.h"
 
-bool			UNetwork::createSocket(char *proto, int type)
+bool			UNetwork::createSocket(std::string proto, int &type)
 {
   struct protoent       *pe;
   ClientInfo		*current;
 
   if (_connected.find(0) != _connected.end())
     return (false);
-  if (!(current = (new ClientInfo())))
+  if (!(current = (new ClientInfo(_len))))
     return (false);
-  if (!(pe = getprotobyname(proto)))
+  if (!(pe = getprotobyname(proto.c_str())))
     return (false);
   if ((current->get_socket() = socket(_family, type, pe->p_proto)) == -1)
     {
@@ -39,22 +39,17 @@ void			UNetwork::closeSocket(int id)
     }
 }
 
-bool			UNetwork::bindSocket(char *port)
+bool			UNetwork::bindSocket(std::string port)
 {
-  _connected[0]->setAddr(_family, port, NULL); //set addr SERVER, NULL car serveur
+  _connected[0]->setAddr(_family, port.c_str(), ""); //set addr SERVER, NULL car serveur
   if (bind(_connected[0]->get_socket(), (saddr *)(&(_connected[0]->get_info())), sizeof(saddrin)) < 0)
     return (false);
   return (true);
 }
 
-int *&			UNetwork::get_buffer(void)
+char *&			UNetwork::get_buffer(void)
 {
   return (_connected[0]->get_buffer());
-}
-
-char *&			UNetwork::get_string(void)
-{
-  return (reinterpret_cast<char* &>(_connected[0]->get_buffer()));
 }
 
 /* * * */
@@ -70,7 +65,7 @@ bool			UNetwork::listenSocket(int number)
 int			UNetwork::acceptSocket(void)
 {
   socklen_t		socklen;
-  ClientInfo		*stranger = new ClientInfo();
+  ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
     return (false);
@@ -84,16 +79,16 @@ int			UNetwork::acceptSocket(void)
   return (_id);
 }
 
-int			UNetwork::connectSocket(char *host, char *port)
+int			UNetwork::connectSocket(std::string host, std::string port)
 {
   struct protoent       *pe;
-  ClientInfo		*stranger = new ClientInfo();
+  ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
     return (false);
   if (!(pe = getprotobyname("TCP")))
     return (false);
-  stranger->setAddr(_family, port, host); //prépare la connexion tcp vers un serveur
+  stranger->setAddr(_family, port.c_str(), host.c_str()); //prépare la connexion tcp vers un serveur
   if ((stranger->get_socket() = socket(_family, SOCK_STREAM, pe->p_proto)) == -1)
     return (false);
   if (connect(stranger->get_socket(), (saddr *)(&stranger->get_info()), sizeof(saddrin)) < 0)
@@ -123,7 +118,7 @@ bool			UNetwork::recvSocket(int id)
   return (true);
 }
 
-bool			UNetwork::sendSocket(int id, void *buff, int len)
+bool			UNetwork::sendSocket(int id, void *buff, size_t len)
 {
   if (_connected.find(id) == _connected.end())
     return (false);
@@ -139,18 +134,19 @@ bool			UNetwork::sendSocket(int id, void *buff, int len)
 /* * * */
 /* UDP */
 /* * * */
-int			UNetwork::connectToSocket(char *host, char *port)
+int			UNetwork::connectToSocket(std::string host, std::string port)
 {
-  ClientInfo		*stranger = new ClientInfo();
+  int			id;
+  ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
     return (-1);
-  stranger->setAddr(AF_INET, port, host); //prépare la connexion udp vers un serveur
+  stranger->setAddr(AF_INET, port.c_str(), host.c_str()); //prépare la connexion udp vers un serveur
   _connected[++_id] = stranger;
   return (_id);
 }
 
-bool			UNetwork::sendToSocket(int id, void *buff, int len)
+bool			UNetwork::sendToSocket(int id, void *buff, size_t len)
 {
   if (_connected.find(id) == _connected.end())
     return (false);
@@ -168,6 +164,7 @@ bool			UNetwork::sendToSocket(int id, void *buff, int len)
 int			UNetwork::UDPDuplicate(ClientInfo *stranger, int &id)
 {
   id = -1;
+
   while (++id < (int)_connected.size())
     if (memcmp(&_connected[id]->get_info(), &stranger->get_info(), sizeof(saddrin)) == 0)
       return (true);
@@ -193,23 +190,23 @@ int			UNetwork::recvFromSocket(void)
   _connected[0]->get_buffer()[len] = 0;
   if (UDPDuplicate(&stranger, id)) // verificationd des duplicats
     return (id);
-  if (!(nstranger = new ClientInfo()))
+  if (!(nstranger = new ClientInfo(_len)))
     return (false);
   nstranger->get_info() = stranger.get_info();
   _connected[++_id] = nstranger; // en udp c'est le rcv qui dit qui vient de se connecter, on stocke ca
   return (_id);
 }
 
-UNetwork::UNetwork(int family, int type, char *proto)
+UNetwork::UNetwork(int family, int type, std::string proto, size_t len)
 {   
   _family = family;
   _id = -1;
+  _len = len;
   createSocket(proto, type);
 }
 
 UNetwork::UNetwork(const UNetwork& oldUNetwork)
 {
-  (void)oldUNetwork;
 }
 
 UNetwork::~UNetwork()

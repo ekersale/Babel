@@ -5,7 +5,7 @@
 ** Login   <urvoy_p@epitech.net>
 ** 
 ** Started on  Sat Nov  1 17:39:04 2014 Pierre-Antoine Urvoy
-** Last update Sun Nov  2 16:38:28 2014 Pierre-Antoine Urvoy
+** Last update Sun Nov  2 19:30:46 2014 Pierre-Antoine Urvoy
 */
 
 #include	<arpa/inet.h>
@@ -20,6 +20,7 @@
 #include	<signal.h>
 #include	<netdb.h>
 #include	<stdbool.h>
+#include	<string>
 
 typedef struct	sockaddr saddr;
 typedef struct	sockaddr_in saddrin; 
@@ -29,13 +30,13 @@ class		ClientInfo
  private:
   int		_socket;
   saddrin	_info;
-  int *		_buffer;
+  char *	_buffer;
   int		_len;
  public:
-  void		setAddr(int, char *, char *);
+  void		setAddr(int, std::string, std::string);
   int&		get_socket(void);
   saddrin&	get_info(void);
-  int *&	get_buffer(void);
+  char *&	get_buffer(void);
   int&		get_len(void);
 
   ClientInfo(int = 512);

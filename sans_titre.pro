@@ -25,7 +25,7 @@ SOURCES +=      Gui/main.cpp                    \
                 Gui/Connection.cpp              \
                 Gui/Subscribe.cpp               \
                 Gui/Home.cpp                    \
-                Modules/Network/ClientInfo.cpp  \
+                Modules/Network/UClientInfo.cpp  \
                 Modules/Network/UNetwork.cpp    \
                 Modules/Opus/BabelEncoder.cpp   \
                 Modules/PortAudio/BabelSound.cpp
@@ -41,7 +41,7 @@ HEADERS  +=     Includes/Connection.h           \
                 Includes/IBabelSound.h          \
                 Includes/IModule.h              \
                 Includes/INetwork.h             \
-                Includes/ClientInfo.h
+                Includes/UClientInfo.h
 
 FORMS    +=     Gui/Ui/Connection.ui            \
                 Gui/Ui/Subscribe.ui             \
