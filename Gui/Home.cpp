@@ -223,6 +223,7 @@ void    Home::videoCallContact()
 
 void    Home::hangHup()
 {
+    timer->stop();
     if (this->_isOncall == false)
     {
         QMessageBox::critical(this, "Error", "Vous ne pouvez pas raccrocher si vous n'avez pas d'appels");
