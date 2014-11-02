@@ -90,27 +90,18 @@
     <property name="pixmap">
      <pixmap>Images/background.png</pixmap>
     </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="_label_logo">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>80</x>
       <y>60</y>
-      <width>121</width>
-      <height>51</height>
+      <width>131</width>
+      <height>61</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>121</width>
-      <height>51</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>121</width>
-      <height>51</height>
-     </size>
     </property>
     <property name="text">
      <string/>
@@ -157,8 +148,8 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>830</y>
-      <width>271</width>
+      <y>816</y>
+      <width>281</width>
       <height>64</height>
      </rect>
     </property>
@@ -179,6 +170,9 @@
     </property>
     <property name="pixmap">
      <pixmap>Images/backgroundBtnAdd.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="_label_backgroundBtnCall">
@@ -295,21 +289,21 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>810</y>
-      <width>271</width>
+      <y>790</y>
+      <width>281</width>
       <height>23</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>271</width>
-      <height>0</height>
+      <width>281</width>
+      <height>23</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>271</width>
-      <height>16777215</height>
+      <width>281</width>
+      <height>23</height>
      </size>
     </property>
     <property name="maxLength">
@@ -323,7 +317,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>840</y>
+      <y>827</y>
       <width>43</width>
       <height>43</height>
      </rect>
@@ -685,17 +679,23 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>131</y>
-      <width>271</width>
-      <height>671</height>
+      <y>225</y>
+      <width>281</width>
+      <height>559</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="currentRow">
+     <number>-1</number>
     </property>
    </widget>
    <widget class="QPushButton" name="_btn_Online">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
+      <y>9</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -721,7 +721,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>0</y>
+      <y>9</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -747,7 +747,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>0</y>
+      <y>9</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -798,13 +798,29 @@
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>5</y>
+      <y>13</y>
       <width>71</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>En ligne</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>289</x>
+      <y>129</y>
+      <width>2</width>
+      <height>680</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>Images/BabelHD_0000s_0001s_0001s_0003_separation-(bkg).png</pixmap>
     </property>
    </widget>
   </widget>

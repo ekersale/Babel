@@ -56,7 +56,7 @@ void    Home::showNewField()
 
 void    Home::addContact()
 {
-
+  int state = 1;
     //std::cout << "Fuck ça marchera " << std::endl;
     ui->_line_addContact->hide();
     //ui->_line_addContact->clear();
@@ -78,22 +78,22 @@ void    Home::addContact()
     QPushButton *but = new QPushButton(ui->_line_addContact->text());
     but->setFlat(true);
 
-    /*QPixmap *pixmap;
+    QPixmap *pixmap;
     QPalette palette;
 
     switch (state)
     {
     case 1:
-        pixmap = new QPixmap("../Images/BabelHD_0001s_0005s_0002_status.png");
+        pixmap = new QPixmap("./Images/BabelHD_0001s_0005s_0002_status.png");
         break;
     case 2:
-        pixmap = new QPixmap("../Images/BabelHD_0001s_0003s_0000_status.png");
+        pixmap = new QPixmap("./Images/BabelHD_0001s_0003s_0000_status.png");
         break;
     case 3:
-        pixmap = new QPixmap("../Images/BabelHD_0001s_0000s_0000_status.png");
+        pixmap = new QPixmap("./Images/BabelHD_0001s_0000s_0000_status.png");
         break;
     case 4 :
-        pixmap = new QPixmap("../Images/BabelHD_0001s_0002s_0000_status.png");
+        pixmap = new QPixmap("./Images/BabelHD_0001s_0002s_0000_status.png");
         break;
     default:
         break;
@@ -106,10 +106,10 @@ void    Home::addContact()
     but->setFont(font);
     but->setMinimumSize(250, 42);
     but->setMaximumSize(250, 42);
-    but->setObjectName(login);
+    // but->setObjectName(login);
     but->setStyleSheet("text-align: middle");
-    connect(but, SIGNAL(clicked()), this, SLOT(contactClick()));
-    */
+    // connect(but, SIGNAL(clicked()), this, SLOT(contactClick()));
+
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(but);
     layout->alignment();
@@ -127,19 +127,19 @@ void	Home::threadCall()
   unsigned char *tmp;
   static bool isOk = false;
 
-  std::cout << "egergergereé" << std::endl;
+  // std::cout << "egergergereé" << std::endl;
   //  while (1) {
   id = srv->recvFromSocket(); //premier recu, socket settée sur id1
   if (isOk == false) {
     sound.startStream();
     isOk = true;
   }
+  // std::cout << "LEN RECUE" << srv->get_filled() << std::endl;
   sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
   if (!(sound.readStream()))
     std::cerr << "Error on writeStream()" << std::endl;
   buffer = sound.getRecordedSamples();
   tmp = encode.encodeFrame(buffer, 480);
-  int i;
   srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1
   (void)buffer;
   (void)tmp;
@@ -186,6 +186,7 @@ void Home::threadReceive()
   tmp = encode.encodeFrame(buffer, 480);
   clt->sendToSocket(id, tmp, encode.getEncodedDataSize()); //envoie à id2 séttée sur une socket par connect
   clt->recvFromSocket();// recoit de n'importe qui qui connait
+  // std::cout << "LEN RECUE" << clt->get_filled() << std::endl;
   sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
   (void)buffer;
   (void)tmp;
@@ -193,9 +194,6 @@ void Home::threadReceive()
 
 void    Home::callContact()
 {
-  float *buffer;
-  unsigned char *tmp;
-
   clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 2000);
   id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port   
 
