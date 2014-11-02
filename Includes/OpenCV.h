@@ -19,6 +19,7 @@
 class OpenCV : public QThread
 {
   Q_OBJECT
+
 private:
   cv::VideoCapture		_videoPerso;
   cv::VideoCapture		_videoOther;
