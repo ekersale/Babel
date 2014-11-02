@@ -5,7 +5,7 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Fri Oct 31 23:48:20 2014 Elliot Kersalé
-// Last update Sun Nov  2 18:24:24 2014 Elliot Kersalé
+// Last update Sun Nov  2 23:35:38 2014 Elliot Kersalé
 //
 
 #include		"../../Includes/BabelEncoder.h"
@@ -19,6 +19,11 @@ BabelEncoder::BabelEncoder() {
 
 BabelEncoder::~BabelEncoder() {
   opusDestroy();
+}
+
+int			BabelEncoder::getEncodedDataSize(void)
+{
+  return (_encoded_data_size);
 }
 
 bool			BabelEncoder::opusEncoderCreate() {
@@ -54,6 +59,8 @@ void			BabelEncoder::opusDestroy() {
   if (_decoder != NULL)
     opus_decoder_destroy(_decoder);
 }
+
+
 
 unsigned char		*BabelEncoder::encodeFrame(const float *frame, int frame_size) {
   unsigned char		*compressed_buffer;

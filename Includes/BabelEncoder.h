@@ -5,7 +5,7 @@
 ** Login   <kersal_e@epitech.net>
 ** 
 ** Started on  Wed Oct 29 13:52:47 2014 Elliot Kersalé
-** Last update Sat Nov  1 11:30:51 2014 Elliot Kersalé
+** Last update Sun Nov  2 23:35:55 2014 Elliot Kersalé
 */
 
 #ifndef				_BABEL_ENCODER_H__
@@ -34,6 +34,7 @@ public:
   unsigned char			*encodeFrame(const float *, int);
   float				*decodeFrame(const unsigned char *, int );
   int				getBytesDecode();
+  int				getEncodedDataSize(void);
 
 private:
   OpusEncoder			*_encoder;

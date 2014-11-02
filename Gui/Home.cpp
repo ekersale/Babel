@@ -134,13 +134,13 @@ void	Home::threadCall()
     sound.startStream();
     isOk = true;
   }
-  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), srv->get_filled()), encode.getBytesDecode());
+  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
   if (!(sound.readStream()))
     std::cerr << "Error on writeStream()" << std::endl;
   buffer = sound.getRecordedSamples();
   tmp = encode.encodeFrame(buffer, 480);
   int i;
-  srv->sendToSocket(id, tmp, 480); // revoir à id1
+  srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1
   (void)buffer;
   (void)tmp;
  //  }
@@ -148,7 +148,7 @@ void	Home::threadCall()
 
 void    Home::invitContact()
 {
-  srv = new UNetwork(AF_INET, SOCK_DGRAM, "UDP");
+  srv = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 2000);
   srv->bindSocket("2000");
   if (!sound.initializePA())
     std::cerr << "Error on InitPa()" << std::endl;
@@ -184,10 +184,9 @@ void Home::threadReceive()
     std::cerr << "Error on writeStream()" << std::endl;
   buffer = sound.getRecordedSamples();
   tmp = encode.encodeFrame(buffer, 480);
-  int i;
-  clt->sendToSocket(id, tmp, 480); //envoie à id2 séttée sur une socket par connect
+  clt->sendToSocket(id, tmp, encode.getEncodedDataSize()); //envoie à id2 séttée sur une socket par connect
   clt->recvFromSocket();// recoit de n'importe qui qui connait
-  sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), clt->get_filled()), encode.getBytesDecode());
+  sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
   (void)buffer;
   (void)tmp;
 }
@@ -197,7 +196,7 @@ void    Home::callContact()
   float *buffer;
   unsigned char *tmp;
 
-  clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 480);
+  clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 2000);
   id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port   
 
   if (!sound.initializePA())
