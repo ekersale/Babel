@@ -1,17 +1,12 @@
-#ifndef	__IGUI_H__
-#define __IGUI_H__
+#ifndef IGUI_H
+#define IGUI_H
 
-#include "IModule.h"
-
-class IGui : public IModule
+class   IGui
 {
 public:
-   virtual void Load(void)=0;
-   virtual void Destroy(void)=0;
-
-protected:
-private:
-
+    virtual void    init() = 0;
+    virtual void    load() = 0;
+    virtual void    destroy() = 0;
 };
 
-#endif
+#endif // IGUI_H
