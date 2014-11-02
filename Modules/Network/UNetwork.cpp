@@ -112,6 +112,8 @@ bool			UNetwork::recvSocket(int id)
 
   if (_connected.find(id) == _connected.end())
     return (false);
+  memset(_connected[0]->get_buffer(), 0, _connected[0]->get_len());
+  puts(_connected[0]->get_buffer());
   len = recv(_connected[id]->get_socket(), _connected[0]->get_buffer(), _connected[0]->get_len(), 0);
   if (len < 0)
     {
@@ -186,6 +188,8 @@ int			UNetwork::recvFromSocket(void)
   ClientInfo		*nstranger;
 
   socklen = sizeof(saddrin); //bullshit
+  memset(_connected[0]->get_buffer(), 0, _connected[0]->get_len());
+  puts(_connected[0]->get_buffer());
   len = recvfrom(_connected[0]->get_socket(), _connected[0]->get_buffer(),
 		 _connected[0]->get_len(), 0, (saddr *)&stranger.get_info(), &socklen);
   if (len < 0)

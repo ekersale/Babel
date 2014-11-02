@@ -11,7 +11,7 @@
 #include "BabelEncoder.h"
 
 
-#define SERV_ADDR_IP "10.13.253.199"
+#define SERV_ADDR_IP "127.0.0.1"
 
 
 namespace Ui {
