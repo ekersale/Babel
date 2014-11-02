@@ -5,6 +5,7 @@
 #include    <QHBoxLayout>
 #include    <QMessageBox>
 
+#include	"../Includes/OpenCV.h"
 
 namespace Ui {
 class Home;
@@ -35,20 +36,22 @@ public:
     void    setOncall(bool available);
 
 private slots:
-    void    addContact();
-    void    invitContact();
-    void    callContact();
-    void    videoCallContact();
-    void    hangHup();
-    void    changeOnline();
-    void    changeAway();
-    void    changeBusy();
-    void    showNewField();
+  void    addContact();
+  void    invitContact();
+  void    callContact();
+  void    videoCallContact();
+  void    hangHup();
+  void    changeOnline();
+  void    changeAway();
+  void    changeBusy();
+  void    showNewField();
+  void	  updatePlayerUI(QImage test);
 
 private:
-    Ui::Home *ui;
-    e_type  _status;
-    bool    _isOncall;
+  Ui::Home *ui;
+  e_type  _status;
+  bool    _isOncall;
+  OpenCV	*_video;
 };
 
 #endif // HOME_H

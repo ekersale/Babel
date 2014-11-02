@@ -1,42 +1,47 @@
 #ifndef	__OPENCV_H__
 #define __OPENCV_H__
 
+#include		<iostream>
+
+#include		<QMutex>
+#include		<QThread>
+#include		<QImage>
+#include		<QWaitCondition>
+
 #include		"IModule.h"
 
-class OpenCV : public IModule
+#include		<opencv2/core/core.hpp>
+#include		<opencv2/imgproc/imgproc.hpp>
+#include		<opencv2/highgui/highgui.hpp>
+
+
+
+class OpenCV : public QThread
 {
-  cv::VideoCapture	_video;
-  cv::Mat		_frame;
-  cv::Mat		_RGBframe;
-  /* QImage		_img; */
+  Q_OBJECT
+private:
+  cv::VideoCapture		_videoPerso;
+  cv::VideoCapture		_videoOther;
+  cv::Mat			_frame;
+  cv::Mat			_RGBframe;
+  QImage			_img;
+  QMutex			_mutex;
+  QWaitCondition		_condition;
+  int				_frameRate;
+  bool				_stop;
+
+signals:
+  void			processedImage(const QImage &image);
 
 public:
-  IModule * createObject(void);
-   VideoCapture getCaptureVideo(void);
-   void runVideo(void);
-   void playVideo(void);
-   bool isStopped(void);
-   void print_error(void);
-   VideoCapture get_video(void) const;
-   Math get_frame(void) const;
-   Math get_RGBFrame(void) const;
-   QueueImage get_img(void) const;
-   void set_video(VideoCapture new_video);
-   void set_frame(Math new_frame);
-   void set_RGBFrame(Math new_RGBFrame);
-   void set_img(QueueImage new_img);
-   OpenCV();
-   OpenCV(const OpenCV& oldOpenCV);
-   ~OpenCV();
-
-protected:
-private:
-   VideoCapture _video;
-   Math _frame;
-   Math _RGBFrame;
-   QueueImage _img;
-
-
+  OpenCV(QObject *parent = 0); 
+  ~OpenCV();
+  void			play();
+  void			stop();
+  bool			isStopped() const;
+  void			msleep(int ms);
+  void			run();
+  int			getFrameSize(cv::Mat frame);
 };
 
 #endif
