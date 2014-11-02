@@ -5,7 +5,7 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Fri Oct 31 23:48:20 2014 Elliot Kersalé
-// Last update Sun Nov  2 23:55:43 2014 Elliot Kersalé
+// Last update Sun Nov  2 23:58:30 2014 Elliot Kersalé
 //
 
 #include		"../../Includes/BabelEncoder.h"
@@ -90,7 +90,7 @@ float			*BabelEncoder::decodeFrame(const unsigned char *data, int frame_size)
     std::cerr << "malloc() failed : error on allocating memory" << std::endl;
     return (NULL);
   }
-  memset(frame, 0, frame_size * error);
+  memset(frame, 0, frame_size);
   if ((_bytes = opus_decode_float(_decoder, data, _encoded_data_size, frame, frame_size, 0)) != OPUS_OK) {
   }
   return (frame);
