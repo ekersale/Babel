@@ -5,7 +5,7 @@
 ** Login   <urvoy_p@epitech.net>
 ** 
 ** Started on  Sat Nov  1 17:39:04 2014 Pierre-Antoine Urvoy
-** Last update Sun Nov  2 19:30:46 2014 Pierre-Antoine Urvoy
+** Last update Sun Nov  2 22:34:22 2014 Elliot Kersalé
 */
 
 #include	<arpa/inet.h>
@@ -32,13 +32,14 @@ class		ClientInfo
   saddrin	_info;
   char *	_buffer;
   int		_len;
+  size_t	_filled;
  public:
   void		setAddr(int, std::string, std::string);
   int&		get_socket(void);
   saddrin&	get_info(void);
   char *&	get_buffer(void);
   int&		get_len(void);
-
+  size_t&	get_filled(void);
   ClientInfo(int = 512);
   ~ClientInfo();
 };

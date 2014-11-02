@@ -52,6 +52,11 @@ char *&			UNetwork::get_buffer(void)
   return (_connected[0]->get_buffer());
 }
 
+size_t &		UNetwork::get_filled(void)
+{
+  return (_connected[0]->get_filled());
+}
+
 /* * * */
 /* TCP */
 /* * * */
@@ -114,6 +119,7 @@ bool			UNetwork::recvSocket(int id)
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
+  _connected[0]->get_filled() = len;
   _connected[0]->get_buffer()[len] = 0;
   return (true);
 }
@@ -187,6 +193,7 @@ int			UNetwork::recvFromSocket(void)
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
+  _connected[0]->get_filled() = len;
   _connected[0]->get_buffer()[len] = 0;
   if (UDPDuplicate(&stranger, id)) // verificationd des duplicats
     return (id);

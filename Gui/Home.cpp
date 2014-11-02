@@ -134,7 +134,7 @@ void	Home::threadCall()
     sound.startStream();
     isOk = true;
   }
-  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
+  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), srv->get_filled()), encode.getBytesDecode());
   if (!(sound.readStream()))
     std::cerr << "Error on writeStream()" << std::endl;
   buffer = sound.getRecordedSamples();
@@ -189,7 +189,7 @@ void Home::threadReceive()
   for (i = 0; tmp[i]; i++);
   clt->sendToSocket(id, tmp, i); //envoie à id2 séttée sur une socket par connect
   clt->recvFromSocket();// recoit de n'importe qui qui connait
-  sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
+  sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), clt->get_filled()), encode.getBytesDecode());
   (void)buffer;
   (void)tmp;
 }
