@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../Git/babel/Gui/Images/logo.png</normaloff>../../Git/babel/Gui/Images/logo.png</iconset>
+    <normaloff>./Images/logo.png</normaloff>./Images/logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
@@ -88,7 +88,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/background.png</pixmap>
+     <pixmap>./Images/background.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_logo">
@@ -116,7 +116,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/logo.png</pixmap>
+     <pixmap>./Images/logo.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_bandeau">
@@ -150,7 +150,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/bandeau.png</pixmap>
+     <pixmap>./Images/bandeau.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_backgroundBtnAdd">
@@ -178,7 +178,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/backgroundBtnAdd.png</pixmap>
+     <pixmap>./Images/backgroundBtnAdd.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_backgroundBtnCall">
@@ -194,7 +194,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../Git/babel/Gui/Images/backgroundBtnCall.png</pixmap>
+     <pixmap>./Images/backgroundBtnCall.png</pixmap>
     </property>
    </widget>
    <widget class="QTextEdit" name="_text_chat">
@@ -276,7 +276,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Git/babel/Gui/Images/btnClose.png</normaloff>../../Git/babel/Gui/Images/btnClose.png</iconset>
+      <normaloff>./Images/btnClose.png</normaloff>./Images/btnClose.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -348,7 +348,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../Images/btnAddContact.png</normaloff>../Images/btnAddContact.png</iconset>
+      <normaloff>./Images/btnAddContact.png</normaloff>./Images/btnAddContact.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -374,7 +374,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Git/babel/Gui/Images/btnAddContact.png</normaloff>../../Git/babel/Gui/Images/btnAddContact.png</iconset>
+      <normaloff>./Images/btnAddContact.png</normaloff>./Images/btnAddContact.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -418,7 +418,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Git/babel/Gui/Images/btnMicro.png</normaloff>../../Git/babel/Gui/Images/btnMicro.png</iconset>
+      <normaloff>./Images/btnMicro.png</normaloff>./Images/btnMicro.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -462,7 +462,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Git/babel/Gui/Images/btnCam.png</normaloff>../../Git/babel/Gui/Images/btnCam.png</iconset>
+      <normaloff>./Images/btnCam.png</normaloff>./Images/btnCam.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -500,7 +500,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../Git/babel/Gui/Images/btnHangUp.png</normaloff>../../Git/babel/Gui/Images/btnHangUp.png</iconset>
+      <normaloff>./Images/btnHangUp.png</normaloff>./Images/btnHangUp.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -566,7 +566,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/btnPhoneNumber.png</pixmap>
+     <pixmap>./Images/btnPhoneNumber.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_PhoneNumberValue">
@@ -607,7 +607,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/btnLocalisation.png</pixmap>
+     <pixmap>./Images/btnLocalisation.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_LocalisationValue">
@@ -636,7 +636,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/btnBirthday.png</pixmap>
+     <pixmap>./Images/btnBirthday.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_BirthsdayValue">
@@ -702,7 +702,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../Images/greenStatus.png</normaloff>../Images/greenStatus.png</iconset>
+      <normaloff>./Images/greenStatus.png</normaloff>./Images/greenStatus.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -728,7 +728,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../Images/orangeStatus.png</normaloff>../Images/orangeStatus.png</iconset>
+      <normaloff>./Images/orangeStatus.png</normaloff>./Images/orangeStatus.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -754,7 +754,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../Images/redStatus.png</normaloff>../Images/redStatus.png</iconset>
+      <normaloff>./Images/redStatus.png</normaloff>./Images/redStatus.png</iconset>
     </property>
     <property name="iconSize">
      <size>

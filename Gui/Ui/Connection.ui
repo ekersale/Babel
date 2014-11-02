@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../Git/babel/Gui/Images/logo.png</normaloff>../../Git/babel/Gui/Images/logo.png</iconset>
+    <normaloff>./Images/logo.png</normaloff>./Images/logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="_label_background">
@@ -68,7 +68,7 @@
     </property>
     <property name="pixmap">
       <!-- <pixmap>./Images/background.png</pixmap> -->
-     <pixmap>../../Git/babel/Gui/Images/background.png</pixmap>
+     <pixmap>./Images/background.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="_label_logo">
@@ -84,7 +84,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../Git/babel/Gui/Images/logo.png</pixmap>
+     <pixmap>./Images/logo.png</pixmap>
     </property>
    </widget>
    <widget class="QLineEdit" name="_lineLogin">
@@ -137,7 +137,7 @@
     <property name="icon">
      <iconset>
      <!-- <normaloff>../Images/btnConnection.png</normaloff>../Images/btnConnection.png</iconset> -->
-      <normaloff>../../Git/babel/Gui/Images/btnConnection.png</normaloff>../../Git/babel/Gui/Images/btnConnection.png</iconset>
+      <normaloff>./Images/btnConnection.png</normaloff>./Images/btnConnection.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -172,7 +172,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../Images/btnConnection.png</normaloff>../Images/btnConnection.png</iconset>
+      <normaloff>./Images/btnConnection.png</normaloff>./Images/btnConnection.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -194,7 +194,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../Images/bigLogo.png</pixmap>
+     <pixmap>./Images/bigLogo.png</pixmap>
     </property>
    </widget>
   </widget>

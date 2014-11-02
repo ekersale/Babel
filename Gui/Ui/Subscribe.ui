@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../Git/babel/Gui/Images/logo.png</normaloff>../../Git/babel/Gui/Images/logo.png</iconset>
+    <normaloff>./Images/logo.png</normaloff>./Images/logo.png</iconset>
   </property>
   <widget class="QLabel" name="_label_logo">
    <property name="geometry">
@@ -42,7 +42,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../Images/background.png</pixmap>
+    <pixmap>./Images/background.png</pixmap>
    </property>
   </widget>
   <widget class="QLineEdit" name="_lineLogin">
@@ -82,7 +82,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../Images/btnSubscribe.png</normaloff>../Images/btnSubscribe.png</iconset>
+     <normaloff>./Images/btnSubscribe.png</normaloff>./Images/btnSubscribe.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -149,7 +149,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../Images/bigLogo.png</pixmap>
+    <pixmap>./Images/bigLogo.png</pixmap>
    </property>
   </widget>
  </widget>
