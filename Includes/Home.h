@@ -13,6 +13,7 @@
 
 #define SERV_ADDR_IP "127.0.0.1"
 
+#include	"../Includes/OpenCV.h"
 
 namespace Ui {
 class Home;
@@ -43,28 +44,29 @@ public:
     void    setOncall(bool available);
 
 private slots:
-    void    addContact();
-    void    invitContact();
-    void    callContact();
-    void    videoCallContact();
-    void    hangHup();
-    void    changeOnline();
-    void    changeAway();
-    void    changeBusy();
-    void    showNewField();
-    void    threadReceive();
-    void    threadCall();
-
+  void    addContact();
+  void    invitContact();
+  void    callContact();
+  void    videoCallContact();
+  void    hangHup();
+  void    changeOnline();
+  void    changeAway();
+  void    changeBusy();
+  void    showNewField();
+  void	  updatePlayerUI(QImage test);
+  void    threadReceive();
+  void    threadCall();
 private:
-    Ui::Home *ui;
-    ABabelSound sound;
-    BabelEncoder encode;
-    UNetwork *srv;
-    UNetwork *clt;
-    QTimer *timer;
-    int id;
-    e_type  _status;
-    bool    _isOncall;
+  Ui::Home *ui;
+  ABabelSound sound;
+  BabelEncoder encode;
+  UNetwork *srv;
+  UNetwork *clt;
+  QTimer *timer;
+  int id;
+  e_type  _status;
+  bool    _isOncall;
+  OpenCV	*_video;
 };
 
 #endif // HOME_H

@@ -25,22 +25,45 @@ void    Home::init()
 
 void    Home::load()
 {
-    ui->setupUi(this);
-    ui->_line_addContact->hide();
-    timer = new QTimer(this);
+  ui->setupUi(this);
+  ui->_line_addContact->hide();
+  
+  
+  _video = new OpenCV(); //Initialisatio de la camera
+  
+  timer = new QTimer(this);
+  
+  
+  QLabel::connect(_video, SIGNAL(processedImage(QImage)), this, SLOT(updatePlayerUI(QImage)));
+  
+  QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
+  QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
+  QObject::connect(ui->_btn_Away, SIGNAL(clicked()), this, SLOT(changeAway()));
+  QObject::connect(ui->_btn_Busy, SIGNAL(clicked()), this, SLOT(changeBusy()));
+  QObject::connect(ui->_btnAddContact, SIGNAL(clicked()), this, SLOT(showNewField()));
+  QObject::connect(ui->_btnInviteContact, SIGNAL(clicked()), this, SLOT(invitContact()));
+  QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(callContact()));
+  QObject::connect(ui->_btnCam, SIGNAL(clicked()), this, SLOT(videoCallContact()));
+  QObject::connect(ui->_btnHangUp, SIGNAL(clicked()), this, SLOT(hangHup()));
+  QObject::connect(ui->_line_addContact,SIGNAL(returnPressed()), this,SLOT(addContact()));
+  
+  defineStatus(this->_status);
+}
 
-    QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
-    QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
-    QObject::connect(ui->_btn_Away, SIGNAL(clicked()), this, SLOT(changeAway()));
-    QObject::connect(ui->_btn_Busy, SIGNAL(clicked()), this, SLOT(changeBusy()));
-    QObject::connect(ui->_btnAddContact, SIGNAL(clicked()), this, SLOT(showNewField()));
-    QObject::connect(ui->_btnInviteContact, SIGNAL(clicked()), this, SLOT(invitContact()));
-    QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(callContact()));
-    QObject::connect(ui->_btnCam, SIGNAL(clicked()), this, SLOT(videoCallContact()));
-    QObject::connect(ui->_btnHangUp, SIGNAL(clicked()), this, SLOT(hangHup()));
-    QObject::connect(ui->_line_addContact,SIGNAL(returnPressed()), this,SLOT(addContact()));
 
-    defineStatus(this->_status);
+void	Home::updatePlayerUI(QImage img)
+{
+  if (!img.isNull())
+    {
+      ui->_label_Video->setAlignment(Qt::AlignCenter);
+      ui->_label_Video->setPixmap(QPixmap::fromImage(img));
+      ui->_label_Video->show();
+      
+      ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
+      ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
+      ui->_label_VideoPerso->setScaledContents(true);
+      ui->_label_VideoPerso->show();
+    }
 }
 
 void    Home::destroy()
@@ -213,7 +236,14 @@ void    Home::callContact()
 
 void    Home::videoCallContact()
 {
-
+  
+  if (_video->isStopped())
+    {
+      std::cout << "Dans Home::videoCallContact > _video->isStopped " << std::endl;
+      _video->play();
+    }
+  else
+    _video->stop();
 }
 
 void    Home::hangHup()
