@@ -125,21 +125,23 @@ void	Home::threadCall()
 {
   float *buffer;
   unsigned char *tmp;
+  static bool isOk = false;
 
   std::cout << "egergergereé" << std::endl;
   //  while (1) {
+  id = srv->recvFromSocket(); //premier recu, socket settée sur id1
+  if (isOk == false) {
+    sound.startStream();
+    isOk = true;
+  }
+  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
   if (!(sound.readStream()))
     std::cerr << "Error on writeStream()" << std::endl;
   buffer = sound.getRecordedSamples();
-  std::cout << "egergergereé" << std::endl;
   tmp = encode.encodeFrame(buffer, 480);
   int i;
   for (i = 0; tmp[i]; i++);
-  id = srv->recvFromSocket(); //premier recu, socket settée sur id1
-  std::cout << "id : " << id  << std::endl;
-  std::cout << "pouet" << std::endl;
-  srv->sendToSocket(id, tmp, i); // revoir à id1 
-  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
+  srv->sendToSocket(id, tmp, i); // revoir à id1
   (void)buffer;
   (void)tmp;
  //  }
@@ -156,13 +158,9 @@ void    Home::invitContact()
   if (!(sound.initializeOutput()))
     std::cerr << "Error on initParams()" << std::endl;
   sound.openStream();
-  std::cout << "pouet bind" << std::endl;
-  sound.startStream();
   encode.opusEncoderCreate();
   encode.opusDecoderCreate();
-  std::cout << "pouet bind" << std::endl;
   connect(timer, SIGNAL(timeout()), this, SLOT(threadCall()));
-  std::cout << "pouet bind" << std::endl;
   timer->start();
   // while (1) {
   //   if (!(sound.readStream()))
@@ -190,8 +188,6 @@ void Home::threadReceive()
   int i;
   for (i = 0; tmp[i]; i++);
   clt->sendToSocket(id, tmp, i); //envoie à id2 séttée sur une socket par connect
-  std::cout << "id : " << id << std::endl;
-  std::cout << "cacac" << std::endl;
   clt->recvFromSocket();// recoit de n'importe qui qui connait
   sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
   (void)buffer;
@@ -205,6 +201,7 @@ void    Home::callContact()
 
   clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP");
   id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port   
+
   if (!sound.initializePA())
     std::cerr << "Error on InitPa()" << std::endl;
   if (!(sound.initializeInput()))

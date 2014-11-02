@@ -32,6 +32,7 @@ public:
 	bool				printError(const int &);
 	float				*getRecordedSamples();
 	bool				closeStream();
+	bool				stopStream();
 
 private:
 	PaStream			*_stream;

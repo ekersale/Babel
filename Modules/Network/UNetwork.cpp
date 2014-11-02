@@ -192,6 +192,7 @@ int			UNetwork::recvFromSocket(void)
     return (id);
   if (!(nstranger = new ClientInfo(_len)))
     return (false);
+  printf("sizemap %d\n", _connected.size());
   nstranger->get_info() = stranger.get_info();
   _connected[++_id] = nstranger; // en udp c'est le rcv qui dit qui vient de se connecter, on stocke ca
   return (_id);

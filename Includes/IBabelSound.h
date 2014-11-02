@@ -12,6 +12,7 @@ protected:
 	virtual bool		readStream() = 0;
 	virtual bool		writeStream(float *, int) = 0;
 	virtual bool		closeStream() = 0;
+	virtual bool		stopStream() = 0;
 };
 
 #endif // !_IBABEL_SOUND_H__
