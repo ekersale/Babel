@@ -224,6 +224,9 @@
       <height>211</height>
      </size>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
     <property name="readOnly">
      <bool>true</bool>
     </property>
@@ -231,9 +234,9 @@
    <widget class="QLineEdit" name="_text_msg">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>300</x>
       <y>850</y>
-      <width>751</width>
+      <width>771</width>
       <height>31</height>
      </rect>
     </property>
@@ -312,7 +315,7 @@
     <property name="maxLength">
      <number>10</number>
     </property>
-    <property name="clearButtonEnabled">
+    <property name="clearButtonEnabled" stdset="0">
      <bool>false</bool>
     </property>
    </widget>

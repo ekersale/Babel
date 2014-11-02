@@ -25,25 +25,29 @@ void    Home::init()
 
 void    Home::load()
 {
-    ui->setupUi(this);
-    ui->_line_addContact->hide();
-
-    _video = new OpenCV(); //Initialisatio de la camera
-
-    QLabel::connect(_video, SIGNAL(processedImage(QImage)), this, SLOT(updatePlayerUI(QImage)));
-    
-    QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
-    QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
-    QObject::connect(ui->_btn_Away, SIGNAL(clicked()), this, SLOT(changeAway()));
-    QObject::connect(ui->_btn_Busy, SIGNAL(clicked()), this, SLOT(changeBusy()));
-    QObject::connect(ui->_btnAddContact, SIGNAL(clicked()), this, SLOT(showNewField()));
-    QObject::connect(ui->_btnInviteContact, SIGNAL(clicked()), this, SLOT(invitContact()));
-    QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(callContact()));
-    QObject::connect(ui->_btnCam, SIGNAL(clicked()), this, SLOT(videoCallContact()));
-    QObject::connect(ui->_btnHangUp, SIGNAL(clicked()), this, SLOT(hangHup()));
-    QObject::connect(ui->_line_addContact,SIGNAL(returnPressed()), this,SLOT(addContact()));
-
-    defineStatus(this->_status);
+  ui->setupUi(this);
+  ui->_line_addContact->hide();
+  
+  
+  _video = new OpenCV(); //Initialisatio de la camera
+  
+  timer = new QTimer(this);
+  
+  
+  QLabel::connect(_video, SIGNAL(processedImage(QImage)), this, SLOT(updatePlayerUI(QImage)));
+  
+  QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
+  QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
+  QObject::connect(ui->_btn_Away, SIGNAL(clicked()), this, SLOT(changeAway()));
+  QObject::connect(ui->_btn_Busy, SIGNAL(clicked()), this, SLOT(changeBusy()));
+  QObject::connect(ui->_btnAddContact, SIGNAL(clicked()), this, SLOT(showNewField()));
+  QObject::connect(ui->_btnInviteContact, SIGNAL(clicked()), this, SLOT(invitContact()));
+  QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(callContact()));
+  QObject::connect(ui->_btnCam, SIGNAL(clicked()), this, SLOT(videoCallContact()));
+  QObject::connect(ui->_btnHangUp, SIGNAL(clicked()), this, SLOT(hangHup()));
+  QObject::connect(ui->_line_addContact,SIGNAL(returnPressed()), this,SLOT(addContact()));
+  
+  defineStatus(this->_status);
 }
 
 
@@ -140,14 +144,96 @@ void    Home::addContact()
 
 }
 
+void	Home::threadCall()
+{
+  float *buffer;
+  unsigned char *tmp;
+  static bool isOk = false;
+
+  std::cout << "egergergereé" << std::endl;
+  //  while (1) {
+  id = srv->recvFromSocket(); //premier recu, socket settée sur id1
+  if (isOk == false) {
+    sound.startStream();
+    isOk = true;
+  }
+  sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
+  if (!(sound.readStream()))
+    std::cerr << "Error on writeStream()" << std::endl;
+  buffer = sound.getRecordedSamples();
+  tmp = encode.encodeFrame(buffer, 480);
+  int i;
+  srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1
+  (void)buffer;
+  (void)tmp;
+ //  }
+}
+
 void    Home::invitContact()
 {
+  srv = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 2000);
+  srv->bindSocket("2000");
+  if (!sound.initializePA())
+    std::cerr << "Error on InitPa()" << std::endl;
+  if (!(sound.initializeInput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  if (!(sound.initializeOutput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  sound.openStream();
+  encode.opusEncoderCreate();
+  encode.opusDecoderCreate();
+  connect(timer, SIGNAL(timeout()), this, SLOT(threadCall()));
+  timer->start(0);
+  // while (1) {
+  //   if (!(sound.readStream()))
+  //     std::cerr << "Error on writeStream()" << std::endl;
+  //   buffer = sound.getRecordedSamples();
+  //   sound.writeStream(buffer, 480);
+  //   // tmp = encode.encodeFrame(buffer, 480);
+  //   // int i;
+  //   // for (i = 0; tmp[i]; i++);
+  //   // srv->sendToSocket(id1, (void *)tmp, i); // revoir à id1                                                           
+  //   // id1 = srv->recvFromSocket(); //premier recu, socket settée sur id1                                             
+  //   // sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
+  // }
+}
 
+void Home::threadReceive()
+{
+  float *buffer;
+  unsigned char *tmp;
+
+  if (!(sound.readStream()))
+    std::cerr << "Error on writeStream()" << std::endl;
+  buffer = sound.getRecordedSamples();
+  tmp = encode.encodeFrame(buffer, 480);
+  clt->sendToSocket(id, tmp, encode.getEncodedDataSize()); //envoie à id2 séttée sur une socket par connect
+  clt->recvFromSocket();// recoit de n'importe qui qui connait
+  sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
+  (void)buffer;
+  (void)tmp;
 }
 
 void    Home::callContact()
 {
+  float *buffer;
+  unsigned char *tmp;
 
+  clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 2000);
+  id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port   
+
+  if (!sound.initializePA())
+    std::cerr << "Error on InitPa()" << std::endl;
+  if (!(sound.initializeInput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  if (!(sound.initializeOutput()))
+    std::cerr << "Error on initParams()" << std::endl;
+  sound.openStream();
+  sound.startStream();
+  encode.opusEncoderCreate();
+  encode.opusDecoderCreate();
+  connect(timer, SIGNAL(timeout()), this, SLOT(threadReceive()));
+  timer->start();
 }
 
 void    Home::videoCallContact()
@@ -164,6 +250,7 @@ void    Home::videoCallContact()
 
 void    Home::hangHup()
 {
+    timer->stop();
     if (this->_isOncall == false)
     {
         QMessageBox::critical(this, "Error", "Vous ne pouvez pas raccrocher si vous n'avez pas d'appels");
@@ -174,6 +261,7 @@ void    Home::hangHup()
         ; //Fonction pour la vidéo
     }
 }
+
 void    Home::setStatus(e_type newStatus)
 {
     this->_status = newStatus;
