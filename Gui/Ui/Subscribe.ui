@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Subscribe</class>
+ <widget class="QWidget" name="Subscribe">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>929</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Studio Babel</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../Git/babel/Gui/Images/logo.png</normaloff>../../Git/babel/Gui/Images/logo.png</iconset>
+  </property>
+  <widget class="QLabel" name="_label_logo">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1080</width>
+     <height>929</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1080</width>
+     <height>929</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1080</width>
+     <height>929</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../Images/background.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="_lineLogin">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>370</y>
+     <width>381</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="_linePassword">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>450</y>
+     <width>381</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="_btnSubscribe">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>790</y>
+     <width>194</width>
+     <height>66</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Images/btnSubscribe.png</normaloff>../Images/btnSubscribe.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>194</width>
+     <height>66</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="_lineBirthsday">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>530</y>
+     <width>381</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>381</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>12/05/2014</string>
+   </property>
+   <property name="cursorPosition">
+    <number>10</number>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="_lineLocation">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>610</y>
+     <width>381</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Angers</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="_linePhoneNumber">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>690</y>
+     <width>381</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="_labelBigLogo">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>90</y>
+     <width>451</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../Images/bigLogo.png</pixmap>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
