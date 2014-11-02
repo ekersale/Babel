@@ -160,7 +160,7 @@ void    Home::invitContact()
   encode.opusEncoderCreate();
   encode.opusDecoderCreate();
   connect(timer, SIGNAL(timeout()), this, SLOT(threadCall()));
-  timer->start();
+  timer->start(0);
   // while (1) {
   //   if (!(sound.readStream()))
   //     std::cerr << "Error on writeStream()" << std::endl;
