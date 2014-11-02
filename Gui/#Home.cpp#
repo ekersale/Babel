@@ -135,6 +135,7 @@ void	Home::threadCall()
   tmp = encode.encodeFrame(buffer, 480);
   int i;
   for (i = 0; tmp[i]; i++);
+  std::cout << "egergergereé" << std::endl,,,,,,,,,,,
   id = srv->recvFromSocket(); //premier recu, socket settée sur id1
   std::cout << "id : " << id  << std::endl;
   std::cout << "pouet" << std::endl;
@@ -204,7 +205,7 @@ void    Home::callContact()
   unsigned char *tmp;
 
   clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP");
-  id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port   
+  id = clt->connectToSocket("2000", SERV_ADDR_IP); //host port   
   if (!sound.initializePA())
     std::cerr << "Error on InitPa()" << std::endl;
   if (!(sound.initializeInput()))

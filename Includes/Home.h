@@ -5,6 +5,7 @@
 #include    <QHBoxLayout>
 #include    <QMessageBox>
 #include <iostream>
+#include    <QTimer>
 #include "UNetwork.h"
 #include "BabelSound.h"
 #include "BabelEncoder.h"
@@ -51,9 +52,17 @@ private slots:
     void    changeAway();
     void    changeBusy();
     void    showNewField();
+    void    threadReceive();
+    void    threadCall();
 
 private:
     Ui::Home *ui;
+    ABabelSound sound;
+    BabelEncoder encode;
+    UNetwork *srv;
+    UNetwork *clt;
+    QTimer *timer;
+    int id;
     e_type  _status;
     bool    _isOncall;
 };
