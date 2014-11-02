@@ -1042,7 +1042,55 @@ Connection.o: Gui/Connection.cpp Includes/IGui.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlayout.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlayoutitem.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qgridlayout.h \
-		ui_Connection.h
+		ui_Connection.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMenuBar \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenubar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenu.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QToolBar \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtoolbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Connection.o Gui/Connection.cpp
 
 Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.h \
@@ -1155,7 +1203,48 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMessageBox \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmessagebox.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdialog.h \
-		ui_Subscribe.h
+		ui_Subscribe.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subscribe.o Gui/Subscribe.cpp
 
 Home.o: Gui/Home.cpp Includes/Home.h \
@@ -1270,7 +1359,60 @@ Home.o: Gui/Home.cpp Includes/Home.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMessageBox \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmessagebox.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdialog.h \
-		ui_Home.h
+		ui_Home.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QListWidget \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlistwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlistview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMenuBar \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenubar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenu.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QTextEdit \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtextedit.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextdocument.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
 
 moc_Connection.o: moc_Connection.cpp 

@@ -5,7 +5,7 @@
 // Login   <desmar_s@epitech.net>
 // 
 // Started on  Tue Oct 28 01:37:29 2014 Sliman Desmars
-// Last update Thu Oct 30 18:33:04 2014 Sliman Desmars
+// Last update Sat Nov  1 12:55:33 2014 Sliman Desmars
 //
 
 #include		<QApplication>
@@ -13,7 +13,7 @@
 #include		"../Includes/Client.h"
 #include		"../Includes/View.h"
 #include		"../Includes/Factory.h"
-#include		"../Includes/Inscription.h"
+#include		"../Includes/Connection.h"
 #include		"../Includes/UnixDllLoader.h"
 #include		"../Includes/IModule.h"
 
@@ -102,7 +102,7 @@ int			main(int argc, char **argv)
   // subscribe->load();
   // IDllLoader	*loader = new UnixDllLoader();
   
-  Inscription		view;
+  Connection		view;
   view.show();
   
   // if (argc < 2)

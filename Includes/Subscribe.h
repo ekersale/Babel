@@ -1,34 +1,30 @@
-#ifndef	__SUBSCRIBE_H__
-#define __SUBSCRIBE_H__
+#ifndef SUBSCRIBE_H
+#define SUBSCRIBE_H
 
-#include "IGui.h"
-#include "IModule.h"
+#include    "IGui.h"
 
-class Subscribe : public IGui
+#include <QWidget>
+
+namespace Ui {
+class Subscribe;
+}
+
+class Subscribe : public QWidget, public IGui
 {
+    Q_OBJECT
+
 public:
-   IModule * createObject(void);
-   void Load(void);
-   void Destroy(void);
-   Subscribe();
-   void print_error(void);
-   QLineEdit * get_name(void) const;
-   QLineEdit * get_password(void) const;
-   QPushButton * get_btnSubscribe(void) const;
-   void set_name(QLineEdit * new_name);
-   void set_password(QLineEdit * new_password);
-   void set_btnSubscribe(QPushButton * new_btnSubscribe);
-   Subscribe();
-   Subscribe(const Subscribe& oldSubscribe);
-   ~Subscribe();
+    explicit Subscribe(QWidget *parent = 0);
+    ~Subscribe();
+    void    init();
+    void    load();
+    void    destroy();
 
-protected:
+private slots:
+    void    toSubscribe();
+
 private:
-   QLineEdit * _name;
-   QLineEdit * _password;
-   QPushButton * _btnSubscribe;
-
-
+    Ui::Subscribe *ui;
 };
 
-#endif
+#endif // SUBSCRIBE_H
