@@ -52,6 +52,11 @@ char *&			UNetwork::get_buffer(void)
   return (_connected[0]->get_buffer());
 }
 
+size_t &		UNetwork::get_filled(void)
+{
+  return (_connected[0]->get_filled());
+}
+
 /* * * */
 /* TCP */
 /* * * */
@@ -107,6 +112,8 @@ bool			UNetwork::recvSocket(int id)
 
   if (_connected.find(id) == _connected.end())
     return (false);
+  memset(_connected[0]->get_buffer(), 0, _connected[0]->get_len());
+  puts(_connected[0]->get_buffer());
   len = recv(_connected[id]->get_socket(), _connected[0]->get_buffer(), _connected[0]->get_len(), 0);
   if (len < 0)
     {
@@ -114,6 +121,7 @@ bool			UNetwork::recvSocket(int id)
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
+  _connected[0]->get_filled() = len;
   _connected[0]->get_buffer()[len] = 0;
   return (true);
 }
@@ -180,6 +188,8 @@ int			UNetwork::recvFromSocket(void)
   ClientInfo		*nstranger;
 
   socklen = sizeof(saddrin); //bullshit
+  memset(_connected[0]->get_buffer(), 0, _connected[0]->get_len());
+  puts(_connected[0]->get_buffer());
   len = recvfrom(_connected[0]->get_socket(), _connected[0]->get_buffer(),
 		 _connected[0]->get_len(), 0, (saddr *)&stranger.get_info(), &socklen);
   if (len < 0)
@@ -187,11 +197,13 @@ int			UNetwork::recvFromSocket(void)
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
+  _connected[0]->get_filled() = len;
   _connected[0]->get_buffer()[len] = 0;
   if (UDPDuplicate(&stranger, id)) // verificationd des duplicats
     return (id);
   if (!(nstranger = new ClientInfo(_len)))
     return (false);
+  printf("sizemap %d\n", _connected.size());
   nstranger->get_info() = stranger.get_info();
   _connected[++_id] = nstranger; // en udp c'est le rcv qui dit qui vient de se connecter, on stocke ca
   return (_id);

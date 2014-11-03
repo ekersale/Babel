@@ -5,7 +5,7 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Sun Nov  2 18:34:20 2014 Elliot Kersalé
-// Last update Sun Nov  2 18:35:22 2014 Elliot Kersalé
+// Last update Sun Nov  2 22:15:06 2014 Elliot Kersalé
 //
 
 #include "../../Includes/BabelSound.h"
@@ -44,10 +44,18 @@ bool            ABabelSound::openStream()
   return (true);
 }
 
+bool		ABabelSound::stopStream()
+{
+  int error = 0;
+  if ((error = Pa_StopStream(_stream)) != paNoError)
+    return (printError(error));
+  return (true);
+}
+
 bool            ABabelSound::startStream()
 {
   int			error = 0;
-  
+   
   if ((error = Pa_StartStream(_stream)) != paNoError)
     return (printError(error));
   (void)error;

@@ -5,7 +5,7 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Sun Nov  2 20:27:33 2014 Elliot Kersalé
+// Last update Sun Nov  2 22:36:25 2014 Elliot Kersalé
 //
 
 #include	"../../Includes/UClientInfo.h"
@@ -39,6 +39,11 @@ saddrin&	ClientInfo::get_info(void)
 int&		ClientInfo::get_len(void)
 {
   return (_len);
+}
+
+size_t&		ClientInfo::get_filled(void)
+{
+  return (_filled);
 }
 
 ClientInfo::ClientInfo(int len)

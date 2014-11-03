@@ -61,6 +61,8 @@ void    Connection::load()
 
     QObject::connect(ui->_btnConnection, SIGNAL(clicked()), this, SLOT(connection()));
     QObject::connect(ui->_btnSubscribe, SIGNAL(clicked()), this, SLOT(subscribe()));
+    QObject::connect(ui->_lineLogin, SIGNAL(returnPressed()), this, SLOT(connection()));
+    QObject::connect(ui->_linePassword, SIGNAL(returnPressed()), this, SLOT(connection()));
 }
 
 void    Connection::destroy()

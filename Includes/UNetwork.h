@@ -34,6 +34,7 @@ public:
   virtual void	closeSocket(int);
   virtual bool	createSocket(std::string, int &);
   virtual char	*& get_buffer(void);
+  virtual size_t & get_filled(void);
   //tronc commun
   
   virtual bool	listenSocket(int);

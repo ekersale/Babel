@@ -5,7 +5,7 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Fri Oct 31 23:48:20 2014 Elliot Kersalé
-// Last update Sun Nov  2 18:24:24 2014 Elliot Kersalé
+// Last update Sun Nov  2 23:58:30 2014 Elliot Kersalé
 //
 
 #include		"../../Includes/BabelEncoder.h"
@@ -19,6 +19,11 @@ BabelEncoder::BabelEncoder() {
 
 BabelEncoder::~BabelEncoder() {
   opusDestroy();
+}
+
+int			BabelEncoder::getEncodedDataSize(void)
+{
+  return (_encoded_data_size);
 }
 
 bool			BabelEncoder::opusEncoderCreate() {
@@ -55,6 +60,8 @@ void			BabelEncoder::opusDestroy() {
     opus_decoder_destroy(_decoder);
 }
 
+
+
 unsigned char		*BabelEncoder::encodeFrame(const float *frame, int frame_size) {
   unsigned char		*compressed_buffer;
   int			error;
@@ -83,7 +90,7 @@ float			*BabelEncoder::decodeFrame(const unsigned char *data, int frame_size)
     std::cerr << "malloc() failed : error on allocating memory" << std::endl;
     return (NULL);
   }
-  memset(frame, 0, 480);
+  memset(frame, 0, frame_size);
   if ((_bytes = opus_decode_float(_decoder, data, _encoded_data_size, frame, frame_size, 0)) != OPUS_OK) {
   }
   return (frame);
