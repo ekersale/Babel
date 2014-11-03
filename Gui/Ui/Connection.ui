@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>./Images/logo.png</normaloff>./Images/logo.png</iconset>
+    <normaloff>Images/logo.png</normaloff>Images/logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="_label_background">
@@ -67,24 +67,10 @@
      <string notr="true"/>
     </property>
     <property name="pixmap">
-      <!-- <pixmap>./Images/background.png</pixmap> -->
-     <pixmap>./Images/background.png</pixmap>
+     <pixmap>Images/background.png</pixmap>
     </property>
-   </widget>
-   <widget class="QLabel" name="_label_logo">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>141</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>./Images/logo.png</pixmap>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLineEdit" name="_lineLogin">
@@ -136,8 +122,7 @@
     </property>
     <property name="icon">
      <iconset>
-     <!-- <normaloff>../Images/btnConnection.png</normaloff>../Images/btnConnection.png</iconset> -->
-      <normaloff>./Images/btnConnection.png</normaloff>./Images/btnConnection.png</iconset>
+      <normaloff>Images/btnConnection.png</normaloff>Images/btnConnection.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -172,7 +157,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>./Images/btnConnection.png</normaloff>./Images/btnConnection.png</iconset>
+      <normaloff>Images/btnSubscribe.png</normaloff>Images/btnSubscribe.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -194,19 +179,9 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>./Images/bigLogo.png</pixmap>
+     <pixmap>Images/bigLogo.png</pixmap>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1080</width>
-     <height>20</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="enabled">
