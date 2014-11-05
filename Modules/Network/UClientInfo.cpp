@@ -5,14 +5,14 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Sun Nov  2 22:36:25 2014 Elliot Kersalé
+// Last update Wed Nov  5 16:28:46 2014 Pierre-Antoine Urvoy
 //
 
-#include	"../../Includes/UClientInfo.h"
+#include	"UClientInfo.hh"
 
 void		ClientInfo::setAddr(int family, std::string port, std::string host)
 {
-  bzero(&_info, sizeof(_info));
+  memset(&_info, 0, sizeof(_info));
   _info.sin_family = family;
   _info.sin_port = htons(atoi(port.c_str()));
   if (host.empty())
@@ -31,7 +31,8 @@ char *&		ClientInfo::get_buffer(void)
   return (_buffer);
 }
 
-saddrin&	ClientInfo::get_info(void)
+
+saddrin&       	ClientInfo::get_info(void)
 {
   return (_info);
 }
@@ -41,18 +42,18 @@ int&		ClientInfo::get_len(void)
   return (_len);
 }
 
-size_t&		ClientInfo::get_filled(void)
+int&		ClientInfo::get_filled(void)
 {
   return (_filled);
 }
 
 ClientInfo::ClientInfo(int len)
 {
-  _socket = -1;
+  _socket = 0;
   _buffer = new char[len];
   _len = len;
   _buffer[0] = 0;
-  bzero(&_info, sizeof(_info));
+  memset(&_info, 0, sizeof(_info));
 }
 
 ClientInfo::~ClientInfo()
