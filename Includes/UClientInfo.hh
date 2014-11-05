@@ -5,23 +5,29 @@
 ** Login   <urvoy_p@epitech.net>
 ** 
 ** Started on  Sat Nov  1 17:39:04 2014 Pierre-Antoine Urvoy
-// Last update Wed Nov  5 16:27:00 2014 Pierre-Antoine Urvoy
+// Last update Wed Nov  5 17:49:23 2014 Sliman Desmars
 */
 
 #include	<arpa/inet.h>
-#include	<netdb.h>
+#include	<netinet/in.h>
+#include	<stdio.h>
 #include	<sys/types.h>
+#include	<sys/socket.h>
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<sys/wait.h>
+#include	<signal.h>
+#include	<netdb.h>
+#include	<stdbool.h>
 #include	<string>
 
 typedef struct	sockaddr saddr;
-typedef struct	sockaddr_in saddrin;
+typedef struct	sockaddr_in saddrin; 
 
 class		ClientInfo
 {
- protected:
+ private:
   int		_socket;
   saddrin	_info;
   char *	_buffer;
@@ -30,11 +36,10 @@ class		ClientInfo
  public:
   void		setAddr(int, std::string, std::string);
   int&		get_socket(void);
-  int&		get_filled(void);
-  saddrin&     	get_info(void);
+  saddrin&	get_info(void);
   char *&	get_buffer(void);
   int&		get_len(void);
-
+  int&		get_filled(void);
   ClientInfo(int = 512);
   ~ClientInfo();
 };

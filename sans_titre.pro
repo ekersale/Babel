@@ -34,19 +34,19 @@ SOURCES +=      Gui/main.cpp                            \
                 Modules/PortAudio/BabelSound.cpp        \
                 Modules/OpenCV/OpenCV.cpp               \
 
-HEADERS  +=     Includes/Connection.h                   \
-                Includes/Subscribe.h                    \
-                Includes/Home.h                         \
-                Includes/IGui.h                         \
-                Includes/BabelEncoder.h                 \
-                Includes/IBabelEncoder.h                \
-                Includes/UNetwork.h                     \
-                Includes/BabelSound.h                   \
-                Includes/IBabelSound.h                  \
-                Includes/IModule.h                      \
-                Includes/INetwork.h                     \
-                Includes/UClientInfo.h                  \
-                Includes/OpenCV.h
+HEADERS  +=     Includes/Connection.hh                   \
+                Includes/Subscribe.hh                    \
+                Includes/Home.hh                         \
+                Includes/IGui.hh                         \
+                Includes/BabelEncoder.hh                 \
+                Includes/IBabelEncoder.hh                \
+                Includes/Network.hh                      \
+                Includes/BabelSound.hh                   \
+                Includes/IBabelSound.hh                  \
+                Includes/IModule.hh                      \
+                Includes/INetwork.hh                     \
+                Includes/UClientInfo.hh                  \
+                Includes/OpenCV.hh
 
 FORMS    +=     Gui/Ui/Connection.ui                    \
                 Gui/Ui/Subscribe.ui                     \

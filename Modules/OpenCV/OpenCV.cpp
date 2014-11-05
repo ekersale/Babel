@@ -1,4 +1,4 @@
-#include		"../../Includes/OpenCV.h"
+#include		"../../Includes/OpenCV.hh"
 
 OpenCV::OpenCV(QObject *parent) : QThread(parent)
 {
@@ -86,7 +86,7 @@ void			OpenCV::run()
 
       for (i = 0; frame.data[i]; i++);
       //i = getFrameSize(frame);
-      std::cout << " I => " << i << std::endl;
+      // std::cout << " I => " << i << std::endl;
       emit processedImage(img);
       msleep(delay);
     }

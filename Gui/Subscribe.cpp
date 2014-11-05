@@ -1,6 +1,6 @@
 //#include    "IGui.h"
-#include    "../Includes/Subscribe.h"
-#include    "../Includes/Connection.h"
+#include    "../Includes/Subscribe.hh"
+#include    "../Includes/Connection.hh"
 
 #include    <iostream>
 
