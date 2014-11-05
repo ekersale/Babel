@@ -14,6 +14,7 @@
 #include "Parser.hh"
 #define	VERSION		"0.0.0"
 
+#include <sys/select.h>
 #include	<string>
 #include	<map>
 #include	"User.hh"
@@ -37,6 +38,9 @@ public:
   //void set_xmlParser(XMLParser* new_xmlParser);
   void set_parser(IParser*);
    void set_idUsers(std::map<std::string, int> new_idUsers);
+  void    deleteUser(User *user);
+  void	setFd(fd_set &setfd);
+void	recvIsSet(fd_set &setfd);
   bool newUser(void);
   int	init(void);
    Server();
@@ -51,6 +55,9 @@ private:
   //XMLParser * _xmlParser;
   IParser *_parser;
    std::map<std::string, int> _idUsers;
+
+int tmp;
+int tmp_user;
 
 };
 

@@ -59,11 +59,13 @@ User::User()
    _activeChat = false;
 }
 
-User::User(IParser *&parser, const int &idSocket)
+User::User(IParser *&parser, const int &idSocket, int tmp_id)
 {
   _connected = false;
   _parser = parser;
   _idSocket = idSocket;
+  _id = tmp_id;
+  std::cout << "Id is :: " << _id << "\n";
 }
 
 User::User(const User& oldUser)

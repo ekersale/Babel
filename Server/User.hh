@@ -28,7 +28,7 @@ public:
    void set_activeChat(bool new_activeChat);
    void set_activeModule(char new_activeModule);
    User();
-  User(IParser *&parser, const int &idSocket);
+  User(IParser *&parser, const int &idSocket, int tmp_id);
    User(const User& oldUser);
    ~User();
 

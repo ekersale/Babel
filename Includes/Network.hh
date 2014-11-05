@@ -23,7 +23,7 @@ public:
   void	closeSocket(int);
   bool	createSocket(std::string, int &);
   char	*& get_buffer(void);
-  ClientInfo *&get_connected(int id);
+  ClientInfo *get_connected(int id);
   //tronc commun
   
   bool	listenSocket(int);
