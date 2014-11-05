@@ -13,7 +13,7 @@
 bool Server::startServer(void)
 {
   //ifndef
-  _network = new UNetwork(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
+  _network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
   _network->bindSocket(PORT);
   _network->listenSocket(LISTEN_VAL);
    // TODO : implement
@@ -34,7 +34,7 @@ std::string Server::get_version(void) const
    return _version;
 }
 
-UNetwork * Server::get_network(void) const
+Network * Server::get_network(void) const
 {
    return _network;
 }
@@ -67,7 +67,7 @@ void Server::set_version(std::string new_version)
    _version = new_version;
 }
 
-void Server::set_network(UNetwork * new_network)
+void Server::set_network(Network * new_network)
 {
    _network = new_network;
 }
