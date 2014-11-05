@@ -1179,58 +1179,14 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
 		Includes/IModule.hh \
-		ui_Connection.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QToolBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtoolbar.h
+		ui_Connection.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Connection.o Gui/Connection.cpp
 
-Subscribe.o: Gui/Subscribe.cpp ui_Subscribe.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvariant.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qatomic.h \
+Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
+		Includes/IGui.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qwindowdefs.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qglobal.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qconfig.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfeatures.h \
@@ -1242,9 +1198,7 @@ Subscribe.o: Gui/Subscribe.cpp ui_Subscribe.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsysinfo.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlogging.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qflags.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qglobalstatic.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmutex.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qatomic.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbasicatomic.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qatomic_bootstrap.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qgenericatomic.h \
@@ -1258,56 +1212,46 @@ Subscribe.o: Gui/Subscribe.cpp ui_Subscribe.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qatomic_cxx11.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qatomic_gcc.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qatomic_unix.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbytearray.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmutex.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectdefs.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qnamespace.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobject.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstring.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydata.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringbuilder.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlist.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qalgorithms.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qiterator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qscopedpointer.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmetatype.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvarlengtharray.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcontainerfwd.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qisenum.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectdefs.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmap.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpair.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdebug.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qhash.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextstream.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qiodevice.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobject.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreevent.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qscopedpointer.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobject_impl.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlocale.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qshareddata.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvector.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpoint.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qset.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcontiguouscache.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringlist.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdatastream.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregexp.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringmatcher.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qkeysequence.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qwindowdefs_win.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmargins.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpaintdevice.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qrect.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsize.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpoint.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpalette.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qcolor.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qrgb.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringlist.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdatastream.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qiodevice.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpair.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregexp.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringmatcher.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qbrush.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvector.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qmatrix.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpolygon.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qregion.h \
@@ -1317,60 +1261,38 @@ Subscribe.o: Gui/Subscribe.cpp ui_Subscribe.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qimage.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpixmap.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qshareddata.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qhash.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qfont.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qfontmetrics.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qfontinfo.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qsizepolicy.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qcursor.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qkeysequence.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qevent.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvariant.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmap.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdebug.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextstream.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlocale.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qset.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcontiguouscache.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qurl.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qurlquery.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfile.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qicon.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmainwindow.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qicon.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdialog.h \
+		ui_Subscribe.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subscribe.o Gui/Subscribe.cpp
 
 Home.o: Gui/Home.cpp Includes/Home.hh \
@@ -1504,60 +1426,7 @@ Home.o: Gui/Home.cpp Includes/Home.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
 		Includes/IModule.hh \
-		ui_Home.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QListWidget \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlistwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlistview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMenuBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenubar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenu.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QTextEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtextedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextdocument.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget
+		ui_Home.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
 
 UClientInfo.o: Modules/Network/UClientInfo.cpp Includes/UClientInfo.hh
@@ -1569,7 +1438,8 @@ UNetwork.o: Modules/Network/UNetwork.cpp Includes/Network.hh \
 		Includes/UClientInfo.hh
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o UNetwork.o Modules/Network/UNetwork.cpp
 
-BabelEncoder.o: Modules/Opus/BabelEncoder.cpp 
+BabelEncoder.o: Modules/Opus/BabelEncoder.cpp Includes/BabelEncoder.hh \
+		Includes/IBabelEncoder.hh
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BabelEncoder.o Modules/Opus/BabelEncoder.cpp
 
 BabelSound.o: Modules/PortAudio/BabelSound.cpp Includes/BabelSound.hh \
