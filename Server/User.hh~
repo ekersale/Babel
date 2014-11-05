@@ -5,17 +5,17 @@
  * Purpose: Declaration of the class Client
  ***********************************************************************/
 
-#if !defined(__Server_Client_hh)
-#define __Server_Client_hh
+#if !defined(__Server_User_hh)
+#define __Server_User_hh
 
-#include "ClientAction.hh"
-#include "ClientInfo.hh"
+#include "UserAction.hh"
+#include "UserInfo.hh"
 #include "Parser.hh"
 
-//for the 2 other Client*.hh
+//for the 2 other User*.hh
 #include <string>
 
-class Client : public ClientAction, public ClientInfo
+class User : public UserAction, public UserInfo
 {
 public:
    void print_error(void) const;
@@ -27,9 +27,9 @@ public:
   void set_idSocket(int _idSocket); //LOL
    void set_activeChat(bool new_activeChat);
    void set_activeModule(char new_activeModule);
-   Client();
-   Client(const Client& oldClient);
-   ~Client();
+   User();
+   User(const User& oldUser);
+   ~User();
 
 protected:
 private:

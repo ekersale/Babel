@@ -16,7 +16,7 @@
 
 #include	<string>
 #include	<map>
-#include	"Client.hh"
+#include	"User.hh"
 
 class Server
 {
@@ -27,16 +27,18 @@ public:
    void print_error(void);
    std::string get_version(void) const;
   UNetwork * get_network(void) const;
-   std::map<int, Client *> get_clients(void) const;
+   std::map<int, User *> get_users(void) const;
   //XMLParser * get_xmlParser(void) const;
   IParser *get_parser(void) const;
-   std::map<std::string, int> get_idClients(void) const;
+   std::map<std::string, int> get_idUsers(void) const;
    void set_version(std::string new_version);
   void set_network(UNetwork * new_network);
-   void set_clients(std::map<int, Client *> new_clients);
+   void set_users(std::map<int, User *> new_users);
   //void set_xmlParser(XMLParser* new_xmlParser);
   void set_parser(IParser*);
-   void set_idClients(std::map<std::string, int> new_idClients);
+   void set_idUsers(std::map<std::string, int> new_idUsers);
+  bool newUser(void);
+  int	init(void);
    Server();
    Server(const Server& oldServer);
    ~Server();
@@ -45,10 +47,10 @@ protected:
 private:
    std::string _version;
   UNetwork * _network;
-   std::map<int, Client *> _clients;
+   std::map<int, User *> _users;
   //XMLParser * _xmlParser;
   IParser *_parser;
-   std::map<std::string, int> _idClients;
+   std::map<std::string, int> _idUsers;
 
 };
 

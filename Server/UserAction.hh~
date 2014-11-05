@@ -1,14 +1,14 @@
 /***********************************************************************
- * Module:  ClientAction.h
+ * Module:  UserAction.h
  * Author:  urvoy_p
  * Modified: Monday, October 20, 2014 10:55:09 AM
- * Purpose: Declaration of the class ClientAction
+ * Purpose: Declaration of the class UserAction
  ***********************************************************************/
 
-#if !defined(__Server_ClientAction_hh)
-#define __Server_ClientAction_hh
+#if !defined(__Server_UserAction_hh)
+#define __Server_UserAction_hh
 
-class ClientAction
+class UserAction
 {
 public:
    virtual bool subscribe(void);
@@ -25,9 +25,9 @@ public:
    virtual bool rmContact(void);
    virtual bool startCall(void);
    virtual bool endCall(void);
-   ClientAction();
-   ClientAction(const ClientAction& oldClientAction);
-   virtual ~ClientAction();
+   UserAction();
+   UserAction(const UserAction& oldUserAction);
+   virtual ~UserAction();
 
 protected:
 private:

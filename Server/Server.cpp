@@ -6,7 +6,6 @@
  ***********************************************************************/
 
 #include "Server.hh"
-#include <sys/select.h>
 
 #define		PORT	"2000" // en dur
 #define		LISTEN_VAL	20
@@ -25,48 +24,6 @@ bool Server::endServer(void)
    // TODO : implement
 }
 
-bool Server::loopServer(void)
-{
-  fd_set	readfs;
-
-  while (1)
-    {
-      FD_ZERO(&readfs);
-      FD_SET(_network->get_connected(0)->get_socket(), &readfs);
-      //parcourir la map pour trouver le fd le plus haut
-      select(3 + 1, &readfs, NULL, NULL, NULL);
-      if (FD_ISSET(_network->get_connected(0)->get_socket(), &readfs))
-	{
-	  // co d'un nouveau client (TCP)
-	  _clients[_network->acceptSocket()] = new Client();
-	}
-	/*
-      if (FD_ISSET(0, &readfs))
-	{
-	// TODO : implement select
-	  void FD_CLR(int fd, fd_set *set);
-	  int  FD_ISSET(int fd, fd_set *set);
-	  void FD_SET(int fd, fd_set *set);
-	  }
-	*/
-      while (map)
-	{
-	  if (FD_ISSET(_network->get_connected(_idSocket)->get_socket()))
-	    {
-	      if (_network->recvSocket(_idSocket)) // renvrera une len via get_lenght
-		_network->get_buffer();
-	      else
-		{
-		  //del everything related to Client obj
-		  // _network->sendSocket(_idSocket, Client, sizeof(Client));
-		}
-	    }
-	  FD_ZERO(&readfs);
-	}
-    }
-  //end WHILE
-}
-
 void Server::print_error(void)
 {
    // TODO : implement
@@ -82,9 +39,9 @@ UNetwork * Server::get_network(void) const
    return _network;
 }
 
-std::map<int, Client *> Server::get_clients(void) const
+std::map<int, User *> Server::get_users(void) const
 {
-   return _clients;
+   return _users;
 }
 
 /*
@@ -100,9 +57,9 @@ IParser * Server::get_parser(void) const
    return _parser;
 }
 
-std::map<std::string, int> Server::get_idClients(void) const
+std::map<std::string, int> Server::get_idUsers(void) const
 {
-   return _idClients;
+   return _idUsers;
 }
 
 void Server::set_version(std::string new_version)
@@ -115,9 +72,9 @@ void Server::set_network(UNetwork * new_network)
    _network = new_network;
 }
 
-void Server::set_clients(std::map<int, Client *> new_clients)
+void Server::set_users(std::map<int, User *> new_users)
 {
-   _clients = new_clients;
+   _users = new_users;
 }
 
 /*
@@ -132,9 +89,16 @@ void Server::set_parser(IParser* new_parser)
    _parser = new_parser;
 }
 
-void Server::set_idClients(std::map<std::string, int> new_idClients)
+void Server::set_idUsers(std::map<std::string, int> new_idUsers)
 {
-   _idClients = new_idClients;
+   _idUsers = new_idUsers;
+}
+
+int		Server::init(void)
+{
+   startServer();
+   loopServer();
+   return (0);
 }
 
 Server::Server()
@@ -142,23 +106,17 @@ Server::Server()
    _version = VERSION;
    _network = NULL;
    //   _xmlParser = NULL;
-      _parser = NULL;
-
-      startServer();
-      loopServer();
+   _parser = NULL;
 }
 
 Server::Server(const Server& oldServer)
 {
    _version = oldServer._version;
    _network = oldServer._network;
-   _clients = oldServer._clients;
+   _users = oldServer._users;
    //_xmlParser = oldServer._xmlParser;
    _parser = oldServer._parser;
-   _idClients = oldServer._idClients;
-
-      startServer();
-      loopServer();
+   _idUsers = oldServer._idUsers;
 }
 
 Server::~Server()

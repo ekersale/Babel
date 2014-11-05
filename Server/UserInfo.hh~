@@ -10,7 +10,7 @@
 
 #include <string>
 
-class ClientInfo
+class UserInfo
 {
 public:
    virtual int get_id(void) const;
@@ -33,9 +33,9 @@ public:
    virtual void set_phone(std::string new_phone);
    virtual void set_status(char new_status);
    virtual void set_module(char new_module);
-   ClientInfo();
-   ClientInfo(const ClientInfo& oldClientInfo);
-   virtual ~ClientInfo();
+   UserInfo();
+   UserInfo(const UserInfo& oldUserInfo);
+   virtual ~UserInfo();
 
 protected:
    int _id;
