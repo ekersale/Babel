@@ -54,6 +54,8 @@ char *&			Network::get_buffer(void)
 
 ClientInfo *&Network::get_connected(int id)
 {
+  if (_connected.find(id) == _connected.end())
+    return (NULL);
   return (_connected[id]);
 }
 
