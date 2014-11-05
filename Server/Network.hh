@@ -3,8 +3,7 @@
  * Author:  urvoy_p
  * Modified: Monday, October 20, 2014 4:23:13 PM
  * Purpose: Declaration of the class Network
- **********************************************************************
-*/
+ ***********************************************************************/
 
 #if !defined(__Network_hh)
 #define __Network_hh
