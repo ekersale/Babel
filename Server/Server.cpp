@@ -37,34 +37,34 @@ bool Server::loopServer(void)
       select(3 + 1, &readfs, NULL, NULL, NULL);
       if (FD_ISSET(_network->get_connected(0)->get_socket(), &readfs))
 	{
-	  
 	  // co d'un nouveau client (TCP)
 	  _clients[_network->acceptSocket()] = new Client();
 	}
-      /*
-	while (map)
+	/*
+      if (FD_ISSET(0, &readfs))
 	{
-	if (FD_ISSET(_network->get_connected(_idSocket)->get_socket()))
+	// TODO : implement select
+	  void FD_CLR(int fd, fd_set *set);
+	  int  FD_ISSET(int fd, fd_set *set);
+	  void FD_SET(int fd, fd_set *set);
+	  }
+	*/
+      while (map)
 	{
-	if (_network->recvSocket(_idSocket)) // renvrera une len
-	_network->get_buffer();
-	else
-	//del everything related to Client obj
-	// _network->sendSocket(_idSocket, Client, sizeof(Client));
+	  if (FD_ISSET(_network->get_connected(_idSocket)->get_socket()))
+	    {
+	      if (_network->recvSocket(_idSocket)) // renvrera une len via get_lenght
+		_network->get_buffer();
+	      else
+		{
+		  //del everything related to Client obj
+		  // _network->sendSocket(_idSocket, Client, sizeof(Client));
+		}
+	    }
+	  FD_ZERO(&readfs);
 	}
-	}
-      */
     }
-   // TODO : implement select
-  /*
-       void FD_CLR(int fd, fd_set *set);
-       int  FD_ISSET(int fd, fd_set *set);
-       void FD_SET(int fd, fd_set *set);
-       void FD_ZERO(fd_set *set);
-
-         int select(int nfds, fd_set *readfds, fd_set *writefds,
-                  fd_set *exceptfds, struct timeval *timeout);
-  */
+  //end WHILE
 }
 
 void Server::print_error(void)

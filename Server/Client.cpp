@@ -63,8 +63,8 @@ Client::Client(const Client& oldClient)
 {
   _parser = oldClient._parser;
   _idSocket = oldClient._idSocket;
-   _activeChat = oldClient._activeChat;
-   _activeModule = oldClient._activeModule;
+  _activeChat = oldClient._activeChat;
+  _activeModule = oldClient._activeModule;
 }
 
 Client::~Client()
