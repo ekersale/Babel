@@ -1,4 +1,5 @@
-#include "../Includes/Home.h"
+#include "../Includes/Home.hh"
+
 #include "ui_Home.h"
 
 #include    <iostream>
@@ -171,7 +172,7 @@ void	Home::threadCall()
 
 void    Home::invitContact()
 {
-  srv = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 1106);
+  srv = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);
   srv->bindSocket("2000");
   if (!sound.initializePA())
     std::cerr << "Error on InitPa()" << std::endl;
@@ -217,7 +218,7 @@ void Home::threadReceive()
 
 void    Home::callContact()
 {
-  clt = new UNetwork(AF_INET, SOCK_DGRAM, "UDP", 1106);
+  clt = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);
   id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port   
 
   if (!sound.initializePA())

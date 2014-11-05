@@ -5,17 +5,17 @@
 // Login   <desmar_s@epitech.net>
 // 
 // Started on  Tue Oct 28 01:37:29 2014 Sliman Desmars
-// Last update Sat Nov  1 12:55:33 2014 Sliman Desmars
+// Last update Wed Nov  5 17:27:40 2014 Sliman Desmars
 //
 
 #include		<QApplication>
 
-#include		"../Includes/Client.h"
-#include		"../Includes/View.h"
-#include		"../Includes/Factory.h"
-#include		"../Includes/Connection.h"
-#include		"../Includes/UnixDllLoader.h"
-#include		"../Includes/IModule.h"
+#include		"../Includes/Client.hh"
+#include		"../Includes/View.hh"
+#include		"../Includes/Factory.hh"
+#include		"../Includes/Connection.hh"
+#include		"../Includes/UnixDllLoader.hh"
+#include		"../Includes/IModule.hh"
 
 #include		<fstream>
 #include		<iostream>

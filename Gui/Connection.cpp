@@ -1,7 +1,7 @@
-#include    "../Includes/IGui.h"
-#include    "../Includes/Connection.h"
-#include    "../Includes/Subscribe.h"
-#include    "../Includes/Home.h"
+#include    "../Includes/IGui.hh"
+#include    "../Includes/Connection.hh"
+#include    "../Includes/Subscribe.hh"
+#include    "../Includes/Home.hh"
 
 
 #include    <iostream>

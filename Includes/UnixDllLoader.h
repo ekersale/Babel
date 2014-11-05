@@ -8,8 +8,8 @@
 
 #include	<dlfcn.h>
 
-#include	"IDllLoader.h"
-#include	"IModule.h"
+#include	"IDllLoader.hh"
+#include	"IModule.hh"
 
 class UnixDllLoader : public IDllLoader
 {

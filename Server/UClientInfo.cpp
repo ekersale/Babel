@@ -5,7 +5,7 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Wed Nov  5 16:28:46 2014 Pierre-Antoine Urvoy
+// Last update Wed Nov  5 17:48:37 2014 Sliman Desmars
 //
 
 #include	"UClientInfo.hh"

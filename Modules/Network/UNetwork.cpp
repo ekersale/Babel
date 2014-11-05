@@ -52,6 +52,11 @@ char *&			Network::get_buffer(void)
   return (_connected[0]->get_buffer());
 }
 
+ClientInfo *&Network::get_connected(int id)
+{
+  return (_connected[id]);
+}
+
 /* * * */
 /* TCP */
 /* * * */

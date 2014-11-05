@@ -5,10 +5,10 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Fri Oct 31 23:48:20 2014 Elliot Kersalé
-// Last update Sun Nov  2 23:58:30 2014 Elliot Kersalé
+// Last update Wed Nov  5 17:50:11 2014 Sliman Desmars
 //
 
-#include		"../../Includes/BabelEncoder.h"
+#include		"../../Includes/BabelEncoder.hh"
 
 BabelEncoder::BabelEncoder() {
   num_channels = CHANNELS;

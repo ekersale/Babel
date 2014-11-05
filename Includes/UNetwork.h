@@ -8,8 +8,9 @@
 #if !defined(__Client_UNetwork_h)
 #define __Client_UNetwork_h
 
-#include	"INetwork.h"
-#include	"UClientInfo.h"
+#include	"INetwork.hh"
+#include	"UClientInfo.hh"
+
 #include	<arpa/inet.h>
 #include	<netinet/in.h>
 #include	<stdio.h>
