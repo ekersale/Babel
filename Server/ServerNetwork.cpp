@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Wed Nov  5 21:35:02 2014 Damien Giraudet
+// Last update Wed Nov  5 23:04:50 2014 Pierre-Antoine Urvoy
 //
 
 #include <errno.h>
@@ -72,8 +72,8 @@ void	Server::recvIsSet(fd_set &readfs)
 	  if (FD_ISSET(clientInfo->get_socket(), &readfs))
 	    {
 	      std::cout << "Inside FD_ISSET\n";
-	      if (_network->recvSocket(clientInfo->get_socket())) // renvrera une len via get_field
-		_network->get_buffer();
+	      if (_network->recvSocket((it->second)->get_idSocket())) // renvrera une len via get_field
+		std::cout << "Char * is : " << _network->get_buffer() << "\n";
 	      else
 		{
 		  std::cout << "second\n";
@@ -107,6 +107,7 @@ bool Server::loopServer(void)
       setFd(readfs);
       //parcourir la map pour trouver le fd le plus haut
       std::cout << "\ttmp is : " << tmp << "\n";
+      std::cout << "\ttmp is : " << std::endl;
       if (select(tmp + 1, &readfs, NULL, NULL, NULL) < 0)
 	{
 	  perror("select");
