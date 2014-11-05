@@ -113,7 +113,6 @@ bool			UNetwork::recvSocket(int id)
   if (_connected.find(id) == _connected.end())
     return (false);
   memset(_connected[0]->get_buffer(), 0, _connected[0]->get_len());
-  puts(_connected[0]->get_buffer());
   len = recv(_connected[id]->get_socket(), _connected[0]->get_buffer(), _connected[0]->get_len(), 0);
   if (len < 0)
     {
@@ -122,7 +121,7 @@ bool			UNetwork::recvSocket(int id)
       return (false);
     }
   _connected[0]->get_filled() = len;
-  _connected[0]->get_buffer()[len] = 0;
+  //  _connected[0]->get_buffer()[len] = 0;
   return (true);
 }
 

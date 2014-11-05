@@ -772,26 +772,17 @@
    <widget class="QLabel" name="_label_Video">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>250</y>
-      <width>731</width>
+      <x>380</x>
+      <y>240</y>
+      <width>611</width>
       <height>321</height>
      </rect>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>721</width>
-      <height>251</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>735</width>
-      <height>325</height>
-     </size>
-    </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="_label_StatusInfos">
@@ -822,29 +813,21 @@
     <property name="pixmap">
      <pixmap>Images/BabelHD_0000s_0001s_0001s_0003_separation-(bkg).png</pixmap>
     </property>
+   </widget>
    <widget class="QLabel" name="_label_VideoPerso">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>380</x>
       <y>450</y>
-      <width>201</width>
-      <height>141</height>
+      <width>161</width>
+      <height>111</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>201</width>
-      <height>141</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>201</width>
-      <height>141</height>
-     </size>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -876,7 +859,6 @@
    </property>
   </widget>
  </widget>
-</widget>
-<resources/>
-<connections/>
+ <resources/>
+ <connections/>
 </ui>
