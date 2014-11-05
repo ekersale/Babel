@@ -81,22 +81,22 @@ void    Home::showNewField()
 void    Home::addContact()
 {
   int state = 1;
-    //std::cout << "Fuck ça marchera " << std::endl;
-    ui->_line_addContact->hide();
-    //ui->_line_addContact->clear();
+  //std::cout << "Fuck ça marchera " << std::endl;
+  ui->_line_addContact->hide();
+  //ui->_line_addContact->clear();
 
-    QListWidgetItem *item;
-    item = new QListWidgetItem();
-    item->setText(ui->_line_addContact->text());
-    item->setTextAlignment(21);
-    //item->setSizeHint(QSize(80, 50));
-    item->setBackgroundColor(QColor(255, 255, 255));
-    QFont font;
-    font.setPointSize(12);
-    font.setFamily("calibri");
-    item->setFont(font);
-
-
+  QListWidgetItem *item;
+  item = new QListWidgetItem();
+  item->setText(ui->_line_addContact->text());
+  item->setTextAlignment(21);
+  //item->setSizeHint(QSize(80, 50));
+  item->setBackgroundColor(QColor(255, 255, 255));
+  QFont font;
+  font.setPointSize(12);
+  font.setFamily("calibri");
+  item->setFont(font);
+    
+    
     font.setPointSize(8);
     ui->_listContact->addItem(item);
     QPushButton *but = new QPushButton(ui->_line_addContact->text());
