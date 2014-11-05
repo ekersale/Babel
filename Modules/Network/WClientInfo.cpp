@@ -5,10 +5,10 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Wed Nov  5 16:28:46 2014 Pierre-Antoine Urvoy
+// Last update Wed Nov  5 16:40:55 2014 Pierre-Antoine Urvoy
 //
 
-#include	"UClientInfo.hh"
+#include	"WClientInfo.hh"
 
 void		ClientInfo::setAddr(int family, std::string port, std::string host)
 {
@@ -21,7 +21,7 @@ void		ClientInfo::setAddr(int family, std::string port, std::string host)
     _info.sin_addr.s_addr = inet_addr(host.c_str());
 }
 
-int&		ClientInfo::get_socket(void)
+SOCKET&		ClientInfo::get_socket(void)
 {
   return (_socket);
 }
@@ -53,6 +53,7 @@ ClientInfo::ClientInfo(int len)
   _buffer = new char[len];
   _len = len;
   _buffer[0] = 0;
+  _filled = 0;
   memset(&_info, 0, sizeof(_info));
 }
 

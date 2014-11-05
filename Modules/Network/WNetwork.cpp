@@ -31,7 +31,7 @@ void			Network::closeSocket(int id)
 {
   if (_connected.find(id) == _connected.end())
     return ;
-  close(_connected[id]->get_socket());
+  closesocket(_connected[id]->get_socket());
   if (id != 0)
     {
       delete _connected[id];
@@ -64,7 +64,7 @@ bool			Network::listenSocket(int number)
 
 int			Network::acceptSocket(void)
 {
-  socklen_t		socklen;
+  int			socklen;
   ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
@@ -136,10 +136,11 @@ bool			Network::sendSocket(int id, void *buff, size_t len)
 /* * * */
 int			Network::connectToSocket(std::string host, std::string port)
 {
+  int			id;
   ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
-    return (false);
+    return (-1);
   stranger->setAddr(AF_INET, port.c_str(), host.c_str()); //prépare la connexion udp vers un serveur
   _connected[++_id] = stranger;
   return (_id);
@@ -174,7 +175,7 @@ int			Network::recvFromSocket(void)
 {
   int			len;
   int			id;
-  socklen_t		socklen;
+  int			socklen;
   static ClientInfo	stranger(1);
   ClientInfo		*nstranger;
 
@@ -197,16 +198,18 @@ int			Network::recvFromSocket(void)
 }
 
 Network::Network(int family, int type, std::string proto, size_t len)
-{   
+{
+  WSADATA wsaData;
+
   _family = family;
   _id = -1;
   _len = len;
+  WSAStartup(MAKEWORD(2, 2), &wsaData);
   createSocket(proto, type);
 }
 
 Network::Network(const Network& oldNetwork)
 {
-  (void)oldNetwork;
 }
 
 Network::~Network()
@@ -215,4 +218,5 @@ Network::~Network()
 
   while (++id < (int)_connected.size())
     delete _connected[id];
+  WSACleanup();
 }
