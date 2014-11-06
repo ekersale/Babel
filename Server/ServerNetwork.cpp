@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Wed Nov  5 21:35:02 2014 Damien Giraudet
+// Last update Wed Nov  5 22:12:33 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -73,7 +73,7 @@ void	Server::recvIsSet(fd_set &readfs)
 	    {
 	      std::cout << "Inside FD_ISSET\n";
 	      if (_network->recvSocket(clientInfo->get_socket())) // renvrera une len via get_field
-		_network->get_buffer();
+		std::cout << "Char : " << _network->get_buffer() << "\n";
 	      else
 		{
 		  std::cout << "second\n";
