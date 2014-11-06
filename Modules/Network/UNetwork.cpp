@@ -115,7 +115,7 @@ bool			Network::recvSocket(int id)
   if (_connected.find(id) == _connected.end())
     return (false);
   len = recv(_connected[id]->get_socket(), _connected[0]->get_buffer(), _connected[0]->get_len(), 0);
-  if (len < 0)
+  if (len < 1)
     {
       closeSocket(id);
       _connected[0]->get_buffer()[0] = 0;
