@@ -36,7 +36,21 @@ void			Network::closeSocket(int id)
     {
       delete _connected[id];
       _connected.erase(id);
+      _change = true;
     }
+}
+
+ClientInfo *		Network::maxSocket(void)
+{
+  std::map<int, ClientInfo *>::iterator it;
+  static ClientInfo	*max = _connected[0];
+
+  if (_change == true)
+    for (it = _connected.begin(); it != _connected.end(); it++)
+      if (max->get_socket() < it->second->get_socket())
+	max = it->second;
+  _change = false;
+  return (max);
 }
 
 bool			Network::bindSocket(std::string port)
@@ -50,6 +64,13 @@ bool			Network::bindSocket(std::string port)
 char *&			Network::get_buffer(void)
 {
   return (_connected[0]->get_buffer());
+}
+
+ClientInfo *		Network::get_connected(int id)
+{
+  if (_connected.find(id) == _connected.end())
+    return (NULL);
+  return (_connected[id]);
 }
 
 /* * * */
@@ -76,6 +97,7 @@ int			Network::acceptSocket(void)
       return (false);
     }
   _connected[++_id] = stranger;
+  _change = true;
   return (_id);
 }
 
@@ -98,6 +120,7 @@ int			Network::connectSocket(std::string host, std::string port)
       return (false);
     }
   _connected[++_id] = stranger;
+  _change = true;
   return (_id);
 }
 
@@ -122,7 +145,7 @@ bool			Network::sendSocket(int id, void *buff, size_t len)
 {
   if (_connected.find(id) == _connected.end())
     return (false);
-  if (send(_connected[id]->get_socket(), buff, len, 0) < 0)
+  if (send(_connected[id]->get_socket(), reinterpret_cast<char *>(buff), len, 0) < 0)
     {
       closeSocket(id);
       _connected[0]->get_buffer()[0] = 0;
@@ -136,11 +159,10 @@ bool			Network::sendSocket(int id, void *buff, size_t len)
 /* * * */
 int			Network::connectToSocket(std::string host, std::string port)
 {
-  int			id;
   ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
-    return (-1);
+    return (false);
   stranger->setAddr(AF_INET, port.c_str(), host.c_str()); //prépare la connexion udp vers un serveur
   _connected[++_id] = stranger;
   return (_id);
@@ -150,7 +172,7 @@ bool			Network::sendToSocket(int id, void *buff, size_t len)
 {
   if (_connected.find(id) == _connected.end())
     return (false);
-  if (sendto(_connected[0]->get_socket(), buff, len, //prend mon socket courant
+  if (sendto(_connected[0]->get_socket(), reinterpret_cast<char *>(buff), len, //prend mon socket courant
 	     0, (saddr *)(&(_connected[id]->get_info())),  //utilise les infos de l'autre
 	     (socklen_t)sizeof(saddrin)) < 0) //envoie
     {
@@ -204,12 +226,14 @@ Network::Network(int family, int type, std::string proto, size_t len)
   _family = family;
   _id = -1;
   _len = len;
+  _change = true;
   WSAStartup(MAKEWORD(2, 2), &wsaData);
   createSocket(proto, type);
 }
 
 Network::Network(const Network& oldNetwork)
 {
+  (void)oldNetwork;
 }
 
 Network::~Network()
