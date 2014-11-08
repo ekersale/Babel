@@ -30,7 +30,7 @@ void    Home::load()
   ui->_line_addContact->hide();
   
   
-  _video = new OpenCV(); //Initialisatio de la camera
+  _video = new OpenCV();
   
   timer = new QTimer(this);
   
@@ -56,6 +56,7 @@ void	Home::updatePlayerUI(QImage img)
 {
   if (!img.isNull())
     {
+      
       ui->_label_Video->setAlignment(Qt::AlignCenter);
       ui->_label_Video->setPixmap(QPixmap::fromImage(img));
       ui->_label_Video->show();
@@ -212,8 +213,8 @@ void Home::threadReceive()
   clt->recvFromSocket();// recoit de n'importe qui qui connait
   // std::cout << "LEN RECUE" << clt->get_filled() << std::endl;
   sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
-  (void)buffer;
-  (void)tmp;
+  static_cast<void>(buffer);
+  static_cast<void>(tmp);
 }
 
 void    Home::callContact()
@@ -267,7 +268,7 @@ void    Home::setStatus(e_type newStatus)
     defineStatus(this->_status);
 }
 
-e_type  Home::getStatus()
+e_type  Home::getStatus() const
 {
     return (this->_status);
 }

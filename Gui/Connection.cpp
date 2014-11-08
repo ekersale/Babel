@@ -3,17 +3,14 @@
 #include    "../Includes/Subscribe.hh"
 #include    "../Includes/Home.hh"
 
-
+#include   <QCryptographicHash>
 #include    <iostream>
 
 #include    "ui_Connection.h"
 
-Connection::Connection(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Connection)
+Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connection)
 {
     init();
-    //load();
 }
 
 Connection::~Connection()
@@ -35,6 +32,18 @@ void Connection::connection()
       QMessageBox::critical(this,"Warning", "You must enter a valid password");
       return;
     }
+   
+   
+   std::string		test;
+   QCryptographicHash	md5Generator(QCryptographicHash::Sha1);
+   
+   md5Generator.addData(ui->_linePassword->text().toStdString().c_str());
+   
+   //test.append(md5Generator.result());
+   test.append(md5Generator.result().toHex());
+   
+   std::cout  << test << std::endl;
+   
    Home *page = new Home;
    page->show();
    this->hide();
