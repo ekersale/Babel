@@ -16,28 +16,30 @@
 #include	"UClientInfo.hh"
 #endif
 #include	<map>
+#include	<vector>
 
 class Network : public INetwork
 {
 public:
-  bool	bindSocket(std::string);
-  void	closeSocket(int);
-  bool	createSocket(std::string, int &);
-  char	*& get_buffer(void);
-  ClientInfo *get_connected(int id);
+  bool		bindSocket(std::string);
+  void		closeSocket(int);
+  bool		createSocket(std::string, int &);
+  char *&	get_buffer(void);
+  ClientInfo *	get_connected(int id);
+  ClientInfo *	maxSocket(void);
   //tronc commun
   
-  bool	listenSocket(int);
-  int	acceptSocket(void);
-  int	connectSocket(std::string, std::string);
-  bool	recvSocket(int);
-  bool	sendSocket(int , void *, size_t);
+  bool		listenSocket(int);
+  int		acceptSocket(void);
+  int		connectSocket(std::string, std::string);
+  bool		recvSocket(int);
+  bool		sendSocket(int , void *, size_t);
   //tcp
   
-  int	connectToSocket(std::string, std::string);
-  bool	sendToSocket(int, void *, size_t);
-  int	recvFromSocket(void);
-  int	UDPDuplicate(ClientInfo *, int &);
+  int		connectToSocket(std::string, std::string);
+  bool		sendToSocket(int, void *, size_t);
+  int		recvFromSocket(void);
+  int		UDPDuplicate(ClientInfo *, int &);
   //udp
   
   Network(int, int, std::string, size_t = 512);
@@ -45,9 +47,10 @@ public:
   ~Network();
 
 private:
-   int		_family;//tronc commun
-   size_t	_len;
-   int		_id;
+  int		_family;//tronc commun
+  size_t	_len;
+  int		_id;
+  bool		_change;
   std::map<int, ClientInfo *> _connected; //<id, fd> //tcp
 };
 

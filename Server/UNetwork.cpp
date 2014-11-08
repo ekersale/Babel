@@ -36,7 +36,21 @@ void			Network::closeSocket(int id)
     {
       delete _connected[id];
       _connected.erase(id);
+      _change = true;
     }
+}
+
+ClientInfo *		Network::maxSocket(void)
+{
+  std::map<int, ClientInfo *>::iterator it;
+  static ClientInfo	*max = _connected[0];
+
+  if (_change == true)
+    for (it = _connected.begin(); it != _connected.end(); it++)
+      if (max->get_socket() < it->second->get_socket())
+	max = it->second;
+  _change = false;
+  return (max);
 }
 
 bool			Network::bindSocket(std::string port)
@@ -52,7 +66,7 @@ char *&			Network::get_buffer(void)
   return (_connected[0]->get_buffer());
 }
 
-ClientInfo *Network::get_connected(int id)
+ClientInfo *		Network::get_connected(int id)
 {
   if (_connected.find(id) == _connected.end())
     return (NULL);
@@ -83,6 +97,7 @@ int			Network::acceptSocket(void)
       return (false);
     }
   _connected[++_id] = stranger;
+  _change = true;
   return (_id);
 }
 
@@ -105,6 +120,7 @@ int			Network::connectSocket(std::string host, std::string port)
       return (false);
     }
   _connected[++_id] = stranger;
+  _change = true;
   return (_id);
 }
 
@@ -121,7 +137,7 @@ bool			Network::recvSocket(int id)
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
-  _connected[0]->get_buffer()[len] = 0;
+  _connected[0]->get_filled() = len;
   return (true);
 }
 
@@ -193,7 +209,7 @@ int			Network::recvFromSocket(void)
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
-  _connected[0]->get_buffer()[len] = 0;
+  _connected[0]->get_filled() = len;
   if (UDPDuplicate(&stranger, id)) // verificationd des duplicats
     return (id);
   if (!(nstranger = new ClientInfo(_len)))
@@ -208,6 +224,7 @@ Network::Network(int family, int type, std::string proto, size_t len)
   _family = family;
   _id = -1;
   _len = len;
+  _change = true;
   createSocket(proto, type);
 }
 
