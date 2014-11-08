@@ -2,20 +2,19 @@
 #include    "../Includes/Subscribe.hh"
 #include    "../Includes/Connection.hh"
 
+#include   <QCryptographicHash>
 #include    <iostream>
 
 #include "ui_Subscribe.h"
 
-Subscribe::Subscribe(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Subscribe)
+Subscribe::Subscribe(QWidget *parent) : QWidget(parent), ui(new Ui::Subscribe)
 {
-    init();
-    //load();
+  init();
 }
 
 Subscribe::~Subscribe()
 {
+  delete ui;
 }
 
 void    Subscribe::init()

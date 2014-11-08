@@ -33,17 +33,17 @@ class Home : public QMainWindow
 
 
 public:
-    explicit Home(QWidget *parent = 0);
-    void    init();
-    void    load();
-    void    destroy();
-    ~Home();
-    void    setStatus(e_type newStatus);
-    e_type  getStatus();
-    void    defineStatus(e_type newStatus);
-    bool    isOncall();
-    void    setOncall(bool available);
-
+  explicit Home(QWidget *parent = 0);
+  void    init();
+  void    load();
+  void    destroy();
+  ~Home();
+  void    setStatus(e_type newStatus);
+  e_type  getStatus() const;
+  void    defineStatus(e_type newStatus);
+  bool    isOncall();
+  void    setOncall(bool available);
+				   
 private slots:
   void    addContact();
   void    invitContact();

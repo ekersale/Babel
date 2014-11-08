@@ -6,7 +6,7 @@ OpenCV::OpenCV(QObject *parent) : QThread(parent)
 }
 
 OpenCV::~OpenCV()
-{  
+{
 }
 
 void			OpenCV::play()

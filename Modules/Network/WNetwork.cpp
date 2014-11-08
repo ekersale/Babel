@@ -5,6 +5,8 @@
  * Purpose: Implementation of the class AUnix
  ***********************************************************************/
 
+#ifdef _WIN32
+
 #include		"Network.hh"
 
 bool			Network::createSocket(std::string proto, int &type)
@@ -244,3 +246,5 @@ Network::~Network()
     delete _connected[id];
   WSACleanup();
 }
+
+#endif
