@@ -44,7 +44,7 @@ public:
   void    deleteUser(User *user);
   void	setFd(fd_set &setfd);
 void	recvIsSet(fd_set &setfd);
-  bool treatRecv(void);
+  bool treatRecv(User *);
   bool newUser(void);
   int	init(void);
    Server();
