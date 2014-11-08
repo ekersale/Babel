@@ -18,6 +18,7 @@
 #include	<string>
 #include	<map>
 #include	"User.hh"
+#include	"Serialize.hh"
 
 class Server
 {
@@ -28,12 +29,14 @@ public:
    void print_error(void);
    std::string get_version(void) const;
   Network* get_network(void) const;
+  Serialize* get_serialize(void) const;
    std::map<int, User *> get_users(void) const;
   //XMLParser * get_xmlParser(void) const;
   IParser *get_parser(void) const;
    std::map<std::string, int> get_idUsers(void) const;
    void set_version(std::string new_version);
   void set_network(Network * new_network);
+  //void set_serialize(Serialize *);
    void set_users(std::map<int, User *> new_users);
   //void set_xmlParser(XMLParser* new_xmlParser);
   void set_parser(IParser*);
@@ -41,6 +44,7 @@ public:
   void    deleteUser(User *user);
   void	setFd(fd_set &setfd);
 void	recvIsSet(fd_set &setfd);
+  bool treatRecv(void);
   bool newUser(void);
   int	init(void);
    Server();
@@ -54,6 +58,7 @@ private:
    std::map<int, User *> _users;
   //XMLParser * _xmlParser;
   IParser *_parser;
+  Serialize *_serialize;
    std::map<std::string, int> _idUsers;
 
 int tmp;

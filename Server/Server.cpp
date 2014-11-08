@@ -10,12 +10,17 @@
 #define		PORT	"2001" // en dur
 #define		LISTEN_VAL	20
 
+Serialize* Server::get_serialize(void) const {
+  return (_serialize);
+}
+
 bool Server::startServer(void)
 {
   //ifndef
   _network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
   _network->bindSocket(PORT);
   _network->listenSocket(LISTEN_VAL);
+  _serialize = new Serialize();
    // TODO : implement
 }
 

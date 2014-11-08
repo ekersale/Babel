@@ -5,11 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-<<<<<<< HEAD
-// Last update Wed Nov  5 22:12:33 2014 Damien Giraudet
-=======
-// Last update Wed Nov  5 23:04:50 2014 Pierre-Antoine Urvoy
->>>>>>> 00d20d67e2ec74498f8f6652f08e5cbbfaf15044
+// Last update Sat Nov  8 17:42:58 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -56,6 +52,15 @@ void	Server::setFd(fd_set &setfd)
 
 }
 
+bool	Server::treatRecv(void)
+{
+  IPacketInfo	*packet_info;
+
+  packet_info = get_parser()->decode(get_serialize()->extract(_network->get_buffer()));
+  // map ptr sur fct
+  return (true);
+}
+
 void	Server::recvIsSet(fd_set &readfs)
 {
   std::map<int, User*>::iterator it;
@@ -76,13 +81,8 @@ void	Server::recvIsSet(fd_set &readfs)
 	  if (FD_ISSET(clientInfo->get_socket(), &readfs))
 	    {
 	      std::cout << "Inside FD_ISSET\n";
-<<<<<<< HEAD
-	      if (_network->recvSocket(clientInfo->get_socket())) // renvrera une len via get_field
-		std::cout << "Char : " << _network->get_buffer() << "\n";
-=======
 	      if (_network->recvSocket((it->second)->get_idSocket())) // renvrera une len via get_field
-		std::cout << "Char * is : " << _network->get_buffer() << "\n";
->>>>>>> 00d20d67e2ec74498f8f6652f08e5cbbfaf15044
+		treatRecv();
 	      else
 		{
 		  std::cout << "second\n";
