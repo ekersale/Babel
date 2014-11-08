@@ -33,6 +33,9 @@ SOURCES +=      Gui/main.cpp                            \
                 Modules/Opus/BabelEncoder.cpp           \
                 Modules/PortAudio/BabelSound.cpp        \
                 Modules/OpenCV/OpenCV.cpp               \
+                Modules/Network/WNetwork.cpp            \
+                Modules/Network/WClientInfo.cpp
+
 
 HEADERS  +=     Includes/Connection.hh                   \
                 Includes/Subscribe.hh                    \
@@ -46,7 +49,8 @@ HEADERS  +=     Includes/Connection.hh                   \
                 Includes/IModule.hh                      \
                 Includes/INetwork.hh                     \
                 Includes/UClientInfo.hh                  \
-                Includes/OpenCV.hh
+                Includes/OpenCV.hh                      \
+                Includes/WClientInfo.hh
 
 FORMS    +=     Gui/Ui/Connection.ui                    \
                 Gui/Ui/Subscribe.ui                     \
