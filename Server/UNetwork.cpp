@@ -188,7 +188,7 @@ int			Network::recvFromSocket(void)
   socklen = sizeof(saddrin); //bullshit
   len = recvfrom(_connected[0]->get_socket(), _connected[0]->get_buffer(),
 		 _connected[0]->get_len(), 0, (saddr *)&stranger.get_info(), &socklen);
-  if (len < 0)
+  if (len < 1)
     {
       _connected[0]->get_buffer()[0] = 0;
       return (false);
