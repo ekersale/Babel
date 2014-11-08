@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Sat Nov  8 17:42:58 2014 Damien Giraudet
+// Last update Sat Nov  8 22:47:15 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -15,10 +15,12 @@ bool	Server::newUser(void)
 {
   int	key;
 
+  std::cout << "1/ Max fd id : " << _network->maxSocket()->get_socket() << "\n";
   if ((key = _network->acceptSocket()) == false)
     return (false);
   tmp_user--;
   _users[tmp_user] = new User(_parser, key, tmp_user);
+  std::cout << "2/ Max fd id : " << _network->maxSocket()->get_socket() << "\n";
   // une connexion au serveur != une connexion d'un utilisateur donc activeChat & Module = 0
   std::cout << "New User : id : "  << tmp_user << "\n";
 }
@@ -56,7 +58,8 @@ bool	Server::treatRecv(void)
 {
   IPacketInfo	*packet_info;
 
-  packet_info = get_parser()->decode(get_serialize()->extract(_network->get_buffer()));
+  //packet_info = get_parser()->decode(get_serialize()->extract(_network->get_buffer()));
+  std::cout << "Char * : " << _network->get_buffer() << "\n";
   // map ptr sur fct
   return (true);
 }
@@ -69,7 +72,6 @@ void	Server::recvIsSet(fd_set &readfs)
   std::cout << "\n\n";
   if (FD_ISSET(_network->get_connected(0)->get_socket(), &readfs)) {
       newUser();
-      tmp++;
     }
   it = _users.begin();
   while (it != _users.end())
@@ -87,7 +89,6 @@ void	Server::recvIsSet(fd_set &readfs)
 		{
 		  std::cout << "second\n";
 		  deleteUser(it->second);
-		  tmp--;
 		  return ;
 		  // pb de it si suppression
 		}
@@ -97,7 +98,6 @@ void	Server::recvIsSet(fd_set &readfs)
 	{
 	  std::cout << "third\n";
 	  deleteUser(it->second);
-	  tmp--;
 	}
       it++;
     }
@@ -108,16 +108,13 @@ bool Server::loopServer(void)
 {
   fd_set	readfs;
 
-  tmp = 3;
   tmp_user = 0;
   while (1)
     {
       FD_ZERO(&readfs);
       setFd(readfs);
-      //parcourir la map pour trouver le fd le plus haut
-      std::cout << "\ttmp is : " << tmp << "\n";
-      std::cout << "\ttmp is : " << std::endl;
-      if (select(tmp + 1, &readfs, NULL, NULL, NULL) < 0)
+      std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << "\n";
+      if (select(_network->maxSocket()->get_socket() + 1, &readfs, NULL, NULL, NULL) < 0)
 	{
 	  perror("select");
 	  return (false);

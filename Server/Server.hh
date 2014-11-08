@@ -61,7 +61,6 @@ private:
   Serialize *_serialize;
    std::map<std::string, int> _idUsers;
 
-int tmp;
 int tmp_user;
 
 };

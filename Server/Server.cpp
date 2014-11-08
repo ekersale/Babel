@@ -18,7 +18,7 @@ bool Server::startServer(void)
 {
   //ifndef
   _network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
-  _network->bindSocket(PORT);
+  std::cout << "Bind : " << _network->bindSocket(PORT) << "\n";
   _network->listenSocket(LISTEN_VAL);
   _serialize = new Serialize();
    // TODO : implement
