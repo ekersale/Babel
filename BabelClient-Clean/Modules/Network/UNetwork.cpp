@@ -54,13 +54,18 @@ void			Network::closeSocket(int id)
 ClientInfo *		Network::maxSocket(void)
 {
   std::map<int, ClientInfo *>::iterator it;
-  static ClientInfo	*max = _connected[0];
+  static ClientInfo *	max = _connected[0];
 
+  if (_connected.size() == 1)
+    return (_connected[0]);
   if (_change == true)
-    for (it = _connected.begin(); it != _connected.end(); it++)
-      if (max->get_socket() < it->second->get_socket())
-	max = it->second;
-  _change = false;
+    {
+      max = _connected[0];
+      for (it = _connected.begin(); it != _connected.end(); it++)
+	if (max->get_socket() < it->second->get_socket())
+	  max = it->second;
+      _change = false;
+    }
   return (max);
 }
 
@@ -72,9 +77,14 @@ bool			Network::bindSocket(std::string port)
   return (true);
 }
 
-char *&			Network::get_buffer(void)
+char *&			Network::get_buffer(int id)
 {
-  return (_connected[0]->get_buffer());
+  return (_connected[id]->get_buffer());
+}
+
+int&			Network::get_filled(int id)
+{
+  return (_connected[id]->get_filled());
 }
 
 ClientInfo *		Network::get_connected(int id)

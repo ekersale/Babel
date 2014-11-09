@@ -24,8 +24,9 @@ public:
   bool		bindSocket(std::string);
   void		closeSocket(int);
   bool		createSocket(std::string, int &);
-  char *&	get_buffer(void);
-  ClientInfo *	get_connected(int id);
+  char *&	get_buffer(int id = 0);
+  int &		get_filled(int id = 0);
+  ClientInfo *	get_connected(int id = 0);
   ClientInfo *	maxSocket(void);
   void		sflush(void);
   //tronc commun

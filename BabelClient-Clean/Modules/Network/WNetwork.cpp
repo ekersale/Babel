@@ -54,13 +54,18 @@ void			Network::closeSocket(int id)
 ClientInfo *		Network::maxSocket(void)
 {
   std::map<int, ClientInfo *>::iterator it;
-  static ClientInfo	*max = _connected[0];
+  static ClientInfo *	max = _connected[0];
 
+  if (_connected.size() == 1)
+    return (_connected[0]);
   if (_change == true)
-    for (it = _connected.begin(); it != _connected.end(); it++)
-      if (max->get_socket() < it->second->get_socket())
-	max = it->second;
-  _change = false;
+    {
+      max = _connected[0];
+      for (it = _connected.begin(); it != _connected.end(); it++)
+	if (max->get_socket() < it->second->get_socket())
+	  max = it->second;
+      _change = false;
+    }
   return (max);
 }
 
@@ -72,9 +77,14 @@ bool			Network::bindSocket(std::string port)
   return (true);
 }
 
-char *&			Network::get_buffer(void)
+char *&			Network::get_buffer(int id)
 {
-  return (_connected[0]->get_buffer());
+  return (_connected[id]->get_buffer());
+}
+
+int&			Network::get_filled(int id)
+{
+  return (_connected[id]->get_filled());
 }
 
 ClientInfo *		Network::get_connected(int id)
@@ -142,7 +152,7 @@ bool			Network::recvSocket(int id)
   if (_connected.find(id) == _connected.end())
     return (false);
   len = recv(_connected[id]->get_socket(), _connected[0]->get_buffer(), _connected[0]->get_len(), 0);
-  if (len < 0)
+  if (len < 1)
     {
       closeSocket(id);
       _connected[0]->get_buffer()[0] = 0;
@@ -212,11 +222,10 @@ int			Network::recvFromSocket(void)
   static ClientInfo	stranger(1);
   ClientInfo		*nstranger;
 
-  memset(_connected[0]->get_buffer(), 0, _len - 1);
   socklen = sizeof(saddrin); //bullshit
   len = recvfrom(_connected[0]->get_socket(), _connected[0]->get_buffer(),
 		 _connected[0]->get_len(), 0, (saddr *)&stranger.get_info(), &socklen);
-  if (len < 0)
+  if (len < 1)
     {
       _connected[0]->get_buffer()[0] = 0;
       return (false);
@@ -233,7 +242,7 @@ int			Network::recvFromSocket(void)
 
 Network::Network(int family, int type, std::string proto, size_t len)
 {
-  WSADATA wsaData;
+  WSADATA		wsaData;
 
   _family = family;
   _id = -1;
@@ -253,5 +262,4 @@ Network::~Network()
   sflush();
   WSACleanup();
 }
-
 #endif
