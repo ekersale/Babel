@@ -5,7 +5,7 @@
  * Purpose: Implementation of the class AUnix
  ***********************************************************************/
 
-#include		"Network.hh"
+#include		"../../Includes/Network.hh"
 
 bool			Network::createSocket(std::string proto, int &type)
 {
@@ -45,11 +45,16 @@ ClientInfo *		Network::maxSocket(void)
   std::map<int, ClientInfo *>::iterator it;
   static ClientInfo	*max = _connected[0];
 
+  if (_connected.size() == 1)
+    return (_connected[0]);
   if (_change == true)
-    for (it = _connected.begin(); it != _connected.end(); it++)
-      if (max->get_socket() < it->second->get_socket())
-	max = it->second;
-  _change = false;
+    {
+      max = _connected[0];
+      for (it = _connected.begin(); it != _connected.end(); it++)
+	if (max->get_socket() < it->second->get_socket())
+	  max = it->second;
+      _change = false;
+    }
   return (max);
 }
 

@@ -5,8 +5,10 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Wed Nov  5 16:40:55 2014 Pierre-Antoine Urvoy
+// Last update Sat Nov  8 21:24:53 2014 Elliot Kersalé
 //
+
+#ifdef _WIN32
 
 #include	"WClientInfo.hh"
 
@@ -61,3 +63,5 @@ ClientInfo::~ClientInfo()
 {
   delete[] _buffer;
 }
+
+#endif

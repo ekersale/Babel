@@ -1,1 +1,1 @@
-cp ../Modules/Network/*.cpp . && cp ../Includes/UClientInfo.hh . && cp ../Includes/Network.hh . && cp ../Includes/INetwork.hh . && rm WNetwork.cpp && rm WClientInfo.cpp && g++ *.cpp -g
+cp ../Modules/Network/U*.cpp . && cp ../Modules/testpacket/ACommandsValue.hpp . && cp ../Includes/UClientInfo.hh . && cp ../Includes/Network.hh . && cp ../Includes/INetwork.hh . && g++ *.cpp -g

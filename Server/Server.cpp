@@ -18,9 +18,11 @@ bool Server::startServer(void)
 {
   //ifndef
   _network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
-  _network->bindSocket(PORT);
+  std::cout << "Bind : " << _network->bindSocket(PORT) << "\n";
   _network->listenSocket(LISTEN_VAL);
   _serialize = new Serialize();
+  _xmlParser = new XMLParser();
+  _parser = new Parser(_xmlParser->getCommandArgs("commands.xml"));
    // TODO : implement
 }
 
@@ -49,13 +51,10 @@ std::map<int, User *> Server::get_users(void) const
    return _users;
 }
 
-/*
 XMLParser * Server::get_xmlParser(void) const
 {
    return _xmlParser;
 }
-*/
-
 
 IParser * Server::get_parser(void) const
 {
@@ -82,12 +81,10 @@ void Server::set_users(std::map<int, User *> new_users)
    _users = new_users;
 }
 
-/*
 void Server::set_xmlParser(XMLParser* new_xmlParser)
 {
    _xmlParser = new_xmlParser;
 }
-*/
 
 void Server::set_parser(IParser* new_parser)
 {
@@ -110,7 +107,7 @@ Server::Server()
 {
    _version = VERSION;
    _network = NULL;
-   //   _xmlParser = NULL;
+   _xmlParser = NULL;
    _parser = NULL;
 }
 
@@ -119,7 +116,7 @@ Server::Server(const Server& oldServer)
    _version = oldServer._version;
    _network = oldServer._network;
    _users = oldServer._users;
-   //_xmlParser = oldServer._xmlParser;
+   _xmlParser = oldServer._xmlParser;
    _parser = oldServer._parser;
    _idUsers = oldServer._idUsers;
 }

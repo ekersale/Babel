@@ -8,38 +8,36 @@
 #if !defined(__Server_User_hh)
 #define __Server_User_hh
 
+#include <XMLParser.h>
 #include "UserAction.hh"
 #include "UserInfo.hh"
+#include "SCommandsValue.hh"
 #include "Parser.hh"
 
 //for the 2 other User*.hh
 #include <string>
 
-class User : public UserAction, public UserInfo
+class User : public UserAction, public UserInfo, public SCommandsValue
 {
 public:
    void print_error(void) const;
-  IParser * get_parser(void) const;
   int get_idSocket(void) const;
    bool get_activeChat(void) const;
    char get_activeModule(void) const;
-  void set_parser(IParser* new_parser);
   void set_idSocket(int _idSocket); //LOL
    void set_activeChat(bool new_activeChat);
    void set_activeModule(char new_activeModule);
    User();
-  User(IParser *&parser, const int &idSocket, int tmp_id);
+User(const int &idSocket, int tmp_id, XMLParser *&xmlParser);
    User(const User& oldUser);
    ~User();
 
 protected:
 private:
-  IParser *_parser;
   int _idSocket;
    bool _activeChat;
    char _activeModule;
-
-
+  XMLParser * _xmlParser;
 };
 
 #endif

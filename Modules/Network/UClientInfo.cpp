@@ -5,10 +5,11 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Wed Nov  5 17:48:37 2014 Sliman Desmars
+// Last update Sun Nov  9 03:26:06 2014 Damien Giraudet
 //
 
-#include	"UClientInfo.hh"
+// Oui je suis un connard
+#include	"../../Includes/UClientInfo.hh"
 
 void		ClientInfo::setAddr(int family, std::string port, std::string host)
 {

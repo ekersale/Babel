@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Sat Nov  8 17:42:58 2014 Damien Giraudet
+// Last update Sun Nov  9 03:46:12 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -15,10 +15,12 @@ bool	Server::newUser(void)
 {
   int	key;
 
+  std::cout << "1/ Max fd id : " << _network->maxSocket()->get_socket() << "\n";
   if ((key = _network->acceptSocket()) == false)
     return (false);
   tmp_user--;
-  _users[tmp_user] = new User(_parser, key, tmp_user);
+  _users[tmp_user] = new User(key, tmp_user, _xmlParser);
+  std::cout << "2/ Max fd id : " << _network->maxSocket()->get_socket() << "\n";
   // une connexion au serveur != une connexion d'un utilisateur donc activeChat & Module = 0
   std::cout << "New User : id : "  << tmp_user << "\n";
 }
@@ -36,27 +38,36 @@ void	Server::setFd(fd_set &setfd)
   std::map<int, User*>::iterator it;
   ClientInfo *clientInfo;
 
-  //std::cout << "Size of map : " << _users.size() << "\n";
   if (_network->get_connected(0))
     FD_SET(_network->get_connected(0)->get_socket(), &setfd);
   it = _users.begin();
   while (it != _users.end())
     {
-      std::cout << "Set with user : " << it->second->get_id() << "\n";
       if ((clientInfo = _network->get_connected((it->second)->get_idSocket())))
 	FD_SET(clientInfo->get_socket(), &setfd);
       else
 	deleteUser(it->second);
       it++;
     }
-
 }
 
-bool	Server::treatRecv(void)
+bool	Server::treatRecv(User *user)
 {
-  IPacketInfo	*packet_info;
+  //IPacketInfo	*packet_info;
+  /* PA ...
+     Il faudra vérifier en boucle le read
+  if (_network->get_filled() != sizeof(Packet))
+    return (false);
+  */
+  
+  IPacketInfo	*pa = new PacketInfo();
+  pa->setCmd(1);
 
-  packet_info = get_parser()->decode(get_serialize()->extract(_network->get_buffer()));
+  //user->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
+  //user->cmdVal(pa);
+
+  //std::cout << "Char * : " << _network->get_buffer() << "\n";
+  
   // map ptr sur fct
   return (true);
 }
@@ -66,58 +77,43 @@ void	Server::recvIsSet(fd_set &readfs)
   std::map<int, User*>::iterator it;
   ClientInfo *clientInfo;
 
-  std::cout << "\n\n";
-  if (FD_ISSET(_network->get_connected(0)->get_socket(), &readfs)) {
-      newUser();
-      tmp++;
-    }
+  if (FD_ISSET(_network->get_connected(0)->get_socket(), &readfs))
+    newUser();
   it = _users.begin();
   while (it != _users.end())
     {
-      std::cout << "Loop\n";
       if ((clientInfo = _network->get_connected((it->second)->get_idSocket())))
 	{
-	  std::cout << "Inside Client Info\n";
 	  if (FD_ISSET(clientInfo->get_socket(), &readfs))
 	    {
-	      std::cout << "Inside FD_ISSET\n";
 	      if (_network->recvSocket((it->second)->get_idSocket())) // renvrera une len via get_field
-		treatRecv();
+		treatRecv(it->second);
 	      else
 		{
-		  std::cout << "second\n";
 		  deleteUser(it->second);
-		  tmp--;
-		  return ;
-		  // pb de it si suppression
+		  return ;  // pb de it si suppression
 		}
 	    }
 	}
       else
-	{
-	  std::cout << "third\n";
-	  deleteUser(it->second);
-	  tmp--;
-	}
+	deleteUser(it->second);
       it++;
     }
-  std::cout << "\n\n";
 }
 
 bool Server::loopServer(void)
 {
   fd_set	readfs;
+  fd_set	writefs;
 
-  tmp = 3;
   tmp_user = 0;
   while (1)
     {
       FD_ZERO(&readfs);
+      FD_ZERO(&writefs);
       setFd(readfs);
-      //parcourir la map pour trouver le fd le plus haut
-      std::cout << "\ttmp is : " << tmp << "\n";
-      std::cout << "\ttmp is : " << std::endl;
-      if (select(tmp + 1, &readfs, NULL, NULL, NULL) < 0)
+      std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << "\n";
+      if (select(_network->maxSocket()->get_socket() + 1, &readfs, &writefs, NULL, NULL) < 0)
 	{
 	  perror("select");
 	  return (false);

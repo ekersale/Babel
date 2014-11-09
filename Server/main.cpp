@@ -1,8 +1,2 @@
 #include "Server.hh"
-
-int	main(void)
-{
-  Server	server;
-
-  return (server.init());
-}
+int main(){Server server; server.init();};
