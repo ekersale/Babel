@@ -23,7 +23,6 @@ public:
    Client(const Client& oldClient);
    ~Client();
 
-protected:
 private:
    Lexer * _lexer;
    IDllLoader * _loader;

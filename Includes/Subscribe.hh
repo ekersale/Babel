@@ -3,7 +3,13 @@
 
 #include    "IGui.hh"
 
-#include <QWidget>
+#ifdef		_WIN32
+#include	<QtWidgets/QWidget>
+
+#else
+#include	<QWidget>
+
+#endif
 
 namespace Ui {
 class Subscribe;

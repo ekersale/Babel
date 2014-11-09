@@ -3,8 +3,13 @@
 
 #include    "IGui.hh"
 
+#ifdef		_WIN32
+#include    <QtWidgets/QMainWindow>
+#include    <QtWidgets/QMessageBox>
+#else
 #include    <QMainWindow>
 #include    <QMessageBox>
+#endif
 
 namespace Ui {
 class Connection;

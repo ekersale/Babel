@@ -1,6 +1,10 @@
 #ifndef	__XMLPARSER_H__
 #define __XMLPARSER_H__
 
+#include	<QtXml>
+#include	<QDomDocument>
+#include	<QString>
+
 #include	<iostream>
 #include	<fstream>
 #include	<string>
@@ -9,9 +13,6 @@
 #include	<utility>
 #include	<cstdio>
 
-#include	<QtXml>
-#include	<QDomDocument>
-#include	<QString>
 
 class					XMLParser
 {
