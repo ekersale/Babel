@@ -5,7 +5,7 @@
  * Purpose: Implementation of the class AUnix
  ***********************************************************************/
 
-#include		"Network.hh"
+#include		"../../Includes/Network.hh"
 
 bool			Network::createSocket(std::string proto, int &type)
 {
