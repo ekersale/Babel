@@ -3,6 +3,7 @@
 
 #include "PacketInfo.hh"
 #include "../Modules/testpacket/ACommandsValue.hpp"
+#include "XMLParser.h"
 #include <map>
 #include <iostream>
 
@@ -40,6 +41,7 @@ public:
   //void callAnswer(std::vector<char *>, std::vector<int>);
   int  cmdVal(IPacketInfo *);
 private:
+  XMLParser * _xmlParser;
 };
 
 #endif /* SCOMMANDSVALUE_HH_ */

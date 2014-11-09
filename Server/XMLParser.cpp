@@ -195,6 +195,7 @@ void						XMLParser::generateFile(std::string filename)
   createBalise(file, "\t<login></login>");
   createBalise(file, "\t<password></password>");
   createBalise(file, "\t<nick></nick>");
+  createBalise(file, "\t<status></status>");
   createBalise(file, "\t<module></module>");
   createBalise(file, "\t<birth></birth>");
   createBalise(file, "\t<surname></surname>");
