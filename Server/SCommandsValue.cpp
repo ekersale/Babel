@@ -52,62 +52,71 @@ int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
 
 void		SCommandsValue::connect(std::vector<char *> chars, std::vector<int> ints)
 {
+
+  
+  // NEEKO remplir toutes les infos de UserInfo (sauf module & status) via le [id_login].xml (donc recup en parsan pour trouver le fichier via la login) + check en amont le psw
+
+  // DAM pile : status + module
+
+
   std::cout << "test connect" << std::endl;
 }
 
 void		SCommandsValue::subscribe(std::vector<char *> chars, std::vector<int> ints)
 {
+  // DAM : générer l'id
 
+  // NEEKO creer le fichier [id_login].xml (juste psw & login) (met un id bidon)
 }
 
 void		SCommandsValue::nick(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::status(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::module(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::birth(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::surname(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::name(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::address(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::phone(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::addRequest(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO add le nouveau contact dans [id_login].xml du user + add contact id dans celui qui vient d'etre add
 }
 
 void		SCommandsValue::removeRequest(std::vector<char *> chars, std::vector<int> ints)
 {
-
+  // NEKKO comme au dessus mais le contraire
 }
 
 void		SCommandsValue::call(std::vector<char *> chars, std::vector<int> ints)

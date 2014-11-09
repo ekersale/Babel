@@ -2,7 +2,7 @@
 #define SCOMMANDSVALUE_HH_
 
 #include "PacketInfo.hh"
-#include "ACommandsValue.hpp"
+#include "../Modules/testpacket/ACommandsValue.hpp"
 #include <map>
 #include <iostream>
 

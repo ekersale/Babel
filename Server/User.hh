@@ -8,6 +8,7 @@
 #if !defined(__Server_User_hh)
 #define __Server_User_hh
 
+#include <XMLParser.h>
 #include "UserAction.hh"
 #include "UserInfo.hh"
 #include "SCommandsValue.hh"
@@ -27,7 +28,7 @@ public:
    void set_activeChat(bool new_activeChat);
    void set_activeModule(char new_activeModule);
    User();
-  User(const int &idSocket, int tmp_id);
+User(const int &idSocket, int tmp_id, XMLParser *&xmlParser);
    User(const User& oldUser);
    ~User();
 
@@ -36,8 +37,7 @@ private:
   int _idSocket;
    bool _activeChat;
    char _activeModule;
-
-
+  XMLParser * _xmlParser;
 };
 
 #endif

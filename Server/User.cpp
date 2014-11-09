@@ -47,11 +47,12 @@ User::User()
    _activeChat = false;
 }
 
-User::User(const int &idSocket, int tmp_id)
+User::User(const int &idSocket, int tmp_id, XMLParser *&xmlParser)
 {
   _connected = false;
   _idSocket = idSocket;
   _id = tmp_id;
+  _xmlParser = xmlParser;
   std::cout << "Id is :: " << _id << "\n";
 }
 
@@ -60,6 +61,7 @@ User::User(const User& oldUser)
   _idSocket = oldUser._idSocket;
   _activeChat = oldUser._activeChat;
   _activeModule = oldUser._activeModule;
+  _xmlParser = oldUser._xmlParser;
 }
 
 User::~User()

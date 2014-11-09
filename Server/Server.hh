@@ -8,9 +8,9 @@
 #if !defined(__Server_Server_hh)
 #define __Server_Server_hh
 
-#include "Network.hh"
+#include "../Includes/Network.hh"
 
-//#include <XMLParser.h>
+#include <XMLParser.h>
 #include "Parser.hh"
 #define	VERSION		"0.0.0"
 
@@ -31,14 +31,14 @@ public:
   Network* get_network(void) const;
   Serialize* get_serialize(void) const;
    std::map<int, User *> get_users(void) const;
-  //XMLParser * get_xmlParser(void) const;
+  XMLParser * get_xmlParser(void) const;
   IParser *get_parser(void) const;
    std::map<std::string, int> get_idUsers(void) const;
    void set_version(std::string new_version);
   void set_network(Network * new_network);
   //void set_serialize(Serialize *);
    void set_users(std::map<int, User *> new_users);
-  //void set_xmlParser(XMLParser* new_xmlParser);
+  void set_xmlParser(XMLParser* new_xmlParser);
   void set_parser(IParser*);
    void set_idUsers(std::map<std::string, int> new_idUsers);
   void    deleteUser(User *user);
@@ -56,7 +56,7 @@ private:
    std::string _version;
   Network * _network;
    std::map<int, User *> _users;
-  //XMLParser * _xmlParser;
+  XMLParser * _xmlParser;
   IParser *_parser;
   Serialize *_serialize;
    std::map<std::string, int> _idUsers;
