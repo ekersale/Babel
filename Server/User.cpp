@@ -46,6 +46,10 @@ Server	*&User::get_server() {
   return (_server);
 }
 
+ACommandsValue *&User::get_commandsValue() {
+  return (_commandsValue);
+}
+
 User::User()
 {
    _activeChat = false;
@@ -57,10 +61,8 @@ User::User(const int &idSocket, int tmp_id, Server *server)
   _idSocket = idSocket;
   _id = tmp_id;
   _server = server;
-  _user = this;
+  _commandsValue = new SCommandsValue(this);
   std::cout << "Id is :: " << _id << "\n";
-
-
 }
 
 User::User(const User& oldUser)
@@ -69,8 +71,7 @@ User::User(const User& oldUser)
   _activeChat = oldUser._activeChat;
   _activeModule = oldUser._activeModule;
   _server = oldUser._server;
-
-
+  _commandsValue = oldUser._commandsValue;
 }
 
 User::~User()

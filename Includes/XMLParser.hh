@@ -13,21 +13,24 @@
 #include	<QDomDocument>
 #include	<QString>
 
+#define		PATH		"../XML_file/"
+
 class					XMLParser
 {
  public:
   XMLParser();
   ~XMLParser();
-  void					setDoc(QDomDocument new_doc);
-  QDomDocument				getDoc(void) const;
-  std::map<std::string, std::string>	parseFile(std::string);
-  std::string				getNodeValue(std::string, std::string);
-  std::vector<int>			getClients(std::string);
-  bool					updateNode(std::string, std::string, std::string);
-  bool					addChildToParent(std::string, std::string, std::string, std::string);
-  void					generateFile(std::string);
-  void					createBalise(std::ofstream &, std::string);
-  bool					print_error(const std::string &msg);
+  void						setDoc(QDomDocument new_doc);
+  QDomDocument					getDoc(void) const;
+  std::map<std::string, std::string>		parseFile(std::string);
+  std::string					getNodeValue(std::string, std::string);
+  std::vector<int>				getClients(std::string);
+  bool						updateNode(std::string, std::string, std::string);
+  bool						addChildToParent(std::string, std::string, std::string, std::string);
+  void						generateFile(std::string);
+  void						createBalise(std::ofstream &, std::string);
+  bool						print_error(const std::string &msg);
+  std::map<char, std::vector<unsigned char> >	getCommandArgs(std::string);
 
 private:
   QDomDocument				_doc;

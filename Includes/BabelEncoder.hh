@@ -5,7 +5,7 @@
 ** Login   <kersal_e@epitech.net>
 ** 
 ** Started on  Wed Oct 29 13:52:47 2014 Elliot Kersalé
-// Last update Wed Nov  5 17:34:27 2014 Sliman Desmars
+// Last update Sun Nov  9 15:45:23 2014 Sliman Desmars
 */
 
 #ifndef				_BABEL_ENCODER_H__
@@ -13,7 +13,12 @@
 
 #include			"IBabelEncoder.hh"
 
+#ifdef	_WIN32
+#include			<opus.h>
+#else
 #include			<opus/opus.h>
+#endif
+
 #include			<iostream>
 #include			<cstdlib>
 #include			<cstdio>

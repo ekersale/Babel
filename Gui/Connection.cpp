@@ -3,8 +3,12 @@
 #include    "../Includes/Subscribe.hh"
 #include    "../Includes/Home.hh"
 
-#include   <QCryptographicHash>
-#include    <iostream>
+#ifdef		_WIN32
+#include	<QCryptographicHash>
+#else
+#include	<QtCore/QCryptographicHash>
+#endif
+#include	 <iostream>
 
 #include    "ui_Connection.h"
 

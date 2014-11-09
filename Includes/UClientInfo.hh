@@ -5,8 +5,13 @@
 ** Login   <urvoy_p@epitech.net>
 ** 
 ** Started on  Sat Nov  1 17:39:04 2014 Pierre-Antoine Urvoy
-// Last update Sun Nov  9 17:15:49 2014 Damien Giraudet
+// Last update Sun Nov  9 16:06:41 2014 Sliman Desmars
 */
+
+
+#ifdef		_WIN32
+
+#else
 
 #include	<arpa/inet.h>
 #include	<netinet/in.h>
@@ -43,3 +48,5 @@ class		ClientInfo
   ClientInfo(int = 512);
   ~ClientInfo();
 };
+
+#endif

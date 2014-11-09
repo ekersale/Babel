@@ -2,10 +2,16 @@
 #include    "../Includes/Subscribe.hh"
 #include    "../Includes/Connection.hh"
 
-#include   <QCryptographicHash>
-#include    <iostream>
+#ifdef		_WIN32
+#include	<QtCore/QCryptographicHash>
 
-#include "ui_Subscribe.h"
+#else
+#include	<QCryptographicHash>
+#endif
+
+#include	<iostream>
+
+#include	"ui_Subscribe.h"
 
 Subscribe::Subscribe(QWidget *parent) : QWidget(parent), ui(new Ui::Subscribe)
 {

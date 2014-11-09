@@ -15,39 +15,39 @@ TARGET          =       Server
 
 TEMPLATE        =       app
 
-INCLUDEPATH     +=      .
+INCLUDEPATH     +=      ../Includes
 
 SOURCES +=      main.cpp        \
-                Packet.cpp      \
-                PacketInfo.cpp  \
-                Parser.cpp      \
-                Serialize.cpp   \
                 Server.cpp      \
                 ServerNetwork.cpp       \
                 UserAction.cpp  \
                 User.cpp        \
                 UserInfo.cpp    \
-                XMLParser.cpp   \
+                ../Modules/Packet/Packet.cpp      \
+                ../Modules/Packet/PacketInfo.cpp  \
+                ../Modules/Packet/Parser.cpp      \
+                ../Modules/Packet/Serialize.cpp   \
+                ../Modules/XML/XMLParser.cpp            \
                 ../Modules/Network/UClientInfo.cpp      \
                 ../Modules/Network/UNetwork.cpp         \
                 SCommandsValue.cpp      \
 
 
-HEADERS  +=     IPacket.hpp             \
-                IParser.hpp             \
-                PacketInfo.hh           \
-                Server.hh               \
-                User.hh                 \
-                XMLParser.h             \
-                IPacketInfo.hpp         \
-                ISerialize.hpp          \
-                Packet.hh               \
-                Parser.hh               \
-                Serialize.hh            \
-                UserAction.hh           \
-                UserInfo.hh             \
-                ../Modules/testpacket/ACommandsValue.hpp        \
-                ../Includes/UClientInfo.hh               \
-                ../Includes/Network.hh                          \
-                ../Includes/INetwork.hh                         \
-                SCommandsValue.hh       \
+HEADERS  +=     ../Includes/IPacket.hpp             \
+                ../Includes/IParser.hpp             \
+                ../Includes/PacketInfo.hh           \
+                ../Includes/Server.hh               \
+                ../Includes/User.hh                 \
+                ../Includes/XMLParser.hh            \
+                ../Includes/IPacketInfo.hpp         \
+                ../Includes/ISerialize.hpp          \
+                ../Includes/Packet.hh               \
+                ../Includes/Parser.hh               \
+                ../Includes/Serialize.hh            \
+                ../Includes/UserAction.hh           \
+                ../Includes/UserInfo.hh             \
+                ../Includes/ACommandsValue.hpp      \
+                ../Includes/UClientInfo.hh          \
+                ../Includes/Network.hh              \
+                ../Includes/INetwork.hh             \
+                ../Includes/SCommandsValue.hh       \

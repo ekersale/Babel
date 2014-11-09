@@ -4,9 +4,7 @@
 
 #include    <iostream>
 
-Home::Home(QWidget *parent) :
-QMainWindow(parent),
-ui(new Ui::Home)
+Home::Home(QWidget *parent) : QMainWindow(parent), ui(new Ui::Home)
 {
 	init();
 	// _tcp = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
