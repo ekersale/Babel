@@ -41,7 +41,7 @@ SCommandsValue::~SCommandsValue() {
 int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
 {
   std::vector<int>	     ints;
-  std::vector<char *>        chars;
+  std::vector<const char *>        chars;
   char                       cmd;
 
   ints = packet_info->getInts();
@@ -54,7 +54,7 @@ int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
   return (0);
 }
 
-void		SCommandsValue::connect(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
 
@@ -76,12 +76,14 @@ void		SCommandsValue::connect(std::vector<char *> chars, std::vector<int> ints)
   // DAM pile : status + module
   // _user->set_status(char[2][0]);
   // _user->set_module(chars[3][0]);
-  // 
+  //
+  // _user->get_server()->get_users().erase(_user->get_id());
+  // _user->get_server()->get_users()[  --true_id--  ] = _user;
   
   std::cout << "test connect" << std::endl;
 }
 
-void		SCommandsValue::subscribe(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int> ints)
 {
   // DAM : générer l'id
   std::string filename;
@@ -91,20 +93,38 @@ void		SCommandsValue::subscribe(std::vector<char *> chars, std::vector<int> ints
   _xmlParser->generateFile(filename);
   _xmlParser->updateNode(filename, "login", chars[1]);
   _xmlParser->updateNode(filename, "password", chars[2]);
-  // NEEKO creer le fichier [id_login].xml (juste psw & login) (met un id bidon)
+  _user->set_login(_xmlParser->getNodeValue(filename, "login"));
+
+  // DAM pile : status + module
+  // _user->set_status(char[2][0]);
+  // _user->set_module(chars[3][0]);
+  //
+  // _user->get_server()->get_users().erase(_user->get_id());
+  // _user->get_server()->get_users()[  --true_id--  ] = _user;
 }
 
-void		SCommandsValue::nick(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::nick(std::vector<const char *> chars, std::vector<int> ints)
 {
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
   std::string filename;
   
-  filename = chars[0];
+  filename = chars[0]; //filename 0 !?
   filename += ".xml";
   _xmlParser->updateNode(filename, "nick", chars[1]);
+
+  /*
+  _user->set_login(_xmlParser->getNodeValue(filename, "login"));
+  //std::cout << _xmlParser->getNodeValue(filename, "password");
+  _user->set_birth(_xmlParser->getNodeValue(filename, "birth"));
+  _user->set_name(_xmlParser->getNodeValue(filename, "name"));
+  _user->set_surname(_xmlParser->getNodeValue(filename, "surname"));
+  _user->set_nickname(_xmlParser->getNodeValue(filename, "nick"));
+  _user->set_adress(_xmlParser->getNodeValue(filename, "address"));
+  _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
+  */
 }
 
-void		SCommandsValue::status(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::status(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -114,7 +134,7 @@ void		SCommandsValue::status(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::module(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::module(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -124,7 +144,7 @@ void		SCommandsValue::module(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::birth(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::birth(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -134,7 +154,7 @@ void		SCommandsValue::birth(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::surname(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::surname(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -144,7 +164,7 @@ void		SCommandsValue::surname(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::name(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::name(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -154,7 +174,7 @@ void		SCommandsValue::name(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::address(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::address(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -164,7 +184,7 @@ void		SCommandsValue::address(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::phone(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::phone(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
@@ -174,7 +194,7 @@ void		SCommandsValue::phone(std::vector<char *> chars, std::vector<int> ints)
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
-void		SCommandsValue::addRequest(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<int> ints)
 {
   DIR		*dir;
   struct dirent *file;
@@ -213,17 +233,17 @@ void		SCommandsValue::addRequest(std::vector<char *> chars, std::vector<int> int
   
 }
 
-void		SCommandsValue::removeRequest(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector<int> ints)
 {
   // NEKKO comme au dessus mais le contraire
 }
 
-void		SCommandsValue::call(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)
 {
 
 }
 
-void		SCommandsValue::requestAnswer(std::vector<char *> chars, std::vector<int> ints)
+void		SCommandsValue::requestAnswer(std::vector<const char *> chars, std::vector<int> ints)
 {
 
 }

@@ -31,7 +31,7 @@ IPacket* Parser::encode(IPacketInfo* packetinfo) {
 IPacketInfo* Parser::decode(IPacket* packet) {
 	std::vector<unsigned char>	key;
 	IPacketInfo			*packetinfo;
-	char				*ptr;
+	const char			*ptr;
 
 	key = getRef().find(packet->getCommand())->second;
 	packetinfo = new(PacketInfo);

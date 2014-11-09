@@ -15,19 +15,19 @@ class PacketInfo: public IPacketInfo {
 public:
 	PacketInfo();
 	virtual ~PacketInfo();
-	const std::vector<char*>& getChars() const;
-	void setChars(const std::vector<char*>& chars);
+	const std::vector<const char*>& getChars() const;
 	const std::vector<int>& getInts() const;
-	void pushChars(char *);
-	void pushInts(char *);
-	char *popChars();
+  // void setChars(const std::vector<char*>& chars);
+	void pushChars(const char *);
+	void pushInts(const char *);
+	const char *popChars();
 	void popInts(char *);
 	char getCmd() const;
-	void setCmd(char cmd);
+	void setCmd(char);
 
 private:
 	char					_cmd;
-	std::vector<char *>		_chars;
+	std::vector<const char *>		_chars;
 	std::vector<int>		_ints;
 };
 

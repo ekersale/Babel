@@ -14,23 +14,25 @@ PacketInfo::PacketInfo() {
 	_cmd = 0;
 }
 
-const std::vector<char*>& PacketInfo::getChars() const {
+const std::vector<const char*>& PacketInfo::getChars() const {
 	return _chars;
 }
 
+/*
 void PacketInfo::setChars(const std::vector<char*>& chars) {
 	_chars = chars;
 }
+*/
 
 const std::vector<int>& PacketInfo::getInts() const {
 	return _ints;
 }
 
-void PacketInfo::pushChars(char *elem) {
+void PacketInfo::pushChars(const char *elem) {
 	_chars.push_back(elem);
 }
 
-void PacketInfo::pushInts(char *ptr) {
+void PacketInfo::pushInts(const char *ptr) {
 	int elem;
 
 	elem = 0;
@@ -44,8 +46,8 @@ char PacketInfo::getCmd() const {
 	return _cmd;
 }
 
-char* PacketInfo::popChars() {
-	char	*ret;
+const char* PacketInfo::popChars() {
+	const char *ret;
 
 	ret = _chars.front();
 	_chars.erase(_chars.begin());

@@ -8,8 +8,8 @@ class IPacket
 {
 public:
 	virtual ~IPacket() {};
-	virtual char		getCommand(void) = 0;
-	virtual char		*getData(void) = 0;
+	virtual char		getCommand(void) const = 0;
+	virtual const char	*getData(void) const = 0;
 };
 
 #endif
