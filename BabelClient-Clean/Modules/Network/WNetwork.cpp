@@ -30,13 +30,21 @@ bool			Network::createSocket(std::string proto, int &type)
   return (true);
 }
 
+void			Network::sflush(void)
+{
+  int			id = -1;
+
+  while (++id < (int)_connected.size())
+    closeSocket(id);
+}
+
 void			Network::closeSocket(int id)
 {
   if (_connected.find(id) == _connected.end())
     return ;
-  closesocket(_connected[id]->get_socket());
   if (id != 0)
     {
+      closesocket(_connected[id]->get_socket());
       delete _connected[id];
       _connected.erase(id);
       _change = true;
@@ -242,10 +250,7 @@ Network::Network(const Network& oldNetwork)
 
 Network::~Network()
 {
-  int			id = -1;
-
-  while (++id < (int)_connected.size())
-    delete _connected[id];
+  sflush();
   WSACleanup();
 }
 
