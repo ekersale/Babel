@@ -27,6 +27,7 @@ public:
   char *&	get_buffer(void);
   ClientInfo *	get_connected(int id);
   ClientInfo *	maxSocket(void);
+  void		sflush(void);
   //tronc commun
   
   bool		listenSocket(int);
