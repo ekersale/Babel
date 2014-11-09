@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Sun Nov  9 00:12:10 2014 Damien Giraudet
+// Last update Sun Nov  9 02:47:08 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -53,11 +53,21 @@ void	Server::setFd(fd_set &setfd)
 
 bool	Server::treatRecv(User *user)
 {
-  IPacketInfo	*packet_info;
+  //IPacketInfo	*packet_info;
+  /* PA ...
+     Il faudra vérifier en boucle le read
+  if (_network->get_filled() != sizeof(Packet))
+    return (false);
+  */
+  
+  IPacketInfo	*pa = new PacketInfo();
+  pa->setCmd(1);
 
-  //packet_info = get_parser()->decode(get_serialize()->extract(_network->get_buffer()));
-  std::cout << "Char * : " << _network->get_buffer() << "\n";
+  //user->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
+  //user->cmdVal(pa);
 
+  //std::cout << "Char * : " << _network->get_buffer() << "\n";
+  
   // map ptr sur fct
   return (true);
 }

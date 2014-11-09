@@ -10,12 +10,13 @@
 
 #include "UserAction.hh"
 #include "UserInfo.hh"
+#include "SCommandsValue.hh"
 #include "Parser.hh"
 
 //for the 2 other User*.hh
 #include <string>
 
-class User : public UserAction, public UserInfo
+class User : public UserAction, public UserInfo, public SCommandsValue
 {
 public:
    void print_error(void) const;

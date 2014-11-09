@@ -38,7 +38,7 @@ public:
   //void requestCall(std::vector<char *>, std::vector<int>);
   void requestAnswer(std::vector<char *>, std::vector<int>);
   //void callAnswer(std::vector<char *>, std::vector<int>);
-  int  cmdVal(PacketInfo *);
+  int  cmdVal(IPacketInfo *);
 private:
 };
 

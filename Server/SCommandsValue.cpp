@@ -34,7 +34,7 @@ SCommandsValue::SCommandsValue()
 SCommandsValue::~SCommandsValue() {
 }
 
-int		SCommandsValue::cmdVal(PacketInfo *packet_info)
+int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
 {
   std::vector<int>	     ints;
   std::vector<char *>        chars;

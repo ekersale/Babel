@@ -40,7 +40,7 @@ public:
   virtual void requestCall(std::vector<char *>, std::vector<int>) {};
   virtual void requestAnswer(std::vector<char *>, std::vector<int>) {};
   virtual void callAnswer(std::vector<char *>, std::vector<int>) {};
-  virtual int  cmdVal(PacketInfo *) = 0;
+  virtual int  cmdVal(IPacketInfo *) = 0;
 protected:
   std::map<char, ptrCmdValue> methodPtr;
 private:
