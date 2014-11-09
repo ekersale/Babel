@@ -1,0 +1,58 @@
+#include	"Packet.hh"
+#include	"Parser.hh"
+#include	"PacketInfo.hh"
+#include	"Serialize.hh"
+#include	<stdlib.h>
+#include	<string.h>
+
+#include <iostream>
+#include <stdio.h>
+/*
+ * TODO
+ *
+ * mettre une ref sur les deux getters
+ */
+int		main(void)
+{
+	char	*buff = (char *)malloc(65);
+	memset(buff, 0, 65);
+
+	strcpy(buff, "18 rue Flandres Dunkerques\n");
+	strcpy(buff + 36, "Salut les amis du Québec\n");
+	buff[32] = 128;
+	buff[33] = 0;
+	buff[34] = 0;
+	buff[35] = 0;
+
+	Packet	*_packet = new Packet(10, buff);
+
+	std::map<char, std::vector<unsigned char> >	ref;
+
+	std::vector<unsigned char> test;
+	test.push_back(160);
+	test.push_back(64);
+	test.push_back(155);
+	ref[10] = test;
+
+	Parser *parser = new Parser(ref);
+	IPacketInfo *packetinfo;
+	packetinfo = parser->decode(_packet);
+
+	//packetinfo->aff();
+	IPacket *_copy;
+	_copy = parser->encode(packetinfo);
+	//_copy->aff();
+
+	ISerialize *serialize = new (Serialize);
+	char	*tmp;
+	tmp = serialize->insert(_copy);
+	IPacket *_copy2;
+	_copy2 = serialize->extract(tmp);
+	//free(tmp);
+
+	IPacketInfo *packetinfo2;
+	packetinfo2 = parser->decode(_copy2);
+
+	//packetinfo2->aff();
+}
+ 
