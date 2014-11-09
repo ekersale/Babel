@@ -32,21 +32,26 @@ std::string UserInfo::get_name(void) const
    return _name;
 }
 
+std::string UserInfo::get_surname(void) const
+{
+   return _surname;
+}
+
 std::string UserInfo::get_nickname(void) const
 {
    return _nickname;
 }
 
-std::string UserInfo::get_location(void) const
+std::string UserInfo::get_adress(void) const
 {
-   return _location;
+   return _adress;
 }
 
 std::string UserInfo::get_phone(void) const
 {
    return _phone;
 }
-/*
+
 char UserInfo::get_status(void) const
 {
    return _status;
@@ -56,7 +61,7 @@ char UserInfo::get_module(void) const
 {
    return _module;
 }
-*/
+
 void UserInfo::set_id(int new_id)
 {
    _id = new_id;
@@ -82,21 +87,26 @@ void UserInfo::set_name(std::string new_name)
    _name = new_name;
 }
 
+void UserInfo::set_surname(std::string new_surname)
+{
+   _surname = new_surname;
+}
+
 void UserInfo::set_nickname(std::string new_nickname)
 {
    _nickname = new_nickname;
 }
 
-void UserInfo::set_location(std::string new_location)
+void UserInfo::set_adress(std::string new_adress)
 {
-   _location = new_location;
+   _adress = new_adress;
 }
 
 void UserInfo::set_phone(std::string new_phone)
 {
    _phone = new_phone;
 }
-/*
+
 void UserInfo::set_status(char new_status)
 {
    _status = new_status;
@@ -106,7 +116,7 @@ void UserInfo::set_module(char new_module)
 {
    _module = new_module;
 }
-*/
+
 UserInfo::UserInfo()
 {
    _id = 0;
@@ -121,8 +131,9 @@ UserInfo::UserInfo(const UserInfo& oldUserInfo)
    _psw = oldUserInfo._psw;
    _birth = oldUserInfo._birth;
    _name = oldUserInfo._name;
+   _surname = oldUserInfo._surname;
    _nickname = oldUserInfo._nickname;
-   _location = oldUserInfo._location;
+   _adress = oldUserInfo._adress;
    _phone = oldUserInfo._phone;
    //   _status = oldUserInfo._status;
    //   _module = oldUserInfo._module;

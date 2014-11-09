@@ -47,6 +47,7 @@ void	recvIsSet(fd_set &setfd);
   bool treatRecv(User *);
   bool newUser(void);
   int	init(void);
+  std::map<int, User *> &get_users(); // getter & setter
    Server();
    Server(const Server& oldServer);
    ~Server();

@@ -7,6 +7,8 @@
 #include <map>
 #include <iostream>
 
+class User;
+
 class SCommandsValue : public ACommandsValue
 {
 public:
@@ -40,8 +42,9 @@ public:
   void requestAnswer(std::vector<char *>, std::vector<int>);
   //void callAnswer(std::vector<char *>, std::vector<int>);
   int  cmdVal(IPacketInfo *);
-private:
+protected:
   XMLParser * _xmlParser;
+  User	    *_user;
 };
 
 #endif /* SCOMMANDSVALUE_HH_ */
