@@ -1078,7 +1078,8 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		Includes/IModule.hh \
 		/usr/include/qt5/QtCore/QCryptographicHash \
 		/usr/include/qt5/QtCore/qcryptographichash.h \
-		ui_Connection.h
+		ui_Connection.h \
+		/usr/include/qt5/QtCore/QVariant
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Connection.o Gui/Connection.cpp
 
 Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
@@ -1201,7 +1202,8 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
 		/usr/include/qt5/QtWidgets/qdialog.h \
 		/usr/include/qt5/QtCore/QCryptographicHash \
 		/usr/include/qt5/QtCore/qcryptographichash.h \
-		ui_Subscribe.h
+		ui_Subscribe.h \
+		/usr/include/qt5/QtCore/QVariant
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subscribe.o Gui/Subscribe.cpp
 
 Home.o: Gui/Home.cpp Includes/Home.hh \
@@ -1343,7 +1345,8 @@ Home.o: Gui/Home.cpp Includes/Home.hh \
 		/usr/include/qt5/QtCore/QWaitCondition \
 		/usr/include/qt5/QtCore/qwaitcondition.h \
 		Includes/IModule.hh \
-		ui_Home.h
+		ui_Home.h \
+		/usr/include/qt5/QtCore/QVariant
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
 
 UClientInfo.o: Modules/Network/UClientInfo.cpp Includes/UClientInfo.hh
