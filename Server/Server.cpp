@@ -96,6 +96,10 @@ void Server::set_idUsers(std::map<std::string, int> new_idUsers)
    _idUsers = new_idUsers;
 }
 
+std::map<int, User *>& Server::get_users() { // getter & setter
+  return (_users);
+}
+
 int		Server::init(void)
 {
    startServer();

@@ -42,18 +42,25 @@ void User::set_activeModule(char new_activeModule)
    _activeModule = new_activeModule;
 }
 
+Server	*&User::get_server() {
+  return (_server);
+}
+
 User::User()
 {
    _activeChat = false;
 }
 
-User::User(const int &idSocket, int tmp_id, XMLParser *&xmlParser)
+User::User(const int &idSocket, int tmp_id, Server *server)
 {
   _connected = false;
   _idSocket = idSocket;
   _id = tmp_id;
-  _xmlParser = xmlParser;
+  _server = server;
+  _user = this;
   std::cout << "Id is :: " << _id << "\n";
+
+
 }
 
 User::User(const User& oldUser)
@@ -61,7 +68,9 @@ User::User(const User& oldUser)
   _idSocket = oldUser._idSocket;
   _activeChat = oldUser._activeChat;
   _activeModule = oldUser._activeModule;
-  _xmlParser = oldUser._xmlParser;
+  _server = oldUser._server;
+
+
 }
 
 User::~User()

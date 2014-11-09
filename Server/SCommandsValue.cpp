@@ -1,5 +1,6 @@
 #include "SCommandsValue.hh"
 #include "dirent.h"
+#include "Server.hh"
 
 SCommandsValue::SCommandsValue()
 {
@@ -30,7 +31,8 @@ SCommandsValue::SCommandsValue()
   //methodPtr[25] = &ACommandsValue::requestCall;
   methodPtr[26] = &ACommandsValue::requestAnswer;
   //methodPtr[27] = &ACommandsValue::callAnswer;
-  _xmlParser = new XMLParser();
+  //  _xmlParser = new XMLParser();
+  _xmlParser = _user->get_server()->get_xmlParser();
 }
 
 SCommandsValue::~SCommandsValue() {
@@ -58,22 +60,24 @@ void		SCommandsValue::connect(std::vector<char *> chars, std::vector<int> ints)
 
   filename = chars[0];
   filename += ".xml";
-  // NEEKO remplir toutes les infos de UserInfo (sauf module & status) via le [id_login].xml (donc recup en parsan pour trouver le fichier via la login) + check en amont le psw -->> IL EST OU USERINFO ?
+  // envoie giraud_d et non giraud_d.44 donc parser le filename par trouver le bon fichier
   if (strcmp(chars[1], _xmlParser->getNodeValue(filename, "password").c_str()) == 0)
     std::cout << "Good passwd" << std::endl;
   else
     std::cout << "Wrong passwd" << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "login") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "password") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "birth") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "name") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "surname") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "nick") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "address") << std::endl;
-  std::cout << _xmlParser->getNodeValue(filename, "phone") << std::endl;
-  // what about surname dans UserInfo ?? /!\
-
+  _user->set_login(_xmlParser->getNodeValue(filename, "login"));
+  //std::cout << _xmlParser->getNodeValue(filename, "password");
+  _user->set_birth(_xmlParser->getNodeValue(filename, "birth"));
+  _user->set_name(_xmlParser->getNodeValue(filename, "name"));
+  _user->set_surname(_xmlParser->getNodeValue(filename, "surname"));
+  _user->set_nickname(_xmlParser->getNodeValue(filename, "nick"));
+  _user->set_adress(_xmlParser->getNodeValue(filename, "address"));
+  _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
   // DAM pile : status + module
+  // _user->set_status(char[2][0]);
+  // _user->set_module(chars[3][0]);
+  // 
+  
   std::cout << "test connect" << std::endl;
 }
 

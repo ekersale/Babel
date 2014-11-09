@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Sun Nov  9 03:46:12 2014 Damien Giraudet
+// Last update Sun Nov  9 14:33:02 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -19,7 +19,7 @@ bool	Server::newUser(void)
   if ((key = _network->acceptSocket()) == false)
     return (false);
   tmp_user--;
-  _users[tmp_user] = new User(key, tmp_user, _xmlParser);
+  _users[tmp_user] = new User(key, tmp_user, this);
   std::cout << "2/ Max fd id : " << _network->maxSocket()->get_socket() << "\n";
   // une connexion au serveur != une connexion d'un utilisateur donc activeChat & Module = 0
   std::cout << "New User : id : "  << tmp_user << "\n";
@@ -61,20 +61,20 @@ bool	Server::treatRecv(User *user)
   */
   
   IPacketInfo	*pa = new PacketInfo();
-  // CMD 1
-  // pa->setCmd(1);
-  // pa->pushChars("giraud_d.44");
-  // pa->pushChars("motdepassededamdam");
-  //  user->cmdVal(pa);
+  //CMD 1
+  pa->setCmd(1);
+  pa->pushChars("giraud_d.44");
+  pa->pushChars("mdpdepaddededamdam");
+  user->cmdVal(pa);
 
   //user->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
 
-  // CMD 2
-  // pa->setCmd(2);
-  // pa->pushChars("girard_k.37");
-  // pa->pushChars("login");
-  // pa->pushChars("mdp");
-  // user->cmdVal(pa);
+  //CMD 2
+  //pa->setCmd(2);
+  //pa->pushChars("giraud_d.44");
+  //pa->pushChars("giraud_d");
+  //pa->pushChars("mdpdepaddededamdam");
+  //user->cmdVal(pa);
 
   // CMD 4 à 11
   // pa->setCmd(11);
@@ -83,10 +83,10 @@ bool	Server::treatRecv(User *user)
   // user->cmdVal(pa);
 
   // CMD 20
-  pa->setCmd(20);
-  pa->pushChars("girard_k.37");
-  pa->pushChars("giraud_d");
-  user->cmdVal(pa);
+  //pa->setCmd(20);
+  //pa->pushChars("girard_k.37");
+  //pa->pushChars("giraud_d");
+  //user->cmdVal(pa);
 
   // CMD 22
   // pa->setCMd(22);

@@ -21,7 +21,6 @@ SOURCES +=      main.cpp        \
                 Packet.cpp      \
                 PacketInfo.cpp  \
                 Parser.cpp      \
-                SCommandsValue.cpp      \
                 Serialize.cpp   \
                 Server.cpp      \
                 ServerNetwork.cpp       \
@@ -31,12 +30,12 @@ SOURCES +=      main.cpp        \
                 XMLParser.cpp   \
                 ../Modules/Network/UClientInfo.cpp      \
                 ../Modules/Network/UNetwork.cpp         \
+                SCommandsValue.cpp      \
 
 
 HEADERS  +=     IPacket.hpp             \
                 IParser.hpp             \
                 PacketInfo.hh           \
-                SCommandsValue.hh       \
                 Server.hh               \
                 User.hh                 \
                 XMLParser.h             \
@@ -51,3 +50,4 @@ HEADERS  +=     IPacket.hpp             \
                 ../Includes/UClientInfo.hh               \
                 ../Includes/Network.hh                          \
                 ../Includes/INetwork.hh                         \
+                SCommandsValue.hh       \
