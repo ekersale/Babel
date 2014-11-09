@@ -9,7 +9,6 @@
 #define PACKETINFO_HH_
 
 #include "IPacketInfo.hpp"
-#include <vector>
 
 #include <iostream>
 class PacketInfo: public IPacketInfo {
