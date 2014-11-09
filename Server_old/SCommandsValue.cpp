@@ -2,7 +2,7 @@
 #include "dirent.h"
 #include "Server.hh"
 
-SCommandsValue::SCommandsValue(User *user)
+SCommandsValue::SCommandsValue()
 {
   methodPtr[1] = &ACommandsValue::connect;
   methodPtr[2] = &ACommandsValue::subscribe;
@@ -32,7 +32,6 @@ SCommandsValue::SCommandsValue(User *user)
   methodPtr[26] = &ACommandsValue::requestAnswer;
   //methodPtr[27] = &ACommandsValue::callAnswer;
   //  _xmlParser = new XMLParser();
-  _user = user;
   _xmlParser = _user->get_server()->get_xmlParser();
 }
 

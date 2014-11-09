@@ -6,10 +6,10 @@
 class Packet : public IPacket
 {
 public:
-	Packet(char, char *);
+	Packet(char, const char *);
 	~Packet();
-	char		getCommand(void);
-	char		*getData(void);
+	char		getCommand(void) const;
+	const char	*getData(void) const;
 private:
 	char		command;
 	char		data[64];

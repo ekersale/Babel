@@ -120,8 +120,8 @@ void UserInfo::set_module(char new_module)
 UserInfo::UserInfo()
 {
    _id = 0;
-   _status = 0;
-   _module = 0;
+   //   _status = 0;
+   //   _module = 0;
 }
 
 UserInfo::UserInfo(const UserInfo& oldUserInfo)
@@ -135,8 +135,8 @@ UserInfo::UserInfo(const UserInfo& oldUserInfo)
    _nickname = oldUserInfo._nickname;
    _adress = oldUserInfo._adress;
    _phone = oldUserInfo._phone;
-   _status = oldUserInfo._status;
-   _module = oldUserInfo._module;
+   //   _status = oldUserInfo._status;
+   //   _module = oldUserInfo._module;
 }
 
 UserInfo::~UserInfo()

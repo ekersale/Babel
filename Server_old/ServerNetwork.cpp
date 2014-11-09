@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Sun Nov  9 19:47:35 2014 Damien Giraudet
+// Last update Sun Nov  9 14:33:02 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -65,7 +65,7 @@ bool	Server::treatRecv(User *user)
   pa->setCmd(1);
   pa->pushChars("giraud_d.44");
   pa->pushChars("mdpdepaddededamdam");
-  user->get_commandsValue()->cmdVal(pa);
+  user->cmdVal(pa);
 
   //user->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
 
