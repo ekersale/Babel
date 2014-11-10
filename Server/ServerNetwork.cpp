@@ -81,14 +81,14 @@ bool	Server::treatRecv(User *user)
   // user->get_commandsValue()->cmdVal(pa);
 
   // CMD 20
-  pa->setCmd(20);
-  pa->pushChars("girard_k");
-  user->get_commandsValue()->cmdVal(pa);
+  // pa->setCmd(20);
+  // pa->pushChars("girard_k");
+  // user->get_commandsValue()->cmdVal(pa);
 
   // CMD 22
-  // pa->setCmd(22);
-  // pa->getInts().push_back(37);
-  // user->get_commandsValue()->cmdVal(pa);
+  pa->setCmd(22);
+  pa->getInts().push_back(37);
+  user->get_commandsValue()->cmdVal(pa);
 
   //std::cout << "Char * : " << _network->get_buffer() << "\n";
   // map ptr sur fct

@@ -134,24 +134,32 @@ std::vector<int>					XMLParser::getClients(std::string filename)
 
 bool							XMLParser::removeChild(std::string filename, std::string value)
 {
-  QDomElement					dom_elem;
-  QDomNode					node;
-  
-  if (openFile(filename) == false)
-    return (false);
-  dom_elem = getDoc().documentElement();
-  node = dom_elem.firstChildElement("contacts").firstChild();
-  while (!node.isNull())
+  std::string				path;
+  path = PATH;
+  path += filename;
+  std::ofstream				outFile("../XML_file/temp.xml");
+  std::fstream				readFile(path.c_str(), std::fstream::in);
+  std::string				line;
+
+  if (outFile.fail())
     {
-      QDomElement	elem;
-      
-      elem = node.toElement();
-      if (strcmp(elem.text().toStdString().c_str(), value.c_str()) == 0)
-	{
-	  node.parentNode().removeChild(node);
-	}
-      node = node.nextSibling();
+      print_error(" Ouverture temp.xml ");
+      return (false);
     }
+  if (readFile.fail())
+    {
+      print_error(" Lecture temp.xml ");
+      return (false);
+    }
+  while (std::getline(readFile, line))
+    {
+      if (line.find("<id>" + value + "</id>") == std::string::npos)
+	outFile << line << std::endl;
+    }
+  readFile.close();
+  outFile.close();
+  removeFile(path);
+  renameFile("../XML_file/temp.xml", path);
   return (true);
 }
 

@@ -330,7 +330,6 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
   filename = getFilename(_user->get_login());
   friendfilename = getFilename(chars[0]);
   _xmlParser->addChildToParent(filename, "contacts", "id", intToStdString(getIdFromLogin(chars[0])));
-  _xmlParser->addChildToParent(filename, "contacts", "id", intToStdString(getIdFromLogin(chars[0])));
   _xmlParser->addChildToParent(friendfilename, "contacts", "id", intToStdString(getIdFromLogin(_user->get_login())));
 
   // NEKKO add le nouveau contact dans [id_login].xml du user + add contact id dans celui qui vient d'etre add 
@@ -345,7 +344,8 @@ void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   friendfilename = getFilenameById(ints[0]);  
-  //  _xmlParser->removeChild(filename, intToStdString(ints[0]));
+  _xmlParser->removeChild(filename, intToStdString(ints[0]));
+  _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
 }
 
 void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)
