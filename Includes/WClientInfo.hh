@@ -10,7 +10,10 @@
 
 #include	<Windows.h>
 #include	<sys/types.h>
+#ifdef _WIN32
+#else
 #include	<unistd.h>
+#endif
 #include	<stdlib.h>
 #include	<string.h>
 #include	<string>

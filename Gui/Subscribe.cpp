@@ -27,6 +27,7 @@ bool		Subscribe::init()
 {
     setFixedSize(1080, 929);
     load();
+	return (true);
 }
 
 void    Subscribe::load()
