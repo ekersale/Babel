@@ -399,14 +399,50 @@ void			Home::setThread(void *ptr)
   connect((ThreadCom *)ptr, SIGNAL(s_changeBirth(std::vector<const char *>, std::vector<int>)), this, SLOT(actionBirth(std::vector<const char *>, std::vector<int>)));
   connect((ThreadCom *)ptr, SIGNAL(s_contactModule(std::vector<const char *>, std::vector<int>)), this, SLOT(setModule(std::vector<const char *>, std::vector<int>)));
   connect((ThreadCom *)ptr, SIGNAL(s_changeSurname(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  /*connect((ThreadCom *)ptr, SIGNAL(s_changeName(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
+ connect((ThreadCom *)ptr, SIGNAL(s_changeName(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_changeAddress(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_changePhone(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_addAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_removeRequest(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_removeAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_requestCall(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));*/
+  connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
+}
+
+
+void		Home::setRemoveRequest(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::setRemoveAnswer(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::setCallRequest(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::setCallAnswer(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::actionNick(std::vector<const char *> value, std::vector<int> id)
+{
+	std::map<int, UserInfo *>::iterator it;
+	if ((it = _musers.find(id[0])) == _musers.end()) {
+		UserInfo *info = new UserInfo;
+		info->set_id = id[0];
+		info->set_nickname(value[0]);
+		_musers[id[0]] = info;
+	}
+	else {
+		UserInfo *tmp = _musers[id[0]];
+		tmp->set_nickname(value[0]);
+	}
 }
 
 void		Home::actionNick(std::vector<const char *> value, std::vector<int> id)

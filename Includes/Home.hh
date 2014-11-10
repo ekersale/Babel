@@ -77,7 +77,10 @@ public:
 	void				  actionStatus(std::vector<const char *>, std::vector<int>);
 	void				  actionBirth(std::vector<const char *>, std::vector<int>);
 	void				  setModule(std::vector<const char *>, std::vector<int>);
-
+	void				  setCallAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setCallRequest(std::vector<const char *>, std::vector<int>);
+	void				  setRemoveAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setRemoveRequest(std::vector<const char *>, std::vector<int>);
 private:
 	Ui::Home *            ui;
 	ABabelSound           sound;
