@@ -1,20 +1,38 @@
-#include    "../Includes/IGui.hh"
-#include    "../Includes/Connection.hh"
-#include    "../Includes/Subscribe.hh"
-#include    "../Includes/Home.hh"
+#include	"IGui.hh"
+#include	"Connection.hh"
+#include	"Subscribe.hh"
+#include	"Home.hh"
+#include	"Network.hh"
 
 #ifdef		_WIN32
-#include	<QCryptographicHash>
-#else
 #include	<QtCore/QCryptographicHash>
+#else
+#include	<QCryptographicHash>
 #endif
 #include	 <iostream>
 
 #include    "ui_Connection.h"
 
+
 Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connection)
 {
-    init();
+  _allowOpen = true;
+  thread = new QThread;
+  ThreadCom *_com;
+  _com = new ThreadCom();
+  ptr = _com;
+  this->network = ((ThreadCom *)ptr)->getNetwork();
+  
+  connect(_com, SIGNAL(displayError(QString)), this, SLOT(boxError(QString)));
+  connect(_com, SIGNAL(s_authAnswer(std::vector<const char *>, std::vector<int>)), this,
+	  SLOT(handleAuth(std::vector<const char *>, std::vector<int>)));
+  
+  ((ThreadCom *)ptr)->connectServer();
+  _com->moveToThread(thread);
+  connect(thread, SIGNAL(started()), _com, SLOT(run()));
+  thread->connect(_com, SIGNAL(finished()), SLOT(quit()));
+  thread->start();
+  init();
 }
 
 Connection::~Connection()
@@ -25,32 +43,43 @@ Connection::~Connection()
 
 void Connection::connection()
 {
-    if (ui->_lineLogin->text().isEmpty())
+  IPacketInfo	*packet_info;
+  
+  if (ui->_lineLogin->text().isEmpty())
     {
       QMessageBox::critical(this,"Warning", "You must enter a valid login");
       return;
     }
-
-   if (ui->_linePassword->text().isEmpty())
+  else if (ui->_linePassword->text().isEmpty())
     {
       QMessageBox::critical(this,"Warning", "You must enter a valid password");
       return;
     }
+  else
+    {
+      if ((network->sendSocket(1, (void *)"test", 5) == false))
+	{
+	  std::cerr << "Fail with Sendsocket " << std::endl;
+	  return;
+	}
+      
+    }
+  
+  
    
    
-   std::string		test;
-   QCryptographicHash	md5Generator(QCryptographicHash::Sha1);
-   
-   md5Generator.addData(ui->_linePassword->text().toStdString().c_str());
-   
-   //test.append(md5Generator.result());
-   test.append(md5Generator.result().toHex());
-   
-   std::cout  << test << std::endl;
-   
-   Home *page = new Home;
-   page->show();
-   this->hide();
+}
+
+void Connection::handleAuth(std::vector<const char *> tableauCmd, std::vector<int>tableauParams)
+{
+  if ((tableauCmd.size()) > 0)  
+    std::cout << "Tableau contient quelque chose " << std::endl;
+  // if (auth -> accepted)
+  Home *page = new Home();
+  page->show();
+  this->hide();
+  //else
+  //display error message
 }
 
 void    Connection::subscribe()
@@ -61,10 +90,16 @@ void    Connection::subscribe()
     this->hide();
 }
 
-void    Connection::init()
+bool    Connection::init()
 {
+  if (_allowOpen == false)
+    return (false);
+  else {
     setFixedSize(1080, 929);
     load();
+    return (true);
+  }
+  return (true);
 }
 
 void    Connection::load()
@@ -76,6 +111,12 @@ void    Connection::load()
     QObject::connect(ui->_btnSubscribe, SIGNAL(clicked()), this, SLOT(subscribe()));
     QObject::connect(ui->_lineLogin, SIGNAL(returnPressed()), this, SLOT(connection()));
     QObject::connect(ui->_linePassword, SIGNAL(returnPressed()), this, SLOT(connection()));
+}
+
+void	Connection::boxError(QString msg)
+{
+	QMessageBox::critical(this, "Error", msg);
+	_allowOpen = false;
 }
 
 void    Connection::destroy()

@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
     IGui    *gui;
 
     gui = new Connection;
-    gui->init();
     
+    if (gui->init() == false)
+      return (-1);
     return a.exec();
 }

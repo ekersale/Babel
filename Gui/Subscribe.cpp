@@ -23,7 +23,7 @@ Subscribe::~Subscribe()
   delete ui;
 }
 
-void    Subscribe::init()
+bool		Subscribe::init()
 {
     setFixedSize(1080, 929);
     load();

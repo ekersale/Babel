@@ -6,10 +6,18 @@
 #ifdef		_WIN32
 #include    <QtWidgets/QMainWindow>
 #include    <QtWidgets/QMessageBox>
+#include	<QtCore/QString>
+#include	<QtCore/QTimer>
+#include	<QtCore/QThread>
 #else
 #include    <QMainWindow>
 #include    <QMessageBox>
+#include	<QString>
+#include	<QTimer>
+#include	<QThread>
 #endif
+
+#include "ThreadCom.hh"
 
 namespace Ui {
 class Connection;
@@ -17,22 +25,28 @@ class Connection;
 
 class Connection : public QMainWindow, public IGui
 {
-    Q_OBJECT
+  Q_OBJECT
 
-
+  QThread *thread;
 public:
-    explicit Connection(QWidget *parent = 0);
-    ~Connection();
-    void    init();
-    void    load();
-    void    destroy();
+  explicit Connection(QWidget *parent = 0);
+  ~Connection();
+  bool    init();
+  void    load();
+  void    destroy();
 
 private slots:
-    void    connection();
-    void    subscribe();
-
+  void    connection();
+  void    subscribe();
+  void	boxError(QString);
+  void	handleAuth(std::vector<const char *>, std::vector<int>);
+  
 private:
-    Ui::Connection *ui;
+  Ui::Connection *ui;
+  void *ptr;
+  QTimer *timer;
+  Network	*network;
+  bool _allowOpen;
 };
 
 #endif // CONNECTION_H
