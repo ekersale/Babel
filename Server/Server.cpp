@@ -122,6 +122,7 @@ Server::Server()
    _network = NULL;
    _xmlParser = NULL;
    _parser = NULL;
+   tmp_user = 0;
 }
 
 Server::Server(const Server& oldServer)

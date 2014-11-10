@@ -14,9 +14,9 @@
 class PacketInfo: public IPacketInfo {
 public:
 	PacketInfo();
-	virtual ~PacketInfo();
-	const std::vector<const char*>& getChars() const;
-	const std::vector<int>& getInts() const;
+  virtual ~PacketInfo();
+  const std::vector<const char*>& getChars() const;
+  std::vector<int>& getInts();
   // void setChars(const std::vector<char*>& chars);
 	void pushChars(const char *);
 	void pushInts(const char *);

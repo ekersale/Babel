@@ -132,6 +132,29 @@ std::vector<int>					XMLParser::getClients(std::string filename)
   return (vec);
 }
 
+bool							XMLParser::removeChild(std::string filename, std::string value)
+{
+  QDomElement					dom_elem;
+  QDomNode					node;
+  
+  if (openFile(filename) == false)
+    return (false);
+  dom_elem = getDoc().documentElement();
+  node = dom_elem.firstChildElement("contacts").firstChild();
+  while (!node.isNull())
+    {
+      QDomElement	elem;
+      
+      elem = node.toElement();
+      if (strcmp(elem.text().toStdString().c_str(), value.c_str()) == 0)
+	{
+	  node.parentNode().removeChild(node);
+	}
+      node = node.nextSibling();
+    }
+  return (true);
+}
+
 void							XMLParser::createBalise(std::ofstream &stream, std::string balise)
 {
   stream << balise << std::endl;
@@ -143,7 +166,7 @@ bool							XMLParser::addChildToParent(std::string filename, std::string parent,
   std::string				path;
   path = PATH;
   path += filename;
-  std::ofstream				outFile("../../XML_file/temp.xml");
+  std::ofstream				outFile("../XML_file/temp.xml");
   std::fstream				readFile(path.c_str(), std::fstream::in);
   std::string				line;
   std::string				openBalise;
@@ -183,7 +206,7 @@ bool							XMLParser::addChildToParent(std::string filename, std::string parent,
     readFile.close();
     outFile.close();
     removeFile(path);
-    renameFile("../../XML_file/temp.xml", path);
+    renameFile("../XML_file/temp.xml", path);
     return (true);
 }
 
@@ -220,7 +243,7 @@ bool						XMLParser::updateNode(std::string filename, std::string node, std::str
   std::string		path;
   path = PATH;
   path += filename;
-  std::ofstream		outFile("../../XML_file/temp.xml");
+  std::ofstream		outFile("../XML_file/temp.xml");
   std::fstream		readFile(path.c_str(), std::fstream::in);
   std::string		line;
   std::string		openBalise;
@@ -257,7 +280,7 @@ bool						XMLParser::updateNode(std::string filename, std::string node, std::str
   readFile.close();
   outFile.close();
   removeFile(path);
-  renameFile("../../XML_file/temp.xml", path);
+  renameFile("../XML_file/temp.xml", path);
   return true;
 }
 

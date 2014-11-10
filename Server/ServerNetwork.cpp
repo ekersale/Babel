@@ -61,38 +61,34 @@ bool	Server::treatRecv(User *user)
   */
   
   IPacketInfo	*pa = new PacketInfo();
-  //CMD 1
-  pa->setCmd(1);
-  pa->pushChars("giraud_d.44");
-  pa->pushChars("mdpdepaddededamdam");
-  user->get_commandsValue()->cmdVal(pa);
+  // CMD 1
+  // pa->setCmd(1);
+  // pa->pushChars("giraud_d");
+  // pa->pushChars("mdpdepaddededamdam");
+  // user->get_commandsValue()->cmdVal(pa);
 
   //user->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
 
-  //CMD 2
-  //pa->setCmd(2);
-  //pa->pushChars("giraud_d.44");
-  //pa->pushChars("giraud_d");
-  //pa->pushChars("mdpdepaddededamdam");
-  //user->cmdVal(pa);
+  // CMD 2
+  // pa->setCmd(2);
+  // pa->pushChars("giraud_d");
+  // pa->pushChars("mdpdepaddededamdam");
+  // user->get_commandsValue()->cmdVal(pa);
 
   // CMD 4 à 11
   // pa->setCmd(11);
-  // pa->pushChars("giraud_d.44");
-  // pa->pushChars("newphone");
-  // user->cmdVal(pa);
+  // pa->pushChars("0708091011");
+  // user->get_commandsValue()->cmdVal(pa);
 
   // CMD 20
-  //pa->setCmd(20);
-  //pa->pushChars("girard_k.37");
-  //pa->pushChars("giraud_d");
-  //user->cmdVal(pa);
+  pa->setCmd(20);
+  pa->pushChars("girard_k");
+  user->get_commandsValue()->cmdVal(pa);
 
   // CMD 22
-  // pa->setCMd(22);
-  // pa->pushChars("girard_k.37");
-  // pa->pushChars("giraud_d");
-  // user->cmdVal(pa);
+  // pa->setCmd(22);
+  // pa->getInts().push_back(37);
+  // user->get_commandsValue()->cmdVal(pa);
 
   //std::cout << "Char * : " << _network->get_buffer() << "\n";
   // map ptr sur fct
