@@ -100,7 +100,7 @@ std::map<int, User *>& Server::get_users() { // getter & setter
   return (_users);
 }
 
-void  Server::pushToSend(int id_socket, IPacket *&packet)
+void  Server::pushToSend(int id_socket, IPacket *packet)
 {
   ToSend	toPush; // un new ?
 

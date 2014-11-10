@@ -5,103 +5,78 @@
  * Purpose: Implementation of the class UserAction
  ***********************************************************************/
 
-#include "UserAction.hh"
+#include "User.hh"
+#include "Server.hh"
 
-void UserAction::authAnswer(char &ret_val) {
-  /*
-  PacketInfo	ret;
+void User::authAnswer(char ret_val) {
+  IPacketInfo	*packet_info;
 
-  ret.setCmd(3);
-  ret.
-
-  pushToSend();
-  */
+  packet_info = new PacketInfo();
+  packet_info->setCmd(3);
+  packet_info->getChars().push_back(&ret_val);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
+  if (ret_val == 0)
+    connectContactLoop();
 }
 
-void UserAction::connectContactLoop(void) {
-
-}
-
-void UserAction::contactLoop(int &) {
-
-}
-
-void UserAction::contactNick(int &) {
+void User::connectContactLoop(void) {
 
 }
 
-void UserAction::contactStatus(int &) {
-
+void User::contactLoop(int id_socket) {
+  contactCmd(12, _nickname, id_socket);
+  contactCmd(13, (std::string)&_status, id_socket);
+  contactCmd(14, _birth, id_socket);
+  contactCmd(15, (std::string)&_module, id_socket);
+  contactCmd(16, _surname, id_socket);
+  contactCmd(17, _name, id_socket);
+  contactCmd(18, _address, id_socket);
+  contactCmd(19, _phone, id_socket);
 }
 
-void UserAction::contactBirth(int &) {
+void	User::contactCmd(int cmd, const std::string val, int id_socket)
+{
+  IPacketInfo	*packet_info;
 
-}
-
-void UserAction::contactModule(int &) {
-
-}
-
-void UserAction::contactSurname(int &) {
-
-}
-
-void UserAction::contactName(int &) {
-
-}
-
-void UserAction::contactAddress(int &) {
-
-}
-
-void UserAction::contactPhone(int &) {
-
+  packet_info = new PacketInfo();
+  packet_info->setCmd(cmd);
+  packet_info->getChars().push_back(val.c_str());
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
  
-void UserAction::removeAnswer(char &) {
+void User::removeAnswer(char &) {
 
 }
 
-void UserAction::removeRequest(int &) {
+void User::removeRequest(int) {
 
 }
 
-void UserAction::addAnswer(char &) {
+void User::addAnswer(char) {
 
 }
 
 /*
-bool UserAction::startCall(void)
+bool User::startCall(void)
 {
    // TODO : implement
 }
 
-bool UserAction::endCall(void)
+bool User::endCall(void)
 {
    // TODO : implement
 }
 */
-void UserAction::isConnected(void) {
+void User::isConnected(void) {
   _connected = true;
 }
 
-void UserAction::isDisconnected(void) {
+void User::isDisconnected(void) {
   _connected = false;
 }
 
-bool UserAction::getConnected(void) const {
+bool User::getConnected(void) const {
   return (_connected);
-}
-
-UserAction::UserAction()
-{
-}
-
-UserAction::UserAction(const UserAction& oldUserAction)
-{
-}
-
-UserAction::~UserAction()
-{
-   // TODO : implement
 }

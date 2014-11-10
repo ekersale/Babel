@@ -44,7 +44,6 @@ HEADERS  +=     ../Includes/IPacket.hpp             \
                 ../Includes/Packet.hh               \
                 ../Includes/Parser.hh               \
                 ../Includes/Serialize.hh            \
-                ../Includes/UserAction.hh           \
                 ../Includes/UserInfo.hh             \
                 ../Includes/ACommandsValue.hpp      \
                 ../Includes/UClientInfo.hh          \

@@ -14,7 +14,7 @@ PacketInfo::PacketInfo() {
 	_cmd = 0;
 }
 
-const std::vector<const char*>& PacketInfo::getChars() const {
+std::vector<const char*>& PacketInfo::getChars() {
 	return _chars;
 }
 

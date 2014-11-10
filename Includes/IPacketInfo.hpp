@@ -13,7 +13,7 @@
 class IPacketInfo {
 public:
 	virtual ~IPacketInfo() {};
-	virtual const std::vector<const char*>& getChars() const = 0;
+	virtual std::vector<const char*>& getChars() = 0;
 	virtual std::vector<int>& getInts() = 0;
   	virtual void pushChars(const char *) = 0;
   	virtual void pushInts(const char *) = 0;

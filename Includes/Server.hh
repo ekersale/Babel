@@ -53,7 +53,7 @@ void	recvIsSet(fd_set &setfd);
   bool treatRecv(User *);
   bool newUser(void);
   int	init(void);
-  void  pushToSend(int, IPacket *&);
+  void  pushToSend(int, IPacket *);
   std::map<int, User *> &get_users(); // getter & setter
    Server();
    Server(const Server& oldServer);

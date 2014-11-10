@@ -9,7 +9,6 @@
 #define __Server_User_hh
 
 #include "XMLParser.hh"
-#include "UserAction.hh"
 #include "UserInfo.hh"
 #include "SCommandsValue.hh"
 #include "Parser.hh"
@@ -17,7 +16,7 @@
 
 class Server;
 
-class User : public UserAction, public UserInfo
+class User : public UserInfo
 {
 public:
   void print_error(void) const;
@@ -30,6 +29,21 @@ public:
   Server *&get_server();
   ACommandsValue *&get_commandsValue();
 
+  void authAnswer(char);
+  void connectContactLoop(void);
+  void contactLoop(int);
+  void contactCmd(int, const std::string, int);
+  void removeAnswer(char &);
+  void removeRequest(int);
+  void addAnswer(char);
+  /*
+   void startCall(void);
+   void endCall(void);
+  */
+  virtual void isConnected(void);
+  virtual void isDisconnected(void);
+  bool getConnected(void) const;
+
   User();
   User(const int &idSocket, int tmp_id, Server *server);
   User(const User& oldUser);
@@ -41,6 +55,7 @@ protected:
   char _activeModule;
   Server *_server;
   ACommandsValue *_commandsValue;
+  bool		_connected;
 private:
 };
 

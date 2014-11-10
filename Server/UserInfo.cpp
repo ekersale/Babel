@@ -42,9 +42,9 @@ std::string UserInfo::get_nickname(void) const
    return _nickname;
 }
 
-std::string UserInfo::get_adress(void) const
+std::string UserInfo::get_address(void) const
 {
-   return _adress;
+   return _address;
 }
 
 std::string UserInfo::get_phone(void) const
@@ -97,9 +97,9 @@ void UserInfo::set_nickname(std::string new_nickname)
    _nickname = new_nickname;
 }
 
-void UserInfo::set_adress(std::string new_adress)
+void UserInfo::set_adress(std::string new_address)
 {
-   _adress = new_adress;
+   _address = new_address;
 }
 
 void UserInfo::set_phone(std::string new_phone)
@@ -133,7 +133,7 @@ UserInfo::UserInfo(const UserInfo& oldUserInfo)
    _name = oldUserInfo._name;
    _surname = oldUserInfo._surname;
    _nickname = oldUserInfo._nickname;
-   _adress = oldUserInfo._adress;
+   _address = oldUserInfo._address;
    _phone = oldUserInfo._phone;
    _status = oldUserInfo._status;
    _module = oldUserInfo._module;

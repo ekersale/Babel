@@ -15,7 +15,7 @@ public:
   virtual std::string	get_name(void) const;
   virtual std::string	get_surname(void) const;
   virtual std::string	get_nickname(void) const;
-  virtual std::string	get_adress(void) const;
+  virtual std::string	get_address(void) const;
   virtual char		get_status(void) const;
   virtual char		get_module(void) const;
   virtual std::string	get_login(void) const;
@@ -39,7 +39,7 @@ protected:
   std::string		_name;
   std::string		_surname;
   std::string		_nickname;
-  std::string		_adress;
+  std::string		_address;
   char			_status;
   char			_module;
   std::string		_login;

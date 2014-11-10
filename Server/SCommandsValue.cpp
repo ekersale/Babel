@@ -160,35 +160,41 @@ std::string	SCommandsValue::intToStdString(int nb)
   return (toStr.str());
 }
 
+#define		RET_OK	0
+#define		RET_WRONG_LOG  1
+#define		RET_WRONG_PSW	2
+
 void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> ints)
 {
-  std::string filename;
+  std::string	filename;
+  int		id;
 
   filename = getFilename(chars[0]);
-  std::cout << "ID = " << getIdFromLogin(chars[0]) << std::endl;
-  // envoie giraud_d et non giraud_d.44 donc parser le filename par trouver le bon fichier
+  if ((id = getIdFromLogin(chars[0])) == -1)
+    {
+      _user->authAnswer((char)RET_WRONG_LOG);
+      return ;
+    }
+  std::cout << "ID = " << id << std::endl;
   if (strcmp(chars[1], _xmlParser->getNodeValue(filename, "password").c_str()) == 0)
     {
       std::cout << "Good passwd" << std::endl;
       _user->set_psw(_xmlParser->getNodeValue(filename, "password"));
       _user->set_login(_xmlParser->getNodeValue(filename, "login"));
-      //  std::cout << _xmlParser->getNodeValue(filename, "password");
-      //      _user->set_id(_xmlParser->getNodeValue(filename));
       _user->set_birth(_xmlParser->getNodeValue(filename, "birth"));
       _user->set_name(_xmlParser->getNodeValue(filename, "name"));
       _user->set_surname(_xmlParser->getNodeValue(filename, "surname"));
       _user->set_nickname(_xmlParser->getNodeValue(filename, "nick"));
       _user->set_adress(_xmlParser->getNodeValue(filename, "address"));
       _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
-      // DAM pile : status + module
-      // _user->set_status(char[2][0]);
-      // _user->set_module(chars[3][0]);
-      //
-      // _user->get_server()->get_users().erase(_user->get_id());
-      // _user->get_server()->get_users()[  --true_id--  ] = _user;
+      _user->set_status(chars[2][0]);
+      _user->set_module(chars[3][0]);
+      _user->get_server()->get_users().erase(_user->get_id());
+      _user->get_server()->get_users()[id] = _user;
+      _user->authAnswer((char)RET_OK);
     }
   else
-    std::cout << "Wrong passwd" << std::endl;
+    _user->authAnswer((char)RET_WRONG_PSW);
 }
 
 void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int> ints)
