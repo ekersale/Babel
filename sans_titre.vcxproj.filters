@@ -91,6 +91,9 @@
     <ClCompile Include="Gui\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\UserInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\ACommandsValue.hpp">
@@ -173,6 +176,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_Subscribe.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UserInfo.hh">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

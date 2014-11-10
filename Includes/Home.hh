@@ -14,12 +14,13 @@
 #endif
 #include                <vector>
 #include                <iostream>
+#include				<map>
 
 #include                "Network.hh"
 #include                "BabelSound.hh"
 #include                "BabelEncoder.hh"
-
-#include                "../Includes/OpenCV.hh"
+#include                "OpenCV.hh"
+#include				"UserInfo.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
 //#define SERV_ADDR_IP  "127.0.0.1"                                                                                    
@@ -80,6 +81,7 @@ private:
   e_type                _status;
   bool                  _isOncall;
   OpenCV *              _video;
+  std::map<int, UserInfo *> _musers;
 };
 
 #endif // HOME_H
