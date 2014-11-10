@@ -25,7 +25,7 @@
 #include                "OpenCV.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
-//#define SERV_ADDR_IP  "127.0.0.1"                                                                                    
+//#define SERV_ADDR_IP  "127.0.0.1"
 
 namespace               Ui
 {
@@ -54,10 +54,10 @@ public:
 	void                  defineStatus(e_type newStatus);
 	bool                  isOncall(void);
 	void                  setOncall(bool available);
-	void			setThread(void *ptr);
+	void				  setThread(void *ptr);
+	void                  addContact(UserInfo *);
 
 	private slots:
-	void                  addContact(void);
 	void                  invitContact(void);
 	void                  callContact(void);
 	void                  videoCallContact(void);
@@ -71,6 +71,8 @@ public:
 	void                  recvFrameFrom(void);
 	void                  threadReceive(void);
 	void                  threadCall(void);
+	void				  sendAddContact();
+	void				  contactClick();
 
 	public slots:
 	void				  setNick(std::vector<const char *>, std::vector<int>);
@@ -101,7 +103,10 @@ private:
 	bool                  _isOncall;
 	OpenCV *              _video;
 	std::map<int, UserInfo *> _musers;
+	std::map<int, t_contact *> _bcontact;
 	void			*_com;
+	QPushButton			  *_pushtmp;
+	int					 _activeUser;
 };
 
 #endif // HOME_H
