@@ -15,10 +15,16 @@
 #define	VERSION		"0.0.0"
 
 #include <sys/select.h>
+#include	<queue>
 #include	<string>
 #include	<map>
 #include	"User.hh"
 #include	"Serialize.hh"
+
+struct	ToSend {
+  IPacket	*_packet;
+  int		_id_socket;
+};
 
 class Server
 {
@@ -47,6 +53,7 @@ void	recvIsSet(fd_set &setfd);
   bool treatRecv(User *);
   bool newUser(void);
   int	init(void);
+  void  pushToSend(int, IPacket *&);
   std::map<int, User *> &get_users(); // getter & setter
    Server();
    Server(const Server& oldServer);
@@ -61,9 +68,9 @@ private:
   IParser *_parser;
   Serialize *_serialize;
    std::map<std::string, int> _idUsers;
+  std::queue<ToSend> _toSend;
 
 int tmp_user;
-
 };
 
 #endif

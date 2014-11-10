@@ -7,66 +7,70 @@
 
 #include "UserAction.hh"
 
-bool UserAction::subscribe(void)
-{
-   // TODO : implement
+void UserAction::authAnswer(char &ret_val) {
+  /*
+  PacketInfo	ret;
+
+  ret.setCmd(3);
+  ret.
+
+  pushToSend();
+  */
 }
 
-bool UserAction::connect(void)
-{
-   // TODO : implement
+void UserAction::connectContactLoop(void) {
+
 }
 
-bool UserAction::changeNick(void)
-{
-   // TODO : implement
+void UserAction::contactLoop(int &) {
+
 }
 
-bool UserAction::changeStatus(void)
-{
-   // TODO : implement
+void UserAction::contactNick(int &) {
+
 }
 
-bool UserAction::changeBirth(void)
-{
-   // TODO : implement
+void UserAction::contactStatus(int &) {
+
 }
 
-bool UserAction::changeModule(void)
-{
-   // TODO : implement
+void UserAction::contactBirth(int &) {
+
 }
 
-bool UserAction::changeSurname(void)
-{
-   // TODO : implement
+void UserAction::contactModule(int &) {
+
 }
 
-bool UserAction::changeName(void)
-{
-   // TODO : implement
+void UserAction::contactSurname(int &) {
+
 }
 
-bool UserAction::changeAddress(void)
-{
-   // TODO : implement
+void UserAction::contactName(int &) {
+
 }
 
-bool UserAction::changePhone(void)
-{
-   // TODO : implement
+void UserAction::contactAddress(int &) {
+
 }
 
-bool UserAction::addContact(void)
-{
-   // TODO : implement
+void UserAction::contactPhone(int &) {
+
+}
+ 
+void UserAction::removeAnswer(char &) {
+
 }
 
-bool UserAction::rmContact(void)
-{
-   // TODO : implement
+void UserAction::removeRequest(int &) {
+
 }
 
+void UserAction::addAnswer(char &) {
+
+}
+
+/*
 bool UserAction::startCall(void)
 {
    // TODO : implement
@@ -76,7 +80,7 @@ bool UserAction::endCall(void)
 {
    // TODO : implement
 }
-
+*/
 void UserAction::isConnected(void) {
   _connected = true;
 }
