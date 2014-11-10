@@ -19,15 +19,10 @@
 #include                "Network.hh"
 #include                "BabelSound.hh"
 #include                "BabelEncoder.hh"
-<<<<<<< HEAD
 #include                "OpenCV.hh"
 #include				"UserInfo.hh"
-=======
-
-#include		"ThreadCom.hh"
-
-#include                "../Includes/OpenCV.hh"
->>>>>>> 4e49177b2cb682479725d6d39c58b551c7f0d71b
+#include				"ThreadCom.hh"
+#include                "OpenCV.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
 //#define SERV_ADDR_IP  "127.0.0.1"                                                                                    
