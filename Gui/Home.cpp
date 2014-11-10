@@ -394,22 +394,22 @@ void    Home::recvFrameFrom(void)
 void			Home::setThread(void *ptr)
 {
   _com = (ThreadCom *)ptr;
-  connect((ThreadCom *)ptr, SIGNAL(s_changeNick(std::vector<const char *>, std::vector<int>)), this, SLOT(actionNick(std::vector<const char *>, std::vector<int>)));
-  connect((ThreadCom *)ptr, SIGNAL(s_changeStatus(std::vector<const char *>, std::vector<int>)), this, SLOT(actionStatus(std::vector<const char *>, std::vector<int>)));
-  connect((ThreadCom *)ptr, SIGNAL(s_changeBirth(std::vector<const char *>, std::vector<int>)), this, SLOT(actionBirth(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_changeNick(std::vector<const char *>, std::vector<int>)), this, SLOT(setNick(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_changeStatus(std::vector<const char *>, std::vector<int>)), this, SLOT(setStatus(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_changeBirth(std::vector<const char *>, std::vector<int>)), this, SLOT(setBirth(std::vector<const char *>, std::vector<int>)));
   connect((ThreadCom *)ptr, SIGNAL(s_contactModule(std::vector<const char *>, std::vector<int>)), this, SLOT(setModule(std::vector<const char *>, std::vector<int>)));
-  connect((ThreadCom *)ptr, SIGNAL(s_changeSurname(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  /*connect((ThreadCom *)ptr, SIGNAL(s_changeName(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_changeAddress(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_changePhone(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_addAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
+  connect((ThreadCom *)ptr, SIGNAL(s_changeSurname(std::vector<const char *>, std::vector<int>)), this, SLOT(setSurname(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_changeName(std::vector<const char *>, std::vector<int>)), this, SLOT(setName(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_changeAddress(std::vector<const char *>, std::vector<int>)), this, SLOT(setAdress(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_changePhone(std::vector<const char *>, std::vector<int>)), this, SLOT(setPhone(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_addAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setAddAnswer(std::vector<const char *>, std::vector<int>)));
   connect((ThreadCom *)ptr, SIGNAL(s_removeRequest(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_removeAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
   connect((ThreadCom *)ptr, SIGNAL(s_requestCall(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));*/
+  connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
 }
 
-void		Home::actionNick(std::vector<const char *> value, std::vector<int> id)
+void		Home::setNick(std::vector<const char *> value, std::vector<int> id)
 {
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
@@ -424,7 +424,7 @@ void		Home::actionNick(std::vector<const char *> value, std::vector<int> id)
 	}
 }
 
-void		Home::actionStatus(std::vector<const char *> value, std::vector<int> id)
+void		Home::setStatus(std::vector<const char *> value, std::vector<int> id)
 {
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
@@ -439,7 +439,7 @@ void		Home::actionStatus(std::vector<const char *> value, std::vector<int> id)
 	}
 }
 
-void		Home::actionBirth(std::vector<const char *> value, std::vector<int> id)
+void		Home::setBirth(std::vector<const char *> value, std::vector<int> id)
 {
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
@@ -469,3 +469,67 @@ void		Home::setModule(std::vector<const char *> value, std::vector<int> id)
 	}
 }
 
+void		Home::setSurname(std::vector<const char *> value, std::vector<int> id)
+{
+	std::map<int, UserInfo *>::iterator it;
+	if ((it = _musers.find(id[0])) == _musers.end()) {
+		UserInfo *info = new UserInfo;
+		info->set_id = id[0];
+		info->set_surname(value[0]);
+		_musers[id[0]] = info;
+	}
+	else {
+		UserInfo *tmp = _musers[id[0]];
+		tmp->set_surname(value[0]);
+	}
+}
+
+void		Home::setName(std::vector<const char *> value, std::vector<int> id)
+{
+	std::map<int, UserInfo *>::iterator it;
+	if ((it = _musers.find(id[0])) == _musers.end()) {
+		UserInfo *info = new UserInfo;
+		info->set_id = id[0];
+		info->set_name(value[0]);
+		_musers[id[0]] = info;
+	}
+	else {
+		UserInfo *tmp = _musers[id[0]];
+		tmp->set_name(value[0]);
+	}
+}
+
+void		Home::setAdress(std::vector<const char *> value, std::vector<int> id)
+{
+	std::map<int, UserInfo *>::iterator it;
+	if ((it = _musers.find(id[0])) == _musers.end()) {
+		UserInfo *info = new UserInfo;
+		info->set_id = id[0];
+		info->set_adress(value[0]);
+		_musers[id[0]] = info;
+	}
+	else {
+		UserInfo *tmp = _musers[id[0]];
+		tmp->set_adress(value[0]);
+	}
+}
+
+void		Home::setPhone(std::vector<const char *> value, std::vector<int> id)
+{
+	std::map<int, UserInfo *>::iterator it;
+	if ((it = _musers.find(id[0])) == _musers.end()) {
+		UserInfo *info = new UserInfo;
+		info->set_id = id[0];
+		info->set_phone(value[0]);
+		_musers[id[0]] = info;
+	}
+	else {
+		UserInfo *tmp = _musers[id[0]];
+		tmp->set_phone(value[0]);
+	}
+}
+
+void		Home::setAddAnswer(std::vector<const char *> value, std::vector<int> id)
+{
+
+}

@@ -73,10 +73,15 @@ public:
 	void                  threadCall(void);
 
 	public slots:
-	void				  actionNick(std::vector<const char *>, std::vector<int>);
-	void				  actionStatus(std::vector<const char *>, std::vector<int>);
-	void				  actionBirth(std::vector<const char *>, std::vector<int>);
+	void				  setNick(std::vector<const char *>, std::vector<int>);
+	void				  setStatus(std::vector<const char *>, std::vector<int>);
+	void				  setBirth(std::vector<const char *>, std::vector<int>);
 	void				  setModule(std::vector<const char *>, std::vector<int>);
+	void				  setSurname(std::vector<const char *>, std::vector<int>);
+	void				  setName(std::vector<const char *>, std::vector<int>);
+	void				  setAdress(std::vector<const char *>, std::vector<int>);
+	void				  setPhone(std::vector<const char *>, std::vector<int>);
+	void				  setAddAnswer(std::vector<const char *>, std::vector<int>);
 
 private:
 	Ui::Home *            ui;
