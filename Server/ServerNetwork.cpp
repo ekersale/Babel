@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Mon Nov 10 18:10:45 2014 Damien Giraudet
+// Last update Mon Nov 10 18:51:17 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -53,8 +53,10 @@ void	Server::setFd(fd_set &setfd)
 
 bool	Server::treatRecv(User *user)
 {
+  std::cout << "\tTreat Req1l\n";
   if (_network->get_filled() != sizeof(Packet))
     return (false);
+  std::cout << "\tTreat Req2l\n";
   user->get_commandsValue()->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
   //user->get_commandsValue()->cmdVal(pa);
   // map ptr sur fct
