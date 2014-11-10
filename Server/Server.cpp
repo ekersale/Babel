@@ -100,15 +100,6 @@ std::map<int, User *>& Server::get_users() { // getter & setter
   return (_users);
 }
 
-void  Server::pushToSend(int id_socket, IPacket *packet)
-{
-  ToSend	toPush; // un new ?
-
-  toPush._id_socket = id_socket;
-  toPush._packet = packet;
-  _toSend.push(toPush);
-}
-
 int		Server::init(void)
 {
    startServer();
