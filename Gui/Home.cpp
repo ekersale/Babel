@@ -390,3 +390,8 @@ void    Home::recvFrameFrom(void)
     }
   _video->displayFrames(frame);
 }
+
+void			Home::setThread(void *ptr)
+{
+  _com = (ThreadCom *)ptr;
+}

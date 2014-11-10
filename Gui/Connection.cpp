@@ -90,7 +90,8 @@ void Connection::handleAuth(std::vector<const char *>tableauCmd, std::vector<int
     }
   else
     {
-      page = new Home();
+      page = new Home;
+      page->setThread(ptr);
       page->show();
       this->hide(); 
     }
@@ -99,7 +100,7 @@ void Connection::handleAuth(std::vector<const char *>tableauCmd, std::vector<int
 void    Connection::subscribe()
 {
     Subscribe *page = new Subscribe;
-
+    
     page->show();
     this->hide();
 }

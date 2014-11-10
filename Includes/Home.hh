@@ -19,6 +19,8 @@
 #include                "BabelSound.hh"
 #include                "BabelEncoder.hh"
 
+#include		"ThreadCom.hh"
+
 #include                "../Includes/OpenCV.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
@@ -51,7 +53,7 @@ public:
   void                  defineStatus(e_type newStatus);
   bool                  isOncall(void);
   void                  setOncall(bool available);
-
+  void			setThread(void *ptr);
 private slots:
   void                  addContact(void);
   void                  invitContact(void);
@@ -70,9 +72,10 @@ private slots:
 
 private:
   Ui::Home *            ui;
-  ABabelSound           sound; BabelEncoder          encode;
-  Network *             srv; //anciennement de type UNetwork                                                           
-  Network *             clt; //anciennement de type UNetwork                                                           
+  ABabelSound           sound;
+  BabelEncoder          encode;
+  Network *             srv; //anciennement de type UNetwork
+  Network *             clt; //anciennement de type UNetwork
   Network *             _tcp;
   Network *             _udp;
   QTimer *              timer;
@@ -80,6 +83,7 @@ private:
   e_type                _status;
   bool                  _isOncall;
   OpenCV *              _video;
+  void			*_com;
 };
 
 #endif // HOME_H
