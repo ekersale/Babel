@@ -14,72 +14,88 @@
 #endif
 #include                <vector>
 #include                <iostream>
+#include				<map>
 
 #include                "Network.hh"
 #include                "BabelSound.hh"
 #include                "BabelEncoder.hh"
-
-#include                "../Includes/OpenCV.hh"
+#include                "OpenCV.hh"
+#include				"UserInfo.hh"
+#include				"ThreadCom.hh"
+#include                "OpenCV.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
 //#define SERV_ADDR_IP  "127.0.0.1"                                                                                    
 
 namespace               Ui
 {
-  class                 Home;
+	class                 Home;
 }
 
 enum                    e_type
-  {
-    ONLINE,
-    AWAY,
-    BUSY,
-  };
+{
+	ONLINE,
+	AWAY,
+	BUSY,
+};
 
 class                   Home : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-  explicit              Home(QWidget *parent = 0);
-  void                  init(void);
-  void                  load(void);
-  void                  destroy(void);
-  ~Home(void);
-  void                  setStatus(e_type newStatus);
-  e_type                getStatus(void) const;
-  void                  defineStatus(e_type newStatus);
-  bool                  isOncall(void);
-  void                  setOncall(bool available);
+	explicit              Home(QWidget *parent = 0);
+	void                  init(void);
+	void                  load(void);
+	void                  destroy(void);
+	~Home(void);
+	void                  setStatus(e_type newStatus);
+	e_type                getStatus(void) const;
+	void                  defineStatus(e_type newStatus);
+	bool                  isOncall(void);
+	void                  setOncall(bool available);
+	void			setThread(void *ptr);
 
-private slots:
-  void                  addContact(void);
-  void                  invitContact(void);
-  void                  callContact(void);
-  void                  videoCallContact(void);
-  void                  hangHup(void);
-  void                  changeOnline(void);
-  void                  changeAway(void);
-  void                  changeBusy(void);
-  void                  showNewField(void);
-  void                  updatePlayerUI(QImage, int);
-  void                  sendFrameTo(std::vector<unsigned char *> *);
-  void                  recvFrameFrom(void);
-  void                  threadReceive(void);
-  void                  threadCall(void);
+	private slots:
+	void                  addContact(void);
+	void                  invitContact(void);
+	void                  callContact(void);
+	void                  videoCallContact(void);
+	void                  hangHup(void);
+	void                  changeOnline(void);
+	void                  changeAway(void);
+	void                  changeBusy(void);
+	void                  showNewField(void);
+	void                  updatePlayerUI(QImage, int);
+	void                  sendFrameTo(std::vector<unsigned char *> *);
+	void                  recvFrameFrom(void);
+	void                  threadReceive(void);
+	void                  threadCall(void);
 
+	public slots:
+	void				  actionNick(std::vector<const char *>, std::vector<int>);
+	void				  actionStatus(std::vector<const char *>, std::vector<int>);
+	void				  actionBirth(std::vector<const char *>, std::vector<int>);
+	void				  setModule(std::vector<const char *>, std::vector<int>);
+	void				  setCallAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setCallRequest(std::vector<const char *>, std::vector<int>);
+	void				  setRemoveAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setRemoveRequest(std::vector<const char *>, std::vector<int>);
 private:
-  Ui::Home *            ui;
-  ABabelSound           sound; BabelEncoder          encode;
-  Network *             srv; //anciennement de type UNetwork                                                           
-  Network *             clt; //anciennement de type UNetwork                                                           
-  Network *             _tcp;
-  Network *             _udp;
-  QTimer *              timer;
-  int                   id;
-  e_type                _status;
-  bool                  _isOncall;
-  OpenCV *              _video;
+	Ui::Home *            ui;
+	ABabelSound           sound;
+	BabelEncoder          encode;
+	Network *             srv; //anciennement de type UNetwork
+	Network *             clt; //anciennement de type UNetwork
+	Network *             _tcp;
+	Network *             _udp;
+	QTimer *              timer;
+	int                   id;
+	e_type                _status;
+	bool                  _isOncall;
+	OpenCV *              _video;
+	std::map<int, UserInfo *> _musers;
+	void			*_com;
 };
 
 #endif // HOME_H

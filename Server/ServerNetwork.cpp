@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Sun Nov  9 19:47:35 2014 Damien Giraudet
+// Last update Mon Nov 10 18:51:17 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -53,44 +53,12 @@ void	Server::setFd(fd_set &setfd)
 
 bool	Server::treatRecv(User *user)
 {
-  //IPacketInfo	*packet_info;
-  /* PA ...
-     Il faudra vérifier en boucle le read
+  std::cout << "\tTreat Req1l\n";
   if (_network->get_filled() != sizeof(Packet))
     return (false);
-  */
-  
-  IPacketInfo	*pa = new PacketInfo();
-  // CMD 1
-  // pa->setCmd(1);
-  // pa->pushChars("giraud_d");
-  // pa->pushChars("mdpdepaddededamdam");
-  // user->get_commandsValue()->cmdVal(pa);
-
-  //user->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
-
-  // CMD 2
-  // pa->setCmd(2);
-  // pa->pushChars("giraud_d");
-  // pa->pushChars("mdpdepaddededamdam");
-  // user->get_commandsValue()->cmdVal(pa);
-
-  // CMD 4 à 11
-  // pa->setCmd(11);
-  // pa->pushChars("0808091099");
-  // user->get_commandsValue()->cmdVal(pa);
-
-  // CMD 20
-  // pa->setCmd(20);
-  // pa->pushChars("girard_k");
-  // user->get_commandsValue()->cmdVal(pa);
-
-  // CMD 22
-  pa->setCmd(22);
-  pa->getInts().push_back(37);
-  user->get_commandsValue()->cmdVal(pa);
-
-  //std::cout << "Char * : " << _network->get_buffer() << "\n";
+  std::cout << "\tTreat Req2l\n";
+  user->get_commandsValue()->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
+  //user->get_commandsValue()->cmdVal(pa);
   // map ptr sur fct
   return (true);
 }
@@ -124,6 +92,32 @@ void	Server::recvIsSet(fd_set &readfs)
     }
 }
 
+void	Server::sendIsSet(fd_set &setfd)
+{
+  if (_network->get_connected(_toSend.front()._id_socket))
+    if (FD_ISSET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd))
+      {
+	_network->sendSocket(_network->get_connected(_toSend.front()._id_socket)->get_socket(),
+			     _serialize->insert(_toSend.front()._packet), sizeof(Packet));
+      }
+  delete (_toSend.front()._packet);
+  _toSend.pop();
+
+}
+
+void	Server::setFdWrite(fd_set &setfd)
+{
+  if (!_toSend.empty())
+    if (_network->get_connected(_toSend.front()._id_socket))
+      FD_SET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd);
+    else
+      {
+	delete (_toSend.front()._packet);
+	_toSend.pop();
+	setFdWrite(setfd);
+      }
+}
+
 bool Server::loopServer(void)
 {
   fd_set	readfs;
@@ -133,8 +127,8 @@ bool Server::loopServer(void)
   while (1)
     {
       FD_ZERO(&readfs);
-      FD_ZERO(&writefs);
       setFd(readfs);
+      setFdWrite(writefs);
       std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << "\n";
       if (select(_network->maxSocket()->get_socket() + 1, &readfs, &writefs, NULL, NULL) < 0)
 	{
@@ -142,6 +136,7 @@ bool Server::loopServer(void)
 	  return (false);
 	}
       recvIsSet(readfs);
+      sendIsSet(writefs);
     }
   /*
     if (sendSocket( User->key , buff , size))
@@ -150,4 +145,13 @@ bool Server::loopServer(void)
 // fail = del User
 }
    */
+}
+
+void  Server::pushToSend(int id_socket, IPacket *packet)
+{
+  ToSend	toPush; // un new ?
+
+  toPush._id_socket = id_socket;
+  toPush._packet = packet;
+  _toSend.push(toPush);
 }

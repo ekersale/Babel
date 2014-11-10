@@ -136,6 +136,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Client\UserInfo.cpp" />
     <ClCompile Include="Modules\Opus\BabelEncoder.cpp" />
     <ClCompile Include="Modules\PortAudio\BabelSound.cpp" />
     <ClCompile Include="Client\CCommandsValue.cpp" />
@@ -236,6 +237,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\moc_ThreadCom.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <ClInclude Include="Includes\UClientInfo.hh" />
+    <ClInclude Include="Includes\UserInfo.hh" />
     <ClInclude Include="Includes\WClientInfo.hh" />
   </ItemGroup>
   <ItemGroup>

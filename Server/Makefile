@@ -704,6 +704,7 @@ main.o: main.cpp ../Includes/Server.hh \
 		../Includes/UserInfo.hh \
 		../Includes/SCommandsValue.hh \
 		../Includes/ACommandsValue.hpp \
+		../../../../Qt/5.3/gcc/include/QtCore/QDir \
 		../Includes/Serialize.hh \
 		../Includes/ISerialize.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
@@ -915,6 +916,7 @@ Server.o: Server.cpp ../Includes/Server.hh \
 		../Includes/UserInfo.hh \
 		../Includes/SCommandsValue.hh \
 		../Includes/ACommandsValue.hpp \
+		../../../../Qt/5.3/gcc/include/QtCore/QDir \
 		../Includes/Serialize.hh \
 		../Includes/ISerialize.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Server.o Server.cpp
@@ -1126,6 +1128,7 @@ ServerNetwork.o: ServerNetwork.cpp ../Includes/Server.hh \
 		../Includes/UserInfo.hh \
 		../Includes/SCommandsValue.hh \
 		../Includes/ACommandsValue.hpp \
+		../../../../Qt/5.3/gcc/include/QtCore/QDir \
 		../Includes/Serialize.hh \
 		../Includes/ISerialize.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ServerNetwork.o ServerNetwork.cpp
@@ -1328,6 +1331,7 @@ UserAction.o: UserAction.cpp ../Includes/User.hh \
 		../Includes/PacketInfo.hh \
 		../Includes/IPacketInfo.hpp \
 		../Includes/ACommandsValue.hpp \
+		../../../../Qt/5.3/gcc/include/QtCore/QDir \
 		../Includes/Parser.hh \
 		../Includes/IParser.hpp \
 		../Includes/Packet.hh \
@@ -1539,6 +1543,7 @@ User.o: User.cpp ../Includes/User.hh \
 		../Includes/PacketInfo.hh \
 		../Includes/IPacketInfo.hpp \
 		../Includes/ACommandsValue.hpp \
+		../../../../Qt/5.3/gcc/include/QtCore/QDir \
 		../Includes/Parser.hh \
 		../Includes/IParser.hpp \
 		../Includes/Packet.hh \
@@ -1969,6 +1974,7 @@ SCommandsValue.o: SCommandsValue.cpp ../Includes/SCommandsValue.hh \
 		../../../../Qt/5.3/gcc/include/QtXml/qtxmlversion.h \
 		../../../../Qt/5.3/gcc/include/QtXml/QDomDocument \
 		../../../../Qt/5.3/gcc/include/QtCore/QString \
+		../../../../Qt/5.3/gcc/include/QtCore/QDir \
 		../Includes/Server.hh \
 		../Includes/Network.hh \
 		../Includes/INetwork.hh \

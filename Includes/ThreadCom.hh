@@ -17,7 +17,6 @@
 #include		"IGui.hh"
 #include		"Parser.hh"
 #include		"XMLParser.hh"
-// #include		"Lexer.hh"
 #include		"Packet.hh"
 #include		"CCommandsValue.hh"
 #include		"Parser.hh"

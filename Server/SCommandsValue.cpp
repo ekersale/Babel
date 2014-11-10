@@ -45,6 +45,7 @@ int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
   std::vector<const char *>        chars;
   char                       cmd;
 
+  std::cout << "\tINSIDE : cmdVal\n";
   ints = packet_info->getInts();
   chars = packet_info->getChars();
   cmd = packet_info->getCmd();
@@ -174,6 +175,7 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
   if ((id = getIdFromLogin(chars[0])) == -1)
     {
       _user->authAnswer((char)RET_WRONG_LOG);
+      std::cout << "Wrong log\n";
       return ;
     }
   std::cout << "ID = " << id << std::endl;
@@ -193,9 +195,13 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       _user->get_server()->get_users().erase(_user->get_id());
       _user->get_server()->get_users()[id] = _user;
       _user->authAnswer((char)RET_OK);
+      std::cout << "Log OKK\n";
     }
   else
-    _user->authAnswer((char)RET_WRONG_PSW);
+    {
+      _user->authAnswer((char)RET_WRONG_PSW);
+      std::cout << "Wrong Pass\n";
+    }
 }
 
 void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int> ints)

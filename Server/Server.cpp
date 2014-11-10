@@ -7,7 +7,7 @@
 
 #include "Server.hh"
 
-#define		PORT	"2002" // en dur
+#define		PORT	"2000" // en dur
 #define		LISTEN_VAL	20
 
 Serialize* Server::get_serialize(void) const {
@@ -98,15 +98,6 @@ void Server::set_idUsers(std::map<std::string, int> new_idUsers)
 
 std::map<int, User *>& Server::get_users() { // getter & setter
   return (_users);
-}
-
-void  Server::pushToSend(int id_socket, IPacket *packet)
-{
-  ToSend	toPush; // un new ?
-
-  toPush._id_socket = id_socket;
-  toPush._packet = packet;
-  _toSend.push(toPush);
 }
 
 int		Server::init(void)
