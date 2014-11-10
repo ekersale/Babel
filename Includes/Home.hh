@@ -29,63 +29,70 @@
 
 namespace               Ui
 {
-  class                 Home;
+	class                 Home;
 }
 
 enum                    e_type
-  {
-    ONLINE,
-    AWAY,
-    BUSY,
-  };
+{
+	ONLINE,
+	AWAY,
+	BUSY,
+};
 
 class                   Home : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-  explicit              Home(QWidget *parent = 0);
-  void                  init(void);
-  void                  load(void);
-  void                  destroy(void);
-  ~Home(void);
-  void                  setStatus(e_type newStatus);
-  e_type                getStatus(void) const;
-  void                  defineStatus(e_type newStatus);
-  bool                  isOncall(void);
-  void                  setOncall(bool available);
-  void			setThread(void *ptr);
-private slots:
-  void                  addContact(void);
-  void                  invitContact(void);
-  void                  callContact(void);
-  void                  videoCallContact(void);
-  void                  hangHup(void);
-  void                  changeOnline(void);
-  void                  changeAway(void);
-  void                  changeBusy(void);
-  void                  showNewField(void);
-  void                  updatePlayerUI(QImage, int);
-  void                  sendFrameTo(std::vector<unsigned char *> *);
-  void                  recvFrameFrom(void);
-  void                  threadReceive(void);
-  void                  threadCall(void);
+	explicit              Home(QWidget *parent = 0);
+	void                  init(void);
+	void                  load(void);
+	void                  destroy(void);
+	~Home(void);
+	void                  setStatus(e_type newStatus);
+	e_type                getStatus(void) const;
+	void                  defineStatus(e_type newStatus);
+	bool                  isOncall(void);
+	void                  setOncall(bool available);
+	void			setThread(void *ptr);
+
+	private slots:
+	void                  addContact(void);
+	void                  invitContact(void);
+	void                  callContact(void);
+	void                  videoCallContact(void);
+	void                  hangHup(void);
+	void                  changeOnline(void);
+	void                  changeAway(void);
+	void                  changeBusy(void);
+	void                  showNewField(void);
+	void                  updatePlayerUI(QImage, int);
+	void                  sendFrameTo(std::vector<unsigned char *> *);
+	void                  recvFrameFrom(void);
+	void                  threadReceive(void);
+	void                  threadCall(void);
+
+	public slots:
+	void				  actionNick(std::vector<const char *>, std::vector<int>);
+	void				  actionStatus(std::vector<const char *>, std::vector<int>);
+	void				  actionBirth(std::vector<const char *>, std::vector<int>);
+	void				  setModule(std::vector<const char *>, std::vector<int>);
 
 private:
-  Ui::Home *            ui;
-  ABabelSound           sound;
-  BabelEncoder          encode;
-  Network *             srv; //anciennement de type UNetwork
-  Network *             clt; //anciennement de type UNetwork
-  Network *             _tcp;
-  Network *             _udp;
-  QTimer *              timer;
-  int                   id;
-  e_type                _status;
-  bool                  _isOncall;
-  OpenCV *              _video;
-  std::map<int, UserInfo *> _musers;
-  void			*_com;
+	Ui::Home *            ui;
+	ABabelSound           sound;
+	BabelEncoder          encode;
+	Network *             srv; //anciennement de type UNetwork
+	Network *             clt; //anciennement de type UNetwork
+	Network *             _tcp;
+	Network *             _udp;
+	QTimer *              timer;
+	int                   id;
+	e_type                _status;
+	bool                  _isOncall;
+	OpenCV *              _video;
+	std::map<int, UserInfo *> _musers;
+	void			*_com;
 };
 
 #endif // HOME_H
