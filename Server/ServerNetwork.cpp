@@ -77,7 +77,7 @@ bool	Server::treatRecv(User *user)
 
   // CMD 4 à 11
   // pa->setCmd(11);
-  // pa->pushChars("0708091011");
+  // pa->pushChars("0808091099");
   // user->get_commandsValue()->cmdVal(pa);
 
   // CMD 20

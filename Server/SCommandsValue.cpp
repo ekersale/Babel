@@ -1,6 +1,5 @@
 #include "SCommandsValue.hh"
 #include "dirent.h"
-#include <sstream>
 #include "Server.hh"
 
 SCommandsValue::SCommandsValue(User *user)
@@ -58,97 +57,99 @@ int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
 
 std::string	SCommandsValue::getFilename(std::string _login, int _id = -1)
 {
-  DIR		*dir;
-  struct dirent *file;
   std::string	filename;
   std::size_t	pos;
   int		idpos = 0;
   std::string	id;
   int		toNb;
+  QDir		dir(PATH);
 
-  if ((dir = opendir(PATH)) != NULL)
+  dir.setFilter(QDir::Files);
+  dir.setSorting(QDir::Name);
+  QFileInfoList filelist = dir.entryInfoList();
+  for (int i = 0; i < filelist.size(); ++i)
     {
-      while ((file = readdir(dir)) != NULL)
+      QFileInfo fileInfo = filelist.at(i);
+      filename = fileInfo.fileName().toStdString();
+      if ((pos = filename.find(_login)) != std::string::npos)
 	{
-	  filename = file->d_name;
-	  if ((pos = filename.find(_login)) != std::string::npos)
+	  if (filename.at(_login.length()) == '-')
 	    {
-	      if (filename.at(_login.length()) == '-')
-		{
-		  idpos = pos + _login.length() + 1;
-		  id = filename.substr(idpos, idpos + 4 - filename.find(".xml"));
-		  std::istringstream(id) >> toNb;
-		  if (_id == -1 || _id == toNb)
-		    return (filename);
-		}
+	      idpos = pos + _login.length() + 1;
+	      id = filename.substr(idpos, idpos + 4 - filename.find(".xml"));
+	      std::istringstream(id) >> toNb;
+	      if (_id == -1 || _id == toNb)
+		return (filename);
 	    }
-	}
-      closedir(dir);
+	}      
     }
-  else
-    std::cerr << "Could not open directory" << std::endl;
   return ("");
 }
 
 int	SCommandsValue::getIdFromLogin(std::string _login)
 {
-  DIR		*dir;
-  struct dirent *file;
   std::string	filename;
   std::size_t	pos;
   int		idpos = 0;
   std::string	id;
   int toNb;
+  QDir		dir(PATH);
 
-  if ((dir = opendir(PATH)) != NULL)
+  dir.setFilter(QDir::Files);
+  dir.setSorting(QDir::Name);
+  QFileInfoList filelist = dir.entryInfoList();
+  for (int i = 0; i < filelist.size(); ++i)
     {
-      while ((file = readdir(dir)) != NULL)
+      QFileInfo fileInfo = filelist.at(i);
+      filename = fileInfo.fileName().toStdString();
+      if ((pos = filename.find(_login)) != std::string::npos)
 	{
-	  filename = file->d_name;
-	  if ((pos = filename.find(_login)) != std::string::npos)
+	  if (filename.at(_login.length()) == '-')
 	    {
-	      if (filename.at(_login.length()) == '-')
-		{
-		  idpos = pos + _login.length() + 1;
-		  id = filename.substr(idpos, idpos + 4 - filename.find(".xml"));
-		  std::istringstream(id) >> toNb;
-		  return (toNb);
-		}
+	      idpos = pos + _login.length() + 1;
+	      id = filename.substr(idpos, idpos + 4 - filename.find(".xml"));
+	      std::istringstream(id) >> toNb;
+	      return (toNb);
 	    }
 	}
-      closedir(dir);
     }
-  else
-    std::cerr << "Could not open directory" << std::endl;
   return (-1);
 }
 
 std::string	SCommandsValue::getFilenameById(int _id)
 {
-  DIR		*dir;
-  struct dirent *file;
   std::string	filename;
   std::size_t	pos;
   std::string	id;
-  int		res = 0;
-  
+  QDir		dir(PATH);
+
   id = intToStdString(_id);
-  if ((dir = opendir(PATH)) != NULL)
+  dir.setFilter(QDir::Files);
+  dir.setSorting(QDir::Name);
+  QFileInfoList filelist = dir.entryInfoList();
+  for (int i = 0; i < filelist.size(); ++i)
     {
-      while ((file = readdir(dir)) != NULL)
+      QFileInfo fileInfo = filelist.at(i);
+      filename = fileInfo.fileName().toStdString();  
+      if ((pos = filename.find(id)) != std::string::npos)
 	{
-	  filename = file->d_name;
-	  if ((pos = filename.find(id)) != std::string::npos)
-	    {
-	      if (filename.at(pos - 1) == '-' && filename.at(pos + id.length() == '.'))
-		return (filename);
-	    }
+	  if (filename.at(pos - 1) == '-' && filename.at(pos + id.length() == '.'))
+	    return (filename);
 	}
-      closedir(dir);
     }
-  else
-    std::cerr << "Could not open directory" << std::endl;
   return ("");
+}
+
+unsigned int	SCommandsValue::countXmlFiles()
+{
+  QDir		dir(PATH);
+  QStringList	filter;
+
+  filter << "*.xml";
+  dir.setFilter(QDir::Files);
+  dir.setSorting(QDir::Name);
+  dir.setNameFilters(filter);
+  return (dir.count());
 }
 
 std::string	SCommandsValue::intToStdString(int nb)
@@ -318,6 +319,7 @@ void		SCommandsValue::phone(std::vector<const char *> chars, std::vector<int> in
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "phone", chars[0]);
   _user->set_name(chars[0]);
+
   // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
@@ -346,6 +348,7 @@ void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector
   friendfilename = getFilenameById(ints[0]);  
   _xmlParser->removeChild(filename, intToStdString(ints[0]));
   _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
+  std::cout << countXmlFiles() << std::endl;
 }
 
 void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)
