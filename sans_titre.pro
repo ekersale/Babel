@@ -34,7 +34,14 @@ SOURCES +=      Gui/main.cpp                            \
                 Modules/PortAudio/BabelSound.cpp        \
                 Modules/OpenCV/OpenCV.cpp               \
                 Modules/Network/WNetwork.cpp            \
-                Modules/Network/WClientInfo.cpp
+                Modules/Network/WClientInfo.cpp         \
+                Client/ThreadCom.cpp                    \
+                Client/CCommandsValue.cpp               \
+                Modules/XML/XMLParser.cpp               \
+                Modules/Packet/PacketInfo.cpp           \
+                Modules/Packet/Packet.cpp               \
+                Modules/Packet/Serialize.cpp            \
+                Modules/Packet/Parser.cpp
 
 
 HEADERS  +=     Includes/Connection.hh                   \
@@ -50,7 +57,17 @@ HEADERS  +=     Includes/Connection.hh                   \
                 Includes/INetwork.hh                     \
                 Includes/UClientInfo.hh                  \
                 Includes/OpenCV.hh                      \
-                Includes/WClientInfo.hh
+                Includes/WClientInfo.hh                 \
+                Includes/Packet.hh                      \
+                Includes/IPacket.hpp                    \
+                Includes/IPacketInfo.hpp                \
+                Includes/PacketInfo.hh                  \
+                Includes/Parser.hh                      \
+                Includes/ThreadCom.hh                   \
+                Includes/ACommandsValue.hpp             \
+                Includes/CCommandsValue.hh              \
+                Includes/ISerialize.hpp                 \
+                Includes/Serialize.hh
 
 FORMS    +=     Gui/Ui/Connection.ui                    \
                 Gui/Ui/Subscribe.ui                     \

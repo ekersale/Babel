@@ -22,7 +22,7 @@ class Subscribe : public QWidget, public IGui
 public:
     explicit Subscribe(QWidget *parent = 0);
     ~Subscribe();
-    void    init();
+    bool    init();
     void    load();
     void    destroy();
 

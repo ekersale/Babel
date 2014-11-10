@@ -9,9 +9,16 @@
 #include	<utility>
 #include	<cstdio>
 
+#ifdef _WIN32
+#include	<QtXml/QtXml>
+#include	<QtXml/QDomDocument>
+#include	<QtCore/QString>
+#else
 #include	<QtXml>
 #include	<QDomDocument>
 #include	<QString>
+#endif
+
 
 #define		PATH		"../XML_file/"
 

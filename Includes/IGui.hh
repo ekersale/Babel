@@ -4,7 +4,7 @@
 class   IGui
 {
 public:
-    virtual void    init() = 0;
+    virtual bool    init() = 0;
     virtual void    load() = 0;
     virtual void    destroy() = 0;
 };

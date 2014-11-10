@@ -5,8 +5,8 @@
 #include <map>
 #include <iostream>
 
-class SCommandsValue;
-typedef void (SCommandsValue::* ptrCmdValue)(std::vector<const char *>, std::vector<int>);
+class ACommandsValue;
+typedef void (ACommandsValue::* ptrCmdValue)(std::vector<const char *>, std::vector<int>);
 
 class ACommandsValue
 {

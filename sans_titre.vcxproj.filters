@@ -43,6 +43,9 @@
     <ClCompile Include="Modules\PortAudio\BabelSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\CCommandsValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Gui\Connection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,7 +55,22 @@
     <ClCompile Include="Modules\OpenCV\OpenCV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modules\Packet\Packet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Packet\PacketInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Packet\Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Packet\Serialize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Gui\Subscribe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\ThreadCom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Network\UClientInfo.cpp">
@@ -67,17 +85,26 @@
     <ClCompile Include="Modules\Network\WNetwork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modules\XML\XMLParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Gui\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\ACommandsValue.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Includes\BabelEncoder.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Includes\BabelSound.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <CustomBuild Include="Includes\CCommandsValue.hh">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="Includes\Connection.hh">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -99,13 +126,37 @@
     <ClInclude Include="Includes\INetwork.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\IPacket.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\IPacketInfo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\ISerialize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Includes\Network.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
     <CustomBuild Include="Includes\OpenCV.hh">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <ClInclude Include="Includes\Packet.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\PacketInfo.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Parser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Serialize.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <CustomBuild Include="Includes\Subscribe.hh">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Includes\ThreadCom.hh">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <ClInclude Include="Includes\UClientInfo.hh">
@@ -125,6 +176,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug\moc_CCommandsValue.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_CCommandsValue.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <ClCompile Include="debug\moc_Connection.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -147,6 +204,12 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="release\moc_Subscribe.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_ThreadCom.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_ThreadCom.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
