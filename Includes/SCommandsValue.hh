@@ -45,6 +45,10 @@ public:
 protected:
   XMLParser * _xmlParser;
   User	    *_user;
+  std::string getFilename(std::string, int);
+  std::string getFilenameById(int);
+  int	      getIdFromLogin(std::string);
+  std::string intToStdString(int);
 };
 
 #endif /* SCOMMANDSVALUE_HH_ */

@@ -24,7 +24,7 @@ void PacketInfo::setChars(const std::vector<char*>& chars) {
 }
 */
 
-const std::vector<int>& PacketInfo::getInts() const {
+std::vector<int>& PacketInfo::getInts() {
 	return _ints;
 }
 

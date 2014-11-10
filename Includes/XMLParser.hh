@@ -31,6 +31,7 @@ class					XMLParser
   void						createBalise(std::ofstream &, std::string);
   bool						print_error(const std::string &msg);
   std::map<char, std::vector<unsigned char> >	getCommandArgs(std::string);
+  bool						removeChild(std::string, std::string);
 
 private:
   QDomDocument				_doc;
