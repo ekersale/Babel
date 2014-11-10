@@ -403,10 +403,31 @@ void			Home::setThread(void *ptr)
   connect((ThreadCom *)ptr, SIGNAL(s_changeAddress(std::vector<const char *>, std::vector<int>)), this, SLOT(setAdress(std::vector<const char *>, std::vector<int>)));
   connect((ThreadCom *)ptr, SIGNAL(s_changePhone(std::vector<const char *>, std::vector<int>)), this, SLOT(setPhone(std::vector<const char *>, std::vector<int>)));
   connect((ThreadCom *)ptr, SIGNAL(s_addAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setAddAnswer(std::vector<const char *>, std::vector<int>)));
-  connect((ThreadCom *)ptr, SIGNAL(s_removeRequest(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_removeAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_requestCall(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
-  connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(std::vector<const char *>, std::vector<int>));
+  connect((ThreadCom *)ptr, SIGNAL(s_removeRequest(std::vector<const char *>, std::vector<int>)), this, SLOT(setRemoveRequest(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_removeAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setRemoveAnswer(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_requestCall(std::vector<const char *>, std::vector<int>)), this, SLOT(setCallRequest(std::vector<const char *>, std::vector<int>)));
+  connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setCallAnswer(std::vector<const char *>, std::vector<int>)));
+}
+
+
+void		Home::setRemoveRequest(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::setRemoveAnswer(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::setCallRequest(std::vector<const char *> value, std::vector<int> id)
+{
+
+}
+
+void		Home::setCallAnswer(std::vector<const char *> value, std::vector<int> id)
+{
+
 }
 
 void		Home::setNick(std::vector<const char *> value, std::vector<int> id)
@@ -414,7 +435,7 @@ void		Home::setNick(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_nickname(value[0]);
 		_musers[id[0]] = info;
 	}
@@ -429,7 +450,7 @@ void		Home::setStatus(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_status(value[0][0]);
 		_musers[id[0]] = info;
 	}
@@ -444,7 +465,7 @@ void		Home::setBirth(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_birth(value[0]);
 		_musers[id[0]] = info;
 	}
@@ -459,7 +480,7 @@ void		Home::setModule(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_module(value[0][0]);
 		_musers[id[0]] = info;
 	}
@@ -474,7 +495,7 @@ void		Home::setSurname(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_surname(value[0]);
 		_musers[id[0]] = info;
 	}
@@ -489,7 +510,7 @@ void		Home::setName(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_name(value[0]);
 		_musers[id[0]] = info;
 	}
@@ -504,7 +525,7 @@ void		Home::setAdress(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_adress(value[0]);
 		_musers[id[0]] = info;
 	}
@@ -519,7 +540,7 @@ void		Home::setPhone(std::vector<const char *> value, std::vector<int> id)
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id = id[0];
+		info->set_id(id[0]);
 		info->set_phone(value[0]);
 		_musers[id[0]] = info;
 	}

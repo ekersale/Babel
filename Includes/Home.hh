@@ -82,6 +82,10 @@ public:
 	void				  setAdress(std::vector<const char *>, std::vector<int>);
 	void				  setPhone(std::vector<const char *>, std::vector<int>);
 	void				  setAddAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setCallAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setCallRequest(std::vector<const char *>, std::vector<int>);
+	void				  setRemoveAnswer(std::vector<const char *>, std::vector<int>);
+	void				  setRemoveRequest(std::vector<const char *>, std::vector<int>);
 
 private:
 	Ui::Home *            ui;
