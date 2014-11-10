@@ -36,6 +36,7 @@ SOURCES +=      Gui/main.cpp                            \
                 Modules/Network/WNetwork.cpp            \
                 Modules/Network/WClientInfo.cpp         \
                 Client/ThreadCom.cpp                    \
+                Client/UserInfo.cpp                     \
                 Client/CCommandsValue.cpp               \
                 Modules/XML/XMLParser.cpp               \
                 Modules/Packet/PacketInfo.cpp           \
@@ -44,18 +45,19 @@ SOURCES +=      Gui/main.cpp                            \
                 Modules/Packet/Parser.cpp
 
 
-HEADERS  +=     Includes/Connection.hh                   \
-                Includes/Subscribe.hh                    \
-                Includes/Home.hh                         \
-                Includes/IGui.hh                         \
-                Includes/BabelEncoder.hh                 \
-                Includes/IBabelEncoder.hh                \
-                Includes/Network.hh                      \
-                Includes/BabelSound.hh                   \
-                Includes/IBabelSound.hh                  \
-                Includes/IModule.hh                      \
-                Includes/INetwork.hh                     \
-                Includes/UClientInfo.hh                  \
+HEADERS  +=     Includes/Connection.hh                  \
+                Includes/Subscribe.hh                   \
+                Includes/Home.hh                        \
+                Includes/IGui.hh                        \
+                Includes/BabelEncoder.hh                \
+                Includes/IBabelEncoder.hh               \
+                Includes/Network.hh                     \
+                Includes/BabelSound.hh                  \
+                Includes/IBabelSound.hh                 \
+                Includes/IModule.hh                     \
+                Includes/INetwork.hh                    \
+                Includes/UClientInfo.hh                 \
+                Includes/UserInfo.hh                    \
                 Includes/OpenCV.hh                      \
                 Includes/WClientInfo.hh                 \
                 Includes/Packet.hh                      \
