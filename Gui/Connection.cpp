@@ -70,20 +70,20 @@ void Connection::connection()
     } 
 }
 
-void Connection::handleAuth(std::vector<const char *>tableauCmd, std::vector<int>tableauParams)
+void Connection::handleAuth(std::vector<const char *>tableCmd, std::vector<int>tableParams)
 {
   Home		*page;
   char		test;
 
-  test = '3';
-  static_cast<void>(tableauCmd);
-  static_cast<void>(tableauParams);
-  if (test == '1')
+  //test = '3';
+  static_cast<void>(tableCmd);
+  static_cast<void>(tableParams);
+  if ((char)tableCmd.at(0)[0] == 1)
     {
       QMessageBox::critical(this,"Warning", "Bad login");
       return;
     }
-  else if (test == '2')
+  else if ((char)tableCmd.at(0)[0] == 2)
     {
       QMessageBox::critical(this,"Warning", "Bad login");
       return;

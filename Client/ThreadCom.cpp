@@ -4,7 +4,7 @@ ThreadCom::ThreadCom()
 {
 	_network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
 	_serialize = new Serialize();
-	_xmlParser = new XMLParser();
+	// _xmlParser = new XMLParser();
 	_parser = new Parser(_xmlParser->getCommandArgs("./XML_file/commands.xml"));
 	_socket = 0;
 }

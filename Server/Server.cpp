@@ -7,7 +7,7 @@
 
 #include "Server.hh"
 
-#define		PORT	"2002" // en dur
+#define		PORT	"2000" // en dur
 #define		LISTEN_VAL	20
 
 Serialize* Server::get_serialize(void) const {
