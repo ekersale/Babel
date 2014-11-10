@@ -19,8 +19,15 @@
 #include                "Network.hh"
 #include                "BabelSound.hh"
 #include                "BabelEncoder.hh"
+<<<<<<< HEAD
 #include                "OpenCV.hh"
 #include				"UserInfo.hh"
+=======
+
+#include		"ThreadCom.hh"
+
+#include                "../Includes/OpenCV.hh"
+>>>>>>> 4e49177b2cb682479725d6d39c58b551c7f0d71b
 
 #define SERV_ADDR_IP    "10.13.253.162"
 //#define SERV_ADDR_IP  "127.0.0.1"                                                                                    
@@ -52,7 +59,7 @@ public:
   void                  defineStatus(e_type newStatus);
   bool                  isOncall(void);
   void                  setOncall(bool available);
-
+  void			setThread(void *ptr);
 private slots:
   void                  addContact(void);
   void                  invitContact(void);
@@ -71,9 +78,10 @@ private slots:
 
 private:
   Ui::Home *            ui;
-  ABabelSound           sound; BabelEncoder          encode;
-  Network *             srv; //anciennement de type UNetwork                                                           
-  Network *             clt; //anciennement de type UNetwork                                                           
+  ABabelSound           sound;
+  BabelEncoder          encode;
+  Network *             srv; //anciennement de type UNetwork
+  Network *             clt; //anciennement de type UNetwork
   Network *             _tcp;
   Network *             _udp;
   QTimer *              timer;
@@ -82,6 +90,7 @@ private:
   bool                  _isOncall;
   OpenCV *              _video;
   std::map<int, UserInfo *> _musers;
+  void			*_com;
 };
 
 #endif // HOME_H

@@ -995,6 +995,10 @@ moc_Home.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
 		Includes/IBabelSound.hh \
 		Includes/BabelEncoder.hh \
 		Includes/IBabelEncoder.hh \
+		Includes/ThreadCom.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QObject \
+		Includes/Home.hh \
 		Includes/OpenCV.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
@@ -1003,6 +1007,131 @@ moc_Home.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
 		Includes/IModule.hh \
+		Includes/Subscribe.hh \
+		Includes/IGui.hh \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/Parser.hh \
+		Includes/IParser.hpp \
+		Includes/Packet.hh \
+		Includes/IPacket.hpp \
+		Includes/PacketInfo.hh \
+		Includes/IPacketInfo.hpp \
+		Includes/XMLParser.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QtCore \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QStringList \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		Includes/CCommandsValue.hh \
+		Includes/ACommandsValue.hpp \
+		Includes/Serialize.hh \
+		Includes/ISerialize.hpp \
 		Includes/Home.hh
 	/opt/Qt5.3.2/5.3/gcc/bin/moc $(DEFINES) -I/opt/Qt5.3.2/5.3/gcc/mkspecs/linux-g++ -I/home/napsters/Git/Merge/babel -I/home/napsters/Git/Merge/babel/Includes -I/usr/local/include/opencv2 -I/opt/Qt5.3.2/5.3/gcc/include -I/opt/Qt5.3.2/5.3/gcc/include/QtWidgets -I/opt/Qt5.3.2/5.3/gcc/include/QtXml -I/opt/Qt5.3.2/5.3/gcc/include/QtGui -I/opt/Qt5.3.2/5.3/gcc/include/QtCore Includes/Home.hh -o moc_Home.cpp
 
@@ -1211,19 +1340,13 @@ moc_ThreadCom.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtCore/QTimer \
 		Includes/IBabelSound.hh \
 		Includes/BabelEncoder.hh \
 		Includes/IBabelEncoder.hh \
-		Includes/OpenCV.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthread.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/QImage \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
-		Includes/IModule.hh \
+		Includes/ThreadCom.hh \
 		Includes/Subscribe.hh \
 		Includes/IGui.hh \
 		Includes/Connection.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
-		Includes/ThreadCom.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthread.h \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
@@ -1315,6 +1438,7 @@ moc_ThreadCom.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtCore/QTimer \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsemaphore.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadpool.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydataops.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydatapointer.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbitarray.h \
@@ -1345,6 +1469,11 @@ moc_ThreadCom.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtCore/QTimer \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
 		Includes/ISerialize.hpp \
+		Includes/OpenCV.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/QImage \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
+		Includes/IModule.hh \
 		Includes/ThreadCom.hh
 	/opt/Qt5.3.2/5.3/gcc/bin/moc $(DEFINES) -I/opt/Qt5.3.2/5.3/gcc/mkspecs/linux-g++ -I/home/napsters/Git/Merge/babel -I/home/napsters/Git/Merge/babel/Includes -I/usr/local/include/opencv2 -I/opt/Qt5.3.2/5.3/gcc/include -I/opt/Qt5.3.2/5.3/gcc/include/QtWidgets -I/opt/Qt5.3.2/5.3/gcc/include/QtXml -I/opt/Qt5.3.2/5.3/gcc/include/QtGui -I/opt/Qt5.3.2/5.3/gcc/include/QtCore Includes/ThreadCom.hh -o moc_ThreadCom.cpp
 
@@ -2396,13 +2525,141 @@ Home.o: Gui/Home.cpp Includes/Home.hh \
 		Includes/IBabelSound.hh \
 		Includes/BabelEncoder.hh \
 		Includes/IBabelEncoder.hh \
-		Includes/OpenCV.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
+		Includes/ThreadCom.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QObject \
+		Includes/Subscribe.hh \
+		Includes/IGui.hh \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthread.h \
+		Includes/Parser.hh \
+		Includes/IParser.hpp \
+		Includes/Packet.hh \
+		Includes/IPacket.hpp \
+		Includes/PacketInfo.hh \
+		Includes/IPacketInfo.hpp \
+		Includes/XMLParser.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QtCore \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QStringList \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		Includes/CCommandsValue.hh \
+		Includes/ACommandsValue.hpp \
+		Includes/Serialize.hh \
+		Includes/ISerialize.hpp \
+		Includes/OpenCV.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/QImage \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
 		Includes/IModule.hh \
 		ui_Home.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
