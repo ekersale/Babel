@@ -57,29 +57,43 @@ void Connection::connection()
     }
   else
     {
-      if ((network->sendSocket(1, (void *)"test", 5) == false))
+      packet_info = new PacketInfo();
+      packet_info->setCmd(1);
+      packet_info->getChars().push_back(ui->_lineLogin->text().toStdString().c_str());
+      packet_info->getChars().push_back(ui->_linePassword->text().toStdString().c_str());
+      if ((network->sendSocket(1, packet_info, sizeof(packet_info)) == false))
 	{
 	  std::cerr << "Fail with Sendsocket " << std::endl;
 	  return;
 	}
-      
-    }
-  
-  
-   
-   
+      delete(packet_info);
+    } 
 }
 
-void Connection::handleAuth(std::vector<const char *> tableauCmd, std::vector<int>tableauParams)
+void Connection::handleAuth(std::vector<const char *>tableauCmd, std::vector<int>tableauParams)
 {
-  if ((tableauCmd.size()) > 0)  
-    std::cout << "Tableau contient quelque chose " << std::endl;
-  // if (auth -> accepted)
-  Home *page = new Home();
-  page->show();
-  this->hide();
-  //else
-  //display error message
+  Home		*page;
+  char		test;
+
+  test = '3';
+  static_cast<void>(tableauCmd);
+  static_cast<void>(tableauParams);
+  if (test == '1')
+    {
+      QMessageBox::critical(this,"Warning", "Bad login");
+      return;
+    }
+  else if (test == '2')
+    {
+      QMessageBox::critical(this,"Warning", "Bad login");
+      return;
+    }
+  else
+    {
+      page = new Home();
+      page->show();
+      this->hide(); 
+    }
 }
 
 void    Connection::subscribe()
