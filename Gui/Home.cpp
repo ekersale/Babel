@@ -100,7 +100,7 @@ void    Home::addContact(UserInfo *added)
 	QFont			font;
 	QPushButton		*but;
 	QString			name;
-	QPixmap			*pixmap;
+	QPixmap			*pixmap = NULL;
 	QPalette		palette;
 	t_contact		*ptr = new t_contact;
 	std::string		tmp;
@@ -139,7 +139,8 @@ void    Home::addContact(UserInfo *added)
 	default:
 		break;
 	}
-	palette.setBrush(but->backgroundRole(), QBrush(*pixmap));
+	if (pixmap != NULL)
+		palette.setBrush(but->backgroundRole(), QBrush(*pixmap));
 	but->setFlat(true);
 	but->setAutoFillBackground(true);
 	but->setPalette(palette);
@@ -178,6 +179,9 @@ void Home::contactClick()
 	tmp->setStyleSheet("QPushButton{color: rgb(255, 0, 0);}");
 	_pushtmp = tmp;
 	_activeUser = senderObjName.toInt();
+	ui->_label_BirthsdayValue->setText(_musers[_activeUser]->get_birth().c_str());
+	ui->_label_PhoneNumberValue->setText(_musers[_activeUser]->get_phone().c_str());
+	ui->_label_LocalisationValue->setText(_musers[_activeUser]->get_address().c_str());
 	//displayConversation(senderObjName);
 }
 
@@ -468,22 +472,14 @@ void		Home::setNick(std::vector<const char *> value, std::vector<int> id)
 		info->set_id(id[0]);
 		info->set_nickname(value[0]);
 		_musers[id[0]] = info;
+		addContact(_musers[id[0]]);
 	}
 	else {
 		UserInfo *tmp = _musers[id[0]];
 		tmp->set_nickname(value[0]);
-	}
-	std::map<int, t_contact *>::iterator it2;
-	if ((it2 = _bcontact.find(id[0])) == _bcontact.end())
-		addContact(_musers[id[0]]);
-	else
-	{
-		UserInfo *info;
-		std::string tmp;
-		info = _musers[id[0]];
-		tmp = info->get_name() + " " + info->get_nickname();
-		t_contact *ctmp = _bcontact[id[0]];
-		ctmp->item->setText(tmp.c_str());
+		std::string stmp;
+		stmp = tmp->get_name() + " " + tmp->get_nickname();
+		_bcontact[id[0]]->item->setText(stmp.c_str());
 	}
 }
 
@@ -495,10 +491,35 @@ void		Home::setStatus(std::vector<const char *> value, std::vector<int> id)
 		info->set_id(id[0]);
 		info->set_status(value[0][0]);
 		_musers[id[0]] = info;
+		addContact(_musers[id[0]]);
 	}
 	else {
 		UserInfo *tmp = _musers[id[0]];
+		QPixmap			*pixmap = NULL;
+		QPalette		palette;
+
 		tmp->set_status(value[0][0]);
+		int itmp = value[0][0];
+		switch (itmp)
+		{
+		case 4:
+			pixmap = new QPixmap("./Images/BabelHD_0001s_0005s_0002_status.png");
+			break;
+		case 3:
+			pixmap = new QPixmap("./Images/BabelHD_0001s_0003s_0000_status.png");
+			break;
+		case 2:
+			pixmap = new QPixmap("./Images/BabelHD_0001s_0000s_0000_status.png");
+			break;
+		case 1:
+			pixmap = new QPixmap("./Images/BabelHD_0001s_0002s_0000_status.png");
+			break;
+		default:
+			break;
+		}
+		if (pixmap != NULL)
+			palette.setBrush(_bcontact[id[0]]->but->backgroundRole(), QBrush(*pixmap));
+		_bcontact[id[0]]->but->setPalette(palette);
 	}
 }
 
@@ -540,10 +561,14 @@ void		Home::setSurname(std::vector<const char *> value, std::vector<int> id)
 		info->set_id(id[0]);
 		info->set_surname(value[0]);
 		_musers[id[0]] = info;
+		addContact(_musers[id[0]]);
 	}
 	else {
 		UserInfo *tmp = _musers[id[0]];
+		std::string stmp;
 		tmp->set_surname(value[0]);
+		stmp = tmp->get_name() + " " + tmp->get_surname();
+		_bcontact[id[0]]->item->setText(stmp.c_str());
 	}
 }
 
@@ -555,10 +580,14 @@ void		Home::setName(std::vector<const char *> value, std::vector<int> id)
 		info->set_id(id[0]);
 		info->set_name(value[0]);
 		_musers[id[0]] = info;
+		addContact(_musers[id[0]]);
 	}
 	else {
 		UserInfo *tmp = _musers[id[0]];
 		tmp->set_name(value[0]);
+		std::string stmp;
+		stmp = tmp->get_name() + " " + tmp->get_surname();
+		_bcontact[id[0]]->but->setText(stmp.c_str());
 	}
 }
 
