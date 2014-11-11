@@ -57,20 +57,20 @@ void    Home::load()
 
 void    Home::updatePlayerUI(QImage img, int value)
 {
-	if (!img.isNull())
-	{
-		if (value == 1) {
-			ui->_label_Video->setAlignment(Qt::AlignCenter);
-			ui->_label_Video->setPixmap(QPixmap::fromImage(img));
-			ui->_label_Video->show();
-		}
-		if (value == 0) {
-			ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
-			ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
-			ui->_label_VideoPerso->setScaledContents(true);
-			ui->_label_VideoPerso->show();
-		}
-	}
+  if (!img.isNull())
+    {
+      if (value == 1) {
+	ui->_label_Video->setAlignment(Qt::AlignCenter);
+	ui->_label_Video->setPixmap(QPixmap::fromImage(img));
+	ui->_label_Video->show();
+      }
+      if (value == 0) {
+	ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
+	ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
+	ui->_label_VideoPerso->setScaledContents(true);
+	ui->_label_VideoPerso->show();
+      }
+    }
 }
 
 void    Home::destroy()
@@ -204,43 +204,42 @@ void    Home::threadCall()
 		std::cerr << "Error on writeStream()" << std::endl;
 	buffer = sound.getRecordedSamples();
 	tmp = encode.encodeFrame(buffer, 480);
-	srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1                                       
+	srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1 
 	(void)buffer;
 	(void)tmp;
-	//  }                                                                                                          
+	//  } 
 }
 
 
 void    Home::invitContact()
 {
-	// srv = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);                                                        
-	// srv->bindSocket("2000");                                                                                    
-	// if (!sound.initializePA())                                                                                  
-	//   std::cerr << "Error on InitPa()" << std::endl;                                                            
-	// if (!(sound.initializeInput()))                                                                             
-	//   std::cerr << "Error on initParams()" << std::endl;                                                        
-	// if (!(sound.initializeOutput()))                                                                            
-	//   std::cerr << "Error on initParams()" << std::endl;                                                        
-	// sound.openStream();                                                                                         
-	// encode.opusEncoderCreate();                                                                                 
-	// encode.opusDecoderCreate();                                                                                 
-
-	_udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
-	_udp->bindSocket("2000");
-	connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
-	timer->start();
-	// while (1) {                                                                                                 
-	//   if (!(sound.readStream()))                                                                                
-	//     std::cerr << "Error on writeStream()" << std::endl;                                                     
-	//   buffer = sound.getRecordedSamples();                                                                      
-	//   sound.w;riteStream(buffer, 480);                                                                          
+  // srv = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);
+  // srv->bindSocket("2000");
+  // if (!sound.initializePA())                                                                                  
+  //   std::cerr << "Error on InitPa()" << std::endl;                                                            
+  // if (!(sound.initializeInput()))                                                                             
+  //   std::cerr << "Error on initParams()" << std::endl;                                                        
+  // if (!(sound.initializeOutput()))                                                                            
+  //   std::cerr << "Error on initParams()" << std::endl;                                                        
+  // sound.openStream();                                                                                         
+  // encode.opusEncoderCreate();                                                                                 
+  // encode.opusDecoderCreate();                                                                                 
+  
+  _udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
+  _udp->bindSocket("2000");
+  connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
+  timer->start();
+  // while (1) {                                                                                                 
+  //   if (!(sound.readStream()))                                                                                
+  //     std::cerr << "Error on writeStream()" << std::endl;                                                     	//   buffer = sound.getRecordedSamples();                                                                      
+	//   sound.writeStream(buffer, 480);                                                                          
 	//   // tmp = encode.encodeFrame(buffer, 480);                                                                 
 	//   // int i;                                                                                                 
 	//   // for (i = 0; tmp[i]; i++);                                                                              
 	//   // srv->sendToSocket(id1, (void *)tmp, i); // revoir à id1
 	//   // id1 = srv->recvFromSocket(); //premier recu, socket settée sur id1
 	// sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
-	// }                                                                                                           
+	// }
 }
 
 void Home::threadReceive()
@@ -252,9 +251,9 @@ void Home::threadReceive()
 		std::cerr << "Error on writeStream()" << std::endl;
 	buffer = sound.getRecordedSamples();
 	tmp = encode.encodeFrame(buffer, 480);
-	clt->sendToSocket(id, tmp, encode.getEncodedDataSize()); //envoie à id2 séttée sur une socket par connect      
-	clt->recvFromSocket();// recoit de n'importe qui qui connait                                                   
-	// std::cout << "LEN RECUE" << clt->get_filled() << std::endl;                                                 
+	clt->sendToSocket(id, tmp, encode.getEncodedDataSize()); //envoie à id2 séttée sur une socket par connect
+	clt->recvFromSocket();// recoit de n'importe qui qui connait
+	// std::cout << "LEN RECUE" << clt->get_filled() << std::endl;  
 	sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
 	static_cast<void>(buffer);
 	static_cast<void>(tmp);

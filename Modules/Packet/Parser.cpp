@@ -35,28 +35,41 @@ IPacket* Parser::encode(IPacketInfo* packetinfo)
 	return (new Packet(packetinfo->getCmd(), data));
 }
 
-IPacketInfo* Parser::decode(IPacket* packet) {
-	std::vector<unsigned char>	key;
-	IPacketInfo			*packetinfo;
-	const char			*ptr;
+IPacketInfo* Parser::decode(IPacket* packet)
+{
+  std::vector<unsigned char>	key;
+  IPacketInfo			*packetinfo;
+  const char			*ptr;
+  
+  std::cout << "\n\n\n\tCmd val is : " << (int)packet->getCommand() <<"\n"; 
+  
+  // if (key.size() != 0)
+  key = _ref.find(packet->getCommand())->second;
+  
+  //std::cout << "\n\n\n\tLA maman de nico " << key.size() <<"\n"; 
 
-	std::cout << "\n\n\n\tCmd val is : " << (int)packet->getCommand() <<"\n"; 
-	key = _ref.find(packet->getCommand())->second;
-	packetinfo = new PacketInfo();
-	ptr = packet->getData();
-	packetinfo->setCmd(packet->getCommand());
-	for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++) {
-		if (*mykey > 128) {
-			packetinfo->pushChars(ptr);
-			ptr += (*mykey - 128);
-		} else if (*mykey == 64) {
-			packetinfo->pushInts(ptr);
-			ptr += 4;
-		} else {
-			// TODO
-		}
+  packetinfo = new PacketInfo();
+  ptr = packet->getData();
+  packetinfo->setCmd(packet->getCommand());
+  
+  for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++)
+    {
+      if (*mykey > 128)
+	{
+	  packetinfo->pushChars(ptr);
+	  ptr += (*mykey - 128);
 	}
-	return (packetinfo);
+      else if (*mykey == 64)
+	{
+	  packetinfo->pushInts(ptr);
+	  ptr += 4;
+	}
+      else
+	{
+	// TODO
+	}
+    }
+  return (packetinfo);
 }
 
 char* Parser::getBuffer() const {

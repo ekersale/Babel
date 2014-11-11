@@ -39,18 +39,19 @@ Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connec
 
 Connection::~Connection()
 {
-    delete ui;
+  delete ui;
 }
 
 
 void Connection::connection()
 {
   IPacketInfo	*packet_info = new PacketInfo();
-
+  
   char *pd1 = (char *)malloc(2);
   char *pd2 = (char *)malloc(2);
   char *sd1;
   char *sd2;
+  
   sd1 = strdup(ui->_lineLogin->text().toStdString().c_str());
   sd2 = strdup(ui->_linePassword->text().toStdString().c_str());
   pd1[0] = 2;
@@ -93,9 +94,11 @@ void Connection::connection()
       //usz << packet2;
       // //on teste_z notre gros paquet rempli de foutre
       //std::cout << "usz: " << usz.str() << std::endl; 
-
       
-
+      free(pd1); 
+      free(pd2);
+      free(sd1);
+      free(sd2);
       delete(packet);
       delete(packet_info);
     } 
@@ -104,26 +107,28 @@ void Connection::connection()
 void Connection::handleAuth(std::vector<const char *>tableCmd, std::vector<int>tableParams)
 {
   Home		*page;
-
+  
+  std::cout << "On recoit quelque chose" << std::endl;
   static_cast<void>(tableCmd);
   static_cast<void>(tableParams);
-  if ((char)tableCmd.at(0)[0] == 1)
-    {
-      QMessageBox::critical(this,"Warning", "Bad login");
-      return;
-    }
-  else if ((char)tableCmd.at(0)[0] == 2)
-    {
-      QMessageBox::critical(this,"Warning", "Bad login");
-      return;
-    }
-  else
-    {
+  // if ((char)tableCmd.at(0)[0] == 1)
+  //   {
+  //     QMessageBox::critical(this,"Warning", "Bad login");
+  //     return;
+  //   }
+  // else if ((char)tableCmd.at(0)[0] == 2)
+  //   {
+  //     QMessageBox::critical(this,"Warning", "Bad login");
+  //     return;
+  //   }
+  // else
+  //   {
+     
       page = new Home;
       page->setThread(ptr);
       page->show();
       this->hide(); 
-    }
+    // }
 }
 
 void    Connection::subscribe()

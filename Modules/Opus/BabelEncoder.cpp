@@ -5,13 +5,13 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Fri Oct 31 23:48:20 2014 Elliot Kersalé
-// Last update Wed Nov  5 17:50:11 2014 Sliman Desmars
+// Last update Tue Nov 11 14:58:07 2014 Sliman Desmars
 //
 
 #include		"../../Includes/BabelEncoder.hh"
 
 BabelEncoder::BabelEncoder() {
-  num_channels = CHANNELS;
+  _num_channels = CHANNELS;
   _encoder = NULL;
   _decoder = NULL;
   _bytes = 0;
@@ -21,31 +21,34 @@ BabelEncoder::~BabelEncoder() {
   opusDestroy();
 }
 
-int			BabelEncoder::getEncodedDataSize(void)
+int			BabelEncoder::getEncodedDataSize(void) const
 {
   return (_encoded_data_size);
 }
 
-bool			BabelEncoder::opusEncoderCreate() {
+bool			BabelEncoder::opusEncoderCreate()
+{
   int			error;
-
+  
   error = 0;
-  _encoder = opus_encoder_create(SAMPLE_RATE, num_channels, OPUS_APPLICATION_VOIP, &error);
-  if (error != OPUS_OK) {
-    std::cerr << "opus_encoder_create() failed : error on initializing encoder" << std::endl;
-    return (false);
-  }
+  _encoder = opus_encoder_create(SAMPLE_RATE, _num_channels, OPUS_APPLICATION_VOIP, &error);
+  if (error != OPUS_OK)
+    {
+      std::cerr << "opus_encoder_create() failed : error on initializing encoder" << std::endl;
+      return (false);
+    }
   opus_int32		rate;
   opus_encoder_ctl(_encoder, OPUS_GET_BANDWIDTH(&rate));
   _encoded_data_size = rate;
   return (true);
 }
 
-bool			BabelEncoder::opusDecoderCreate() {
+bool			BabelEncoder::opusDecoderCreate()
+{
   int			error;
 
   error = 0;
-  _decoder = opus_decoder_create(SAMPLE_RATE, num_channels, &error);  
+  _decoder = opus_decoder_create(SAMPLE_RATE, _num_channels, &error);  
   if (error != OPUS_OK) {
     std::cerr << "opus_decoder_create() failed : error on initializing decoder" << std::endl;
     return (false);
@@ -96,7 +99,7 @@ float			*BabelEncoder::decodeFrame(const unsigned char *data, int frame_size)
   return (frame);
 }
 
-int			BabelEncoder::getBytesDecode()
+int			BabelEncoder::getBytesDecode() const
 {
   return (_bytes);
 }

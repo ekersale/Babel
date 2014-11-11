@@ -15,6 +15,19 @@
 
 Subscribe::Subscribe(QWidget *parent) : QWidget(parent), ui(new Ui::Subscribe)
 {
+  // thread  = new QThread;
+  // ThreadCom	*_com;
+  // _com = new ThreadCom;
+  // ptr = _com;
+  // this->_net = ((ThreadCom *)ptr)->getNetwork();
+  // this->_parser = ((ThreadCom *)ptr)->getParser();
+
+
+  // ((ThreadCom *)ptr)->connectServer();
+  // _com->moveToThread(thread);
+  // connect(thread, SIGNAL(started()), _com, SLOT(run()));
+  // thread->connect(_com, SIGNAL, (finished()), SLOT(quit()));
+  // thread->start();
   init();
 }
 
@@ -44,19 +57,52 @@ void    Subscribe::destroy()
 
 void    Subscribe::toSubscribe()
 {
-    if (ui->_lineLogin->text().isEmpty())
+   IPacketInfo   *packet_info = new PacketInfo();
+
+  char *pd1 = (char *)malloc(2);
+  char *pd2 = (char *)malloc(2);
+  char *sd1;
+  char *sd2;
+  
+  sd1 = strdup(ui->_lineLogin->text().toStdString().c_str());
+  sd2 = strdup(ui->_linePassword->text().toStdString().c_str());
+  pd1[0] = 2;
+  pd2[0] = 3;
+
+  packet_info->setCmd(1);
+  packet_info->getChars().push_back(sd1);
+  packet_info->getChars().push_back(sd2);
+  packet_info->getChars().push_back(pd1);
+  packet_info->getChars().push_back(pd2);
+  
+  if (ui->_lineLogin->text().isEmpty())
     {
       QMessageBox::critical(this,"Warning", "You must enter a valid login");
       return;
     }
-
-    if (ui->_linePassword->text().isEmpty())
+  else if (ui->_linePassword->text().isEmpty())
     {
       QMessageBox::critical(this,"Warning", "You must enter a valid password");
       return;
     }
+  else
+    {
+      // Packet    *packet;
+      // packet = (Packet *)parser->encode(packet_info);
 
-    Connection *page = new Connection;
-    page->show();
-    this->hide();
+      // std::stringbuf sz;
+      // sz >> packet;
+
+      
+      // if ((network->sendSocket(1, (void *)sz.str().c_str(), 65) == false))
+      // 	std::cout << "Error Send\n";
+      
+      // Connection *page = new Connection;
+      // page->show();
+      // this->hide();
+      
+      // delete(packet);
+      // delete(packet_info);
+    }
+
 }

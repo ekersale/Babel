@@ -30,7 +30,7 @@ public:
 	bool				readStream();
 	bool				writeStream(float *, int i);
 	bool				printError(const int &);
-	float				*getRecordedSamples();
+	float				*getRecordedSamples() const;
 	bool				closeStream();
 	bool				stopStream();
 

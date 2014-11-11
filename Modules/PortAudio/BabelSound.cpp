@@ -5,7 +5,7 @@
 // Login   <kersal_e@epitech.net>
 // 
 // Started on  Sun Nov  2 18:34:20 2014 Elliot Kersalé
-// Last update Wed Nov  5 17:30:19 2014 Sliman Desmars
+// Last update Tue Nov 11 15:13:04 2014 Sliman Desmars
 //
 
 #include "../../Includes/BabelSound.hh"
@@ -47,6 +47,7 @@ bool            ABabelSound::openStream()
 bool		ABabelSound::stopStream()
 {
   int error = 0;
+  
   if ((error = Pa_StopStream(_stream)) != paNoError)
     return (printError(error));
   return (true);
@@ -58,7 +59,9 @@ bool            ABabelSound::startStream()
    
   if ((error = Pa_StartStream(_stream)) != paNoError)
     return (printError(error));
-  (void)error;
+
+  static_cast<void>(error);
+  // (void)error;
   return (true);
 }
 
@@ -91,8 +94,9 @@ bool            ABabelSound::initializeOutput()
 
 bool            ABabelSound::readStream()
 {
-  int			error = 0;
+  int			error;
 
+  error = 0;
   if ((_recordedSamples = (SAMPLE *)malloc(FRAMES_PER_BUFFER * sizeof(SAMPLE) * NUM_CHANNELS)) == NULL) {
     std::cerr << "malloc() failed : error on allocating memory" << std::endl;
     return (false);
@@ -104,14 +108,16 @@ bool            ABabelSound::readStream()
   return (true);
 }
 
-float		*ABabelSound::getRecordedSamples()
+float		*ABabelSound::getRecordedSamples() const
 {
   return (_recordedSamples);
 }
 
 bool		ABabelSound::closeStream()
 {
-  int		error = 0;
+  int		error;
+
+  error = 0;
   
   if ((error = Pa_CloseStream(_stream)) != paNoError)
     return (printError(error));

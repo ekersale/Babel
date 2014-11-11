@@ -11,6 +11,9 @@
 
 #endif
 
+#include	"ThreadCom.hh"
+#include	"Parser.hh"
+
 namespace Ui {
 class Subscribe;
 }
@@ -28,10 +31,12 @@ public:
   void			setThread();
 private slots:
   void			toSubscribe();
-  
+ 
 private:
   Ui::Subscribe		*ui;
-  void			*_com;
+  void			*ptr;
+  Network		*_net;
+  Parser		*_parser;
 };
 
 #endif // SUBSCRIBE_H

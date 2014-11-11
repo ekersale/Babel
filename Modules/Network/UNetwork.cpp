@@ -121,27 +121,28 @@ int			Network::acceptSocket(void)
   _change = true;
   return (_id);
 }
-
+#include <iostream>
 int			Network::connectSocket(std::string host, std::string port)
 {
   struct protoent       *pe;
   ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
-    return (false);
+    return (0);
   if (!(pe = getprotobyname("TCP")))
-    return (false);
+    return (0);
   stranger->setAddr(_family, port.c_str(), host.c_str()); //prépare la connexion tcp vers un serveur
   if ((stranger->get_socket() = socket(_family, SOCK_STREAM, pe->p_proto)) == -1)
-    return (false);
+    return (0);
   if (connect(stranger->get_socket(), (saddr *)(&stranger->get_info()), sizeof(saddrin)) < 0)
     {
       close(stranger->get_socket());
       delete stranger;
-      return (false);
+      return (0);
     }
   _connected[++_id] = stranger;
   _change = true;
+  std::cout << "\tThe socket id is " << _id << "\n";
   return (_id);
 }
 

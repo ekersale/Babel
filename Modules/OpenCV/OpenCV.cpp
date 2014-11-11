@@ -1,4 +1,6 @@
-#include		"../../Includes/OpenCV.hh"
+// #include		"../../Includes/OpenCV.hh"
+
+#include		"OpenCV.hh"
 
 OpenCV::OpenCV(QObject *parent) : QThread(parent)
 {

@@ -5,7 +5,7 @@
 ** Login   <kersal_e@epitech.net>
 ** 
 ** Started on  Wed Oct 29 13:52:47 2014 Elliot Kersalé
-// Last update Sun Nov  9 15:45:23 2014 Sliman Desmars
+// Last update Tue Nov 11 14:56:49 2014 Sliman Desmars
 */
 
 #ifndef				_BABEL_ENCODER_H__
@@ -40,14 +40,14 @@ public:
   void				opusDestroy();
   unsigned char			*encodeFrame(const float *, int);
   float				*decodeFrame(const unsigned char *, int );
-  int				getBytesDecode();
-  int				getEncodedDataSize(void);
+  int				getBytesDecode() const;
+  int				getEncodedDataSize(void) const;
 
 private:
   OpusEncoder			*_encoder;
   OpusDecoder			*_decoder;
   int				_encoded_data_size;
-  int				num_channels;
+  int				_num_channels;
   int				_bytes;
 };
 
