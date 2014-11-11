@@ -6,6 +6,13 @@
 #include "XMLParser.hh"
 #include <map>
 #include <iostream>
+#include <sstream>
+
+#ifdef _WIN32
+#include <QtCore/QDir>
+#else
+#include <QDir>
+#endif
 
 class User;
 
@@ -43,12 +50,13 @@ public:
   //void callAnswer(std::vector<const char *>, std::vector<int>);
   int  cmdVal(IPacketInfo *);
 protected:
-  XMLParser * _xmlParser;
-  User	    *_user;
-  std::string getFilename(std::string, int);
-  std::string getFilenameById(int);
-  int	      getIdFromLogin(std::string);
-  std::string intToStdString(int);
+  XMLParser	* _xmlParser;
+  User		*_user;
+  std::string	getFilename(std::string, int);
+  std::string	getFilenameById(int);
+  int	        getIdFromLogin(std::string);
+  std::string	intToStdString(int);
+  unsigned int  countXmlFiles();
 };
 
 #endif /* SCOMMANDSVALUE_HH_ */

@@ -49,6 +49,7 @@ char PacketInfo::getCmd() const {
 
 const char* PacketInfo::popChars() {
 	const char *ret;
+	std::cout << "\t vector size : " << _chars.size() << "\n";
 
 	ret = _chars.front();
 	_chars.erase(_chars.begin());

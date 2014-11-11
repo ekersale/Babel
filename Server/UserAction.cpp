@@ -21,7 +21,7 @@ void User::authAnswer(char ret_val) {
 }
 
 void User::connectContactLoop(void) {
-
+  
 }
 
 void User::contactLoop(int id_socket) {
