@@ -34,10 +34,10 @@ void ThreadCom::run()
 			if (clientInfo = _network->get_connected(_socket))
 			{
 				test++;
-				_network->recvSocket(_socket);
-
-				int deb = _network->get_filled();
-				std::cout << deb << std::endl;
+				if (_network->recvSocket(_socket) == false)
+					exit(0);
+				if (_network->get_filled() == 0)
+					exit(0);
 				Packet		*packet = new Packet();
 				std::string	rbuff(_network->get_buffer(), 65);
 				std::stringbuf	usz(rbuff);

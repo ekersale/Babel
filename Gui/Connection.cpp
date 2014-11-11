@@ -115,7 +115,6 @@ void Connection::handleAuth(void *cmdptr, void *idptr)
 	{
 		a = 1;
 		QMessageBox::critical(this, "Warning", "Bad login");
-		exit(0);
 		return;
 	}
 	else if (tableCmd->at(0)[0] == 2)
