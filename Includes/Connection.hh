@@ -40,7 +40,7 @@ private slots:
   void    connection();
   void    subscribe();
   void	boxError(QString);
-  void	handleAuth(std::vector<const char *>, std::vector<int>);
+  void	handleAuth(void *, void *);
   
 private:
   Ui::Connection *ui;

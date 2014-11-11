@@ -37,20 +37,20 @@ public:
 	int  cmdVal(IPacketInfo *);
 
 signals:
-	void s_authAnswer(std::vector<const char *>, std::vector<int>);
-	void s_changeNick(std::vector<const char *>, std::vector<int>);
-	void s_changeStatus(std::vector<const char *>, std::vector<int>);
-	void s_changeBirth(std::vector<const char *>, std::vector<int>);
-	void s_contactModule(std::vector<const char *>, std::vector<int>);
-	void s_changeSurname(std::vector<const char *>, std::vector<int>);
-	void s_changeName(std::vector<const char *>, std::vector<int>);
-	void s_changeAddress(std::vector<const char *>, std::vector<int>);
-	void s_changePhone(std::vector<const char *>, std::vector<int>);
-	void s_addAnswer(std::vector<const char *>, std::vector<int>);
-	void s_removeRequest(std::vector<const char *>, std::vector<int>);
-	void s_removeAnswer(std::vector<const char *>, std::vector<int>);
-	void s_requestCall(std::vector<const char *>, std::vector<int>);
-	void s_callAnswer(std::vector<const char *>, std::vector<int>);
+	void s_authAnswer(void *, void *);
+	void s_changeNick(void *, void *);
+	void s_changeStatus(void *, void *);
+	void s_changeBirth(void *, void *);
+	void s_contactModule(void *, void *);
+	void s_changeSurname(void *, void *);
+	void s_changeName(void *, void *);
+	void s_changeAddress(void *, void *);
+	void s_changePhone(void *, void *);
+	void s_addAnswer(void *, void *);
+	void s_removeRequest(void *, void *);
+	void s_removeAnswer(void *, void *);
+	void s_requestCall(void *, void *);
+	void s_callAnswer(void *, void *);
 };
 
 #endif /* SCOMMANDSVALUE_HH_ */

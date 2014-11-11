@@ -24,44 +24,44 @@ void User::authAnswer(char ret_val) {
 }
 
 void User::connectContactLoop(void) {
-  std::vector<int>	id_clients;
-  std::vector<int>::iterator	_clients;
-  std::map<int, User *>::iterator it;
+  std::vector<int>	all_clients;
+  std::vector<int>::iterator	it_clients;
+  std::map<int, User *>::iterator it_users;
   int			id;
 
-  contactLoop(this, (id = 0));
-  id_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login));
-  _clients = id_clients.begin();
-  while (_clients != id_clients.end())
+  contactLoop(this, this);
+  all_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login));
+  it_clients = all_clients.begin();
+  while (it_clients != all_clients.end())
     {
-      if ((it = _server->get_users().find(*_clients)) != _server->get_users().end())
+      if ((it_users = _server->get_users().find(*it_clients)) != _server->get_users().end())
 	{
 	  //j'envoie a mes potes du push
-	  contactLoop(this, _id);
+	  contactLoop(this, it_users->second);
 	  //je recoie du server les infos de mes potes
-	  contactLoop(it->second, _id);
+	  contactLoop(it_users->second, this);
 	}
-      _clients++;
+      it_clients++;
     }
 }
 
-void User::contactLoop(User *_usr, int &my_id) {
+void User::contactLoop(User *usr_from, User *usr_to) {
   std::string	for_status;
   std::string	for_module;
 
-  for_status[0] = _usr->get_status();
-  for_module[0] = _usr->get_module();
-  contactCmd(12, _usr->get_nickname(), _usr->get_idSocket(), my_id);
-  contactCmd(13, for_status, _usr->get_idSocket(), my_id); //Cond Jump
-  contactCmd(14, _usr->get_birth(), _usr->get_idSocket(), my_id);
-  contactCmd(15, for_module, _usr->get_idSocket(), my_id); //Cond Jump
-  contactCmd(16, _usr->get_surname(), _usr->get_idSocket(), my_id);
-  contactCmd(17, _usr->get_name(), _usr->get_idSocket(), my_id);
-  contactCmd(18, _usr->get_address(), _usr->get_idSocket(), my_id);
-  contactCmd(19, _usr->get_phone(), _usr->get_idSocket(), my_id);
+  for_status[0] = usr_from->get_status();
+  for_module[0] = usr_from->get_module();
+  contactCmd(12, usr_from->get_nickname(), usr_from->get_id(), usr_to->get_idSocket());
+  contactCmd(13, for_status, usr_from->get_id(), usr_to->get_idSocket()); //Cond Jump
+  contactCmd(14, usr_from->get_birth(), usr_from->get_id(), usr_to->get_idSocket());
+  contactCmd(15, for_module, usr_from->get_id(), usr_to->get_idSocket()); //Cond Jump
+  contactCmd(16, usr_from->get_surname(), usr_from->get_id(), usr_to->get_idSocket());
+  contactCmd(17, usr_from->get_name(), usr_from->get_id(), usr_to->get_idSocket());
+  contactCmd(18, usr_from->get_address(), usr_from->get_id(), usr_to->get_idSocket());
+  contactCmd(19, usr_from->get_phone(), usr_from->get_id(), usr_to->get_idSocket());
 }
 
-void	User::contactCmd(int cmd, const std::string val, int id_socket, int &my_id)
+void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket)
 {
   IPacketInfo	*packet_info;
 
@@ -70,7 +70,7 @@ void	User::contactCmd(int cmd, const std::string val, int id_socket, int &my_id)
   packet_info = new PacketInfo();
   packet_info->setCmd(cmd);
   packet_info->getChars().push_back(val.c_str());
-  packet_info->getInts().push_back(my_id);
+  packet_info->getInts().push_back(id_from);
   std::cout << "id_socket : " << id_socket << std::endl;
   _server->pushToSend(id_socket, _server->get_parser()->encode(packet_info));
   delete (packet_info);
@@ -84,8 +84,16 @@ void User::removeRequest(int) {
 
 }
 
-void User::addAnswer(char) {
+void User::addAnswer(char ret_val) {
+  IPacketInfo	*packet_info;
+  char		*cpy = new char[1];
 
+  cpy[0] = ret_val;
+  packet_info = new PacketInfo();
+  packet_info->setCmd(21);
+  packet_info->getChars().push_back(cpy);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
 /*

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Home_t {
-    QByteArrayData data[33];
-    char stringdata[419];
+    QByteArrayData data[31];
+    char stringdata[377];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -48,20 +48,18 @@ QT_MOC_LITERAL(15, 188, 10),
 QT_MOC_LITERAL(16, 199, 14),
 QT_MOC_LITERAL(17, 214, 12),
 QT_MOC_LITERAL(18, 227, 7),
-QT_MOC_LITERAL(19, 235, 24),
-QT_MOC_LITERAL(20, 260, 16),
-QT_MOC_LITERAL(21, 277, 9),
-QT_MOC_LITERAL(22, 287, 8),
-QT_MOC_LITERAL(23, 296, 9),
-QT_MOC_LITERAL(24, 306, 10),
-QT_MOC_LITERAL(25, 317, 7),
-QT_MOC_LITERAL(26, 325, 9),
-QT_MOC_LITERAL(27, 335, 8),
-QT_MOC_LITERAL(28, 344, 12),
-QT_MOC_LITERAL(29, 357, 13),
-QT_MOC_LITERAL(30, 371, 14),
-QT_MOC_LITERAL(31, 386, 15),
-QT_MOC_LITERAL(32, 402, 16)
+QT_MOC_LITERAL(19, 235, 9),
+QT_MOC_LITERAL(20, 245, 8),
+QT_MOC_LITERAL(21, 254, 9),
+QT_MOC_LITERAL(22, 264, 10),
+QT_MOC_LITERAL(23, 275, 7),
+QT_MOC_LITERAL(24, 283, 9),
+QT_MOC_LITERAL(25, 293, 8),
+QT_MOC_LITERAL(26, 302, 12),
+QT_MOC_LITERAL(27, 315, 13),
+QT_MOC_LITERAL(28, 329, 14),
+QT_MOC_LITERAL(29, 344, 15),
+QT_MOC_LITERAL(30, 360, 16)
     },
     "Home\0invitContact\0\0callContact\0"
     "videoCallContact\0hangHup\0changeOnline\0"
@@ -69,8 +67,7 @@ QT_MOC_LITERAL(32, 402, 16)
     "updatePlayerUI\0sendFrameTo\0"
     "std::vector<unsigned char*>*\0recvFrameFrom\0"
     "threadReceive\0threadCall\0sendAddContact\0"
-    "contactClick\0setNick\0std::vector<const char*>\0"
-    "std::vector<int>\0setStatus\0setBirth\0"
+    "contactClick\0setNick\0setStatus\0setBirth\0"
     "setModule\0setSurname\0setName\0setAdress\0"
     "setPhone\0setAddAnswer\0setCallAnswer\0"
     "setCallRequest\0setRemoveAnswer\0"
@@ -108,18 +105,18 @@ static const uint qt_meta_data_Home[] = {
       16,    0,  173,    2, 0x08 /* Private */,
       17,    0,  174,    2, 0x08 /* Private */,
       18,    2,  175,    2, 0x0a /* Public */,
-      21,    2,  180,    2, 0x0a /* Public */,
-      22,    2,  185,    2, 0x0a /* Public */,
-      23,    2,  190,    2, 0x0a /* Public */,
-      24,    2,  195,    2, 0x0a /* Public */,
-      25,    2,  200,    2, 0x0a /* Public */,
-      26,    2,  205,    2, 0x0a /* Public */,
-      27,    2,  210,    2, 0x0a /* Public */,
-      28,    2,  215,    2, 0x0a /* Public */,
-      29,    2,  220,    2, 0x0a /* Public */,
-      30,    2,  225,    2, 0x0a /* Public */,
-      31,    2,  230,    2, 0x0a /* Public */,
-      32,    2,  235,    2, 0x0a /* Public */,
+      19,    2,  180,    2, 0x0a /* Public */,
+      20,    2,  185,    2, 0x0a /* Public */,
+      21,    2,  190,    2, 0x0a /* Public */,
+      22,    2,  195,    2, 0x0a /* Public */,
+      23,    2,  200,    2, 0x0a /* Public */,
+      24,    2,  205,    2, 0x0a /* Public */,
+      25,    2,  210,    2, 0x0a /* Public */,
+      26,    2,  215,    2, 0x0a /* Public */,
+      27,    2,  220,    2, 0x0a /* Public */,
+      28,    2,  225,    2, 0x0a /* Public */,
+      29,    2,  230,    2, 0x0a /* Public */,
+      30,    2,  235,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -137,19 +134,19 @@ static const uint qt_meta_data_Home[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
-    QMetaType::Void, 0x80000000 | 19, 0x80000000 | 20,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
 
        0        // eod
 };
@@ -174,19 +171,19 @@ void Home::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 12: _t->threadCall(); break;
         case 13: _t->sendAddContact(); break;
         case 14: _t->contactClick(); break;
-        case 15: _t->setNick((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 16: _t->setStatus((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 17: _t->setBirth((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 18: _t->setModule((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 19: _t->setSurname((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 20: _t->setName((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 21: _t->setAdress((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 22: _t->setPhone((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 23: _t->setAddAnswer((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 24: _t->setCallAnswer((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 25: _t->setCallRequest((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 26: _t->setRemoveAnswer((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
-        case 27: _t->setRemoveRequest((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
+        case 15: _t->setNick((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 16: _t->setStatus((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 17: _t->setBirth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 18: _t->setModule((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 19: _t->setSurname((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 20: _t->setName((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 21: _t->setAdress((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 22: _t->setPhone((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 23: _t->setAddAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 24: _t->setCallAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 25: _t->setCallRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 26: _t->setRemoveAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 27: _t->setRemoveRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
         default: ;
         }
     }
