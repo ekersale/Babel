@@ -15,19 +15,6 @@
 
 Subscribe::Subscribe(QWidget *parent) : QWidget(parent), ui(new Ui::Subscribe)
 {
-  // thread  = new QThread;
-  // ThreadCom	*_com;
-  // _com = new ThreadCom;
-  // ptr = _com;
-  // this->_net = ((ThreadCom *)ptr)->getNetwork();
-  // this->_parser = ((ThreadCom *)ptr)->getParser();
-
-
-  // ((ThreadCom *)ptr)->connectServer();
-  // _com->moveToThread(thread);
-  // connect(thread, SIGNAL(started()), _com, SLOT(run()));
-  // thread->connect(_com, SIGNAL, (finished()), SLOT(quit()));
-  // thread->start();
   init();
 }
 

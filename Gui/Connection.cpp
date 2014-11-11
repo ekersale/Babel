@@ -39,103 +39,93 @@ Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connec
 
 Connection::~Connection()
 {
-	delete ui;
+  delete ui;
 }
 
 
 void Connection::connection()
 {
-	IPacketInfo	*packet_info = new PacketInfo();
+  IPacketInfo	*packet_info = new PacketInfo();
+  
+  char *pd1 = (char *)malloc(2);
+  char *pd2 = (char *)malloc(2);
+  char *sd1;
+  char *sd2;
 
-	char *pd1 = (char *)malloc(2);
-	char *pd2 = (char *)malloc(2);
-	char *sd1;
-	char *sd2;
-
-	sd1 = strdup(ui->_lineLogin->text().toStdString().c_str());
-	sd2 = strdup(ui->_linePassword->text().toStdString().c_str());
-	pd1[0] = 2;
-	pd2[0] = 3;
-
-	packet_info->setCmd(1);
-	packet_info->getChars().push_back(sd1);
-	packet_info->getChars().push_back(sd2);
-	packet_info->getChars().push_back(pd1);
-	packet_info->getChars().push_back(pd2);
-
-	if (ui->_lineLogin->text().isEmpty())
-	{
-		QMessageBox::critical(this, "Warning", "You must enter a valid login");
-		return;
-	}
-	else if (ui->_linePassword->text().isEmpty())
-	{
-		QMessageBox::critical(this, "Warning", "You must enter a valid password");
-		return;
-	}
-	else
-	{
-		Packet	*packet;
-		packet = (Packet *)parser->encode(packet_info);
-
-
-		std::stringbuf sz;
-		sz >> packet;
-		//on send sz.str() via le rézo maggle
-		//      std::cout << "sz: " << sz.str() << std::endl;
-
-		if ((network->sendSocket(1, (void *)sz.str().c_str(), 65) == false))
-			std::cout << "Error Send\n";
-		//sinon on fait un receive et on recevra un buffer
-		//pour l'exemple le buffer est celui du dessus
-		//std::stringbuf usz(sz.str());
-		//Packet	*packet2 = new Packet();
-		//on insère alors le le tout dans le paquet comme le dit l'expression
-		//usz << packet2;
-		// //on teste_z notre gros paquet rempli de foutre
-		//std::cout << "usz: " << usz.str() << std::endl; 
-
-		free(pd1);
-		free(pd2);
-		free(sd1);
-		free(sd2);
-		delete(packet);
-		delete(packet_info);
-	}
+  sd1 = strdup(ui->_lineLogin->text().toStdString().c_str());
+  sd2 = strdup(ui->_linePassword->text().toStdString().c_str());
+  pd1[0] = 2;
+  pd2[0] = 3;
+  
+  packet_info->setCmd(1);
+  packet_info->getChars().push_back(sd1);
+  packet_info->getChars().push_back(sd2);
+  packet_info->getChars().push_back(pd1);
+  packet_info->getChars().push_back(pd2);
+  
+  if (ui->_lineLogin->text().isEmpty())
+    {
+      QMessageBox::critical(this, "Warning", "You must enter a valid login");
+      return;
+    }
+  else if (ui->_linePassword->text().isEmpty())
+    {
+      QMessageBox::critical(this, "Warning", "You must enter a valid password");
+      return;
+    }
+  else
+    {
+      Packet	*packet;
+      packet = (Packet *)parser->encode(packet_info);
+      
+      
+      std::stringbuf sz;
+      sz >> packet;
+      //on send sz.str() via le rézo maggle
+      //      std::cout << "sz: " << sz.str() << std::endl;
+      
+      if ((network->sendSocket(1, (void *)sz.str().c_str(), 65) == false))
+	std::cout << "Error Send" << std::endl;
+      //sinon on fait un receive et on recevra un buffer
+      //pour l'exemple le buffer est celui du dessus
+      //std::stringbuf usz(sz.str());
+      //Packet	*packet2 = new Packet();
+      //on insère alors le le tout dans le paquet comme le dit l'expression
+      //usz << packet2;
+      // //on teste_z notre gros paquet rempli de foutre
+      //std::cout << "usz: " << usz.str() << std::endl; 
+      
+      free(pd1);
+      free(pd2);
+      free(sd1);
+      free(sd2);
+      delete(packet);
+      delete(packet_info);
+    }
 }
 
 void Connection::handleAuth(void *cmdptr, void *idptr)
 {
-	int a;
-
-	a = 0;
-	std::vector<const char *> *tableCmd = (std::vector<const char *> *)cmdptr;
-	std::vector<int> *vids = (std::vector<int> *)idptr;
-	if (tableCmd->at(0)[0] == 1)
-	{
-		a = 1;
-		QMessageBox::critical(this, "Warning", "Bad login");
-		exit(0);
-		return;
-	}
-	else if (tableCmd->at(0)[0] == 2)
-	{
-
-		a = 2;
-		std::cout << a << std::endl;
-		QMessageBox::critical(this, "Warning", "Bad password");
-		return;
-	}
-	else
-	{
-		a = 3;
-		Home		*page;
-		page = new Home;
-		page->setThread(ptr);
-		page->show();
-		this->hide();
-	}
-	std::cout << a << std::endl;
+  std::vector<const char *> *tableCmd = (std::vector<const char *> *)cmdptr;
+  std::vector<int> *vids = (std::vector<int> *)idptr;
+  if (tableCmd->at(0)[0] == 1)
+    {
+      QMessageBox::critical(this, "Warning", "Bad login");
+      return;
+    }
+  else if (tableCmd->at(0)[0] == 2)
+    {
+      QMessageBox::critical(this, "Warning", "Bad password");
+      return;
+    }
+  else
+    {
+      Home		*page;
+      page = new Home;
+      page->setThread(ptr);
+      page->show();
+      this->hide();
+    }
 }
 
 void    Connection::subscribe()
