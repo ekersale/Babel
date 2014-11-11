@@ -51,7 +51,7 @@ int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
   return (0);
 }
 
-std::string	SCommandsValue::getFilename(std::string _login, int _id = -1)
+std::string	SCommandsValue::getFilename(std::string _login, int _id = -1) const
 {
   std::string	filename;
   std::size_t	pos;
@@ -82,7 +82,7 @@ std::string	SCommandsValue::getFilename(std::string _login, int _id = -1)
   return ("");
 }
 
-int	SCommandsValue::getIdFromLogin(std::string _login)
+int	SCommandsValue::getIdFromLogin(std::string _login) const
 {
   std::string	filename;
   std::size_t	pos;
@@ -112,7 +112,7 @@ int	SCommandsValue::getIdFromLogin(std::string _login)
   return (-1);
 }
 
-std::string	SCommandsValue::getFilenameById(int _id)
+std::string	SCommandsValue::getFilenameById(int _id) const
 {
   std::string	filename;
   std::size_t	pos;
@@ -136,7 +136,7 @@ std::string	SCommandsValue::getFilenameById(int _id)
   return ("");
 }
 
-std::string	SCommandsValue::intToStdString(int nb)
+std::string	SCommandsValue::intToStdString(int nb) const
 {
   std::string res;
   std::stringstream toStr;
