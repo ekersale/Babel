@@ -43,7 +43,6 @@ int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
 {
   if (methodPtr.find(packet_info->getCmd()) != methodPtr.end())
     {
-      std::cout << "\n\t - - - - - - getCmd() is " << packet_info->getCmd() << "\n";
       (this->*methodPtr[packet_info->getCmd()])(packet_info->getChars(), packet_info->getInts());
     }
   else
@@ -140,7 +139,6 @@ std::string	SCommandsValue::intToStdString(int nb) const
 {
   std::string res;
   std::stringstream toStr;
-
   toStr << nb;
   return (toStr.str());
 }
@@ -155,16 +153,12 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
   int		id;
 
   filename = getFilename(chars[0]);
-  std::cout << "Login is : " << chars[0] << "\n";
-  std::cout << "Psw is : " << chars[1] << "\n";
   if ((id = getIdFromLogin(chars[0])) == -1)
     {
       _user->authAnswer((char)RET_WRONG_LOG);
       std::cout << "Wrong log\n";
       return ;
     }
-  puts("3");
-  std::cout << "ID = " << id << std::endl;
   if (strcmp(chars[1], _xmlParser->getNodeValue(filename, "password").c_str()) == 0)
     {
       std::cout << "Good passwd" << std::endl;

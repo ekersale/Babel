@@ -10,13 +10,15 @@
 
 void User::authAnswer(char ret_val) {
   IPacketInfo	*packet_info;
+  char		*cpy = new char[1];
 
+  cpy[0] = ret_val;
   packet_info = new PacketInfo();
   packet_info->setCmd(3);
-  packet_info->getChars().push_back(&ret_val);
+  packet_info->getChars().push_back(cpy);
+  std::cout << "id Socket : " << _idSocket << std::endl;
   _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
   delete (packet_info);
-  puts("Auth ready");
   if (ret_val == 0)
     connectContactLoop();
 }
@@ -28,7 +30,7 @@ void User::connectContactLoop(void) {
   int			id;
 
   contactLoop(this, (id = 0));
-  id_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login, -1));
+  id_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login));
   _clients = id_clients.begin();
   while (_clients != id_clients.end())
     {
@@ -67,6 +69,7 @@ void	User::contactCmd(int cmd, const std::string val, int id_socket, int &my_id)
   packet_info->setCmd(cmd);
   packet_info->getChars().push_back(val.c_str());
   packet_info->getInts().push_back(my_id);
+  std::cout << "id_socket : " << id_socket << std::endl;
   _server->pushToSend(id_socket, _server->get_parser()->encode(packet_info));
   delete (packet_info);
 }

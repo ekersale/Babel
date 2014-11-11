@@ -165,6 +165,7 @@ bool			Network::recvSocket(int id)
   return (true);
 }
 
+#include <iostream>
 bool			Network::sendSocket(int id, void *buff, size_t len)
 {
   int	ret;
@@ -173,6 +174,7 @@ bool			Network::sendSocket(int id, void *buff, size_t len)
     return (false);
   if ((ret = send(_connected[id]->get_socket(), buff, len, 0)) < 0)
     {
+      std::cout << "I fail with ret val : " << ret << std::endl;
       closeSocket(id);
       _connected[0]->get_buffer()[0] = 0;
       return (false);
