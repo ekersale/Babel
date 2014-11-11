@@ -106,29 +106,37 @@ void Connection::connection()
 
 void Connection::handleAuth(std::vector<const char *>tableCmd, std::vector<int>tableParams)
 {
-  Home		*page;
-  
-  std::cout << "On recoit quelque chose" << std::endl;
-  static_cast<void>(tableCmd);
+	int a;
+
+	a = 0;
+  std::cout << (int)(tableCmd.at(0)[0]) << std::endl;
+  //static_cast<void>(tableCmd);
   static_cast<void>(tableParams);
-  // if ((char)tableCmd.at(0)[0] == 1)
-  //   {
-  //     QMessageBox::critical(this,"Warning", "Bad login");
-  //     return;
-  //   }
-  // else if ((char)tableCmd.at(0)[0] == 2)
-  //   {
-  //     QMessageBox::critical(this,"Warning", "Bad login");
-  //     return;
-  //   }
-  // else
-  //   {
-     
-      page = new Home;
+  if (tableCmd.at(0)[0] == 1)
+     {
+	  a = 1;
+       QMessageBox::critical(this,"Warning", "Bad login");
+	   exit(0);
+		//return;
+     }
+   else if (tableCmd.at(0)[0] == 2)
+     {
+	   
+	   a = 2;
+	   std::cout << a << std::endl;
+       QMessageBox::critical(this,"Warning", "Bad password");
+       return;
+     }
+   else
+     {
+	   a = 3;
+	   Home		*page;
+	  page = new Home;
       page->setThread(ptr);
       page->show();
-      this->hide(); 
-    // }
+     // this->hide(); 
+    }
+   std::cout << a << std::endl;
 }
 
 void    Connection::subscribe()

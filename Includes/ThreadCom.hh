@@ -23,8 +23,8 @@
 #include		"Serialize.hh"
 
 #define			ERROR_CONNECTION	"Failed to join server"
-#define			IP_ADDR_SERV		"127.0.0.1"
-#define			PORT			"2000"
+#define			IP_ADDR_SERV		"10.13.253.15"
+#define			PORT				"2000"
 
 class ThreadCom : public CCommandsValue
 {
@@ -39,7 +39,7 @@ public:
   Parser	*getParser() {return _parser;};
   Serialize	*getSerialize() {return _serialize;};
   XMLParser	*getXMLParser() {return _xmlParser;};
-
+  int	test;
   
 signals:
   void displayError(QString);

@@ -25,11 +25,12 @@ void		Packet::unserialize(std::istream &is)
   int		i = -1;
 
   is.read(&byte, sizeof(char));
-  this->command = reinterpret_cast<char>(byte);
+  this->command = byte;
+
   while (++i < 64)
     {
       is.read(&byte, sizeof(char));
-      this->data[i] = reinterpret_cast<char>(byte);
+	  this->data[i] = byte;
     }
 }
 

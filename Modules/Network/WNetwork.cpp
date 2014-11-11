@@ -110,12 +110,12 @@ int			Network::acceptSocket(void)
   ClientInfo		*stranger = new ClientInfo(_len);
 
   if (!stranger)
-    return (false);
+    return (0);
   socklen = sizeof(saddrin);
   if ((stranger->get_socket() = accept(_connected[0]->get_socket(), (saddr *)&(stranger->get_info()), &socklen)) < 0)
     {
       delete stranger;
-      return (false);
+      return (0);
     }
   _connected[++_id] = stranger;
   _change = true;
