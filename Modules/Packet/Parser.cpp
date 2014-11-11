@@ -16,6 +16,7 @@ IPacket* Parser::encode(IPacketInfo* packetinfo)
 	key = _ref.find(packetinfo->getCmd())->second;
 	ptr = data;
 	memset(data, 0, 64);
+	std::cout << "\n\tWith Value : " << (int)packetinfo->getCmd() << "\n\n";
 	for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++) {
 		if (*mykey > 128)
 		  {

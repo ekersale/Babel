@@ -17,20 +17,22 @@ Serialize* Server::get_serialize(void) const {
 bool Server::startServer(void)
 {
   //ifndef
-  _network = new Network(AF_INET, SOCK_STREAM, "TCP", 65);
-  std::cout << "Bind : " << _network->bindSocket(PORT) << "\n";
-  _network->listenSocket(LISTEN_VAL);
+  _network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
+  if (_network->bindSocket(PORT) < 1)
+    {
+      std::cerr << "Fatal Error : Bind Error" << std::endl;
+      return (false);
+    }
+  if (_network->listenSocket(LISTEN_VAL) < 0)
+    {
+      std::cerr << "Fatal Error : Listen Error" << std::endl;
+      return (false);
+    }
   _serialize = new Serialize();
   _xmlParser = new XMLParser();
   _parser = new Parser(_xmlParser->getCommandArgs("commands.xml"));
-
-
-  IPacketInfo *packet_info = new PacketInfo();
-  packet_info->setCmd(1);
-  packet_info->getChars().push_back("naps");
-  packet_info->getChars().push_back("test");
-  IPacket *packet = _parser->encode(packet_info);
-  exit(0);
+  tmp_max = _xmlParser->countXmlFiles();
+  return (true);
    // TODO : implement
 }
 
@@ -108,11 +110,19 @@ std::map<int, User *>& Server::get_users() { // getter & setter
   return (_users);
 }
 
+void		Server::increment_tmpMax() {
+  tmp_max++;
+}
+
+int		&Server::get_tmpMax() {
+  return (tmp_max);
+}
+
 int		Server::init(void)
 {
-   startServer();
-   loopServer();
-   return (0);
+  if (startServer())
+    return (loopServer());
+  return (false);
 }
 
 Server::Server()
@@ -121,7 +131,7 @@ Server::Server()
    _network = NULL;
    _xmlParser = NULL;
    _parser = NULL;
-   tmp_user = 0;
+   tmp_user = -1;
 }
 
 Server::Server(const Server& oldServer)
@@ -132,6 +142,7 @@ Server::Server(const Server& oldServer)
    _xmlParser = oldServer._xmlParser;
    _parser = oldServer._parser;
    _idUsers = oldServer._idUsers;
+   tmp_user = -1;
 }
 
 Server::~Server()

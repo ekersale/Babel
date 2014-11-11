@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Tue Nov 11 09:19:01 2014 Sliman Desmars
+// Last update Tue Nov 11 12:26:35 2014 Sliman Desmars
 //
 
 #include <errno.h>
@@ -23,6 +23,7 @@ bool	Server::newUser(void)
   std::cout << "2/ Max fd id : " << _network->maxSocket()->get_socket() << "\n";
   // une connexion au serveur != une connexion d'un utilisateur donc activeChat & Module = 0
   std::cout << "New User : id : "  << tmp_user << "\n";
+  return (true);
 }
 
 void	Server::deleteUser(User *user)
@@ -94,13 +95,16 @@ void	Server::recvIsSet(fd_set &readfs)
 
   if (FD_ISSET(_network->get_connected(0)->get_socket(), &readfs))
     newUser();
+  std::cout << "\n\t_user size is : " << _users.size() << "\n\n";
   it = _users.begin();
   while (it != _users.end())
     {
       if ((clientInfo = _network->get_connected((it->second)->get_idSocket())))
 	{
+	  puts("--------------------------");
 	  if (FD_ISSET(clientInfo->get_socket(), &readfs))
 	    {
+	      puts("++++++++++++++++++++++++++++");
 	      if (_network->recvSocket((it->second)->get_idSocket())) // renvrera une len via get_field
 		treatRecv(it->second);
 	      else
@@ -122,14 +126,15 @@ void	Server::recvIsSet(fd_set &readfs)
 
 void	Server::sendIsSet(fd_set &setfd)
 {
+  std::stringbuf sz;
+
   if (!_toSend.empty() && _network->get_connected(_toSend.front()._id_socket))
     {
       if (FD_ISSET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd))
 	{
-	  /*
+	  sz >> (Packet *)_toSend.front()._packet;
 	  _network->sendSocket(_network->get_connected(_toSend.front()._id_socket)->get_socket(),
-			       _serialize->insert(_toSend.front()._packet), sizeof(Packet));
-	  */
+			       (void *)sz.str().c_str(), 65);
 	}
       delete (_toSend.front()._packet);
       _toSend.pop();
@@ -140,15 +145,17 @@ void	Server::sendIsSet(fd_set &setfd)
 void	Server::setFdWrite(fd_set &setfd)
 {
   if (!_toSend.empty())
-    if (_network->get_connected(_toSend.front()._id_socket))
-      FD_SET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd);
-    else
-      {
-	delete (_toSend.front()._packet);
-	_toSend.pop();
-	std::cout << "\n\n\tRECCCCCCCCCCCCCCC\n\n";
-	setFdWrite(setfd);
-      }
+    {
+      if (_network->get_connected(_toSend.front()._id_socket))
+	FD_SET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd);
+      else
+	{
+	  delete (_toSend.front()._packet);
+	  _toSend.pop();
+	  std::cout << "\n\n\tRECCCCCCCCCCCCCCC\n\n";
+	  setFdWrite(setfd);
+	}
+    }
 }
 
 bool Server::loopServer(void)
@@ -160,6 +167,7 @@ bool Server::loopServer(void)
   while (1)
     {
       FD_ZERO(&readfs);
+      FD_ZERO(&writefs);
       setFd(readfs);
       setFdWrite(writefs);
       std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << "\n";
@@ -171,13 +179,7 @@ bool Server::loopServer(void)
       recvIsSet(readfs);
       sendIsSet(writefs);
     }
-  /*
-    if (sendSocket( User->key , buff , size))
-{
-} else {
-// fail = del User
-}
-   */
+  return (true);
 }
 
 void  Server::pushToSend(int id_socket, IPacket *packet)

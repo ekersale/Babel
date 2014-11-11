@@ -139,7 +139,5 @@ UserInfo::UserInfo(const UserInfo& oldUserInfo)
    _module = oldUserInfo._module;
 }
 
-UserInfo::~UserInfo()
-{
-   // TODO : implement
+UserInfo::~UserInfo() {
 }

@@ -56,7 +56,6 @@ protected:
   std::string	getFilenameById(int);
   int	        getIdFromLogin(std::string);
   std::string	intToStdString(int);
-  unsigned int  countXmlFiles();
 };
 
 #endif /* SCOMMANDSVALUE_HH_ */

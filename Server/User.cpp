@@ -74,7 +74,5 @@ User::User(const User& oldUser)
   _commandsValue = oldUser._commandsValue;
 }
 
-User::~User()
-{
-   // TODO : implement
+User::~User() {
 }

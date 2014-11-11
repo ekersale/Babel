@@ -39,6 +39,7 @@ class					XMLParser
   bool						print_error(const std::string &msg);
   std::map<char, std::vector<unsigned char> >	getCommandArgs(std::string);
   bool						removeChild(std::string, std::string);
+  unsigned int  countXmlFiles();
 
 private:
   QDomDocument				_doc;

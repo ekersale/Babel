@@ -41,17 +41,10 @@ SCommandsValue::~SCommandsValue() {
 
 int		SCommandsValue::cmdVal(IPacketInfo *packet_info)
 {
-  std::vector<int>	     ints;
-  std::vector<const char *>        chars;
-  char                       cmd;
-
-  ints = packet_info->getInts();
-  chars = packet_info->getChars();
-  cmd = packet_info->getCmd();
-  if (methodPtr.find(cmd) != methodPtr.end())
+  if (methodPtr.find(packet_info->getCmd()) != methodPtr.end())
     {
-      std::cout << "\tINSIDE : cmdVal\n";
-      (this->*methodPtr[cmd])(chars, ints);
+      std::cout << "\n\t - - - - - - getCmd() is " << packet_info->getCmd() << "\n";
+      (this->*methodPtr[packet_info->getCmd()])(packet_info->getChars(), packet_info->getInts());
     }
   else
     return (-1);
@@ -143,18 +136,6 @@ std::string	SCommandsValue::getFilenameById(int _id)
   return ("");
 }
 
-unsigned int	SCommandsValue::countXmlFiles()
-{
-  QDir		dir(PATH);
-  QStringList	filter;
-
-  filter << "*.xml";
-  dir.setFilter(QDir::Files);
-  dir.setSorting(QDir::Name);
-  dir.setNameFilters(filter);
-  return (dir.count());
-}
-
 std::string	SCommandsValue::intToStdString(int nb)
 {
   std::string res;
@@ -197,8 +178,11 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
       _user->set_status(chars[2][0]);
       _user->set_module(chars[3][0]);
+      std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
       _user->get_server()->get_users().erase(_user->get_id());
+      std::cout << "\tCreate bloc at id : " << id << "\n\n";
       _user->get_server()->get_users()[id] = _user;
+      _user->set_id(id);
       _user->authAnswer((char)RET_OK);
       std::cout << "Log OKK\n";
     }
@@ -215,7 +199,6 @@ void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int
   std::string filename;
   
   filename = chars[0];
-  // ICI += ID
   filename += ".xml";
   _xmlParser->generateFile(filename);
   std::cout << "filename = " <<  filename << std::endl;
@@ -223,115 +206,104 @@ void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int
   _xmlParser->updateNode(filename, "password", chars[1]);
   _user->set_login(chars[0]);
   _user->set_psw(chars[1]);
-  // DAM pile : status + module
-  // _user->set_status(char[2][0]);
-  // _user->set_module(chars[3][0]);
-  //
-  // _user->get_server()->get_users().erase(_user->get_id());
-  // _user->get_server()->get_users()[  --true_id--  ] = _user;
+  _user->set_module(chars[2][0]);
+  std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
+  _user->get_server()->get_users().erase(_user->get_id());
+  std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
+  _user->get_server()->get_users()[_user->get_server()->get_tmpMax()] = _user;
+  _user->set_id(_user->get_server()->get_tmpMax());
+  _user->get_server()->increment_tmpMax();
+  _user->authAnswer((char)RET_OK); //To check
 }
 
+
+// ALL need to push to contact
 void		SCommandsValue::nick(std::vector<const char *> chars, std::vector<int> ints)
 {
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
   std::string filename;
   
+  (void)ints;
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "nickname", chars[0]);
   _user->set_nickname(chars[0]);
-  /*
-  _user->set_login(_xmlParser->getNodeValue(filename, "login"));
-  //std::cout << _xmlParser->getNodeValue(filename, "password");
-  _user->set_birth(_xmlParser->getNodeValue(filename, "birth"));
-  _user->set_name(_xmlParser->getNodeValue(filename, "name"));
-  _user->set_surname(_xmlParser->getNodeValue(filename, "surname"));
-  _user->set_nickname(_xmlParser->getNodeValue(filename, "nick"));
-  _user->set_adress(_xmlParser->getNodeValue(filename, "address"));
-  _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
-  */
 }
 
 void		SCommandsValue::status(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
-  
+
+  (void)ints;  
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "status", chars[0]);
-  // _user->set_status(chars[0]);
-
-
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
+  _user->set_status(chars[0][0]);
 }
 
 void		SCommandsValue::module(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
-  
+
+  (void)ints;    
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "module", chars[0]);
-
-
-  // _user->set_module(chars[0]);
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
+  _user->set_module(chars[0][0]);
 }
 
 void		SCommandsValue::birth(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
+  (void)ints;
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "birth", chars[0]);
   _user->set_birth(chars[0]);
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::surname(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
+  (void)ints;  
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "surname", chars[0]);
   _user->set_surname(chars[0]);
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::name(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
+  (void)ints;  
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "name", chars[0]);
   _user->set_name(chars[0]);
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::address(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
+  (void)ints;  
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "address", chars[0]);
   _user->set_adress(chars[0]);
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::phone(std::vector<const char *> chars, std::vector<int> ints)
 {
   std::string filename;
   
+  (void)ints;  
   _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "phone", chars[0]);
   _user->set_name(chars[0]);
-
-  // NEKKO changer le valeur dans UserInfo + dans le [id_login].xml (recup la valeur dans la pile)
 }
 
 void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<int> ints)
@@ -344,7 +316,6 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
   friendfilename = getFilename(chars[0]);
   _xmlParser->addChildToParent(filename, "contacts", "id", intToStdString(getIdFromLogin(chars[0])));
   _xmlParser->addChildToParent(friendfilename, "contacts", "id", intToStdString(getIdFromLogin(_user->get_login())));
-
   // NEKKO add le nouveau contact dans [id_login].xml du user + add contact id dans celui qui vient d'etre add 
 }
 
@@ -359,7 +330,6 @@ void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector
   friendfilename = getFilenameById(ints[0]);  
   _xmlParser->removeChild(filename, intToStdString(ints[0]));
   _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
-  std::cout << countXmlFiles() << std::endl;
 }
 
 void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)

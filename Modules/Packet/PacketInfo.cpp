@@ -19,7 +19,7 @@ std::vector<const char*>& PacketInfo::getChars() {
 }
 
 /*
-void PacketInfo::setChars(const std::vector<char*>& chars) {
+xvoid PacketInfo::setChars(const std::vector<char*>& chars) {
 	_chars = chars;
 }
 */

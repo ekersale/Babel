@@ -10,13 +10,13 @@ MAKEFILE      = Makefile
 
 ####### Compiler, tools and options
 
-CC            = gcc
-CXX           = g++
+CC            = clangcc
+CXX           = clang++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES) -g
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES) -g
 INCPATH       = -I/opt/Qt5.3.2/5.3/gcc/mkspecs/linux-g++ -I. -I../Includes -I/opt/Qt5.3.2/5.3/gcc/include -I/opt/Qt5.3.2/5.3/gcc/include/QtWidgets -I/opt/Qt5.3.2/5.3/gcc/include/QtXml -I/opt/Qt5.3.2/5.3/gcc/include/QtGui -I/opt/Qt5.3.2/5.3/gcc/include/QtCore -I.
-LINK          = g++
+LINK          = clang++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/opt/Qt5.3.2/5.3/gcc -Wl,-rpath,/opt/Qt5.3.2/5.3/gcc/lib
 LIBS          = $(SUBLIBS) -L/opt/Qt5.3.2/5.3/gcc/lib -lQt5Widgets -lQt5Xml -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs

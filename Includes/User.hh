@@ -31,8 +31,8 @@ public:
 
   void authAnswer(char);
   void connectContactLoop(void);
-  void contactLoop(int);
-  void contactCmd(int, const std::string, int);
+  void contactLoop(User *, int &);
+  void contactCmd(int, const std::string, int, int &);
   void removeAnswer(char &);
   void removeRequest(int);
   void addAnswer(char);

@@ -345,3 +345,16 @@ std::map<char, std::vector<unsigned char> >	XMLParser::getCommandArgs(std::strin
     }
   return (map);
 }
+
+unsigned int	XMLParser::countXmlFiles()
+{
+  QDir		dir(PATH);
+  QStringList	filter;
+
+  filter << "*.xml";
+  dir.setFilter(QDir::Files);
+  dir.setSorting(QDir::Name);
+  dir.setNameFilters(filter);
+  return (dir.count());
+}
+
