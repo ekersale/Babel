@@ -167,15 +167,19 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       _user->set_birth(_xmlParser->getNodeValue(filename, "birth"));
       _user->set_name(_xmlParser->getNodeValue(filename, "name"));
       _user->set_surname(_xmlParser->getNodeValue(filename, "surname"));
-      _user->set_nickname(_xmlParser->getNodeValue(filename, "nick"));
+      _user->set_nickname(_xmlParser->getNodeValue(filename, "nickname"));
       _user->set_adress(_xmlParser->getNodeValue(filename, "address"));
       _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
       _user->set_status(chars[2][0]);
       _user->set_module(chars[3][0]);
+
+      //VALGRIND
       std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
       _user->get_server()->get_users().erase(_user->get_id());
       std::cout << "\tCreate bloc at id : " << id << "\n\n";
       _user->get_server()->get_users()[id] = _user;
+      //VALGRIND
+
       _user->set_id(id);
       _user->authAnswer((char)RET_OK);
       std::cout << "Log OKK\n";
@@ -296,6 +300,8 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
 {
   std::string filename;
   std::string friendfilename;
+  int	      id_to;
+  User		*user_to;
 
   filename = getFilename(_user->get_login());
   friendfilename = getFilename(chars[0]);
@@ -306,7 +312,10 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
       _xmlParser->addChildToParent(filename, "contacts", "id", intToStdString(getIdFromLogin(chars[0])));
       _xmlParser->addChildToParent(friendfilename, "contacts", "id", intToStdString(getIdFromLogin(_user->get_login())));
       _user->addAnswer(0);
-      //      contactLoop(_user,);
+      id_to = getIdFromLogin(chars[0]);
+      user_to = _user->get_server()->get_users().find(id_to)->second;
+      _user->contactLoop(_user, user_to);
+      _user->contactLoop(user_to, _user);
     }
 }
 
