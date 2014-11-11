@@ -217,7 +217,6 @@ void		SCommandsValue::nick(std::vector<const char *> chars, std::vector<int> int
   std::string filename;
   
   (void)ints;
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "nickname", chars[0]);
   _user->set_nickname(chars[0]);
@@ -228,7 +227,6 @@ void		SCommandsValue::status(std::vector<const char *> chars, std::vector<int> i
   std::string filename;
 
   (void)ints;  
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "status", chars[0]);
   _user->set_status(chars[0][0]);
@@ -239,7 +237,6 @@ void		SCommandsValue::module(std::vector<const char *> chars, std::vector<int> i
   std::string filename;
 
   (void)ints;    
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "module", chars[0]);
   _user->set_module(chars[0][0]);
@@ -250,7 +247,6 @@ void		SCommandsValue::birth(std::vector<const char *> chars, std::vector<int> in
   std::string filename;
   
   (void)ints;
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "birth", chars[0]);
   _user->set_birth(chars[0]);
@@ -261,7 +257,6 @@ void		SCommandsValue::surname(std::vector<const char *> chars, std::vector<int> 
   std::string filename;
   
   (void)ints;  
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "surname", chars[0]);
   _user->set_surname(chars[0]);
@@ -272,7 +267,6 @@ void		SCommandsValue::name(std::vector<const char *> chars, std::vector<int> int
   std::string filename;
   
   (void)ints;  
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "name", chars[0]);
   _user->set_name(chars[0]);
@@ -283,7 +277,6 @@ void		SCommandsValue::address(std::vector<const char *> chars, std::vector<int> 
   std::string filename;
   
   (void)ints;  
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "address", chars[0]);
   _user->set_adress(chars[0]);
@@ -294,7 +287,6 @@ void		SCommandsValue::phone(std::vector<const char *> chars, std::vector<int> in
   std::string filename;
   
   (void)ints;  
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   _xmlParser->updateNode(filename, "phone", chars[0]);
   _user->set_name(chars[0]);
@@ -305,23 +297,26 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
   std::string filename;
   std::string friendfilename;
 
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
   friendfilename = getFilename(chars[0]);
-  _xmlParser->addChildToParent(filename, "contacts", "id", intToStdString(getIdFromLogin(chars[0])));
-  _xmlParser->addChildToParent(friendfilename, "contacts", "id", intToStdString(getIdFromLogin(_user->get_login())));
-  // NEKKO add le nouveau contact dans [id_login].xml du user + add contact id dans celui qui vient d'etre add 
+  if (friendfilename.size() == 0)
+    _user->addAnswer(8);
+  else
+    {
+      _xmlParser->addChildToParent(filename, "contacts", "id", intToStdString(getIdFromLogin(chars[0])));
+      _xmlParser->addChildToParent(friendfilename, "contacts", "id", intToStdString(getIdFromLogin(_user->get_login())));
+      _user->addAnswer(0);
+      //      contactLoop(_user,);
+    }
 }
 
 void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector<int> ints)
 {
-  // NEKKO comme au dessus mais le contraire
   std::string	filename;
   std::string	friendfilename;
 
-  _user->set_login("giraud_d"); // POUR TEST
   filename = getFilename(_user->get_login());
-  friendfilename = getFilenameById(ints[0]);  
+  friendfilename = getFilenameById(ints[0]);
   _xmlParser->removeChild(filename, intToStdString(ints[0]));
   _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
 }
