@@ -25,7 +25,7 @@
 #include                "OpenCV.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
-//#define SERV_ADDR_IP  "127.0.0.1"                                                                                    
+//#define SERV_ADDR_IP  "127.0.0.1"
 
 namespace               Ui
 {
@@ -54,10 +54,10 @@ public:
 	void                  defineStatus(e_type newStatus);
 	bool                  isOncall(void);
 	void                  setOncall(bool available);
-	void			setThread(void *ptr);
+	void				  setThread(void *ptr);
+	void                  addContact(UserInfo *);
 
 	private slots:
-	void                  addContact(void);
 	void                  invitContact(void);
 	void                  callContact(void);
 	void                  videoCallContact(void);
@@ -71,16 +71,24 @@ public:
 	void                  recvFrameFrom(void);
 	void                  threadReceive(void);
 	void                  threadCall(void);
+	void				  sendAddContact();
+	void				  contactClick();
 
 	public slots:
-	void				  actionNick(std::vector<const char *>, std::vector<int>);
-	void				  actionStatus(std::vector<const char *>, std::vector<int>);
-	void				  actionBirth(std::vector<const char *>, std::vector<int>);
+	void				  setNick(std::vector<const char *>, std::vector<int>);
+	void				  setStatus(std::vector<const char *>, std::vector<int>);
+	void				  setBirth(std::vector<const char *>, std::vector<int>);
 	void				  setModule(std::vector<const char *>, std::vector<int>);
+	void				  setSurname(std::vector<const char *>, std::vector<int>);
+	void				  setName(std::vector<const char *>, std::vector<int>);
+	void				  setAdress(std::vector<const char *>, std::vector<int>);
+	void				  setPhone(std::vector<const char *>, std::vector<int>);
+	void				  setAddAnswer(std::vector<const char *>, std::vector<int>);
 	void				  setCallAnswer(std::vector<const char *>, std::vector<int>);
 	void				  setCallRequest(std::vector<const char *>, std::vector<int>);
 	void				  setRemoveAnswer(std::vector<const char *>, std::vector<int>);
 	void				  setRemoveRequest(std::vector<const char *>, std::vector<int>);
+
 private:
 	Ui::Home *            ui;
 	ABabelSound           sound;
@@ -95,7 +103,10 @@ private:
 	bool                  _isOncall;
 	OpenCV *              _video;
 	std::map<int, UserInfo *> _musers;
+	std::map<int, t_contact *> _bcontact;
 	void			*_com;
+	QPushButton			  *_pushtmp;
+	int					 _activeUser;
 };
 
 #endif // HOME_H

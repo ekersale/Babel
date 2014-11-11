@@ -3,6 +3,20 @@
 
 #include	<string>
 
+#ifdef _WIN32
+#include	<QtWidgets/QListWidget>
+#include	<QtWidgets/QPushButton>
+#else
+#include	<QListWidget>
+#include	<QPushButton>
+#endif
+
+typedef struct s_contact
+{
+	QListWidgetItem *item;
+	QPushButton *but;
+} t_contact;
+
 class UserInfo
 {
 public:

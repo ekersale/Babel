@@ -73,9 +73,7 @@ void Connection::connection()
 void Connection::handleAuth(std::vector<const char *>tableCmd, std::vector<int>tableParams)
 {
   Home		*page;
-  char		test;
 
-  //test = '3';
   static_cast<void>(tableCmd);
   static_cast<void>(tableParams);
   if ((char)tableCmd.at(0)[0] == 1)
