@@ -26,7 +26,6 @@
 #define			IP_ADDR_SERV		"127.0.0.1"
 #define			PORT			"2000"
 
-
 class ThreadCom : public CCommandsValue
 {
   Q_OBJECT
@@ -37,6 +36,10 @@ public:
   
   bool connectServer();
   Network	*getNetwork() const;
+  Parser	*getParser() {return _parser;};
+  Serialize	*getSerialize() {return _serialize;};
+  XMLParser	*getXMLParser() {return _xmlParser;};
+
   
 signals:
   void displayError(QString);
@@ -48,7 +51,7 @@ public slots:
 private:
 	int _socket;
 	Network *_network;
-	IParser *_parser;
+	Parser *_parser;
 	Serialize *_serialize;
 	XMLParser *_xmlParser;
 };

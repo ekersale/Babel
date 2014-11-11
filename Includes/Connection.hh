@@ -18,6 +18,7 @@
 #endif
 
 #include "ThreadCom.hh"
+#include "Parser.hh"
 
 namespace Ui {
 class Connection;
@@ -46,6 +47,7 @@ private:
   void *ptr;
   QTimer *timer;
   Network	*network;
+  Parser	*parser;
   bool _allowOpen;
 };
 

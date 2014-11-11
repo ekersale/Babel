@@ -145,6 +145,7 @@ int			Network::connectSocket(std::string host, std::string port)
   return (_id);
 }
 
+#include <iostream>
 bool			Network::recvSocket(int id)
 {
   int			len;
@@ -152,6 +153,7 @@ bool			Network::recvSocket(int id)
   if (_connected.find(id) == _connected.end())
     return (false);
   len = recv(_connected[id]->get_socket(), _connected[0]->get_buffer(), _connected[0]->get_len(), 0);
+  std::cout << "\n\n\tMoi le recv j'ai recu : " << len << " octects\n\n";
   if (len < 1)
     {
       closeSocket(id);
@@ -164,14 +166,17 @@ bool			Network::recvSocket(int id)
 
 bool			Network::sendSocket(int id, void *buff, size_t len)
 {
+  int	ret;
+
   if (_connected.find(id) == _connected.end())
     return (false);
-  if (send(_connected[id]->get_socket(), buff, len, 0) < 0)
+  if ((ret = send(_connected[id]->get_socket(), buff, len, 0)) < 0)
     {
       closeSocket(id);
       _connected[0]->get_buffer()[0] = 0;
       return (false);
     }
+  std::cout << "\n\n\tMoi le send j'ai envoyer : " << ret << "octects\n\n";
   return (true);
 }
 

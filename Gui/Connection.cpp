@@ -9,10 +9,11 @@
 #else
 #include	<QCryptographicHash>
 #endif
+
+#include	"Packet.hh"
 #include	 <iostream>
 
 #include    "ui_Connection.h"
-
 
 Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connection)
 {
@@ -22,7 +23,8 @@ Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connec
   _com = new ThreadCom();
   ptr = _com;
   this->network = ((ThreadCom *)ptr)->getNetwork();
-  
+  this->parser = ((ThreadCom *)ptr)->getParser();
+
   connect(_com, SIGNAL(displayError(QString)), this, SLOT(boxError(QString)));
   connect(_com, SIGNAL(s_authAnswer(std::vector<const char *>, std::vector<int>)), this,
 	  SLOT(handleAuth(std::vector<const char *>, std::vector<int>)));
@@ -43,8 +45,23 @@ Connection::~Connection()
 
 void Connection::connection()
 {
-  IPacketInfo	*packet_info;
-  
+  IPacketInfo	*packet_info = new PacketInfo();
+
+  char *pd1 = (char *)malloc(2);
+  char *pd2 = (char *)malloc(2);
+  char *sd1;
+  char *sd2;
+  sd1 = strdup(ui->_lineLogin->text().toStdString().c_str());
+  sd2 = strdup(ui->_linePassword->text().toStdString().c_str());
+  pd1[0] = 2;
+  pd2[0] = 3;
+
+  packet_info->setCmd(1);
+  packet_info->getChars().push_back(sd1);
+  packet_info->getChars().push_back(sd2);
+  packet_info->getChars().push_back(pd1);
+  packet_info->getChars().push_back(pd2);
+
   if (ui->_lineLogin->text().isEmpty())
     {
       QMessageBox::critical(this,"Warning", "You must enter a valid login");
@@ -57,15 +74,29 @@ void Connection::connection()
     }
   else
     {
-      packet_info = new PacketInfo();
-      packet_info->setCmd(1);
-      packet_info->getChars().push_back(ui->_lineLogin->text().toStdString().c_str());
-      packet_info->getChars().push_back(ui->_linePassword->text().toStdString().c_str());
-      if ((network->sendSocket(1, packet_info, sizeof(packet_info)) == false))
-	{
-	  std::cerr << "Fail with Sendsocket " << std::endl;
-	  return;
-	}
+      Packet	*packet;
+      packet = (Packet *)parser->encode(packet_info);
+      
+
+      std::stringbuf sz;
+      sz >> packet;
+      //on send sz.str() via le rézo maggle
+      //      std::cout << "sz: " << sz.str() << std::endl;
+
+      if ((network->sendSocket(1, (void *)sz.str().c_str(), 65) == false))
+	std::cout << "Error Send\n";
+      //sinon on fait un receive et on recevra un buffer
+      //pour l'exemple le buffer est celui du dessus
+      //std::stringbuf usz(sz.str());
+      //Packet	*packet2 = new Packet();
+      //on insère alors le le tout dans le paquet comme le dit l'expression
+      //usz << packet2;
+      // //on teste_z notre gros paquet rempli de foutre
+      //std::cout << "usz: " << usz.str() << std::endl; 
+
+      
+
+      delete(packet);
       delete(packet_info);
     } 
 }
@@ -73,9 +104,7 @@ void Connection::connection()
 void Connection::handleAuth(std::vector<const char *>tableCmd, std::vector<int>tableParams)
 {
   Home		*page;
-  char		test;
 
-  //test = '3';
   static_cast<void>(tableCmd);
   static_cast<void>(tableParams);
   if ((char)tableCmd.at(0)[0] == 1)

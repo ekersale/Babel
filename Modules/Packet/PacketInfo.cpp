@@ -28,8 +28,9 @@ std::vector<int>& PacketInfo::getInts() {
 	return _ints;
 }
 
+#include <string.h>
 void PacketInfo::pushChars(const char *elem) {
-	_chars.push_back(elem);
+  _chars.push_back(strdup(elem));
 }
 
 void PacketInfo::pushInts(const char *ptr) {
@@ -51,6 +52,7 @@ const char* PacketInfo::popChars() {
 
 	ret = _chars.front();
 	_chars.erase(_chars.begin());
+	//std::cout << "\n\t\tStr Ret is : " << ret << "\n\n";
 	return (ret);
 }
 

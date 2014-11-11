@@ -19,8 +19,8 @@
 #include	<QString>
 #endif
 
-
-#define		PATH		"../XML_file/"
+#define		PATH		"XML_file/"
+// #define		PATH_SERVER		"../XML_file/l"
 
 class					XMLParser
 {

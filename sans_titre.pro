@@ -44,8 +44,7 @@ SOURCES +=      Gui/main.cpp                            \
                 Modules/Packet/Parser.cpp
 
 
-HEADERS  +=     Includes/Connection.hh                   \
-                Includes/Subscribe.hh                    \
+HEADERS  +=     Includes/Subscribe.hh                    \
                 Includes/Home.hh                         \
                 Includes/IGui.hh                         \
                 Includes/BabelEncoder.hh                 \
@@ -67,7 +66,8 @@ HEADERS  +=     Includes/Connection.hh                   \
                 Includes/ACommandsValue.hpp             \
                 Includes/CCommandsValue.hh              \
                 Includes/ISerialize.hpp                 \
-                Includes/Serialize.hh
+                Includes/Serialize.hh                   \
+                Includes/Connection.hh                  \
 
 FORMS    +=     Gui/Ui/Connection.ui                    \
                 Gui/Ui/Subscribe.ui                     \

@@ -7,21 +7,27 @@ Parser::Parser(std::map<char, std::vector<unsigned char> > ref) {
 Parser::~Parser() {
 }
 
-IPacket* Parser::encode(IPacketInfo* packetinfo) {
-	std::vector<unsigned char>	key;
+IPacket* Parser::encode(IPacketInfo* packetinfo)
+{
+	std::vector<unsigned char>			key;
 	char						data[64];
 	char						*ptr;
 
-	key = getRef().find(packetinfo->getCmd())->second;
+	key = _ref.find(packetinfo->getCmd())->second;
 	ptr = data;
+	memset(data, 0, 64);
 	for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++) {
-		if (*mykey > 128) {
-			strncpy(ptr, packetinfo->popChars(), (*mykey - 128));
-			ptr = ptr + (*mykey - 128);
-		} else if (*mykey == 64) {
-			packetinfo->popInts(ptr);
-			ptr += 4;
-		} else {
+		if (*mykey > 128)
+		  {
+		    strncpy(ptr, packetinfo->popChars(), (*mykey - 128));
+		    ptr = ptr + (*mykey - 128);
+		  }
+		else if (*mykey == 64)
+		  {
+		    packetinfo->popInts(ptr);
+		    ptr += 4;
+		  }
+		else {
 			// TODO
 		}
 	}
@@ -33,8 +39,9 @@ IPacketInfo* Parser::decode(IPacket* packet) {
 	IPacketInfo			*packetinfo;
 	const char			*ptr;
 
-	key = getRef().find(packet->getCommand())->second;
-	packetinfo = new(PacketInfo);
+	std::cout << "\n\n\n\tCmd val is : " << (int)packet->getCommand() <<"\n"; 
+	key = _ref.find(packet->getCommand())->second;
+	packetinfo = new PacketInfo();
 	ptr = packet->getData();
 	packetinfo->setCmd(packet->getCommand());
 	for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++) {

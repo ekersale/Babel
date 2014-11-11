@@ -17,7 +17,7 @@ Serialize* Server::get_serialize(void) const {
 bool Server::startServer(void)
 {
   //ifndef
-  _network = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));
+  _network = new Network(AF_INET, SOCK_STREAM, "TCP", 65);
   std::cout << "Bind : " << _network->bindSocket(PORT) << "\n";
   _network->listenSocket(LISTEN_VAL);
   _serialize = new Serialize();

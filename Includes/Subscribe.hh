@@ -18,19 +18,20 @@ class Subscribe;
 class Subscribe : public QWidget, public IGui
 {
     Q_OBJECT
-
+  
 public:
     explicit Subscribe(QWidget *parent = 0);
-    ~Subscribe();
-    bool    init();
-    void    load();
-    void    destroy();
-
+  ~Subscribe();
+  bool			init();
+  void			load();
+  void			destroy();
+  void			setThread();
 private slots:
-    void    toSubscribe();
-
+  void			toSubscribe();
+  
 private:
-    Ui::Subscribe *ui;
+  Ui::Subscribe		*ui;
+  void			*_com;
 };
 
 #endif // SUBSCRIBE_H

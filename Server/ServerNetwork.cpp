@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Mon Nov 10 18:51:17 2014 Damien Giraudet
+// Last update Tue Nov 11 09:19:01 2014 Sliman Desmars
 //
 
 #include <errno.h>
@@ -46,19 +46,43 @@ void	Server::setFd(fd_set &setfd)
       if ((clientInfo = _network->get_connected((it->second)->get_idSocket())))
 	FD_SET(clientInfo->get_socket(), &setfd);
       else
-	deleteUser(it->second);
+	{
+	  deleteUser(it->second);
+	  std::cout << "\t3 : setFd\n";
+	}
       it++;
     }
 }
+#include <string.h>
 
 bool	Server::treatRecv(User *user)
 {
-  std::cout << "\tTreat Req1l\n";
-  if (_network->get_filled() != sizeof(Packet))
+  std::cout << "\n\n\tMoi le get_filled : " << _network->get_filled() << " octects\n\n";
+  if (_network->get_filled() != 65)
     return (false);
   std::cout << "\tTreat Req2l\n";
-  user->get_commandsValue()->cmdVal(get_parser()->decode(get_serialize()->extract(_network->get_buffer())));
-  //user->get_commandsValue()->cmdVal(pa);
+
+
+  //sinon on fait un receive et on recevra un buffer
+  //pour l'exemple le buffer est celui du dessus
+
+
+
+  std::string		rbuff(_network->get_buffer(), 65);
+  std::stringbuf	usz(rbuff);
+  Packet		*packet = new Packet();
+  //on insère alors le le tout dans le paquet comme le dit l'expression
+  usz << packet;
+  std::cout << packet->getData() << std::endl;
+  // //on teste_z notre gros paquet rempli de foutre
+  //std::cout << "usz: " << usz.str() << std::endl; 
+  
+
+
+  IPacketInfo *packet_info;
+  packet_info = get_parser()->decode(packet);
+  std::cout << "\t Size of vector is " << packet_info->getChars().size() << "\n";
+  user->get_commandsValue()->cmdVal(packet_info);
   // map ptr sur fct
   return (true);
 }
@@ -81,27 +105,35 @@ void	Server::recvIsSet(fd_set &readfs)
 		treatRecv(it->second);
 	      else
 		{
+		  std::cout << "\t1 : Pb Recv\n";
 		  deleteUser(it->second);
 		  return ;  // pb de it si suppression
 		}
 	    }
 	}
       else
-	deleteUser(it->second);
+	{
+	  std::cout << "\t2 : Pb id_socket\n";
+	  deleteUser(it->second);
+	}
       it++;
     }
 }
 
 void	Server::sendIsSet(fd_set &setfd)
 {
-  if (_network->get_connected(_toSend.front()._id_socket))
-    if (FD_ISSET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd))
-      {
-	_network->sendSocket(_network->get_connected(_toSend.front()._id_socket)->get_socket(),
-			     _serialize->insert(_toSend.front()._packet), sizeof(Packet));
-      }
-  delete (_toSend.front()._packet);
-  _toSend.pop();
+  if (!_toSend.empty() && _network->get_connected(_toSend.front()._id_socket))
+    {
+      if (FD_ISSET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd))
+	{
+	  /*
+	  _network->sendSocket(_network->get_connected(_toSend.front()._id_socket)->get_socket(),
+			       _serialize->insert(_toSend.front()._packet), sizeof(Packet));
+	  */
+	}
+      delete (_toSend.front()._packet);
+      _toSend.pop();
+    }
 
 }
 
@@ -114,6 +146,7 @@ void	Server::setFdWrite(fd_set &setfd)
       {
 	delete (_toSend.front()._packet);
 	_toSend.pop();
+	std::cout << "\n\n\tRECCCCCCCCCCCCCCC\n\n";
 	setFdWrite(setfd);
       }
 }

@@ -21,6 +21,7 @@ bool							XMLParser::openFile(std::string filename)
   std::string				path;
   path = PATH;
   path += filename;
+  std::cout << path << "\n";
   QDomDocument				doc(stdStringToQString(path));
   QFile					xmldoc(stdStringToQString(path));
   QString				error;
