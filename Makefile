@@ -611,6 +611,182 @@ moc_Subscribe.cpp: Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtouchdevice.h \
+		Includes/ThreadCom.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QTimer \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbasictimer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QObject \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdialog.h \
+		Includes/Network.hh \
+		Includes/INetwork.hh \
+		Includes/WClientInfo.hh \
+		Includes/UClientInfo.hh \
+		Includes/Home.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmainwindow.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qicon.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHBoxLayout \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlayout.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qgridlayout.h \
+		Includes/BabelSound.hh \
+		Includes/IBabelSound.hh \
+		Includes/BabelEncoder.hh \
+		Includes/IBabelEncoder.hh \
+		Includes/OpenCV.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthread.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/QImage \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
+		Includes/IModule.hh \
+		Includes/UserInfo.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QListWidget \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlistwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlistview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qframe.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstyle.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
+		Includes/Subscribe.hh \
+		Includes/Parser.hh \
+		Includes/IParser.hpp \
+		Includes/Packet.hh \
+		Includes/IPacket.hpp \
+		Includes/PacketInfo.hh \
+		Includes/IPacketInfo.hpp \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/XMLParser.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QtCore \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QtCoreDepends \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qparallelanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpauseanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpropertyanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qvariantanimation.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeasingcurve.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsequentialanimationgroup.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextcodec.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qendian.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlibraryinfo.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbuffer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdir.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfileinfo.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qdiriterator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfileselector.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QStringList \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfilesystemwatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlockfile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qloggingcategory.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qprocess.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qresource.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsavefile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsettings.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstandardpaths.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtemporarydir.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QScopedPointer \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtemporaryfile.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qidentityproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsortfilterproxymodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstringlistmodel.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonarray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsondocument.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qjsonobject.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventloop.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractnativeeventfilter.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmath.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmetaobject.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimedata.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qobjectcleanuphandler.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsharedmemory.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsignalmapper.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsocketnotifier.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsystemsemaphore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtranslator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwineventnotifier.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimedatabase.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmimetype.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfactoryinterface.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlibrary.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qplugin.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qpluginloader.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/quuid.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstractstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qabstracttransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qeventtransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfinalstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qhistorystate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsignaltransition.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstate.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstatemachine.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qexception.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuture.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfutureinterface.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qrunnable.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qresultstore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuturesynchronizer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfuturewatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qreadwritelock.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qsemaphore.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadpool.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthreadstorage.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydataops.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qarraydatapointer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbitarray.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbytearraymatcher.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcache.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcollator.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcommandlineoption.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qelapsedtimer.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qlinkedlist.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qmessageauthenticationcode.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qqueue.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qscopedvaluerollback.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qstack.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtextboundaryfinder.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimeline.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimezone.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qxmlstream.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtcoreversion.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlglobal.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qdom.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		Includes/CCommandsValue.hh \
+		Includes/ACommandsValue.hpp \
+		Includes/Serialize.hh \
 		Includes/Subscribe.hh
 	/opt/Qt5.3.2/5.3/gcc/bin/moc $(DEFINES) -I/opt/Qt5.3.2/5.3/gcc/mkspecs/linux-g++ -I/home/napsters/Git/Merge/babel -I/home/napsters/Git/Merge/babel/Includes -I/usr/local/include/opencv2 -I/opt/Qt5.3.2/5.3/gcc/include -I/opt/Qt5.3.2/5.3/gcc/include/QtWidgets -I/opt/Qt5.3.2/5.3/gcc/include/QtXml -I/opt/Qt5.3.2/5.3/gcc/include/QtGui -I/opt/Qt5.3.2/5.3/gcc/include/QtCore Includes/Subscribe.hh -o moc_Subscribe.cpp
 
@@ -772,14 +948,14 @@ moc_Home.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
 		Includes/Home.hh \
 		Includes/Subscribe.hh \
 		Includes/IGui.hh \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -1132,14 +1308,14 @@ moc_ThreadCom.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtCore/QTimer \
 		Includes/ThreadCom.hh \
 		Includes/Subscribe.hh \
 		Includes/IGui.hh \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -1522,13 +1698,13 @@ moc_Connection.cpp: Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
 		Includes/Subscribe.hh \
-		Includes/Connection.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
+		Includes/Connection.hh \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -2229,32 +2405,7 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QCryptographicHash \
-		ui_Connection.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QToolBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtoolbar.h
+		ui_Connection.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Connection.o Gui/Connection.cpp
 
 Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
@@ -2359,27 +2510,23 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtouchdevice.h \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmainwindow.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qicon.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMessageBox \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmessagebox.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdialog.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/ThreadCom.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QTimer \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qtimer.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qbasictimer.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthread.h \
-		Includes/ThreadCom.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QObject \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMessageBox \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdialog.h \
 		Includes/Network.hh \
 		Includes/INetwork.hh \
 		Includes/WClientInfo.hh \
 		Includes/UClientInfo.hh \
 		Includes/Home.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmainwindow.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qicon.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHBoxLayout \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qboxlayout.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlayout.h \
@@ -2391,6 +2538,8 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
 		Includes/IBabelEncoder.hh \
 		Includes/OpenCV.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QMutex \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QThread \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qthread.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtGui/QImage \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QWaitCondition \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/qwaitcondition.h \
@@ -2417,6 +2566,8 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
@@ -2535,28 +2686,7 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QCryptographicHash \
-		ui_Subscribe.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h
+		ui_Subscribe.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subscribe.o Gui/Subscribe.cpp
 
 Home.o: Gui/Home.cpp Includes/Home.hh \
@@ -2717,14 +2847,14 @@ Home.o: Gui/Home.cpp Includes/Home.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QObject \
 		Includes/Subscribe.hh \
 		Includes/IGui.hh \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -2836,36 +2966,7 @@ Home.o: Gui/Home.cpp Includes/Home.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
-		ui_Home.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMenuBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenubar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenu.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QTextEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtextedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextdocument.h
+		ui_Home.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
 
 UClientInfo.o: Modules/Network/UClientInfo.cpp Includes/UClientInfo.hh
@@ -3132,14 +3233,14 @@ ThreadCom.o: Client/ThreadCom.cpp Includes/ThreadCom.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
 		Includes/Subscribe.hh \
 		Includes/IGui.hh \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
+		Includes/Connection.hh \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \

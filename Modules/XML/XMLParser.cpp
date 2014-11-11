@@ -8,7 +8,7 @@ XMLParser::~XMLParser()
 {
 }
 
-bool							XMLParser::print_error(const std::string &msg)
+bool							XMLParser::print_error(const std::string &msg) const
 {
   std::cerr << "Function : " << msg << " failed" << std::endl;
   return (false);
@@ -16,8 +16,6 @@ bool							XMLParser::print_error(const std::string &msg)
 
 bool							XMLParser::openFile(std::string filename)
 {
-  // Je passe cette fonction en bool pour qu'on puisse la tester avec sa valeur de retour
-  // comme les autres fonctions dans le projet
   std::string				path;
   path = PATH;
   path += filename;
@@ -56,7 +54,7 @@ QDomDocument						XMLParser::getDoc(void) const
 }
 
 
-QString							XMLParser::stdStringToQString(std::string chaine)
+QString							XMLParser::stdStringToQString(std::string chaine) const
 {
   QString				str;
   
@@ -133,7 +131,7 @@ std::vector<int>					XMLParser::getClients(std::string filename)
   return (vec);
 }
 
-bool							XMLParser::removeChild(std::string filename, std::string value)
+bool							XMLParser::removeChild(std::string filename, std::string value) const
 {
   std::string				path;
   path = PATH;
@@ -164,13 +162,12 @@ bool							XMLParser::removeChild(std::string filename, std::string value)
   return (true);
 }
 
-void							XMLParser::createBalise(std::ofstream &stream, std::string balise)
+void							XMLParser::createBalise(std::ofstream &stream, std::string balise) const
 {
   stream << balise << std::endl;
 }
 
-bool							XMLParser::addChildToParent(std::string filename, std::string parent,
-								    std::string child, std::string value)
+bool							XMLParser::addChildToParent(std::string filename, std::string parent, std::string child, std::string value) const
 {
   std::string				path;
   path = PATH;
@@ -219,7 +216,7 @@ bool							XMLParser::addChildToParent(std::string filename, std::string parent,
     return (true);
 }
 
-void						XMLParser::generateFile(std::string filename)
+void						XMLParser::generateFile(std::string filename) const
 {
   std::string		path;
   path = PATH;
@@ -247,7 +244,7 @@ void						XMLParser::generateFile(std::string filename)
   createBalise(file, "</id>");
 }
 
-bool						XMLParser::updateNode(std::string filename, std::string node, std::string value)
+bool						XMLParser::updateNode(std::string filename, std::string node, std::string value) const
 {
   std::string		path;
   path = PATH;
@@ -293,7 +290,7 @@ bool						XMLParser::updateNode(std::string filename, std::string node, std::str
   return true;
 }
 
-bool						XMLParser::removeFile(std::string  filename)
+bool						XMLParser::removeFile(std::string  filename) const
 {
   if (remove(filename.c_str()) != 0)
     {
@@ -303,7 +300,7 @@ bool						XMLParser::removeFile(std::string  filename)
   return true;
 }
 
-bool						XMLParser::renameFile(std::string oldFilename, std::string newFilename)
+bool						XMLParser::renameFile(std::string oldFilename, std::string newFilename) const
 {
   if (rename(oldFilename.c_str(), newFilename.c_str()) != 0)
     {
