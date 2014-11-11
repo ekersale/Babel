@@ -21,7 +21,19 @@ void User::authAnswer(char ret_val) {
 }
 
 void User::connectContactLoop(void) {
-  
+  std::vector<int>	id_clients;
+  std::vector<int>::iterator	_clients;
+  std::map<int, User *>::iterator it;
+
+  contactLoop(_idSocket);
+  id_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login, -1));
+  _clients = id_clients.begin();
+  while (_clients != id_clients.end())
+    {
+      if ((it = _server->get_users().find(*_clients)) != _server->get_users().end()) // to check
+	contactLoop(it->second->get_idSocket());
+      _clients++;
+    }
 }
 
 void User::contactLoop(int id_socket) {
@@ -47,7 +59,7 @@ void	User::contactCmd(int cmd, const std::string val, int id_socket)
 }
  
 void User::removeAnswer(char &) {
-
+  
 }
 
 void User::removeRequest(int) {

@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Mon Nov 10 18:51:17 2014 Damien Giraudet
+// Last update Tue Nov 11 06:36:01 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -127,6 +127,7 @@ bool Server::loopServer(void)
   while (1)
     {
       FD_ZERO(&readfs);
+      FD_ZERO(&writefs);
       setFd(readfs);
       setFdWrite(writefs);
       std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << "\n";
@@ -138,13 +139,7 @@ bool Server::loopServer(void)
       recvIsSet(readfs);
       sendIsSet(writefs);
     }
-  /*
-    if (sendSocket( User->key , buff , size))
-{
-} else {
-// fail = del User
-}
-   */
+  return (true);
 }
 
 void  Server::pushToSend(int id_socket, IPacket *packet)

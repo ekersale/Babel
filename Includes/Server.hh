@@ -56,6 +56,8 @@ public:
   bool		newUser(void);
   int		init(void);
   void		pushToSend(int, IPacket *);
+  void		increment_tmpMax();
+  int		&get_tmpMax();
   std::map<int, User *> &get_users(); // getter & setter
   Server();
   Server(const Server& oldServer);
@@ -70,7 +72,8 @@ private:
   std::map<std::string, int> _idUsers;
   std::queue<ToSend> _toSend;
 
-  int tmp_user;
+  int		tmp_user;
+  int		tmp_max;
 };
 
 #endif
