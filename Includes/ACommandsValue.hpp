@@ -41,7 +41,7 @@ public:
   virtual void requestAnswer(std::vector<const char *>, std::vector<int>) {};
   virtual void callAnswer(std::vector<const char *>, std::vector<int>) {};
   virtual int  cmdVal(IPacketInfo *) = 0;
-  virtual std::string	getFilename(std::string, int = -1) const {};
+  virtual std::string	getFilename(std::string, int = -1) const {const std::string tmp; return (tmp);};
 protected:
   std::map<char, ptrCmdValue> methodPtr;
 private:
