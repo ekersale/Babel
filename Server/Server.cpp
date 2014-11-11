@@ -23,6 +23,14 @@ bool Server::startServer(void)
   _serialize = new Serialize();
   _xmlParser = new XMLParser();
   _parser = new Parser(_xmlParser->getCommandArgs("commands.xml"));
+
+
+  IPacketInfo *packet_info = new PacketInfo();
+  packet_info->setCmd(1);
+  packet_info->getChars().push_back("naps");
+  packet_info->getChars().push_back("test");
+  IPacket *packet = _parser->encode(packet_info);
+  exit(0);
    // TODO : implement
 }
 
