@@ -65,6 +65,8 @@ void	User::contactCmd(int cmd, const std::string val, int id_socket, int &my_id)
 {
   IPacketInfo	*packet_info;
 
+  std::cout << "\tVal de 0 : " << (int)(val[0]) << std::endl;
+  std::cout << "\tValue de : " << val << std::endl;
   packet_info = new PacketInfo();
   packet_info->setCmd(cmd);
   packet_info->getChars().push_back(val.c_str());
