@@ -37,7 +37,7 @@ void    Home::load()
 	timer = new QTimer(this);
 
 	QLabel::connect(_video, SIGNAL(processedImage(QImage, int)), this, SLOT(updatePlayerUI(QImage, int)));
-	QLabel::connect(_video, SIGNAL(sendFrame(std::vector<unsigned char*> *)), this, SLOT(sendFrameTo(std::vector<u\
+	//QLabel::connect(_video, SIGNAL(sendFrame(std::vector<unsigned char*> *)), this, SLOT(sendFrameTo(std::vector<u\
 		nsigned char *> *)));
 	QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
 	QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
@@ -50,6 +50,8 @@ void    Home::load()
 	QObject::connect(ui->_btnCam, SIGNAL(clicked()), this, SLOT(videoCallContact()));
 	QObject::connect(ui->_btnHangUp, SIGNAL(clicked()), this, SLOT(hangHup()));
 	QObject::connect(ui->_line_addContact, SIGNAL(returnPressed()), this, SLOT(sendAddContact()));
+	QObject::connect(ui->_lineContactName, SIGNAL(returnPressed()), this, SLOT(sendNewName()));
+	QObject::connect(ui->_lineSurnameEdit, SIGNAL(returnPressed()), this, SLOT(sendNewSurname()));
 
 	defineStatus(this->_status);
 }
@@ -108,7 +110,7 @@ void    Home::addContact(UserInfo *added)
 
 	state = added->get_status();
 	if (state < 1 && state > 4)
-		state = 1;
+		state = 4;
 	item = new QListWidgetItem();
 	tmp = added->get_name() + " " + added->get_surname();
 	name = tmp.c_str();
@@ -120,17 +122,17 @@ void    Home::addContact(UserInfo *added)
 	item->setFont(font);
 	font.setPointSize(8);
 	ui->_listContact->addItem(item);
-	but = new QPushButton(added->get_surname().c_str());
+	but = new QPushButton(added->get_nickname().c_str());
 	but->setFlat(true);
 	switch (state)
 	{
-	case 4:
+	case 2:
 		pixmap = new QPixmap("./Images/BabelHD_0001s_0005s_0002_status.png");
 		break;
 	case 3:
 		pixmap = new QPixmap("./Images/BabelHD_0001s_0003s_0000_status.png");
 		break;
-	case 2:
+	case 4:
 		pixmap = new QPixmap("./Images/BabelHD_0001s_0000s_0000_status.png");
 		break;
 	case 1:
@@ -176,7 +178,17 @@ void Home::contactClick()
 		_pushtmp->setStyleSheet("QPushButton{color: rgb(0, 0, 0);}");
 	}
 	tmp->setEnabled(false);
-	tmp->setStyleSheet("QPushButton{color: rgb(255, 0, 0);}");
+	if (1  /*check with user id*/)
+	{
+		ui->_lineContactName->setReadOnly(false);
+		ui->_lineSurnameEdit->setReadOnly(false);
+	}
+	else
+	{
+		ui->_lineContactName->setReadOnly(true);
+		ui->_lineSurnameEdit->setReadOnly(true);
+	}
+	//tmp->setStyleSheet("QPushButton{color: rgb(255, 0, 0);}");
 	_pushtmp = tmp;
 	_activeUser = senderObjName.toInt();
 	ui->_label_BirthsdayValue->setText(_musers[_activeUser]->get_birth().c_str());
@@ -427,87 +439,92 @@ void    Home::recvFrameFrom(void)
 void			Home::setThread(void *ptr)
 {
 	_com = (ThreadCom *)ptr;
-	connect((ThreadCom *)ptr, SIGNAL(s_changeNick(std::vector<const char *>, std::vector<int>)), this, SLOT(setNick(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_changeStatus(std::vector<const char *>, std::vector<int>)), this, SLOT(setStatus(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_changeBirth(std::vector<const char *>, std::vector<int>)), this, SLOT(setBirth(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_contactModule(std::vector<const char *>, std::vector<int>)), this, SLOT(setModule(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_changeSurname(std::vector<const char *>, std::vector<int>)), this, SLOT(setSurname(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_changeName(std::vector<const char *>, std::vector<int>)), this, SLOT(setName(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_changeAddress(std::vector<const char *>, std::vector<int>)), this, SLOT(setAdress(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_changePhone(std::vector<const char *>, std::vector<int>)), this, SLOT(setPhone(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_addAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setAddAnswer(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_removeRequest(std::vector<const char *>, std::vector<int>)), this, SLOT(setRemoveRequest(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_removeAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setRemoveAnswer(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_requestCall(std::vector<const char *>, std::vector<int>)), this, SLOT(setCallRequest(std::vector<const char *>, std::vector<int>)));
-	connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(std::vector<const char *>, std::vector<int>)), this, SLOT(setCallAnswer(std::vector<const char *>, std::vector<int>)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changeNick(void *, void *)), this, SLOT(setNick(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changeStatus(void *, void *)), this, SLOT(setStatus(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changeBirth(void *, void *)), this, SLOT(setBirth(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_contactModule(void *, void *)), this, SLOT(setModule(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changeSurname(void *, void *)), this, SLOT(setSurname(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changeName(void *, void *)), this, SLOT(setName(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changeAddress(void *, void *)), this, SLOT(setAdress(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_changePhone(void *, void *)), this, SLOT(setPhone(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_addAnswer(void *, void *)), this, SLOT(setAddAnswer(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_removeRequest(void *, void *)), this, SLOT(setRemoveRequest(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_removeAnswer(void *, void *)), this, SLOT(setRemoveAnswer(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_requestCall(void *, void *)), this, SLOT(setCallRequest(void *, void *)));
+	connect((ThreadCom *)ptr, SIGNAL(s_callAnswer(void *, void *)), this, SLOT(setCallAnswer(void *, void *)));
 }
 
 
-void		Home::setRemoveRequest(std::vector<const char *> value, std::vector<int> id)
+void		Home::setRemoveRequest(void *cmdptr, void *idptr)
 {
 
 }
 
-void		Home::setRemoveAnswer(std::vector<const char *> value, std::vector<int> id)
+void		Home::setRemoveAnswer(void *cmdptr, void *idptr)
 {
 
 }
 
-void		Home::setCallRequest(std::vector<const char *> value, std::vector<int> id)
+void		Home::setCallRequest(void *cmdptr, void *idptr)
 {
 
 }
 
-void		Home::setCallAnswer(std::vector<const char *> value, std::vector<int> id)
+void		Home::setCallAnswer(void *cmdptr, void *idptr)
 {
 
 }
 
-void		Home::setNick(std::vector<const char *> value, std::vector<int> id)
+void		Home::setNick(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
+
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_nickname(value[0]);
-		_musers[id[0]] = info;
-		addContact(_musers[id[0]]);
+		info->set_id(id[0][0]);
+		info->set_nickname(value[0][0]);
+		_musers[id[0][0]] = info;
+		addContact(_musers[id[0][0]]);
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
-		tmp->set_nickname(value[0]);
+		UserInfo *tmp = _musers[id[0][0]];
+		tmp->set_nickname(value[0][0]);
 		std::string stmp;
-		stmp = tmp->get_name() + " " + tmp->get_nickname();
-		_bcontact[id[0]]->item->setText(stmp.c_str());
+		stmp = tmp->get_nickname();
+		_bcontact[id[0][0]]->but->setText(stmp.c_str());
 	}
 }
 
-void		Home::setStatus(std::vector<const char *> value, std::vector<int> id)
+void		Home::setStatus(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_status(value[0][0]);
-		_musers[id[0]] = info;
-		addContact(_musers[id[0]]);
+		info->set_id(id[0][0]);
+		info->set_status((*value)[0][0]);
+		_musers[id[0][0]] = info;
+		addContact(_musers[id[0][0]]);
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
+		UserInfo *tmp = _musers[id[0][0]];
 		QPixmap			*pixmap = NULL;
 		QPalette		palette;
 
-		tmp->set_status(value[0][0]);
-		int itmp = value[0][0];
+		tmp->set_status((*value)[0][0]);
+		int itmp = (*value)[0][0];
 		switch (itmp)
 		{
-		case 4:
+		case 2:
 			pixmap = new QPixmap("./Images/BabelHD_0001s_0005s_0002_status.png");
 			break;
 		case 3:
 			pixmap = new QPixmap("./Images/BabelHD_0001s_0003s_0000_status.png");
 			break;
-		case 2:
+		case 4:
 			pixmap = new QPixmap("./Images/BabelHD_0001s_0000s_0000_status.png");
 			break;
 		case 1:
@@ -517,110 +534,124 @@ void		Home::setStatus(std::vector<const char *> value, std::vector<int> id)
 			break;
 		}
 		if (pixmap != NULL)
-			palette.setBrush(_bcontact[id[0]]->but->backgroundRole(), QBrush(*pixmap));
-		_bcontact[id[0]]->but->setPalette(palette);
+			palette.setBrush(_bcontact[id[0][0]]->but->backgroundRole(), QBrush(*pixmap));
+		_bcontact[id[0][0]]->but->setPalette(palette);
 	}
 }
 
-void		Home::setBirth(std::vector<const char *> value, std::vector<int> id)
+void		Home::setBirth(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_birth(value[0]);
-		_musers[id[0]] = info;
+		info->set_id(id[0][0]);
+		info->set_birth((*value)[0]);
+		_musers[id[0][0]] = info;
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
-		tmp->set_birth(value[0]);
+		UserInfo *tmp = _musers[id[0][0]];
+		tmp->set_birth((*value)[0]);
 	}
 }
 
-void		Home::setModule(std::vector<const char *> value, std::vector<int> id)
+void		Home::setModule(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_module(value[0][0]);
-		_musers[id[0]] = info;
+		info->set_id(id[0][0]);
+		info->set_module((*value)[0][0]);
+		_musers[id[0][0]] = info;
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
-		tmp->set_module(value[0][0]);
+		UserInfo *tmp = _musers[id[0][0]];
+		tmp->set_module((*value)[0][0]);
 	}
 }
 
-void		Home::setSurname(std::vector<const char *> value, std::vector<int> id)
+void		Home::setSurname(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_surname(value[0]);
-		_musers[id[0]] = info;
-		addContact(_musers[id[0]]);
+		info->set_id(id[0][0]);
+		std::cout << info->get_id() << std::endl;
+		info->set_surname((*value)[0]);
+		_musers[id[0][0]] = info;
+		addContact(_musers[id[0][0]]);
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
+		UserInfo *tmp = _musers[id[0][0]];
 		std::string stmp;
-		tmp->set_surname(value[0]);
+		tmp->set_surname((*value)[0]);
 		stmp = tmp->get_name() + " " + tmp->get_surname();
-		_bcontact[id[0]]->item->setText(stmp.c_str());
+		_bcontact[id[0][0]]->item->setText(stmp.c_str());
 	}
 }
 
-void		Home::setName(std::vector<const char *> value, std::vector<int> id)
+void		Home::setName(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_name(value[0]);
-		_musers[id[0]] = info;
-		addContact(_musers[id[0]]);
+		info->set_id(id[0][0]);
+		info->set_name((*value)[0]);
+		_musers[id[0][0]] = info;
+		addContact(_musers[id[0][0]]);
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
-		tmp->set_name(value[0]);
+		UserInfo *tmp = _musers[id[0][0]];
+		tmp->set_name((*value)[0]);
 		std::string stmp;
 		stmp = tmp->get_name() + " " + tmp->get_surname();
-		_bcontact[id[0]]->but->setText(stmp.c_str());
+		_bcontact[id[0][0]]->item->setText(stmp.c_str());
 	}
 }
 
-void		Home::setAdress(std::vector<const char *> value, std::vector<int> id)
+void		Home::setAdress(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_adress(value[0]);
-		_musers[id[0]] = info;
+		info->set_id(id[0][0]);
+		info->set_adress((*value)[0]);
+		_musers[id[0][0]] = info;
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
-		tmp->set_adress(value[0]);
+		UserInfo *tmp = _musers[id[0][0]];
+		tmp->set_adress((*value)[0]);
 	}
 }
 
-void		Home::setPhone(std::vector<const char *> value, std::vector<int> id)
+void		Home::setPhone(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
-	if ((it = _musers.find(id[0])) == _musers.end()) {
+	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
-		info->set_id(id[0]);
-		info->set_phone(value[0]);
-		_musers[id[0]] = info;
+		info->set_id(id[0][0]);
+		info->set_phone((*value)[0]);
+		_musers[id[0][0]] = info;
 	}
 	else {
-		UserInfo *tmp = _musers[id[0]];
-		tmp->set_phone(value[0]);
+		UserInfo *tmp = _musers[id[0][0]];
+		tmp->set_phone((*value)[0]);
 	}
 }
 
-void		Home::setAddAnswer(std::vector<const char *> value, std::vector<int> id)
+void		Home::setAddAnswer(void *cmdptr, void *idptr)
 {
-
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 }

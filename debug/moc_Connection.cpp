@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Connection_t {
-    QByteArrayData data[8];
-    char stringdata[95];
+    QByteArrayData data[6];
+    char stringdata[53];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,13 +34,10 @@ QT_MOC_LITERAL(1, 11, 10),
 QT_MOC_LITERAL(2, 22, 0),
 QT_MOC_LITERAL(3, 23, 9),
 QT_MOC_LITERAL(4, 33, 8),
-QT_MOC_LITERAL(5, 42, 10),
-QT_MOC_LITERAL(6, 53, 24),
-QT_MOC_LITERAL(7, 78, 16)
+QT_MOC_LITERAL(5, 42, 10)
     },
     "Connection\0connection\0\0subscribe\0"
-    "boxError\0handleAuth\0std::vector<const char*>\0"
-    "std::vector<int>"
+    "boxError\0handleAuth"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,7 +64,7 @@ static const uint qt_meta_data_Connection[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    2,
-    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 7,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
 
        0        // eod
 };
@@ -80,7 +77,7 @@ void Connection::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->connection(); break;
         case 1: _t->subscribe(); break;
         case 2: _t->boxError((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: _t->handleAuth((*reinterpret_cast< std::vector<const char*>(*)>(_a[1])),(*reinterpret_cast< std::vector<int>(*)>(_a[2]))); break;
+        case 3: _t->handleAuth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
         default: ;
         }
     }

@@ -43,70 +43,126 @@ int		CCommandsValue::cmdVal(IPacketInfo *packet_info)
 
 void CCommandsValue::authAnswer(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_authAnswer(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_authAnswer(vtmp, vids);
 }
 
 void CCommandsValue::contactNick(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changeNick(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changeNick(vtmp, vids);
 }
 
 void CCommandsValue::contactStatus(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changeStatus(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changeStatus(vtmp, vids);
 }
 
 void CCommandsValue::contactBirth(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changeBirth(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changeBirth(vtmp, vids);
 }
 
 void CCommandsValue::contactModule(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_contactModule(values, ids);
+std::vector<const char *> *vtmp = new std::vector<const char *>;
+std::vector<int> *vids = new std::vector<int>;
+*vtmp = values;
+*vids = ids;
+	emit s_contactModule(vtmp, vids);
 }
 
 void CCommandsValue::contactSurname(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changeSurname(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changeSurname(vtmp, vids);
 }
 
 void CCommandsValue::contactName(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changeName(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changeName(vtmp, vids);
 }
 
 void CCommandsValue::contactAddress(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changeAddress(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changeAddress(vtmp, vids);
 }
 
 void CCommandsValue::contactPhone(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_changePhone(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_changePhone(vtmp, vids);
 }
 
 void CCommandsValue::addAnswer(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_addAnswer(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_addAnswer(vtmp, vids);
 }
 
 void CCommandsValue::removeRequest(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_removeRequest(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_removeRequest(vtmp, vids);
 }
 
 void CCommandsValue::removeAnswer(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_removeAnswer(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_removeAnswer(vtmp, vids);
 }
 
 void CCommandsValue::requestCall(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_requestCall(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_requestCall(vtmp, vids);
 }
 
 void CCommandsValue::callAnswer(std::vector<const char *> values, std::vector<int> ids)
 {
-	emit s_callAnswer(values, ids);
+	std::vector<const char *> *vtmp = new std::vector<const char *>;
+	std::vector<int> *vids = new std::vector<int>;
+	*vtmp = values;
+	*vids = ids;
+	emit s_callAnswer(vtmp, vids);
 }

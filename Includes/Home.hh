@@ -75,19 +75,19 @@ public:
 	void				  contactClick();
 
 	public slots:
-	void				  setNick(std::vector<const char *>, std::vector<int>);
-	void				  setStatus(std::vector<const char *>, std::vector<int>);
-	void				  setBirth(std::vector<const char *>, std::vector<int>);
-	void				  setModule(std::vector<const char *>, std::vector<int>);
-	void				  setSurname(std::vector<const char *>, std::vector<int>);
-	void				  setName(std::vector<const char *>, std::vector<int>);
-	void				  setAdress(std::vector<const char *>, std::vector<int>);
-	void				  setPhone(std::vector<const char *>, std::vector<int>);
-	void				  setAddAnswer(std::vector<const char *>, std::vector<int>);
-	void				  setCallAnswer(std::vector<const char *>, std::vector<int>);
-	void				  setCallRequest(std::vector<const char *>, std::vector<int>);
-	void				  setRemoveAnswer(std::vector<const char *>, std::vector<int>);
-	void				  setRemoveRequest(std::vector<const char *>, std::vector<int>);
+	void				  setNick(void *, void *);
+	void				  setStatus(void *, void *);
+	void				  setBirth(void *, void *);
+	void				  setModule(void *, void *);
+	void				  setSurname(void *, void *);
+	void				  setName(void *, void *);
+	void				  setAdress(void *, void *);
+	void				  setPhone(void *, void *);
+	void				  setAddAnswer(void *, void *);
+	void				  setCallAnswer(void *, void *);
+	void				  setCallRequest(void *, void *);
+	void				  setRemoveAnswer(void *, void *);
+	void				  setRemoveRequest(void *, void *);
 
 private:
 	Ui::Home *            ui;
