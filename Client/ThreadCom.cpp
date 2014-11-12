@@ -20,45 +20,44 @@ bool ThreadCom::connectServer()
 		emit displayError("Failed to join server");
 		return (false);
 	}
+	return (true);
 }
 
 void ThreadCom::run()
 {
-  while (1)
-    {
-      if (_socket == 0)
-	emit finished();
-      else
+	while (1)
 	{
-	  
-	  ClientInfo	*clientInfo;
-	  if (clientInfo = _network->get_connected(_socket))
-	    {
-	      if (_network->recvSocket(_socket) == false)
-		exit(0);
-	      if (_network->get_filled() == 0)
-		exit(0);
-	      
-	      Packet		*packet = new Packet();
-	      std::string	rbuff(_network->get_buffer(), 65);
-	      std::stringbuf	usz(rbuff);
-	      
-	      usz << packet;
-	      
-	      IPacketInfo	*packet_info;
-	      packet_info = getParser()->decode(packet);
-	      
-	      cmdVal(packet_info);
-	      const char *tmp = packet_info->getChars().front();
-	      std::cout <<  "data [" << tmp << "]" << std::endl;
-	    }
+		if (_socket == 0)
+			emit finished();
+		else
+		{
+
+			ClientInfo	*clientInfo;
+			if (clientInfo = _network->get_connected(_socket))
+			{
+				if (_network->recvSocket(_socket) == false)
+					exit(0);
+				if (_network->get_filled() == 0)
+					exit(0);
+
+				Packet		*packet = new Packet();
+				std::string	rbuff(_network->get_buffer(), 65);
+				std::stringbuf	usz(rbuff);
+
+				usz << packet;
+
+				IPacketInfo	*packet_info;
+				packet_info = getParser()->decode(packet);
+
+				cmdVal(packet_info);
+				const char *tmp = packet_info->getChars().front();
+				std::cout << "data [" << tmp << "]" << std::endl;
+			}
+		}
 	}
-    }
 }
-
-
 
 Network		*ThreadCom::getNetwork() const
 {
-	return (this->_network);
+		return (this->_network);
 }
