@@ -160,8 +160,6 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       std::cout << "Wrong log\n";
       return ;
     }
-  if (_user->get_server()->get_users().count(id) > 0)
-    return ;
   if (strcmp(chars[1], _xmlParser->getNodeValue(filename, "password").c_str()) == 0)
     {
       //std::cout << "Good passwd" << std::endl;
@@ -175,6 +173,7 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       _user->set_phone(_xmlParser->getNodeValue(filename, "phone"));
       _user->set_status(chars[2][0]);
       _user->set_module(chars[3][0]);
+      _user->set_id(id);
 
       //VALGRIND
       //std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
@@ -182,9 +181,12 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       //std::cout << "\tCreate bloc at id : " << id << "\n\n";
       //     _user->get_server()->get_users()[id] = _user;
       //VALGRIND
-      const_cast<int &>(_user->get_server()->get_users().find(_user->get_id())->first) = id;
-      std::cout << "\n\n\t\t THE ID IS : " << id << "\n\n";
-      _user->set_id(id);
+      //      const_cast<int &>(_user->get_server()->get_users().find(_user->get_id())->first) = id;
+      if (_user->get_server()->get_users().count(_user->get_id()) > 0)
+	return ;
+      _user->get_server()->get_users()[_user->get_id()] = _user;
+      //std::cout << "\n\n\t\t THE ID IS : " << id << "\n\n";
+
       _user->authAnswer((char)RET_OK);
       std::cout << "Log OKK\n";
       //     _user->get_server()->get_users().erase(_user->get_id());
@@ -380,7 +382,7 @@ void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> int
     std::cout << it->first << " => " << it->second << '\n';
   std::cout << "Ints 0 is : " << ints[0] << std::endl;
   std::cout << "Count is : " << _user->get_server()->get_users().count(ints[0]) << std::endl;
-  if (_user->get_server()->get_users().count(ints[0]) >= 0)
+  if (_user->get_server()->get_users().count(ints[0]) == 1)
     {
       puts("OKAY");
       _user->requestCall(chars[0][0], _user, _user->get_server()->get_users().find(ints[0])->second);

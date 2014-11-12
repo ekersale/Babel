@@ -170,7 +170,7 @@ void User::requestCall(char call_module, User *src, User *target) {
   packet_info->getChars().push_back(_server->get_network()->get_connected(src->get_idSocket())->get_ip());
   _server->pushToSend(target->get_idSocket(), _server->get_parser()->encode(packet_info));
   delete (packet_info);
-  std::cout << "\n\tDONE 1/2\n\n";
+  //  std::cout << "\n\tDONE 1/2\n\n";
 }
 
 void User::callAnswer(char err, std::vector<int> ints) { //C2
@@ -185,6 +185,6 @@ void User::callAnswer(char err, std::vector<int> ints) { //C2
   packet_info->getInts().push_back(ints[1]);
   packet_info->getInts().push_back(ints[2]);
   packet_info->getInts().push_back(ints[3]);
-  _server->pushToSend(_server->get_users().find(ints[ints[0]])->second->get_idSocket(), _server->get_parser()->encode(packet_info));
+  _server->pushToSend(_server->get_users().find(ints[0])->second->get_idSocket(), _server->get_parser()->encode(packet_info));
   delete (packet_info);
 }

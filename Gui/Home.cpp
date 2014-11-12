@@ -511,9 +511,9 @@ void		Home::setCallRequest(void *cmdptr, void *idptr)
 	std::string ip = value[0][1];
 	char *answer_user = new char[1];
 
-	if ((int)value[0][0] == 1)
+	if ((int)(*value)[0][0] == 1)
 		tmp = pkt->get_name() + " audio call you";
-	if ((int)value[0][0] == 2)
+	if ((int)(*value)[0][0] == 2)
 		tmp = pkt->get_name() + " video call you";
 
 	msgBox.setText(tmp.c_str());
@@ -565,7 +565,7 @@ void		Home::setCallRequest(void *cmdptr, void *idptr)
 		std::cout << "Error Send\n";
 	delete(enpacked);
 	//LANCER LA RECEPTION UDP
-	if ((int)value[0][0] == 1) {
+	if ((int)(*value)[0][0] == 1) {
 		timer = new QTimer;
 		_sockudp[0] = _links[0]->recvFromSocket();
 		if (!sound.initializePA())
@@ -581,7 +581,7 @@ void		Home::setCallRequest(void *cmdptr, void *idptr)
 		connect(timer, SIGNAL(timeout()), this, SLOT(threadCall()));
 		timer->start();
 	}
-	if ((int)value[0][0] == 2) {
+	if ((int)(*value)[0][0] == 2) {
 		_sockudp[1] = _links[1]->recvFromSocket();
 		timer = new QTimer;
 		connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
@@ -655,7 +655,7 @@ void		Home::setCallAnswer(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::stringstream ss;
-	if ((int)value[0][0] == 0) // OK
+	if ((int)(*value)[0][0] == 0) // OK
 	{
 		std::string ip;
 		ip = value[0][1];

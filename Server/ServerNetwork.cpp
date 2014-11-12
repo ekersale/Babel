@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Wed Nov 12 18:33:50 2014 Damien Giraudet
+// Last update Wed Nov 12 19:07:44 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -26,7 +26,7 @@ void	Server::deleteUser(User *user)
 {
   if (user == 0)
     return ;
-  if (_users.find(user->get_id()) != _users.end())
+  if (_users.find(user->get_id()) == _users.end())
     return ;
   _users.erase(user->get_id());
   delete (_users[user->get_id()]);
