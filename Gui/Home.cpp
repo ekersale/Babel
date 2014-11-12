@@ -219,6 +219,7 @@ void    Home::addContact(UserInfo *added)
 	std::string		tmp;
 	int				state;
 
+
 	state = added->get_status();
 	if (state < 1 && state > 4)
 		state = 4;
