@@ -27,7 +27,6 @@ void User::connectContactLoop(void) {
   std::vector<int>	all_clients;
   std::vector<int>::iterator	it_clients;
   std::map<int, User *>::iterator it_users;
-  int			id;
 
   contactLoop(this, this);
   all_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login));

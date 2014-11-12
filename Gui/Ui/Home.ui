@@ -576,24 +576,6 @@
      <pixmap>Images/btnPhoneNumber.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="_label_PhoneNumberValue">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>150</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#_label_PhoneNumberValue {
-	color : white;
-}</string>
-    </property>
-    <property name="text">
-     <string>06 02 02 02 02</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="_label_Localisation">
     <property name="geometry">
      <rect>
@@ -622,22 +604,6 @@
      <pixmap>Images/btnLocalisation.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="_label_LocalisationValue">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>190</y>
-      <width>57</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#_label_LocalisationValue {color : white;}</string>
-    </property>
-    <property name="text">
-     <string>Angers</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="_label_Birthsday">
     <property name="geometry">
      <rect>
@@ -652,22 +618,6 @@
     </property>
     <property name="pixmap">
      <pixmap>Images/btnBirthday.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="_label_BirthsdayValue">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>155</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#_label_BirthsdayValue {color : white;}</string>
-    </property>
-    <property name="text">
-     <string>26 / 05 / 1992</string>
     </property>
    </widget>
    <widget class="QListWidget" name="_listContact">
@@ -870,6 +820,75 @@ color : white;
     </property>
     <property name="maxLength">
      <number>10</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="_linePhoneNumber">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>150</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#_linePhoneNumber {
+	background : transparent;
+	color : white;
+}</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="_lineLocalisation">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>190</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#_lineLocalisation {
+	background : transparent;
+	color : white;
+}</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="_lineBirthday">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>160</y>
+      <width>113</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit#_lineBirthday {
+	background : transparent;
+	color : white;
+}</string>
     </property>
     <property name="frame">
      <bool>false</bool>

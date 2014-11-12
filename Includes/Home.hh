@@ -22,7 +22,8 @@
 #include                "OpenCV.hh"
 #include				"UserInfo.hh"
 #include				"ThreadCom.hh"
-#include                "OpenCV.hh"
+#include                "Parser.hh"
+#include                "XMLParser.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
 //#define SERV_ADDR_IP  "127.0.0.1"
@@ -56,7 +57,7 @@ public:
 	void                  setOncall(bool available);
 	void				  setThread(void *ptr);
 	void                  addContact(UserInfo *);
-
+	bool			sendData(QString data, int size);
 	private slots:
 	void                  invitContact(void);
 	void                  callContact(void);
@@ -88,6 +89,12 @@ public:
 	void				  setCallRequest(void *, void *);
 	void				  setRemoveAnswer(void *, void *);
 	void				  setRemoveRequest(void *, void *);
+	void				  sendNewName();
+	void				  sendNewSurname();
+	void				  sendNewBirthday();
+	void				  sendNewLocalisation();
+	void				  sendNewPhone();
+
 
 private:
 	Ui::Home *            ui;
@@ -97,6 +104,8 @@ private:
 	Network *             clt; //anciennement de type UNetwork
 	Network *             _tcp;
 	Network *             _udp;
+        Parser		      *_parser;
+	XMLParser	      *_xmlParser;
 	QTimer *              timer;
 	int                   id;
 	e_type                _status;
@@ -107,6 +116,7 @@ private:
 	void			*_com;
 	QPushButton			  *_pushtmp;
 	int					 _activeUser;
+	int					_myid;
 };
 
 #endif // HOME_H

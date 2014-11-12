@@ -47,11 +47,8 @@ public:
     QLabel *_label_name;
     QLabel *_label_nickname;
     QLabel *_label_PhoneNumberImg;
-    QLabel *_label_PhoneNumberValue;
     QLabel *_label_Localisation;
-    QLabel *_label_LocalisationValue;
     QLabel *_label_Birthsday;
-    QLabel *_label_BirthsdayValue;
     QListWidget *_listContact;
     QPushButton *_btn_Online;
     QPushButton *_btn_Away;
@@ -62,6 +59,9 @@ public:
     QLabel *_label_VideoPerso;
     QLineEdit *_lineContactName;
     QLineEdit *_lineSurnameEdit;
+    QLineEdit *_linePhoneNumber;
+    QLineEdit *_lineLocalisation;
+    QLineEdit *_lineBirthday;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -211,30 +211,16 @@ public:
         _label_PhoneNumberImg->setMinimumSize(QSize(25, 25));
         _label_PhoneNumberImg->setMaximumSize(QSize(25, 25));
         _label_PhoneNumberImg->setPixmap(QPixmap(QString::fromUtf8("Images/btnPhoneNumber.png")));
-        _label_PhoneNumberValue = new QLabel(centralwidget);
-        _label_PhoneNumberValue->setObjectName(QStringLiteral("_label_PhoneNumberValue"));
-        _label_PhoneNumberValue->setGeometry(QRect(630, 150, 101, 21));
-        _label_PhoneNumberValue->setStyleSheet(QLatin1String("QLabel#_label_PhoneNumberValue {\n"
-"	color : white;\n"
-"}"));
         _label_Localisation = new QLabel(centralwidget);
         _label_Localisation->setObjectName(QStringLiteral("_label_Localisation"));
         _label_Localisation->setGeometry(QRect(600, 190, 25, 25));
         _label_Localisation->setMinimumSize(QSize(25, 25));
         _label_Localisation->setMaximumSize(QSize(25, 25));
         _label_Localisation->setPixmap(QPixmap(QString::fromUtf8("Images/btnLocalisation.png")));
-        _label_LocalisationValue = new QLabel(centralwidget);
-        _label_LocalisationValue->setObjectName(QStringLiteral("_label_LocalisationValue"));
-        _label_LocalisationValue->setGeometry(QRect(630, 190, 57, 15));
-        _label_LocalisationValue->setStyleSheet(QStringLiteral("QLabel#_label_LocalisationValue {color : white;}"));
         _label_Birthsday = new QLabel(centralwidget);
         _label_Birthsday->setObjectName(QStringLiteral("_label_Birthsday"));
         _label_Birthsday->setGeometry(QRect(850, 150, 25, 25));
         _label_Birthsday->setPixmap(QPixmap(QString::fromUtf8("Images/btnBirthday.png")));
-        _label_BirthsdayValue = new QLabel(centralwidget);
-        _label_BirthsdayValue->setObjectName(QStringLiteral("_label_BirthsdayValue"));
-        _label_BirthsdayValue->setGeometry(QRect(890, 155, 91, 21));
-        _label_BirthsdayValue->setStyleSheet(QStringLiteral("QLabel#_label_BirthsdayValue {color : white;}"));
         _listContact = new QListWidget(centralwidget);
         _listContact->setObjectName(QStringLiteral("_listContact"));
         _listContact->setGeometry(QRect(0, 143, 281, 641));
@@ -299,6 +285,34 @@ public:
         _lineSurnameEdit->setMaxLength(10);
         _lineSurnameEdit->setFrame(false);
         _lineSurnameEdit->setReadOnly(true);
+        _linePhoneNumber = new QLineEdit(centralwidget);
+        _linePhoneNumber->setObjectName(QStringLiteral("_linePhoneNumber"));
+        _linePhoneNumber->setGeometry(QRect(630, 150, 113, 22));
+        _linePhoneNumber->setStyleSheet(QLatin1String("QLineEdit#_linePhoneNumber {\n"
+"	background : transparent;\n"
+"	color : white;\n"
+"}"));
+        _linePhoneNumber->setFrame(false);
+        _linePhoneNumber->setReadOnly(true);
+        _linePhoneNumber->setClearButtonEnabled(false);
+        _lineLocalisation = new QLineEdit(centralwidget);
+        _lineLocalisation->setObjectName(QStringLiteral("_lineLocalisation"));
+        _lineLocalisation->setGeometry(QRect(630, 190, 71, 16));
+        _lineLocalisation->setStyleSheet(QLatin1String("QLineEdit#_lineLocalisation {\n"
+"	background : transparent;\n"
+"	color : white;\n"
+"}"));
+        _lineLocalisation->setFrame(false);
+        _lineLocalisation->setReadOnly(true);
+        _lineBirthday = new QLineEdit(centralwidget);
+        _lineBirthday->setObjectName(QStringLiteral("_lineBirthday"));
+        _lineBirthday->setGeometry(QRect(890, 160, 113, 16));
+        _lineBirthday->setStyleSheet(QLatin1String("QLineEdit#_lineBirthday {\n"
+"	background : transparent;\n"
+"	color : white;\n"
+"}"));
+        _lineBirthday->setFrame(false);
+        _lineBirthday->setReadOnly(true);
         Home->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Home);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -335,11 +349,8 @@ public:
         _label_name->setText(QApplication::translate("Home", "Surname :", 0));
         _label_nickname->setText(QApplication::translate("Home", "Name      :", 0));
         _label_PhoneNumberImg->setText(QString());
-        _label_PhoneNumberValue->setText(QApplication::translate("Home", "06 02 02 02 02", 0));
         _label_Localisation->setText(QString());
-        _label_LocalisationValue->setText(QApplication::translate("Home", "Angers", 0));
         _label_Birthsday->setText(QString());
-        _label_BirthsdayValue->setText(QApplication::translate("Home", "26 / 05 / 1992", 0));
         _btn_Online->setText(QString());
         _btn_Away->setText(QString());
         _btn_Busy->setText(QString());
