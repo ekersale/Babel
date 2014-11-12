@@ -74,12 +74,26 @@ void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket
   delete (packet_info);
 }
  
-void User::removeAnswer(char &) {
-  
+void User::removeAnswer(char ret_val) {
+  IPacketInfo	*packet_info;
+  char		*cpy = new char[1];
+
+  cpy[0] = ret_val;
+  packet_info = new PacketInfo();
+  packet_info->setCmd(22);
+  packet_info->getChars().push_back(cpy);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
-void User::removeRequest(int) {
+void User::removeRequest(int from_id) {
+  IPacketInfo	*packet_info;
 
+  packet_info = new PacketInfo();
+  packet_info->setCmd(22);
+  packet_info->getInts().push_back(from_id);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
 void User::addAnswer(char ret_val) {

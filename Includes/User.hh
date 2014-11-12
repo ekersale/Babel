@@ -33,7 +33,7 @@ public:
   void connectContactLoop(void);
   void contactLoop(User *, User *);
   void contactCmd(int, const std::string, int, int);
-  void removeAnswer(char &);
+  void removeAnswer(char);
   void removeRequest(int);
   void addAnswer(char);
   /*
