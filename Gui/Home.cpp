@@ -9,8 +9,8 @@ Home::Home(QWidget *parent) : QMainWindow(parent), ui(new Ui::Home)
 {
 	init();
 	_pushtmp = NULL;
-	// _tcp = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));                                            
-	//   _udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);                                                    
+	// _tcp = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet)); 
+	//   _udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
 }
 
 Home::~Home()
@@ -22,7 +22,7 @@ void    Home::init()
 {
 	setFixedSize(1080, 929);
 	this->_status = ONLINE;
-	this->_isOncall = false; //False pour dire qu'on a pas de conversation                                         
+	this->_isOncall = false; //False pour dire qu'on a pas de conversation
 	load();
 }
 
@@ -37,8 +37,9 @@ void    Home::load()
 	timer = new QTimer(this);
 
 	QLabel::connect(_video, SIGNAL(processedImage(QImage, int)), this, SLOT(updatePlayerUI(QImage, int)));
-	//QLabel::connect(_video, SIGNAL(sendFrame(std::vector<unsigned char*> *)), this, SLOT(sendFrameTo(std::vector<u\
-		nsigned char *> *)));
+	//QLabel::connect(_video, SIGNAL(sendFrame(std::vector<unsigned char*> *)),
+	//this, SLOT(sendFrameTo(std::vector<unsigned char *> *)));
+	
 	QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
 	QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
 	QObject::connect(ui->_btn_Away, SIGNAL(clicked()), this, SLOT(changeAway()));
