@@ -53,12 +53,12 @@ void ThreadCom::run()
 				const char *tmp = packet_info->getChars().front();
 				std::cout << "data [" << tmp << "]" << std::endl;
 				if (i == 0){
-				  
-				#ifdef	_WIN32	
-				  Sleep(100);
-				#else
-				usleep(100000);
-				std::cout << "On est dans le USLEEP" << std::endl;
+
+#ifdef	_WIN32	
+					Sleep(100);
+#else
+					usleep(100000);
+					std::cout << "On est dans le USLEEP" << std::endl;
 #endif
 				}
 				i++;

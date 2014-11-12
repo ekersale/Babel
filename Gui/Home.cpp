@@ -79,13 +79,15 @@ bool	Home::sendData(QString value, int nbCmd)
   char *params;
 
   packet_info = new PacketInfo();
-  _parser = new Parser();
+
+  // _parser = new Parser();
+
   params = strdup(value.toStdString().c_str());
 
   packet_info->setCmd(nbCmd);
   packet_info->getChars().push_back(params);
 
-  packet = (Packet *)_parser->encode(packet_info);
+  packet = (Packet *)((ThreadCom *)_com)->getParser()->encode(packet_info);
 
   serialize >> packet;
 
