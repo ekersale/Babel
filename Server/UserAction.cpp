@@ -48,17 +48,24 @@ void User::connectContactLoop(void) {
 void User::contactLoop(User *usr_from, User *usr_to) {
   std::string	for_status;
   std::string	for_module;
+  int		usr_from_id;
+  int		usr_to_id_socket;
 
   for_status[0] = usr_from->get_status();
   for_module[0] = usr_from->get_module();
-  contactCmd(12, usr_from->get_nickname(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(13, for_status, usr_from->get_id(), usr_to->get_idSocket()); //Cond Jump
-  contactCmd(14, usr_from->get_birth(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(15, for_module, usr_from->get_id(), usr_to->get_idSocket()); //Cond Jump
-  contactCmd(16, usr_from->get_surname(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(17, usr_from->get_name(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(18, usr_from->get_address(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(19, usr_from->get_phone(), usr_from->get_id(), usr_to->get_idSocket());
+  if (usr_from->get_id() == usr_to->get_id())
+    usr_from_id = 0;
+  else
+    usr_from_id = usr_from->get_id();
+  usr_to_id_socket = usr_to->get_idSocket();
+  contactCmd(12, usr_from->get_nickname(), usr_from_id, usr_to_id_socket);
+  contactCmd(13, for_status, usr_from_id, usr_to_id_socket);
+  contactCmd(14, usr_from->get_birth(), usr_from_id, usr_to_id_socket);
+  contactCmd(15, for_module, usr_from_id, usr_to_id_socket);
+  contactCmd(16, usr_from->get_surname(), usr_from_id, usr_to_id_socket);
+  contactCmd(17, usr_from->get_name(), usr_from_id, usr_to_id_socket);
+  contactCmd(18, usr_from->get_address(), usr_from_id, usr_to_id_socket);
+  contactCmd(19, usr_from->get_phone(), usr_from_id, usr_to_id_socket);
 }
 
 void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket)
