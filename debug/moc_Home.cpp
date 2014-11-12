@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Home_t {
     QByteArrayData data[36];
-    char stringdata[453];
+    char stringdata[449];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,42 +43,42 @@ QT_MOC_LITERAL(10, 104, 14),
 QT_MOC_LITERAL(11, 119, 11),
 QT_MOC_LITERAL(12, 131, 28),
 QT_MOC_LITERAL(13, 160, 13),
-QT_MOC_LITERAL(14, 174, 13),
-QT_MOC_LITERAL(15, 188, 10),
-QT_MOC_LITERAL(16, 199, 14),
-QT_MOC_LITERAL(17, 214, 12),
-QT_MOC_LITERAL(18, 227, 7),
-QT_MOC_LITERAL(19, 235, 9),
-QT_MOC_LITERAL(20, 245, 8),
-QT_MOC_LITERAL(21, 254, 9),
-QT_MOC_LITERAL(22, 264, 10),
-QT_MOC_LITERAL(23, 275, 7),
-QT_MOC_LITERAL(24, 283, 9),
-QT_MOC_LITERAL(25, 293, 8),
-QT_MOC_LITERAL(26, 302, 12),
-QT_MOC_LITERAL(27, 315, 13),
-QT_MOC_LITERAL(28, 329, 14),
-QT_MOC_LITERAL(29, 344, 15),
-QT_MOC_LITERAL(30, 360, 16),
-QT_MOC_LITERAL(31, 377, 11),
-QT_MOC_LITERAL(32, 389, 14),
-QT_MOC_LITERAL(33, 404, 15),
-QT_MOC_LITERAL(34, 420, 19),
-QT_MOC_LITERAL(35, 440, 12)
+QT_MOC_LITERAL(14, 174, 10),
+QT_MOC_LITERAL(15, 185, 14),
+QT_MOC_LITERAL(16, 200, 12),
+QT_MOC_LITERAL(17, 213, 7),
+QT_MOC_LITERAL(18, 221, 9),
+QT_MOC_LITERAL(19, 231, 8),
+QT_MOC_LITERAL(20, 240, 9),
+QT_MOC_LITERAL(21, 250, 10),
+QT_MOC_LITERAL(22, 261, 7),
+QT_MOC_LITERAL(23, 269, 9),
+QT_MOC_LITERAL(24, 279, 8),
+QT_MOC_LITERAL(25, 288, 12),
+QT_MOC_LITERAL(26, 301, 13),
+QT_MOC_LITERAL(27, 315, 14),
+QT_MOC_LITERAL(28, 330, 15),
+QT_MOC_LITERAL(29, 346, 16),
+QT_MOC_LITERAL(30, 363, 11),
+QT_MOC_LITERAL(31, 375, 14),
+QT_MOC_LITERAL(32, 390, 15),
+QT_MOC_LITERAL(33, 406, 19),
+QT_MOC_LITERAL(34, 426, 12),
+QT_MOC_LITERAL(35, 439, 9)
     },
     "Home\0invitContact\0\0callContact\0"
     "videoCallContact\0hangHup\0changeOnline\0"
     "changeAway\0changeBusy\0showNewField\0"
     "updatePlayerUI\0sendFrameTo\0"
     "std::vector<unsigned char*>*\0recvFrameFrom\0"
-    "threadReceive\0threadCall\0sendAddContact\0"
-    "contactClick\0setNick\0setStatus\0setBirth\0"
-    "setModule\0setSurname\0setName\0setAdress\0"
-    "setPhone\0setAddAnswer\0setCallAnswer\0"
-    "setCallRequest\0setRemoveAnswer\0"
-    "setRemoveRequest\0sendNewName\0"
-    "sendNewSurname\0sendNewBirthday\0"
-    "sendNewLocalisation\0sendNewPhone"
+    "threadCall\0sendAddContact\0contactClick\0"
+    "setNick\0setStatus\0setBirth\0setModule\0"
+    "setSurname\0setName\0setAdress\0setPhone\0"
+    "setAddAnswer\0setCallAnswer\0setCallRequest\0"
+    "setRemoveAnswer\0setRemoveRequest\0"
+    "sendNewName\0sendNewSurname\0sendNewBirthday\0"
+    "sendNewLocalisation\0sendNewPhone\0"
+    "playVideo"
 };
 #undef QT_MOC_LITERAL
 
@@ -110,20 +110,20 @@ static const uint qt_meta_data_Home[] = {
       14,    0,  196,    2, 0x08 /* Private */,
       15,    0,  197,    2, 0x08 /* Private */,
       16,    0,  198,    2, 0x08 /* Private */,
-      17,    0,  199,    2, 0x08 /* Private */,
-      18,    2,  200,    2, 0x0a /* Public */,
-      19,    2,  205,    2, 0x0a /* Public */,
-      20,    2,  210,    2, 0x0a /* Public */,
-      21,    2,  215,    2, 0x0a /* Public */,
-      22,    2,  220,    2, 0x0a /* Public */,
-      23,    2,  225,    2, 0x0a /* Public */,
-      24,    2,  230,    2, 0x0a /* Public */,
-      25,    2,  235,    2, 0x0a /* Public */,
-      26,    2,  240,    2, 0x0a /* Public */,
-      27,    2,  245,    2, 0x0a /* Public */,
-      28,    2,  250,    2, 0x0a /* Public */,
-      29,    2,  255,    2, 0x0a /* Public */,
-      30,    2,  260,    2, 0x0a /* Public */,
+      17,    2,  199,    2, 0x0a /* Public */,
+      18,    2,  204,    2, 0x0a /* Public */,
+      19,    2,  209,    2, 0x0a /* Public */,
+      20,    2,  214,    2, 0x0a /* Public */,
+      21,    2,  219,    2, 0x0a /* Public */,
+      22,    2,  224,    2, 0x0a /* Public */,
+      23,    2,  229,    2, 0x0a /* Public */,
+      24,    2,  234,    2, 0x0a /* Public */,
+      25,    2,  239,    2, 0x0a /* Public */,
+      26,    2,  244,    2, 0x0a /* Public */,
+      27,    2,  249,    2, 0x0a /* Public */,
+      28,    2,  254,    2, 0x0a /* Public */,
+      29,    2,  259,    2, 0x0a /* Public */,
+      30,    0,  264,    2, 0x0a /* Public */,
       31,    0,  265,    2, 0x0a /* Public */,
       32,    0,  266,    2, 0x0a /* Public */,
       33,    0,  267,    2, 0x0a /* Public */,
@@ -145,20 +145,20 @@ static const uint qt_meta_data_Home[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -184,28 +184,28 @@ void Home::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 8: _t->updatePlayerUI((*reinterpret_cast< QImage(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 9: _t->sendFrameTo((*reinterpret_cast< std::vector<unsigned char*>*(*)>(_a[1]))); break;
         case 10: _t->recvFrameFrom(); break;
-        case 11: _t->threadReceive(); break;
-        case 12: _t->threadCall(); break;
-        case 13: _t->sendAddContact(); break;
-        case 14: _t->contactClick(); break;
-        case 15: _t->setNick((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 16: _t->setStatus((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 17: _t->setBirth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 18: _t->setModule((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 19: _t->setSurname((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 20: _t->setName((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 21: _t->setAdress((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 22: _t->setPhone((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 23: _t->setAddAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 24: _t->setCallAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 25: _t->setCallRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 26: _t->setRemoveAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 27: _t->setRemoveRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 28: _t->sendNewName(); break;
-        case 29: _t->sendNewSurname(); break;
-        case 30: _t->sendNewBirthday(); break;
-        case 31: _t->sendNewLocalisation(); break;
-        case 32: _t->sendNewPhone(); break;
+        case 11: _t->threadCall(); break;
+        case 12: _t->sendAddContact(); break;
+        case 13: _t->contactClick(); break;
+        case 14: _t->setNick((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 15: _t->setStatus((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 16: _t->setBirth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 17: _t->setModule((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 18: _t->setSurname((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 19: _t->setName((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 20: _t->setAdress((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 21: _t->setPhone((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 22: _t->setAddAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 23: _t->setCallAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 24: _t->setCallRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 25: _t->setRemoveAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 26: _t->setRemoveRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 27: _t->sendNewName(); break;
+        case 28: _t->sendNewSurname(); break;
+        case 29: _t->sendNewBirthday(); break;
+        case 30: _t->sendNewLocalisation(); break;
+        case 31: _t->sendNewPhone(); break;
+        case 32: _t->playVideo(); break;
         default: ;
         }
     }

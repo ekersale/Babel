@@ -72,24 +72,26 @@ void	Subscribe::handleSubscribe(void *cmdptr, void *idptr)
   std::vector<int> *vids = (std::vector<int> *)idptr;
 
   static_cast<void>(vids);
+  std::cout << "On passe dans handleSubscribe " << std::endl;
   if (tableCmd->at(0)[0] == 3)
     {
       QMessageBox::critical(this, "Information", "Login is not available");
-      return;
+      // return;
     }
   else if (tableCmd->at(0)[0] == 4)
     {
       QMessageBox::critical(this, "Information", "Invalid login");
-      return;
+      // return;
     }
   else if (tableCmd->at(0)[0] == 5)
     {
       QMessageBox::critical(this, "Information", "Invalid password");
-      return;
+      // return;
     }
   else
     {
       QMessageBox::information(this, "Information", "Inscription réussi");
+      
       Connection              *page;
       
       page = new Connection;

@@ -1,51 +1,14 @@
-﻿La génération a démarré 12/11/2014 02:18:00.
+﻿La génération a démarré 12/11/2014 07:19:36.
      1>Projet "C:\Users\ellio_000\Documents\clone v2\babel\sans_titre.vcxproj" sur le nœud 2 (Build cible(s)).
-     1>CustomBuild:
-         MOC Includes\Home.hh
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_CCommandsValue.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_CCommandsValue.cpp, release\moc_CCommandsValue.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_Connection.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_Connection.cpp, release\moc_Connection.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_Home.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_Home.cpp, release\moc_Home.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_OpenCV.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_OpenCV.cpp, release\moc_OpenCV.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_Subscribe.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_Subscribe.cpp, release\moc_Subscribe.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_ThreadCom.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_ThreadCom.cpp, release\moc_ThreadCom.cpp.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IIncludes /I.\libs\opencv\build\include /I.\libs\opus\include /I.\libs\portaudio\include /IC:\Qt\Qt5.3.2\5.3\msvc2013\include /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_XML_LIB /D QT_GUI_LIB /D QT_CORE_LIB /D QT_OPENGL_ES_2 /D QT_OPENGL_ES_2_ANGLE /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -Zm200 -w34100 -w34189 Client\ThreadCom.cpp Gui\Connection.cpp Gui\Home.cpp Gui\Subscribe.cpp Gui\main.cpp debug\moc_Connection.cpp debug\moc_Home.cpp debug\moc_Subscribe.cpp debug\moc_ThreadCom.cpp
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IIncludes /I.\libs\opencv\build\include /I.\libs\opus\include /I.\libs\portaudio\include /IC:\Qt\Qt5.3.2\5.3\msvc2013\include /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_XML_LIB /D QT_GUI_LIB /D QT_CORE_LIB /D QT_OPENGL_ES_2 /D QT_OPENGL_ES_2_ANGLE /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -Zm200 -w34100 -w34189 Client\ThreadCom.cpp
          ThreadCom.cpp
-         Connection.cpp
-     1>Gui\Connection.cpp(55): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Connection.cpp(56): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Connection.cpp(113): warning C4189: 'vids' : variable locale initialisée mais non référencée
-         Home.cpp
-     1>Gui\Home.cpp(42): warning C4010: un commentaire sur une seule ligne comporte un caractère de continuation de ligne
-     1>Gui\Home.cpp(342): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Home.cpp(347): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Home.cpp(493): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : voir la déclaration de 'strcpy'
-     1>Gui\Home.cpp(522): warning C4189: 'id' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(521): warning C4189: 'value' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(525): warning C4100: 'idptr' : paramètre formel non référencé
-     1>Gui\Home.cpp(525): warning C4100: 'cmdptr' : paramètre formel non référencé
-     1>Gui\Home.cpp(532): warning C4189: 'value' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(541): warning C4100: 'idptr' : paramètre formel non référencé
-     1>Gui\Home.cpp(541): warning C4100: 'cmdptr' : paramètre formel non référencé
-     1>Gui\Home.cpp(763): warning C4189: 'id' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(762): warning C4189: 'value' : variable locale initialisée mais non référencée
-         Subscribe.cpp
-     1>Gui\Subscribe.cpp(67): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Subscribe.cpp(68): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-         main.cpp
-         moc_Connection.cpp
-         moc_Home.cpp
-         moc_Subscribe.cpp
-         moc_ThreadCom.cpp
-         Génération de code en cours...
-     1>c:\users\ellio_000\documents\clone v2\babel\client\threadcom.cpp(23): warning C4715: 'ThreadCom::connectServer' : les chemins de contrôle ne retournent pas tous une valeur
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\Babel.exe" /NOLOGO /LIBPATH:C:\Qt\Qt5.3.2\5.3\msvc2013\lib /LIBPATH:.\libs\opencv\build\x86\vc12\lib /LIBPATH:.\libs\opus\lib /LIBPATH:.\libs\portaudio\libs qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib Qt5Xmld.lib opencv_calib3d249d.lib opencv_contrib249d.lib opencv_core249d.lib opencv_features2d249d.lib opencv_flann249d.lib opencv_gpu249d.lib opencv_highgui249d.lib opencv_imgproc249d.lib opencv_legacy249d.lib opencv_ml249d.lib opencv_nonfree249d.lib opencv_objdetect249d.lib opencv_ocl249d.lib opencv_photo249d.lib opencv_stitching249d.lib opencv_superres249d.lib opencv_ts249d.lib opencv_videostab249d.lib opencv_video249d.lib opus.lib portaudio_x86.lib silk_float.lib silk_common.lib celt.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"debug\Babel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /SAFESEH "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" Win32\Debug\UserInfo.obj
          Win32\Debug\BabelEncoder.obj
@@ -77,4 +40,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:16.52
+Temps écoulé 00:00:02.28

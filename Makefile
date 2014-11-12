@@ -667,15 +667,12 @@ moc_Subscribe.cpp: Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		Includes/Subscribe.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -784,6 +781,9 @@ moc_Subscribe.cpp: Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/Subscribe.hh \
+		Includes/Connection.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
@@ -946,16 +946,12 @@ moc_Home.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QWidget \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QObject \
 		Includes/Home.hh \
-		Includes/Subscribe.hh \
-		Includes/IGui.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -1064,6 +1060,10 @@ moc_Home.cpp: /opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMainWindow \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/Subscribe.hh \
+		Includes/IGui.hh \
+		Includes/Connection.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
@@ -1697,14 +1697,12 @@ moc_Connection.cpp: Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		Includes/Subscribe.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
-		Includes/Connection.hh \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -1813,6 +1811,8 @@ moc_Connection.cpp: Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		Includes/Subscribe.hh \
+		Includes/Connection.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
@@ -2002,7 +2002,6 @@ main.o: Gui/main.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		Includes/Subscribe.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
@@ -2117,6 +2116,7 @@ main.o: Gui/main.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		Includes/Subscribe.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
@@ -2286,7 +2286,6 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		Includes/Subscribe.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
@@ -2401,6 +2400,7 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		Includes/Subscribe.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
@@ -2566,8 +2566,6 @@ Subscribe.o: Gui/Subscribe.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
@@ -2682,6 +2680,8 @@ Subscribe.o: Gui/Subscribe.cpp Includes/IGui.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/Connection.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
@@ -3231,16 +3231,12 @@ ThreadCom.o: Client/ThreadCom.cpp Includes/ThreadCom.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QPushButton \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qabstractbutton.h \
-		Includes/Subscribe.hh \
-		Includes/IGui.hh \
 		Includes/Parser.hh \
 		Includes/IParser.hpp \
 		Includes/Packet.hh \
 		Includes/IPacket.hpp \
 		Includes/PacketInfo.hh \
 		Includes/IPacketInfo.hpp \
-		Includes/Connection.hh \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
 		Includes/XMLParser.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXml \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QtXmlDepends \
@@ -3349,6 +3345,10 @@ ThreadCom.o: Client/ThreadCom.cpp Includes/ThreadCom.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qxml.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/qtxmlversion.h \
 		/opt/Qt5.3.2/5.3/gcc/include/QtXml/QDomDocument \
+		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QString \
+		Includes/Subscribe.hh \
+		Includes/IGui.hh \
+		Includes/Connection.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh
