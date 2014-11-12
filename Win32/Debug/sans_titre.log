@@ -1,7 +1,7 @@
-﻿La génération a démarré 12/11/2014 08:27:16.
+﻿La génération a démarré 12/11/2014 09:17:08.
      1>Projet "C:\Users\ellio_000\Documents\clone v2\babel\sans_titre.vcxproj" sur le nœud 2 (Build cible(s)).
      1>CustomBuild:
-         MOC Includes\ThreadCom.hh
+         MOC Includes\Connection.hh
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_CCommandsValue.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_CCommandsValue.cpp, release\moc_CCommandsValue.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_Connection.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_Connection.cpp, release\moc_Connection.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_Home.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_Home.cpp, release\moc_Home.cpp.
@@ -12,27 +12,27 @@
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IIncludes /I.\libs\opencv\build\include /I.\libs\opus\include /I.\libs\portaudio\include /IC:\Qt\Qt5.3.2\5.3\msvc2013\include /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_XML_LIB /D QT_GUI_LIB /D QT_CORE_LIB /D QT_OPENGL_ES_2 /D QT_OPENGL_ES_2_ANGLE /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -Zm200 -w34100 -w34189 Client\ThreadCom.cpp Gui\Connection.cpp Gui\Home.cpp Gui\Subscribe.cpp Gui\main.cpp debug\moc_Connection.cpp debug\moc_Home.cpp debug\moc_Subscribe.cpp debug\moc_ThreadCom.cpp
          ThreadCom.cpp
          Connection.cpp
-     1>Gui\Connection.cpp(55): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
+     1>Gui\Connection.cpp(58): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
                  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Connection.cpp(56): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
+     1>Gui\Connection.cpp(59): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
                  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Connection.cpp(108): warning C4189: 'vids' : variable locale initialisée mais non référencée
+     1>Gui\Connection.cpp(111): warning C4189: 'vids' : variable locale initialisée mais non référencée
          Home.cpp
      1>Gui\Home.cpp(82): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
                  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
-     1>Gui\Home.cpp(538): warning C4189: 'id' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(537): warning C4189: 'value' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(541): warning C4100: 'idptr' : paramètre formel non référencé
-     1>Gui\Home.cpp(541): warning C4100: 'cmdptr' : paramètre formel non référencé
-     1>Gui\Home.cpp(574): warning C4189: 'modules' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(675): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>Gui\Home.cpp(539): warning C4189: 'id' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(538): warning C4189: 'value' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(542): warning C4100: 'idptr' : paramètre formel non référencé
+     1>Gui\Home.cpp(542): warning C4100: 'cmdptr' : paramètre formel non référencé
+     1>Gui\Home.cpp(575): warning C4189: 'modules' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(676): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : voir la déclaration de 'strcpy'
-     1>Gui\Home.cpp(701): warning C4189: 'PV' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(702): warning C4189: 'PT' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(700): warning C4189: 'PA' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(710): warning C4101: 'socktmp' : variable locale non référencée
-     1>Gui\Home.cpp(971): warning C4189: 'id' : variable locale initialisée mais non référencée
-     1>Gui\Home.cpp(970): warning C4189: 'value' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(702): warning C4189: 'PV' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(703): warning C4189: 'PT' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(701): warning C4189: 'PA' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(711): warning C4101: 'socktmp' : variable locale non référencée
+     1>Gui\Home.cpp(972): warning C4189: 'id' : variable locale initialisée mais non référencée
+     1>Gui\Home.cpp(971): warning C4189: 'value' : variable locale initialisée mais non référencée
          Subscribe.cpp
      1>Gui\Subscribe.cpp(125): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
                  C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(245) : voir la déclaration de 'strdup'
@@ -75,4 +75,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:14.86
+Temps écoulé 00:00:15.20

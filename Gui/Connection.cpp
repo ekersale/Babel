@@ -15,6 +15,8 @@
 
 #include    "ui_Connection.h"
 
+
+
 Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connection)
 {
 	_allowOpen = true;
@@ -24,6 +26,7 @@ Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connec
 	ptr = _com;
 	this->network = ((ThreadCom *)ptr)->getNetwork();
 	this->parser = ((ThreadCom *)ptr)->getParser();
+	_catchwindow = true;
 
 	connect(_com, SIGNAL(displayError(QString)), this, SLOT(boxError(QString)));
 	connect(_com, SIGNAL(s_authAnswer(void *, void *)), this, SLOT(handleAuth(void *, void *)));
@@ -118,11 +121,15 @@ void Connection::handleAuth(void *cmdptr, void *idptr)
     }
   else
     {
-      Home		*page;
-      page = new Home;
-      page->setThread(ptr);
-      page->show();
-      this->hide();
+
+	  if (_catchwindow == true) {
+		  Home		*ptrpage;
+		  ptrpage = new Home;
+		  ptrpage->setThread(ptr);
+		  ptrpage->show();
+		  this->hide();
+		  _catchwindow = false;
+	  }
     }
 }
 
