@@ -152,6 +152,7 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
   std::string	filename;
   int		id;
 
+  (void)ints;
   filename = getFilename(chars[0]);
   if ((id = getIdFromLogin(chars[0])) == -1)
     {
@@ -195,23 +196,29 @@ void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int
 {
   // DAM : générer l'id
   std::string filename;
-  
+
+  (void) ints;
   filename = chars[0];
   filename += ".xml";
-  _xmlParser->generateFile(filename);
-  std::cout << "filename = " <<  filename << std::endl;
-  _xmlParser->updateNode(filename, "login", chars[0]);
-  _xmlParser->updateNode(filename, "password", chars[1]);
-  _user->set_login(chars[0]);
-  _user->set_psw(chars[1]);
-  _user->set_module(chars[2][0]);
-  std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
-  _user->get_server()->get_users().erase(_user->get_id());
-  std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
-  _user->get_server()->get_users()[_user->get_server()->get_tmpMax()] = _user;
-  _user->set_id(_user->get_server()->get_tmpMax());
-  _user->get_server()->increment_tmpMax();
-  _user->authAnswer((char)RET_OK); //To check
+  if (getFilename(filename).size() != 0)
+    _user->authAnswer(3);
+  else
+    {
+      _xmlParser->generateFile(filename);
+      std::cout << "filename = " <<  filename << std::endl;
+      _xmlParser->updateNode(filename, "login", chars[0]);
+      _xmlParser->updateNode(filename, "password", chars[1]);
+      _user->set_login(chars[0]);
+      _user->set_psw(chars[1]);
+      _user->set_module(chars[2][0]);
+      std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
+      _user->get_server()->get_users().erase(_user->get_id());
+      std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
+      _user->get_server()->get_users()[_user->get_server()->get_tmpMax()] = _user;
+      _user->set_id(_user->get_server()->get_tmpMax());
+      _user->get_server()->increment_tmpMax();
+      _user->authAnswer((char)RET_OK); //To check
+    }
 }
 
 
@@ -301,8 +308,9 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
   std::string filename;
   std::string friendfilename;
   int	      id_to;
-  User		*user_to;
+  User	      *user_to;
 
+  (void)ints;
   filename = getFilename(_user->get_login());
   friendfilename = getFilename(chars[0]);
   if (friendfilename.size() == 0)
@@ -323,11 +331,21 @@ void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector
 {
   std::string	filename;
   std::string	friendfilename;
+  User		*user_to;
 
+  (void)chars;
   filename = getFilename(_user->get_login());
   friendfilename = getFilenameById(ints[0]);
-  _xmlParser->removeChild(filename, intToStdString(ints[0]));
-  _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
+  if (friendfilename.size() == 0)
+    _user->removeAnswer(7);
+  else
+    {
+      _xmlParser->removeChild(filename, intToStdString(ints[0]));
+      _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
+      user_to = _user->get_server()->get_users().find(ints[0])->second;
+      _user->removeAnswer(0);
+      user_to->removeRequest(_user->get_id());
+    }
 }
 
 void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)

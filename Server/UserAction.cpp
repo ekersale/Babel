@@ -27,7 +27,6 @@ void User::connectContactLoop(void) {
   std::vector<int>	all_clients;
   std::vector<int>::iterator	it_clients;
   std::map<int, User *>::iterator it_users;
-  int			id;
 
   contactLoop(this, this);
   all_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login));
@@ -48,23 +47,32 @@ void User::connectContactLoop(void) {
 void User::contactLoop(User *usr_from, User *usr_to) {
   std::string	for_status;
   std::string	for_module;
+  int		usr_from_id;
+  int		usr_to_id_socket;
 
   for_status[0] = usr_from->get_status();
   for_module[0] = usr_from->get_module();
-  contactCmd(12, usr_from->get_nickname(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(13, for_status, usr_from->get_id(), usr_to->get_idSocket()); //Cond Jump
-  contactCmd(14, usr_from->get_birth(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(15, for_module, usr_from->get_id(), usr_to->get_idSocket()); //Cond Jump
-  contactCmd(16, usr_from->get_surname(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(17, usr_from->get_name(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(18, usr_from->get_address(), usr_from->get_id(), usr_to->get_idSocket());
-  contactCmd(19, usr_from->get_phone(), usr_from->get_id(), usr_to->get_idSocket());
+  if (usr_from->get_id() == usr_to->get_id())
+    usr_from_id = 0;
+  else
+    usr_from_id = usr_from->get_id();
+  usr_to_id_socket = usr_to->get_idSocket();
+  contactCmd(12, usr_from->get_nickname(), usr_from_id, usr_to_id_socket);
+  contactCmd(13, for_status, usr_from_id, usr_to_id_socket);
+  contactCmd(14, usr_from->get_birth(), usr_from_id, usr_to_id_socket);
+  contactCmd(15, for_module, usr_from_id, usr_to_id_socket);
+  contactCmd(16, usr_from->get_surname(), usr_from_id, usr_to_id_socket);
+  contactCmd(17, usr_from->get_name(), usr_from_id, usr_to_id_socket);
+  contactCmd(18, usr_from->get_address(), usr_from_id, usr_to_id_socket);
+  contactCmd(19, usr_from->get_phone(), usr_from_id, usr_to_id_socket);
 }
 
 void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket)
 {
   IPacketInfo	*packet_info;
 
+  std::cout << "\tVal de 0 : " << (int)(val[0]) << std::endl;
+  std::cout << "\tValue de : " << val << std::endl;
   packet_info = new PacketInfo();
   packet_info->setCmd(cmd);
   packet_info->getChars().push_back(val.c_str());
@@ -74,12 +82,26 @@ void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket
   delete (packet_info);
 }
  
-void User::removeAnswer(char &) {
-  
+void User::removeAnswer(char ret_val) {
+  IPacketInfo	*packet_info;
+  char		*cpy = new char[1];
+
+  cpy[0] = ret_val;
+  packet_info = new PacketInfo();
+  packet_info->setCmd(22);
+  packet_info->getChars().push_back(cpy);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
-void User::removeRequest(int) {
+void User::removeRequest(int from_id) {
+  IPacketInfo	*packet_info;
 
+  packet_info = new PacketInfo();
+  packet_info->setCmd(22);
+  packet_info->getInts().push_back(from_id);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
 void User::addAnswer(char ret_val) {

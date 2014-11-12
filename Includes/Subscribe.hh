@@ -20,8 +20,10 @@ class Subscribe;
 
 class Subscribe : public QWidget, public IGui
 {
+
     Q_OBJECT
-  
+
+  QThread	*thread;
 public:
     explicit Subscribe(QWidget *parent = 0);
   ~Subscribe();
@@ -31,12 +33,16 @@ public:
   void			setThread();
 private slots:
   void			toSubscribe();
+  // void			boxError(QString);
+  void			handleSubscribe(void *, void *);
  
 private:
   Ui::Subscribe		*ui;
-  void			*ptr;
   Network		*_net;
   Parser		*_parser;
+  void			*_ptr;
+  QTimer		*_timer;
+  bool			_allowOpen;
 };
 
 #endif // SUBSCRIBE_H
