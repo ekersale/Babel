@@ -28,24 +28,24 @@
 
 class ThreadCom : public CCommandsValue
 {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
-  ThreadCom();
-  ~ThreadCom();
-  
-  bool connectServer();
-  Network	*getNetwork() const;
-  Parser	*getParser() {return _parser;};
-  Serialize	*getSerialize() {return _serialize;};
-  XMLParser	*getXMLParser() {return _xmlParser;};
-  int	test;
-  
-signals:
-  void displayError(QString);
-  void finished();
+	ThreadCom();
+	~ThreadCom();
 
-public slots:
+	bool connectServer();
+	Network	*getNetwork() const;
+	Parser	*getParser() { return _parser; };
+	Serialize	*getSerialize() { return _serialize; };
+	XMLParser	*getXMLParser() { return _xmlParser; };
+	int	test;
+
+signals:
+	void displayError(QString);
+	void finished();
+
+	public slots:
 	void run();
 
 private:
