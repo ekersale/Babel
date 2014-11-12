@@ -78,12 +78,10 @@ void Connection::connection()
       Packet	*packet;
       packet = (Packet *)parser->encode(packet_info);
       
-      
       std::stringbuf sz;
       sz >> packet;
       //on send sz.str() via le rézo maggle
       //      std::cout << "sz: " << sz.str() << std::endl;
-      
       if ((network->sendSocket(1, (void *)sz.str().c_str(), 65) == false))
 	std::cout << "Error Send" << std::endl;
       //sinon on fait un receive et on recevra un buffer
@@ -93,7 +91,7 @@ void Connection::connection()
       //on insère alors le le tout dans le paquet comme le dit l'expression
       //usz << packet2;
       // //on teste_z notre gros paquet rempli de foutre
-      //std::cout << "usz: " << usz.str() << std::endl; 
+      //std::cout << "usz: " << usz.str() << std::endl;
       
       free(pd1);
       free(pd2);
@@ -167,5 +165,4 @@ void	Connection::boxError(QString msg)
 
 void    Connection::destroy()
 {
-
 }
