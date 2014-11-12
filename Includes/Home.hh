@@ -11,6 +11,7 @@
 #include                <QHBoxLayout>
 #include                <QMessageBox>
 #include                <QTimer>
+#include				<QMessagebox>
 #endif
 #include                <vector>
 #include                <iostream>
@@ -88,6 +89,12 @@ public:
 	void				  setCallRequest(void *, void *);
 	void				  setRemoveAnswer(void *, void *);
 	void				  setRemoveRequest(void *, void *);
+	void				  sendNewName();
+	void				  sendNewSurname();
+	void				  sendNewBirthday();
+	void				  sendNewLocalisation();
+	void				  sendNewPhone();
+
 
 private:
 	Ui::Home *            ui;
@@ -107,6 +114,7 @@ private:
 	void			*_com;
 	QPushButton			  *_pushtmp;
 	int					 _activeUser;
+	int					_myid;
 };
 
 #endif // HOME_H

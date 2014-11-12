@@ -9,6 +9,7 @@ Home::Home(QWidget *parent) : QMainWindow(parent), ui(new Ui::Home)
 {
 	init();
 	_pushtmp = NULL;
+	_myid = 0;
 	// _tcp = new Network(AF_INET, SOCK_STREAM, "TCP", sizeof(Packet));                                            
 	//   _udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);                                                    
 }
@@ -38,7 +39,7 @@ void    Home::load()
 
 	QLabel::connect(_video, SIGNAL(processedImage(QImage, int)), this, SLOT(updatePlayerUI(QImage, int)));
 	//QLabel::connect(_video, SIGNAL(sendFrame(std::vector<unsigned char*> *)), this, SLOT(sendFrameTo(std::vector<u\
-		nsigned char *> *)));
+					nsigned char *> *)));
 	QObject::connect(ui->_btnClose, SIGNAL(clicked()), this, SLOT(close()));
 	QObject::connect(ui->_btn_Online, SIGNAL(clicked()), this, SLOT(changeOnline()));
 	QObject::connect(ui->_btn_Away, SIGNAL(clicked()), this, SLOT(changeAway()));
@@ -46,33 +47,69 @@ void    Home::load()
 	QObject::connect(ui->_btnAddContact, SIGNAL(clicked()), this, SLOT(showNewField()));
 	QObject::connect(ui->_btnInviteContact, SIGNAL(clicked()), this, SLOT(invitContact()));
 	QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(callContact()));
-	// QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(recvFrameFrom()));                            
+	//QObject::connect(ui->_btnMicro, SIGNAL(clicked()), this, SLOT(recvFrameFrom()));                            
 	QObject::connect(ui->_btnCam, SIGNAL(clicked()), this, SLOT(videoCallContact()));
 	QObject::connect(ui->_btnHangUp, SIGNAL(clicked()), this, SLOT(hangHup()));
 	QObject::connect(ui->_line_addContact, SIGNAL(returnPressed()), this, SLOT(sendAddContact()));
 	QObject::connect(ui->_lineContactName, SIGNAL(returnPressed()), this, SLOT(sendNewName()));
 	QObject::connect(ui->_lineSurnameEdit, SIGNAL(returnPressed()), this, SLOT(sendNewSurname()));
-
+	QObject::connect(ui->_lineBirthday, SIGNAL(returnPressed()), this, SLOT(sendNewBirthday()));
+	QObject::connect(ui->_lineLocalisation, SIGNAL(returnPressed()), this, SLOT(sendNewLocalisation()));
+	QObject::connect(ui->_linePhoneNumber, SIGNAL(returnPressed()), this, SLOT(sendNewPhone()));
 	defineStatus(this->_status);
 }
 
+void	Home::sendNewPhone()
+{
+	QString newvalue;
+	newvalue = ui->_linePhoneNumber->text();
+	// send to serv the newvalue surname 
+}
+
+void	Home::sendNewLocalisation()
+{
+	QString newvalue;
+	newvalue = ui->_lineLocalisation->text();
+	// send to serv the newvalue surname 
+}
+
+void	Home::sendNewBirthday()
+{
+	QString newvalue;
+	newvalue = ui->_lineBirthday->text();
+	// send to serv the newvalue birthday 
+}
+
+void	Home::sendNewSurname()
+{
+	QString newvalue;
+	newvalue = ui->_lineSurnameEdit->text();
+	// send to serv the newvalue surname 
+}
+
+void	Home::sendNewName()
+{
+	QString newvalue;
+	newvalue = ui->_lineContactName->text();
+	//send to serv the newvalue contactname
+}
 
 void    Home::updatePlayerUI(QImage img, int value)
 {
-  if (!img.isNull())
-    {
-      if (value == 1) {
-	ui->_label_Video->setAlignment(Qt::AlignCenter);
-	ui->_label_Video->setPixmap(QPixmap::fromImage(img));
-	ui->_label_Video->show();
-      }
-      if (value == 0) {
-	ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
-	ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
-	ui->_label_VideoPerso->setScaledContents(true);
-	ui->_label_VideoPerso->show();
-      }
-    }
+	if (!img.isNull())
+	{
+		if (value == 1) {
+			ui->_label_Video->setAlignment(Qt::AlignCenter);
+			ui->_label_Video->setPixmap(QPixmap::fromImage(img));
+			ui->_label_Video->show();
+		}
+		if (value == 0) {
+			ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
+			ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
+			ui->_label_VideoPerso->setScaledContents(true);
+			ui->_label_VideoPerso->show();
+		}
+	}
 }
 
 void    Home::destroy()
@@ -178,72 +215,51 @@ void Home::contactClick()
 		_pushtmp->setStyleSheet("QPushButton{color: rgb(0, 0, 0);}");
 	}
 	tmp->setEnabled(false);
-	if (1  /*check with user id*/)
+	_pushtmp = tmp;
+	_activeUser = senderObjName.toInt();
+	if (_activeUser == _myid)
 	{
 		ui->_lineContactName->setReadOnly(false);
 		ui->_lineSurnameEdit->setReadOnly(false);
+		ui->_lineBirthday->setReadOnly(false);
+		ui->_lineLocalisation->setReadOnly(false);
+		ui->_linePhoneNumber->setReadOnly(false);
 	}
 	else
 	{
 		ui->_lineContactName->setReadOnly(true);
 		ui->_lineSurnameEdit->setReadOnly(true);
+		ui->_lineBirthday->setReadOnly(true);
+		ui->_lineLocalisation->setReadOnly(true);
+		ui->_linePhoneNumber->setReadOnly(true);
 	}
-	//tmp->setStyleSheet("QPushButton{color: rgb(255, 0, 0);}");
-	_pushtmp = tmp;
-	_activeUser = senderObjName.toInt();
-	ui->_label_BirthsdayValue->setText(_musers[_activeUser]->get_birth().c_str());
-	ui->_label_PhoneNumberValue->setText(_musers[_activeUser]->get_phone().c_str());
-	ui->_label_LocalisationValue->setText(_musers[_activeUser]->get_address().c_str());
+	ui->_lineBirthday->setText(_musers[_activeUser]->get_birth().c_str());
+	ui->_linePhoneNumber->setText(_musers[_activeUser]->get_phone().c_str());
+	ui->_lineLocalisation->setText(_musers[_activeUser]->get_address().c_str());
 	//displayConversation(senderObjName);
 }
 
-void    Home::threadCall()
-{
-	float *buffer;
-	unsigned char *tmp;
-	static bool isOk = false;
-
-	// std::cout << "egergergereé" << std::endl;                                                                   
-	//  while (1) {                                                                                                
-	id = srv->recvFromSocket(); //premier recu, socket settée sur id1                                              
-	if (isOk == false) {
-		sound.startStream();
-		isOk = true;
-	}
-	// std::cout << "LEN RECUE" << srv->get_filled() << std::endl;                                                 
-	sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
-	if (!(sound.readStream()))
-		std::cerr << "Error on writeStream()" << std::endl;
-	buffer = sound.getRecordedSamples();
-	tmp = encode.encodeFrame(buffer, 480);
-	srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1 
-	(void)buffer;
-	(void)tmp;
-	//  } 
-}
-
-
 void    Home::invitContact()
 {
-  // srv = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);
-  // srv->bindSocket("2000");
-  // if (!sound.initializePA())                                                                                  
-  //   std::cerr << "Error on InitPa()" << std::endl;                                                            
-  // if (!(sound.initializeInput()))                                                                             
-  //   std::cerr << "Error on initParams()" << std::endl;                                                        
-  // if (!(sound.initializeOutput()))                                                                            
-  //   std::cerr << "Error on initParams()" << std::endl;                                                        
-  // sound.openStream();                                                                                         
-  // encode.opusEncoderCreate();                                                                                 
-  // encode.opusDecoderCreate();                                                                                 
-  
-  _udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
-  _udp->bindSocket("2000");
-  connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
-  timer->start();
-  // while (1) {                                                                                                 
-  //   if (!(sound.readStream()))                                                                                
-  //     std::cerr << "Error on writeStream()" << std::endl;                                                     	//   buffer = sound.getRecordedSamples();                                                                      
+	// srv = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);
+	// srv->bindSocket("2000");
+	// if (!sound.initializePA())                                                                                  
+	//   std::cerr << "Error on InitPa()" << std::endl;                                                            
+	// if (!(sound.initializeInput()))                                                                             
+	//   std::cerr << "Error on initParams()" << std::endl;                                                        
+	// if (!(sound.initializeOutput()))                                                                            
+	//   std::cerr << "Error on initParams()" << std::endl;                                                        
+	// sound.openStream();                                                                                         
+	// encode.opusEncoderCreate();                                                                                 
+	// encode.opusDecoderCreate();                                                                                 
+
+	_udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
+	_udp->bindSocket("2000");
+	connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
+	timer->start();
+	// while (1) {                                                                                                 
+	//   if (!(sound.readStream()))                                                                                
+	//     std::cerr << "Error on writeStream()" << std::endl;                                                     	//   buffer = sound.getRecordedSamples();                                                                      
 	//   sound.writeStream(buffer, 480);                                                                          
 	//   // tmp = encode.encodeFrame(buffer, 480);                                                                 
 	//   // int i;                                                                                                 
@@ -271,26 +287,71 @@ void Home::threadReceive()
 	static_cast<void>(tmp);
 }
 
+void    Home::threadCall()
+{
+	float *buffer;
+	unsigned char *tmp;
+	static bool isOk = false;
+
+	id = srv->recvFromSocket();
+	if (isOk == false) {
+		sound.startStream();
+		isOk = true;
+	}
+	sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
+	if (!(sound.readStream()))
+		std::cerr << "Error on writeStream()" << std::endl;
+	buffer = sound.getRecordedSamples();
+	tmp = encode.encodeFrame(buffer, 480);
+	srv->sendToSocket(id, tmp, encode.getEncodedDataSize()); // revoir à id1 
+	(void)buffer;
+	(void)tmp;
+}
+
 
 void    Home::callContact()
 {
-	// clt = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);                                                        
-	// id = clt->connectToSocket(SERV_ADDR_IP, "2000"); //host port                                                
-	// if (!sound.initializePA())                                                                                  
-	//   std::cerr << "Error on InitPa()" << std::endl;                                                            
-	// if (!(sound.initializeInput()))                                                                             
-	//   std::cerr << "Error on initParams()" << std::endl;                                                        
-	// if (!(sound.initializeOutput()))                                                                            
-	//   std::cerr << "Error on initParams()" << std::endl;                                                        
-	// sound.openStream();                                                                                         
-	// sound.startStream();                                                                                        
-	// encode.opusEncoderCreate();                                                                                 
-	// encode.opusDecoderCreate();                                                                                 
+	/*if (!sound.initializePA())
+		std::cerr << "Error on InitPa()" << std::endl;
+	if (!(sound.initializeInput()))
+		std::cerr << "Error on initParams()" << std::endl;
+	if (!(sound.initializeOutput()))
+		std::cerr << "Error on initParams()" << std::endl;
+	sound.openStream();
+	sound.startStream();
+	encode.opusEncoderCreate();
+	encode.opusDecoderCreate();
 
-	/*_udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
-	  _udp->connectToSocket(SERV_ADDR_IP, "2000");*/
+	_udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
+	_udp->bindSocket("2000");
 	connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
-	timer->start();
+	timer->start();*/
+	if (_activeUser == 0)
+		return;
+	IPacketInfo	*packet_info = new PacketInfo();
+
+	char *pd1 = new char[2];
+
+	pd1[0] = 1;
+	packet_info->setCmd(24);
+	packet_info->getChars().push_back(pd1);
+	std::stringstream ss;
+	ss << _activeUser;
+	std::string tmp;
+	ss >> tmp;
+	packet_info->getChars().push_back(strdup(tmp.c_str()));
+	ss.flush();
+	ss << _myid;
+	tmp.erase(tmp.begin(), tmp.end());
+	ss >> tmp;
+	packet_info->getChars().push_back(strdup(tmp.c_str()));
+	Packet *enpacked = (Packet *)((ThreadCom *)_com)->getParser()->encode(packet_info);
+	std::stringbuf sz;
+	sz >> enpacked;
+	if ((((ThreadCom *)_com)->getNetwork()->sendSocket(1, (void *)sz.str().c_str(), 65) == false))
+		std::cout << "Error Send\n";
+	delete(pd1);
+	delete(enpacked);
 }
 
 void    Home::videoCallContact()
@@ -457,7 +518,8 @@ void			Home::setThread(void *ptr)
 
 void		Home::setRemoveRequest(void *cmdptr, void *idptr)
 {
-
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
 }
 
 void		Home::setRemoveAnswer(void *cmdptr, void *idptr)
@@ -467,7 +529,25 @@ void		Home::setRemoveAnswer(void *cmdptr, void *idptr)
 
 void		Home::setCallRequest(void *cmdptr, void *idptr)
 {
+	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	std::vector<int> *id = (std::vector<int> *)idptr;
+	UserInfo *pkt = _musers[id[0][0]];
+	std::string tmp = pkt->get_name() + " audio call you";
 
+	QMessageBox msgBox;
+	msgBox.setText(tmp.c_str());
+	msgBox.setInformativeText("Do you want to receve that call ?");
+	msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::Ignore);
+	msgBox.setDefaultButton(QMessageBox::Yes);
+	int res = msgBox.exec();
+	if (res == QMessageBox::Yes)
+	{
+
+	}
+	else
+	{
+
+	}
 }
 
 void		Home::setCallAnswer(void *cmdptr, void *idptr)
@@ -479,9 +559,13 @@ void		Home::setNick(void *cmdptr, void *idptr)
 {
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
+	static int tmp = 0;
 
 	std::map<int, UserInfo *>::iterator it;
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		UserInfo *info = new UserInfo;
 		info->set_id(id[0][0]);
 		info->set_nickname(value[0][0]);
@@ -502,8 +586,13 @@ void		Home::setStatus(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		info->set_id(id[0][0]);
 		info->set_status((*value)[0][0]);
 		_musers[id[0][0]] = info;
@@ -544,8 +633,13 @@ void		Home::setBirth(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		info->set_id(id[0][0]);
 		info->set_birth((*value)[0]);
 		_musers[id[0][0]] = info;
@@ -561,7 +655,12 @@ void		Home::setModule(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		UserInfo *info = new UserInfo;
 		info->set_id(id[0][0]);
 		info->set_module((*value)[0][0]);
@@ -578,8 +677,13 @@ void		Home::setSurname(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		info->set_id(id[0][0]);
 		std::cout << info->get_id() << std::endl;
 		info->set_surname((*value)[0]);
@@ -600,8 +704,13 @@ void		Home::setName(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		info->set_id(id[0][0]);
 		info->set_name((*value)[0]);
 		_musers[id[0][0]] = info;
@@ -621,8 +730,13 @@ void		Home::setAdress(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		info->set_id(id[0][0]);
 		info->set_adress((*value)[0]);
 		_musers[id[0][0]] = info;
@@ -638,8 +752,13 @@ void		Home::setPhone(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	std::map<int, UserInfo *>::iterator it;
+	static int tmp = 0;
+
 	if ((it = _musers.find(id[0][0])) == _musers.end()) {
 		UserInfo *info = new UserInfo;
+		if (tmp == 0)
+			_myid = id[0][0];
+		tmp++;
 		info->set_id(id[0][0]);
 		info->set_phone((*value)[0]);
 		_musers[id[0][0]] = info;

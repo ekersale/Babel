@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Home_t {
-    QByteArrayData data[31];
-    char stringdata[377];
+    QByteArrayData data[36];
+    char stringdata[453];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -59,7 +59,12 @@ QT_MOC_LITERAL(26, 302, 12),
 QT_MOC_LITERAL(27, 315, 13),
 QT_MOC_LITERAL(28, 329, 14),
 QT_MOC_LITERAL(29, 344, 15),
-QT_MOC_LITERAL(30, 360, 16)
+QT_MOC_LITERAL(30, 360, 16),
+QT_MOC_LITERAL(31, 377, 11),
+QT_MOC_LITERAL(32, 389, 14),
+QT_MOC_LITERAL(33, 404, 15),
+QT_MOC_LITERAL(34, 420, 19),
+QT_MOC_LITERAL(35, 440, 12)
     },
     "Home\0invitContact\0\0callContact\0"
     "videoCallContact\0hangHup\0changeOnline\0"
@@ -71,7 +76,9 @@ QT_MOC_LITERAL(30, 360, 16)
     "setModule\0setSurname\0setName\0setAdress\0"
     "setPhone\0setAddAnswer\0setCallAnswer\0"
     "setCallRequest\0setRemoveAnswer\0"
-    "setRemoveRequest"
+    "setRemoveRequest\0sendNewName\0"
+    "sendNewSurname\0sendNewBirthday\0"
+    "sendNewLocalisation\0sendNewPhone"
 };
 #undef QT_MOC_LITERAL
 
@@ -81,7 +88,7 @@ static const uint qt_meta_data_Home[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      28,   14, // methods
+      33,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -89,34 +96,39 @@ static const uint qt_meta_data_Home[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  154,    2, 0x08 /* Private */,
-       3,    0,  155,    2, 0x08 /* Private */,
-       4,    0,  156,    2, 0x08 /* Private */,
-       5,    0,  157,    2, 0x08 /* Private */,
-       6,    0,  158,    2, 0x08 /* Private */,
-       7,    0,  159,    2, 0x08 /* Private */,
-       8,    0,  160,    2, 0x08 /* Private */,
-       9,    0,  161,    2, 0x08 /* Private */,
-      10,    2,  162,    2, 0x08 /* Private */,
-      11,    1,  167,    2, 0x08 /* Private */,
-      13,    0,  170,    2, 0x08 /* Private */,
-      14,    0,  171,    2, 0x08 /* Private */,
-      15,    0,  172,    2, 0x08 /* Private */,
-      16,    0,  173,    2, 0x08 /* Private */,
-      17,    0,  174,    2, 0x08 /* Private */,
-      18,    2,  175,    2, 0x0a /* Public */,
-      19,    2,  180,    2, 0x0a /* Public */,
-      20,    2,  185,    2, 0x0a /* Public */,
-      21,    2,  190,    2, 0x0a /* Public */,
-      22,    2,  195,    2, 0x0a /* Public */,
-      23,    2,  200,    2, 0x0a /* Public */,
-      24,    2,  205,    2, 0x0a /* Public */,
-      25,    2,  210,    2, 0x0a /* Public */,
-      26,    2,  215,    2, 0x0a /* Public */,
-      27,    2,  220,    2, 0x0a /* Public */,
-      28,    2,  225,    2, 0x0a /* Public */,
-      29,    2,  230,    2, 0x0a /* Public */,
-      30,    2,  235,    2, 0x0a /* Public */,
+       1,    0,  179,    2, 0x08 /* Private */,
+       3,    0,  180,    2, 0x08 /* Private */,
+       4,    0,  181,    2, 0x08 /* Private */,
+       5,    0,  182,    2, 0x08 /* Private */,
+       6,    0,  183,    2, 0x08 /* Private */,
+       7,    0,  184,    2, 0x08 /* Private */,
+       8,    0,  185,    2, 0x08 /* Private */,
+       9,    0,  186,    2, 0x08 /* Private */,
+      10,    2,  187,    2, 0x08 /* Private */,
+      11,    1,  192,    2, 0x08 /* Private */,
+      13,    0,  195,    2, 0x08 /* Private */,
+      14,    0,  196,    2, 0x08 /* Private */,
+      15,    0,  197,    2, 0x08 /* Private */,
+      16,    0,  198,    2, 0x08 /* Private */,
+      17,    0,  199,    2, 0x08 /* Private */,
+      18,    2,  200,    2, 0x0a /* Public */,
+      19,    2,  205,    2, 0x0a /* Public */,
+      20,    2,  210,    2, 0x0a /* Public */,
+      21,    2,  215,    2, 0x0a /* Public */,
+      22,    2,  220,    2, 0x0a /* Public */,
+      23,    2,  225,    2, 0x0a /* Public */,
+      24,    2,  230,    2, 0x0a /* Public */,
+      25,    2,  235,    2, 0x0a /* Public */,
+      26,    2,  240,    2, 0x0a /* Public */,
+      27,    2,  245,    2, 0x0a /* Public */,
+      28,    2,  250,    2, 0x0a /* Public */,
+      29,    2,  255,    2, 0x0a /* Public */,
+      30,    2,  260,    2, 0x0a /* Public */,
+      31,    0,  265,    2, 0x0a /* Public */,
+      32,    0,  266,    2, 0x0a /* Public */,
+      33,    0,  267,    2, 0x0a /* Public */,
+      34,    0,  268,    2, 0x0a /* Public */,
+      35,    0,  269,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -147,6 +159,11 @@ static const uint qt_meta_data_Home[] = {
     QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
     QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
     QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -184,6 +201,11 @@ void Home::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 25: _t->setCallRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
         case 26: _t->setRemoveAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
         case 27: _t->setRemoveRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 28: _t->sendNewName(); break;
+        case 29: _t->sendNewSurname(); break;
+        case 30: _t->sendNewBirthday(); break;
+        case 31: _t->sendNewLocalisation(); break;
+        case 32: _t->sendNewPhone(); break;
         default: ;
         }
     }
@@ -214,13 +236,13 @@ int Home::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 28)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 28;
+        _id -= 33;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 28)
+        if (_id < 33)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 28;
+        _id -= 33;
     }
     return _id;
 }
