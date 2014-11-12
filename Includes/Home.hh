@@ -11,7 +11,6 @@
 #include                <QHBoxLayout>
 #include                <QMessageBox>
 #include                <QTimer>
-#include				<QMessagebox>
 #endif
 #include                <vector>
 #include                <iostream>
@@ -23,7 +22,8 @@
 #include                "OpenCV.hh"
 #include				"UserInfo.hh"
 #include				"ThreadCom.hh"
-#include                "OpenCV.hh"
+#include                "Parser.hh"
+#include                "XMLParser.hh"
 
 #define SERV_ADDR_IP    "10.13.253.162"
 //#define SERV_ADDR_IP  "127.0.0.1"
@@ -57,9 +57,9 @@ public:
 	void                  setOncall(bool available);
 	void				  setThread(void *ptr);
 	void                  addContact(UserInfo *);
-
+	bool			sendData(QString data, int size);
 	private slots:
-	void                  invitContact(void);
+	// void                  invitContact(void);
 	void                  callContact(void);
 	void                  videoCallContact(void);
 	void                  hangHup(void);
@@ -70,7 +70,6 @@ public:
 	void                  updatePlayerUI(QImage, int);
 	void                  sendFrameTo(std::vector<unsigned char *> *);
 	void                  recvFrameFrom(void);
-	void                  threadReceive(void);
 	void                  threadCall(void);
 	void				  sendAddContact();
 	void				  contactClick();
@@ -94,16 +93,19 @@ public:
 	void				  sendNewBirthday();
 	void				  sendNewLocalisation();
 	void				  sendNewPhone();
-
+	void				  playVideo();
 
 private:
 	Ui::Home *            ui;
 	ABabelSound           sound;
 	BabelEncoder          encode;
-	Network *             srv; //anciennement de type UNetwork
-	Network *             clt; //anciennement de type UNetwork
+	//Network *             srv; //anciennement de type UNetwork
+	//Network *             clt; //anciennement de type UNetwork
 	Network *             _tcp;
 	Network *             _udp;
+        Parser		      *_parser;
+	XMLParser	      *_xmlParser;
+	std::vector<Network *> _links;
 	QTimer *              timer;
 	int                   id;
 	e_type                _status;
@@ -115,6 +117,7 @@ private:
 	QPushButton			  *_pushtmp;
 	int					 _activeUser;
 	int					_myid;
+	int					_sockudp[3];
 };
 
 #endif // HOME_H

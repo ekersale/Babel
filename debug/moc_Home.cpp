@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Home_t {
-    QByteArrayData data[36];
-    char stringdata[453];
+    QByteArrayData data[35];
+    char stringdata[436];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,55 +30,54 @@ struct qt_meta_stringdata_Home_t {
 static const qt_meta_stringdata_Home_t qt_meta_stringdata_Home = {
     {
 QT_MOC_LITERAL(0, 0, 4),
-QT_MOC_LITERAL(1, 5, 12),
-QT_MOC_LITERAL(2, 18, 0),
-QT_MOC_LITERAL(3, 19, 11),
-QT_MOC_LITERAL(4, 31, 16),
-QT_MOC_LITERAL(5, 48, 7),
-QT_MOC_LITERAL(6, 56, 12),
-QT_MOC_LITERAL(7, 69, 10),
-QT_MOC_LITERAL(8, 80, 10),
-QT_MOC_LITERAL(9, 91, 12),
-QT_MOC_LITERAL(10, 104, 14),
-QT_MOC_LITERAL(11, 119, 11),
-QT_MOC_LITERAL(12, 131, 28),
-QT_MOC_LITERAL(13, 160, 13),
-QT_MOC_LITERAL(14, 174, 13),
-QT_MOC_LITERAL(15, 188, 10),
-QT_MOC_LITERAL(16, 199, 14),
-QT_MOC_LITERAL(17, 214, 12),
-QT_MOC_LITERAL(18, 227, 7),
-QT_MOC_LITERAL(19, 235, 9),
-QT_MOC_LITERAL(20, 245, 8),
-QT_MOC_LITERAL(21, 254, 9),
-QT_MOC_LITERAL(22, 264, 10),
-QT_MOC_LITERAL(23, 275, 7),
-QT_MOC_LITERAL(24, 283, 9),
-QT_MOC_LITERAL(25, 293, 8),
-QT_MOC_LITERAL(26, 302, 12),
-QT_MOC_LITERAL(27, 315, 13),
-QT_MOC_LITERAL(28, 329, 14),
-QT_MOC_LITERAL(29, 344, 15),
-QT_MOC_LITERAL(30, 360, 16),
-QT_MOC_LITERAL(31, 377, 11),
-QT_MOC_LITERAL(32, 389, 14),
-QT_MOC_LITERAL(33, 404, 15),
-QT_MOC_LITERAL(34, 420, 19),
-QT_MOC_LITERAL(35, 440, 12)
+QT_MOC_LITERAL(1, 5, 11),
+QT_MOC_LITERAL(2, 17, 0),
+QT_MOC_LITERAL(3, 18, 16),
+QT_MOC_LITERAL(4, 35, 7),
+QT_MOC_LITERAL(5, 43, 12),
+QT_MOC_LITERAL(6, 56, 10),
+QT_MOC_LITERAL(7, 67, 10),
+QT_MOC_LITERAL(8, 78, 12),
+QT_MOC_LITERAL(9, 91, 14),
+QT_MOC_LITERAL(10, 106, 11),
+QT_MOC_LITERAL(11, 118, 28),
+QT_MOC_LITERAL(12, 147, 13),
+QT_MOC_LITERAL(13, 161, 10),
+QT_MOC_LITERAL(14, 172, 14),
+QT_MOC_LITERAL(15, 187, 12),
+QT_MOC_LITERAL(16, 200, 7),
+QT_MOC_LITERAL(17, 208, 9),
+QT_MOC_LITERAL(18, 218, 8),
+QT_MOC_LITERAL(19, 227, 9),
+QT_MOC_LITERAL(20, 237, 10),
+QT_MOC_LITERAL(21, 248, 7),
+QT_MOC_LITERAL(22, 256, 9),
+QT_MOC_LITERAL(23, 266, 8),
+QT_MOC_LITERAL(24, 275, 12),
+QT_MOC_LITERAL(25, 288, 13),
+QT_MOC_LITERAL(26, 302, 14),
+QT_MOC_LITERAL(27, 317, 15),
+QT_MOC_LITERAL(28, 333, 16),
+QT_MOC_LITERAL(29, 350, 11),
+QT_MOC_LITERAL(30, 362, 14),
+QT_MOC_LITERAL(31, 377, 15),
+QT_MOC_LITERAL(32, 393, 19),
+QT_MOC_LITERAL(33, 413, 12),
+QT_MOC_LITERAL(34, 426, 9)
     },
-    "Home\0invitContact\0\0callContact\0"
-    "videoCallContact\0hangHup\0changeOnline\0"
-    "changeAway\0changeBusy\0showNewField\0"
-    "updatePlayerUI\0sendFrameTo\0"
-    "std::vector<unsigned char*>*\0recvFrameFrom\0"
-    "threadReceive\0threadCall\0sendAddContact\0"
+    "Home\0callContact\0\0videoCallContact\0"
+    "hangHup\0changeOnline\0changeAway\0"
+    "changeBusy\0showNewField\0updatePlayerUI\0"
+    "sendFrameTo\0std::vector<unsigned char*>*\0"
+    "recvFrameFrom\0threadCall\0sendAddContact\0"
     "contactClick\0setNick\0setStatus\0setBirth\0"
     "setModule\0setSurname\0setName\0setAdress\0"
     "setPhone\0setAddAnswer\0setCallAnswer\0"
     "setCallRequest\0setRemoveAnswer\0"
     "setRemoveRequest\0sendNewName\0"
     "sendNewSurname\0sendNewBirthday\0"
-    "sendNewLocalisation\0sendNewPhone"
+    "sendNewLocalisation\0sendNewPhone\0"
+    "playVideo"
 };
 #undef QT_MOC_LITERAL
 
@@ -88,7 +87,7 @@ static const uint qt_meta_data_Home[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      33,   14, // methods
+      32,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -96,39 +95,38 @@ static const uint qt_meta_data_Home[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  179,    2, 0x08 /* Private */,
-       3,    0,  180,    2, 0x08 /* Private */,
-       4,    0,  181,    2, 0x08 /* Private */,
-       5,    0,  182,    2, 0x08 /* Private */,
-       6,    0,  183,    2, 0x08 /* Private */,
-       7,    0,  184,    2, 0x08 /* Private */,
-       8,    0,  185,    2, 0x08 /* Private */,
-       9,    0,  186,    2, 0x08 /* Private */,
-      10,    2,  187,    2, 0x08 /* Private */,
-      11,    1,  192,    2, 0x08 /* Private */,
-      13,    0,  195,    2, 0x08 /* Private */,
-      14,    0,  196,    2, 0x08 /* Private */,
-      15,    0,  197,    2, 0x08 /* Private */,
-      16,    0,  198,    2, 0x08 /* Private */,
-      17,    0,  199,    2, 0x08 /* Private */,
-      18,    2,  200,    2, 0x0a /* Public */,
-      19,    2,  205,    2, 0x0a /* Public */,
-      20,    2,  210,    2, 0x0a /* Public */,
-      21,    2,  215,    2, 0x0a /* Public */,
-      22,    2,  220,    2, 0x0a /* Public */,
-      23,    2,  225,    2, 0x0a /* Public */,
-      24,    2,  230,    2, 0x0a /* Public */,
-      25,    2,  235,    2, 0x0a /* Public */,
-      26,    2,  240,    2, 0x0a /* Public */,
-      27,    2,  245,    2, 0x0a /* Public */,
-      28,    2,  250,    2, 0x0a /* Public */,
-      29,    2,  255,    2, 0x0a /* Public */,
-      30,    2,  260,    2, 0x0a /* Public */,
-      31,    0,  265,    2, 0x0a /* Public */,
-      32,    0,  266,    2, 0x0a /* Public */,
-      33,    0,  267,    2, 0x0a /* Public */,
-      34,    0,  268,    2, 0x0a /* Public */,
-      35,    0,  269,    2, 0x0a /* Public */,
+       1,    0,  174,    2, 0x08 /* Private */,
+       3,    0,  175,    2, 0x08 /* Private */,
+       4,    0,  176,    2, 0x08 /* Private */,
+       5,    0,  177,    2, 0x08 /* Private */,
+       6,    0,  178,    2, 0x08 /* Private */,
+       7,    0,  179,    2, 0x08 /* Private */,
+       8,    0,  180,    2, 0x08 /* Private */,
+       9,    2,  181,    2, 0x08 /* Private */,
+      10,    1,  186,    2, 0x08 /* Private */,
+      12,    0,  189,    2, 0x08 /* Private */,
+      13,    0,  190,    2, 0x08 /* Private */,
+      14,    0,  191,    2, 0x08 /* Private */,
+      15,    0,  192,    2, 0x08 /* Private */,
+      16,    2,  193,    2, 0x0a /* Public */,
+      17,    2,  198,    2, 0x0a /* Public */,
+      18,    2,  203,    2, 0x0a /* Public */,
+      19,    2,  208,    2, 0x0a /* Public */,
+      20,    2,  213,    2, 0x0a /* Public */,
+      21,    2,  218,    2, 0x0a /* Public */,
+      22,    2,  223,    2, 0x0a /* Public */,
+      23,    2,  228,    2, 0x0a /* Public */,
+      24,    2,  233,    2, 0x0a /* Public */,
+      25,    2,  238,    2, 0x0a /* Public */,
+      26,    2,  243,    2, 0x0a /* Public */,
+      27,    2,  248,    2, 0x0a /* Public */,
+      28,    2,  253,    2, 0x0a /* Public */,
+      29,    0,  258,    2, 0x0a /* Public */,
+      30,    0,  259,    2, 0x0a /* Public */,
+      31,    0,  260,    2, 0x0a /* Public */,
+      32,    0,  261,    2, 0x0a /* Public */,
+      33,    0,  262,    2, 0x0a /* Public */,
+      34,    0,  263,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -138,27 +136,26 @@ static const uint qt_meta_data_Home[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::QImage, QMetaType::Int,    2,    2,
-    QMetaType::Void, 0x80000000 | 12,    2,
+    QMetaType::Void, 0x80000000 | 11,    2,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
+    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
-    QMetaType::Void, QMetaType::VoidStar, QMetaType::VoidStar,    2,    2,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -173,39 +170,38 @@ void Home::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     if (_c == QMetaObject::InvokeMetaMethod) {
         Home *_t = static_cast<Home *>(_o);
         switch (_id) {
-        case 0: _t->invitContact(); break;
-        case 1: _t->callContact(); break;
-        case 2: _t->videoCallContact(); break;
-        case 3: _t->hangHup(); break;
-        case 4: _t->changeOnline(); break;
-        case 5: _t->changeAway(); break;
-        case 6: _t->changeBusy(); break;
-        case 7: _t->showNewField(); break;
-        case 8: _t->updatePlayerUI((*reinterpret_cast< QImage(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 9: _t->sendFrameTo((*reinterpret_cast< std::vector<unsigned char*>*(*)>(_a[1]))); break;
-        case 10: _t->recvFrameFrom(); break;
-        case 11: _t->threadReceive(); break;
-        case 12: _t->threadCall(); break;
-        case 13: _t->sendAddContact(); break;
-        case 14: _t->contactClick(); break;
-        case 15: _t->setNick((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 16: _t->setStatus((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 17: _t->setBirth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 18: _t->setModule((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 19: _t->setSurname((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 20: _t->setName((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 21: _t->setAdress((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 22: _t->setPhone((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 23: _t->setAddAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 24: _t->setCallAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 25: _t->setCallRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 26: _t->setRemoveAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 27: _t->setRemoveRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
-        case 28: _t->sendNewName(); break;
-        case 29: _t->sendNewSurname(); break;
-        case 30: _t->sendNewBirthday(); break;
-        case 31: _t->sendNewLocalisation(); break;
-        case 32: _t->sendNewPhone(); break;
+        case 0: _t->callContact(); break;
+        case 1: _t->videoCallContact(); break;
+        case 2: _t->hangHup(); break;
+        case 3: _t->changeOnline(); break;
+        case 4: _t->changeAway(); break;
+        case 5: _t->changeBusy(); break;
+        case 6: _t->showNewField(); break;
+        case 7: _t->updatePlayerUI((*reinterpret_cast< QImage(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 8: _t->sendFrameTo((*reinterpret_cast< std::vector<unsigned char*>*(*)>(_a[1]))); break;
+        case 9: _t->recvFrameFrom(); break;
+        case 10: _t->threadCall(); break;
+        case 11: _t->sendAddContact(); break;
+        case 12: _t->contactClick(); break;
+        case 13: _t->setNick((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 14: _t->setStatus((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 15: _t->setBirth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 16: _t->setModule((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 17: _t->setSurname((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 18: _t->setName((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 19: _t->setAdress((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 20: _t->setPhone((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 21: _t->setAddAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 22: _t->setCallAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 23: _t->setCallRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 24: _t->setRemoveAnswer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 25: _t->setRemoveRequest((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< void*(*)>(_a[2]))); break;
+        case 26: _t->sendNewName(); break;
+        case 27: _t->sendNewSurname(); break;
+        case 28: _t->sendNewBirthday(); break;
+        case 29: _t->sendNewLocalisation(); break;
+        case 30: _t->sendNewPhone(); break;
+        case 31: _t->playVideo(); break;
         default: ;
         }
     }
@@ -236,13 +232,13 @@ int Home::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 33)
+        if (_id < 32)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 33;
+        _id -= 32;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 33)
+        if (_id < 32)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 33;
+        _id -= 32;
     }
     return _id;
 }

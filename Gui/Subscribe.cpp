@@ -70,15 +70,34 @@ void	Subscribe::handleSubscribe(void *cmdptr, void *idptr)
 {
   std::vector<const char *> *tableCmd = (std::vector<const char *> *)cmdptr;
   std::vector<int> *vids = (std::vector<int> *)idptr;
-  if (tableCmd->at(0)[0] == 1)
+
+  static_cast<void>(vids);
+  std::cout << "On passe dans handleSubscribe " << std::endl;
+  if (tableCmd->at(0)[0] == 3)
     {
-      QMessageBox::information(this, "Information", "Inscription réussi");
-      return;
+      QMessageBox::critical(this, "Information", "Login is not available");
+      // return;
+    }
+  else if (tableCmd->at(0)[0] == 4)
+    {
+      QMessageBox::critical(this, "Information", "Invalid login");
+      // return;
+    }
+  else if (tableCmd->at(0)[0] == 5)
+    {
+      QMessageBox::critical(this, "Information", "Invalid password");
+      // return;
     }
   else
     {
-      QMessageBox::critical(this, "Warning", "Inscription à réussi");
-      return;
+      QMessageBox::information(this, "Information", "Inscription réussi");
+      
+      Connection              *page;
+      
+      page = new Connection;
+      page->show();
+      this->hide();
+      //return;
     }
 }
 
@@ -98,7 +117,7 @@ void    Subscribe::toSubscribe()
     {
       PacketInfo   *packet_info = new PacketInfo();
 
-      char *pd1 = (char *)malloc(2);
+      // char *pd1 = (char *)malloc(2);
       char *pd2 = (char *)malloc(2);
       char *sd1;
       char *sd2;

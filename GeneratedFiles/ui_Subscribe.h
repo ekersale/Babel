@@ -39,26 +39,28 @@ public:
             Subscribe->setObjectName(QStringLiteral("Subscribe"));
         Subscribe->resize(1080, 929);
         QIcon icon;
-        icon.addFile(QStringLiteral("./Images/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral("Images/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         Subscribe->setWindowIcon(icon);
         _label_logo = new QLabel(Subscribe);
         _label_logo->setObjectName(QStringLiteral("_label_logo"));
         _label_logo->setGeometry(QRect(0, 0, 1080, 929));
         _label_logo->setMinimumSize(QSize(1080, 929));
         _label_logo->setMaximumSize(QSize(1080, 929));
-        _label_logo->setPixmap(QPixmap(QString::fromUtf8("./Images/background.png")));
+        _label_logo->setPixmap(QPixmap(QString::fromUtf8("Images/background.png")));
         _lineLogin = new QLineEdit(Subscribe);
         _lineLogin->setObjectName(QStringLiteral("_lineLogin"));
         _lineLogin->setGeometry(QRect(370, 370, 381, 31));
+        _lineLogin->setMaxLength(10);
         _linePassword = new QLineEdit(Subscribe);
         _linePassword->setObjectName(QStringLiteral("_linePassword"));
         _linePassword->setGeometry(QRect(370, 450, 381, 31));
+        _linePassword->setMaxLength(10);
         _linePassword->setEchoMode(QLineEdit::Password);
         _btnSubscribe = new QPushButton(Subscribe);
         _btnSubscribe->setObjectName(QStringLiteral("_btnSubscribe"));
         _btnSubscribe->setGeometry(QRect(450, 790, 194, 66));
         QIcon icon1;
-        icon1.addFile(QStringLiteral("./Images/btnSubscribe.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral("Images/btnSubscribe.png"), QSize(), QIcon::Normal, QIcon::Off);
         _btnSubscribe->setIcon(icon1);
         _btnSubscribe->setIconSize(QSize(194, 66));
         _lineBirthsday = new QLineEdit(Subscribe);
@@ -75,7 +77,7 @@ public:
         _labelBigLogo = new QLabel(Subscribe);
         _labelBigLogo->setObjectName(QStringLiteral("_labelBigLogo"));
         _labelBigLogo->setGeometry(QRect(330, 90, 451, 201));
-        _labelBigLogo->setPixmap(QPixmap(QString::fromUtf8("./Images/bigLogo.png")));
+        _labelBigLogo->setPixmap(QPixmap(QString::fromUtf8("Images/bigLogo.png")));
 
         retranslateUi(Subscribe);
 

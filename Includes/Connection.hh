@@ -49,6 +49,7 @@ private:
   Network	*network;
   Parser	*parser;
   bool _allowOpen;
+  bool _catchwindow;
 };
 
 #endif // CONNECTION_H
