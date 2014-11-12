@@ -1,4 +1,4 @@
-﻿La génération a démarré 12/11/2014 06:31:21.
+﻿La génération a démarré 12/11/2014 07:19:36.
      1>Projet "C:\Users\ellio_000\Documents\clone v2\babel\sans_titre.vcxproj" sur le nœud 2 (Build cible(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_CCommandsValue.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_CCommandsValue.cpp, release\moc_CCommandsValue.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_Connection.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are debug\moc_Connection.cpp, release\moc_Connection.cpp.
@@ -40,4 +40,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:02.37
+Temps écoulé 00:00:02.28

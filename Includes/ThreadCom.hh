@@ -23,7 +23,7 @@
 #include		"Serialize.hh"
 
 #define			ERROR_CONNECTION	"Failed to join server"
-#define			IP_ADDR_SERV		"10.13.253.15"
+#define			IP_ADDR_SERV		"10.13.253.164"
 #define			PORT				"2000"
 
 class ThreadCom : public CCommandsValue

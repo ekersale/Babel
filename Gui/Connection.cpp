@@ -26,8 +26,7 @@ Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connec
 	this->parser = ((ThreadCom *)ptr)->getParser();
 
 	connect(_com, SIGNAL(displayError(QString)), this, SLOT(boxError(QString)));
-	connect(_com, SIGNAL(s_authAnswer(void *, void *)), this,
-		SLOT(handleAuth(void *, void *)));
+	connect(_com, SIGNAL(s_authAnswer(void *, void *)), this, SLOT(handleAuth(void *, void *)));
 
 	((ThreadCom *)ptr)->connectServer();
 	_com->moveToThread(thread);
@@ -35,6 +34,7 @@ Connection::Connection(QWidget *parent) : QMainWindow(parent), ui(new Ui::Connec
 	thread->connect(_com, SIGNAL(finished()), SLOT(quit()));
 	thread->start();
 	init();
+
 }
 
 Connection::~Connection()

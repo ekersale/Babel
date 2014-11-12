@@ -25,8 +25,8 @@ bool ThreadCom::connectServer()
 
 void ThreadCom::run()
 {
-	while (1)
-	{
+	static int i = 0;
+	while (1) {
 		if (_socket == 0)
 			emit finished();
 		else
@@ -52,6 +52,9 @@ void ThreadCom::run()
 				cmdVal(packet_info);
 				const char *tmp = packet_info->getChars().front();
 				std::cout << "data [" << tmp << "]" << std::endl;
+				if (i == 0)
+					Sleep(100);
+				i++;
 			}
 		}
 	}
@@ -59,5 +62,5 @@ void ThreadCom::run()
 
 Network		*ThreadCom::getNetwork() const
 {
-		return (this->_network);
+	return (this->_network);
 }
