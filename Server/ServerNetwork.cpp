@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Tue Nov 11 19:45:25 2014 Sliman Desmars
+// Last update Tue Nov 11 23:25:14 2014 Sliman Desmars
 //
 
 #include <errno.h>
@@ -112,6 +112,14 @@ void	Server::sendIsSet(fd_set &setfd)
 	    puts("FAIL : sendSocket");
 	  else
 	    puts("SUCCES : sendSocket");
+	  // puts("TEST");
+	  // std::string test(sz.str().c_str(), 65);
+	  // std::stringbuf buf(test);
+	  // Packet *packets = new Packet();
+	  // buf << packets;
+	  // std::cout << (int)packets->getCommand() << std::endl;
+	  // write(1, packets->getData(), 64);
+	  // puts("TEST");
 	}
       delete (_toSend.front()._packet);
       _toSend.pop();
