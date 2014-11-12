@@ -290,7 +290,7 @@ void Home::contactClick()
 	if (_pushtmp != NULL)
 	{
 		_pushtmp->setEnabled(true);
-		_pushtmp->setStyleSheet("QPushButton{color: rgb(0, 0, 0);}");
+		//_pushtmp->setStyleSheet("QPushButton{color: rgb(0, 0, 0);}");
 	}
 	tmp->setEnabled(false);
 	_pushtmp = tmp;
@@ -503,6 +503,8 @@ void		Home::setCallRequest(void *cmdptr, void *idptr)
 	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
 	std::vector<int> *id = (std::vector<int> *)idptr;
 	IPacketInfo	*packet_info = new PacketInfo();
+	int i = (*id)[0];
+	std::cout << i << std::endl;
 	UserInfo *pkt = _musers[id[0][0]];
 	std::string tmp;
 	QMessageBox msgBox;
@@ -534,23 +536,29 @@ void		Home::setCallRequest(void *cmdptr, void *idptr)
 	{
 		ss.flush();
 		ss << port;
-		retbind = _links[(int)value[0][0] - 1]->bindSocket(ss.str());
+		std::string sport;
+		ss >> sport;
+		retbind = _links[(*value)[0][0] - 1]->bindSocket(sport.c_str());
 		++port;
 		if (port >= 65535)
 			answer_user[0] = 9;
 	}
 	// 3*  PORT     ||| P1 : audio    P2 : video     P3 : text
 	ss >> port;
-	if ((int)value[0][0] == 1)
+	packet_info->getChars().push_back(answer_user);
+	if ((int)(*value)[0][0] == 1)
 		packet_info->getInts().push_back(port); // P1
 	else
 		packet_info->getInts().push_back(0);
-	if ((int)value[0][0] == 2)
+	if ((int)(*value)[0][0] == 2)
 		packet_info->getInts().push_back(port); // P1
 	else
 		packet_info->getInts().push_back(0);
 	packet_info->getInts().push_back(0); // P3
-	Packet *enpacked = (Packet *)((ThreadCom *)_com)->getParser()->encode(packet_info);
+	Parser *parse;
+	parse = ((ThreadCom *)_com)->getParser();
+	Packet *enpacked;
+	enpacked = (Packet *)parse->encode(packet_info);
 	std::stringbuf sz;
 	sz >> enpacked;
 	if ((((ThreadCom *)_com)->getNetwork()->sendSocket(1, (void *)sz.str().c_str(), 65) == false))

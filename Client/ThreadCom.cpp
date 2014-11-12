@@ -51,7 +51,8 @@ void ThreadCom::run()
 
 				cmdVal(packet_info);
 				const char *tmp = packet_info->getChars().front();
-				std::cout << "data [" << tmp << "]" << std::endl;
+				//int val = packet_info->getInts[0];
+				//std::cout << "val [" << val << "]" << std::endl;
 				if (i == 0){
 
 #ifdef	_WIN32	
