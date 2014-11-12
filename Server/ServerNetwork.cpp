@@ -5,7 +5,7 @@
 // Login   <giraud_d@epitech.net>
 // 
 // Started on  Wed Nov  5 15:13:41 2014 Damien Giraudet
-// Last update Tue Nov 11 23:25:14 2014 Sliman Desmars
+// Last update Wed Nov 12 18:33:50 2014 Damien Giraudet
 //
 
 #include <errno.h>
@@ -13,19 +13,23 @@
 
 bool	Server::newUser(void)
 {
-  int	key;
+  int	id_socket;
 
-  if ((key = _network->acceptSocket()) == false)
+  if ((id_socket = _network->acceptSocket()) == false)
     return (false);
   tmp_user--;
-  _users[tmp_user] = new User(key, tmp_user, this);
+  _users[tmp_user] = new User(id_socket, tmp_user, this);
   return (true);
 }
 
 void	Server::deleteUser(User *user)
 {
+  if (user == 0)
+    return ;
+  if (_users.find(user->get_id()) != _users.end())
+    return ;
   _users.erase(user->get_id());
-  delete (user);
+  delete (_users[user->get_id()]);
   std::cout << "Delete User\nSize of map : " << _users.size() << "\n\n";
 }
 
@@ -39,7 +43,7 @@ void	Server::setFd(fd_set &setfd)
   it = _users.begin();
   while (it != _users.end())
     {
-      if ((clientInfo = _network->get_connected((it->second)->get_idSocket())))
+      if (it->second != 0 && (clientInfo = _network->get_connected((it->second)->get_idSocket())))
 	FD_SET(clientInfo->get_socket(), &setfd);
       else
 	deleteUser(it->second);
@@ -58,11 +62,13 @@ bool	Server::treatRecv(User *user)
   Packet		*packet = new Packet();
   //on insère alors le le tout dans le paquet comme le dit l'expression
   usz << packet;
-  std::cout << packet->getData() << std::endl;
+  //  std::cout << packet->getData() << std::endl;
   // //on teste_z notre gros paquet rempli de foutre
   //std::cout << "usz: " << usz.str() << std::endl; 
   
   IPacketInfo *packet_info;
+  if (user == 0)
+    return (false);
   packet_info = get_parser()->decode(packet);
   user->get_commandsValue()->cmdVal(packet_info);
   // map ptr sur fct
@@ -79,17 +85,18 @@ void	Server::recvIsSet(fd_set &readfs)
   it = _users.begin();
   while (it != _users.end())
     {
-      if ((clientInfo = _network->get_connected((it->second)->get_idSocket())))
+      if (it->second != 0 && (clientInfo = _network->get_connected(it->second->get_idSocket())))
 	{
 	  if (FD_ISSET(clientInfo->get_socket(), &readfs))
 	    {
 	      if (_network->recvSocket((it->second)->get_idSocket())) // renvrera une len via get_field
 		treatRecv(it->second);
 	      else
-		{
+	      	{
+		  std::cout << "\n\tREAD FAIL !!!!!\n\n";
 		  deleteUser(it->second);
-		  return ;  // pb de it si suppression
-		}
+	      	  return ;  // pb de it si suppression
+	      	}
 	    }
 	}
       else
@@ -106,7 +113,7 @@ void	Server::sendIsSet(fd_set &setfd)
     {
       if (FD_ISSET(_network->get_connected(_toSend.front()._id_socket)->get_socket(), &setfd))
 	{
-	  std::cout << "I will send cmd nb : " << (int)(_toSend.front()._packet->getCommand()) << std::endl;
+	  //std::cout << "I will send cmd nb : " << (int)(_toSend.front()._packet->getCommand()) << std::endl;
 	  sz >> (Packet *)_toSend.front()._packet;
 	  if (!(_network->sendSocket(_toSend.front()._id_socket, (void *)sz.str().c_str(), 65)))
 	    puts("FAIL : sendSocket");
@@ -158,7 +165,7 @@ bool Server::loopServer(void)
       FD_ZERO(&writefs);
       setFd(readfs);
       setFdWrite(writefs);
-      std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << "\n";
+      std::cout << "Max fd id : " << _network->maxSocket()->get_socket() << std::endl;
       if (select(_network->maxSocket()->get_socket() + 1, &readfs, &writefs, NULL, NULL) < 0)
 	{
 	  perror("select");
@@ -177,5 +184,5 @@ void  Server::pushToSend(int id_socket, IPacket *packet)
   toPush._id_socket = id_socket;
   toPush._packet = packet;
   _toSend.push(toPush);
-  std::cout << "The size of _toSend" << _toSend.size() << std::endl;
+  //std::cout << "The size of _toSend" << _toSend.size() << std::endl;
 }

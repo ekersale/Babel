@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <id>
-	<login>aymeric</login>
-	<password>aymeric</password>
-	<nickname>Rico</nickname>
+	<login>fcccvn</login>
+	<password>gnghnghng</password>
+	<nickname></nickname>
 	<status></status>
 	<module></module>
 	<birth></birth>
@@ -11,6 +11,5 @@
 	<address></address>
 	<phone></phone>
 	<contacts>
-	  <id>10</id>
 	</contacts>
 </id>

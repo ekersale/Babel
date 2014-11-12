@@ -50,6 +50,22 @@ ACommandsValue *&User::get_commandsValue() {
   return (_commandsValue);
 }
 
+char	&User::get_call_module() {
+  return (call_module);
+}
+ 
+int	&User::get_call_id() {
+  return (call_id);
+}
+
+char	*&User::get_call_ip() {
+  return (call_ip);
+}
+
+int	&User::get_call_port() {
+  return (call_port);
+}
+
 User::User()
 {
    _activeChat = false;

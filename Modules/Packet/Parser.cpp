@@ -9,30 +9,31 @@ Parser::~Parser() {
 
 IPacket* Parser::encode(IPacketInfo* packetinfo)
 {
-	std::vector<unsigned char>			key;
-	char						data[64];
-	char						*ptr;
-
-	key = _ref.find(packetinfo->getCmd())->second;
-	ptr = data;
-	memset(data, 0, 64);
-	std::cout << "\n\tWith Value : " << (int)packetinfo->getCmd() << "\n\n";
-	for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++) {
-		if (*mykey > 128)
-		  {
-		    strncpy(ptr, packetinfo->popChars(), (*mykey - 128));
-		    ptr = ptr + (*mykey - 128);
-		  }
-		else if (*mykey == 64)
-		  {
-		    packetinfo->popInts(ptr);
-		    ptr += 4;
-		  }
-		else {
-			// TODO
-		}
-	}
-	return (new Packet(packetinfo->getCmd(), data));
+  std::vector<unsigned char>			key;
+  char						data[64];
+  char						*ptr;
+  
+  key = _ref.find(packetinfo->getCmd())->second;
+  ptr = data;
+  memset(data, 0, 64);
+  std::cout << "\n\tWith Value : " << (int)packetinfo->getCmd() << "\n\n";
+  for (std::vector<unsigned char>::iterator mykey = key.begin(); mykey != key.end(); mykey++) {
+    if (*mykey > 128)
+      {
+	strncpy(ptr, packetinfo->popChars(), (*mykey - 128));
+	ptr = ptr + (*mykey - 128);
+      }
+    else if (*mykey == 64)
+      {
+	packetinfo->popInts(ptr);
+	ptr += 4;
+      }
+    else {
+      strncpy(ptr, packetinfo->popChars(), 1);
+      ptr++;
+    }
+  }
+  return (new Packet(packetinfo->getCmd(), data));
 }
 
 IPacketInfo* Parser::decode(IPacket* packet)
@@ -66,7 +67,8 @@ IPacketInfo* Parser::decode(IPacket* packet)
 	}
       else
 	{
-	// TODO
+	  packetinfo->pushChars(ptr);
+	  ptr++;
 	}
     }
   return (packetinfo);

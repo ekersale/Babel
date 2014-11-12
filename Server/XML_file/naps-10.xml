@@ -3,16 +3,12 @@
 	<login>naps</login>
 	<password>test</password>
 	<nickname>nickname</nickname>
-	<module>module</module>
 	<birth>bith</birth>
-	<surname>surname</surname>
+	<surname>test</surname>
 	<name>name</name>
-	<address>addresse</address>
-	<phone>phone</phone>
+	<address>cdf</address>
+	<phone>fuck</phone>
 	<contacts>
-		<id>69</id>
-		<id>30</id>
-		<id>999</id>
-		<id>La maman de Nico</id>
+	  <id>6</id>
 	</contacts>
 </id>

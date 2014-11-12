@@ -128,7 +128,7 @@ std::string	SCommandsValue::getFilenameById(int _id) const
       filename = fileInfo.fileName().toStdString();  
       if ((pos = filename.find(id)) != std::string::npos)
 	{
-	  if (filename.at(pos - 1) == '-' && filename.at(pos + id.length() == '.'))
+	  if (filename.at(pos - 1) == '-' && filename.at(pos + id.length()) == '.')
 	    return (filename);
 	}
     }
@@ -160,9 +160,11 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       std::cout << "Wrong log\n";
       return ;
     }
+  if (_user->get_server()->get_users().count(id) > 0)
+    return ;
   if (strcmp(chars[1], _xmlParser->getNodeValue(filename, "password").c_str()) == 0)
     {
-      std::cout << "Good passwd" << std::endl;
+      //std::cout << "Good passwd" << std::endl;
       _user->set_psw(_xmlParser->getNodeValue(filename, "password"));
       _user->set_login(_xmlParser->getNodeValue(filename, "login"));
       _user->set_birth(_xmlParser->getNodeValue(filename, "birth"));
@@ -175,15 +177,17 @@ void		SCommandsValue::connect(std::vector<const char *> chars, std::vector<int> 
       _user->set_module(chars[3][0]);
 
       //VALGRIND
-      std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
-      _user->get_server()->get_users().erase(_user->get_id());
-      std::cout << "\tCreate bloc at id : " << id << "\n\n";
-      _user->get_server()->get_users()[id] = _user;
-      //VALGRIND
+      //std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
 
+      //std::cout << "\tCreate bloc at id : " << id << "\n\n";
+      //     _user->get_server()->get_users()[id] = _user;
+      //VALGRIND
+      const_cast<int &>(_user->get_server()->get_users().find(_user->get_id())->first) = id;
+      std::cout << "\n\n\t\t THE ID IS : " << id << "\n\n";
       _user->set_id(id);
       _user->authAnswer((char)RET_OK);
       std::cout << "Log OKK\n";
+      //     _user->get_server()->get_users().erase(_user->get_id());
     }
   else
     {
@@ -200,9 +204,15 @@ void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int
 
   new_id = _user->get_server()->get_tmpMax();
   //std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
+
+  //User	*save;
+  //save = _user->get_server()->get_users().find(_user->get_id())->second;
+  _user->get_server()->get_users()[_user->get_id()] = _user->get_server()->get_users()[new_id];
   _user->get_server()->get_users().erase(_user->get_id());
+
+  // _user->get_server()->get_users().insert(std::pair<int, User *>(new_id, save));
   //std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
-  _user->get_server()->get_users()[new_id] = _user;
+  //_user->get_server()->get_users()[new_id] = _user;
   _user->get_server()->increment_tmpMax();
   
   (void) ints;
@@ -217,19 +227,21 @@ void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int
   else
     {
       _xmlParser->generateFile(filename);
-      std::cout << "filename = " <<  filename << std::endl;
+      //std::cout << "filename = " <<  filename << std::endl;
       _xmlParser->updateNode(filename, "login", chars[0]);
       _xmlParser->updateNode(filename, "password", chars[1]);
       _user->set_login(chars[0]);
       _user->set_psw(chars[1]);
       _user->set_module(chars[2][0]);
-      std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
-      _user->get_server()->get_users().erase(_user->get_id());
-      std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
+      //std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
+      //      _user->get_server()->get_users().erase(_user->get_id());
+      const_cast<int &>(_user->get_server()->get_users().find(_user->get_id())->first) = new_id;
+      //std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
       _user->get_server()->get_users()[_user->get_server()->get_tmpMax()] = _user;
       _user->set_id(_user->get_server()->get_tmpMax());
       _user->get_server()->increment_tmpMax();
       _user->authAnswer((char)RET_OK); //To check
+
     }
 }
 
@@ -362,10 +374,34 @@ void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector
 
 void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)
 {
+  //_user->get_call_id() = ints[0];
+
+  for (std::map<int, User *>::iterator it=_user->get_server()->get_users().begin(); it!=_user->get_server()->get_users().end(); ++it)
+    std::cout << it->first << " => " << it->second << '\n';
+  std::cout << "Ints 0 is : " << ints[0] << std::endl;
+  std::cout << "Count is : " << _user->get_server()->get_users().count(ints[0]) << std::endl;
+  if (_user->get_server()->get_users().count(ints[0]) >= 0)
+    {
+      puts("OKAY");
+      _user->requestCall(chars[0][0], _user, _user->get_server()->get_users().find(ints[0])->second);
+    }
+  else
+    puts("NOKAY");
 
 }
 
 void		SCommandsValue::requestAnswer(std::vector<const char *> chars, std::vector<int> ints)
 {
+  //ID_CALL(32), ERROR_FLAG(8), PORT(32), PORT(32), PORT(32)
+  //(void)chars;
+  //err = 9;
+  //  if (ints[0] == _user->get_call_id())
+  //    {
+  //err = 0;
+  //if ((int)chars[0][0] == 0)
+  //	_user->get_call_port() = ints[_user->get_call_module()];
+  //  }
 
+  //_user->get_server()->get_users().find(ints[ints[0]])->second->callAnswer(chars[0][0], ints);
+  _user->callAnswer(chars[0][0], ints);
 }

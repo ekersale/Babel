@@ -5,7 +5,7 @@
 ** Login   <urvoy_p@epitech.net>
 ** 
 ** Started on  Sat Nov  1 17:39:04 2014 Pierre-Antoine Urvoy
-// Last update Sun Nov  9 16:06:41 2014 Sliman Desmars
+// Last update Wed Nov 12 07:17:02 2014 Damien Giraudet
 */
 
 
@@ -45,6 +45,7 @@ class		ClientInfo
   char *&	get_buffer(void);
   int&		get_len(void);
   int&		get_filled(void);
+  char*		get_ip(void);
   ClientInfo(int = 512);
   ~ClientInfo();
 };

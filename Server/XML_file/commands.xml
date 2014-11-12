@@ -131,14 +131,12 @@
     <args>
       <size>129</size>
       <size>64</size>
-      <size>0</size>
       <size>64</size>
     </args>
   </cmd>
   <cmd nb="25">
     <args>
       <size>129</size>
-      <size>0</size>
       <size>64</size>
       <size>144</size>
     </args>

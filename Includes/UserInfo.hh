@@ -22,7 +22,7 @@ class UserInfo
 public:
   UserInfo();
   UserInfo(const UserInfo &);
-  ~UserInfo();
+  virtual ~UserInfo();
   virtual int		get_id(void) const;
   virtual std::string	get_phone(void) const;
   virtual std::string	get_birth(void) const;

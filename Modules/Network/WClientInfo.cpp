@@ -5,7 +5,7 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Sat Nov  8 21:24:53 2014 Elliot Kersalé
+// Last update Wed Nov 12 07:16:30 2014 Damien Giraudet
 //
 
 #ifdef _WIN32
@@ -22,6 +22,12 @@ void		ClientInfo::setAddr(int family, std::string port, std::string host)
   else
     _info.sin_addr.s_addr = inet_addr(host.c_str());
 }
+
+char*           ClientInfo::get_ip(void)
+{
+  return (inet_ntoa(_info.sin_addr));
+}
+
 
 SOCKET&		ClientInfo::get_socket(void)
 {

@@ -57,7 +57,10 @@ ClientInfo *		Network::maxSocket(void)
   static ClientInfo *	max = _connected[0];
 
   if (_connected.size() == 1)
-    return (_connected[0]);
+    {
+      _change = true;
+      return (_connected[0]);
+    }
   if (_change == true)
     {
       max = _connected[0];

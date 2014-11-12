@@ -31,22 +31,26 @@ public:
 
   void authAnswer(char);
   void connectContactLoop(void);
+  void contactOfflineLoop(int);
   void contactLoop(User *, User *);
   void contactCmd(int, const std::string, int, int);
   void removeAnswer(char);
   void removeRequest(int);
   void addAnswer(char);
-  void requestCall();
-  void callAnswer();
-  /*
-  virtual void isConnected(void);
-  virtual void isDisconnected(void);
-  bool getConnected(void) const;
-  */
+  void requestCall(char, User *, User *);
+  void callAnswer(char, std::vector<int>);
+
+  char	&get_call_module(); 
+  int	&get_call_id();
+  char	*&get_call_ip();
+  int	&get_call_port();
+
   User();
   User(const int &idSocket, int tmp_id, Server *server);
   User(const User& oldUser);
   ~User();
+
+
 
 protected:
   int _idSocket;
@@ -55,6 +59,13 @@ protected:
   Server *_server;
   ACommandsValue *_commandsValue;
   bool		_connected;
+
+  char call_module;
+  int call_id;
+  char *call_ip;
+  int call_port; 
+
+
 private:
 };
 

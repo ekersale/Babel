@@ -5,8 +5,12 @@
 // Login   <urvoy_p@epitech.net>
 // 
 // Started on  Sat Nov  1 17:37:06 2014 Pierre-Antoine Urvoy
-// Last update Sun Nov  9 22:33:07 2014 Pierre-Antoine Urvoy
+// Last update Wed Nov 12 13:22:05 2014 Damien Giraudet
 //
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #ifdef _WIN32
 
@@ -22,6 +26,17 @@ void		ClientInfo::setAddr(int family, std::string port, std::string host)
     _info.sin_addr.s_addr = INADDR_ANY;
   else
     _info.sin_addr.s_addr = inet_addr(host.c_str());
+  printf("IP address is: %s\n", inet_ntoa(_info.sin_addr));
+}
+
+#include <iostream>
+char*		ClientInfo::get_ip(void)
+{
+  puts("INET");
+  
+  puts(inet_ntoa(_info.sin_addr));
+  puts("INET");
+  return (inet_ntoa(_info.sin_addr));
 }
 
 int&		ClientInfo::get_socket(void)
