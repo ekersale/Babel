@@ -63,9 +63,11 @@ public:
         _lineLogin = new QLineEdit(centralWidget);
         _lineLogin->setObjectName(QStringLiteral("_lineLogin"));
         _lineLogin->setGeometry(QRect(360, 350, 381, 31));
+        _lineLogin->setMaxLength(10);
         _linePassword = new QLineEdit(centralWidget);
         _linePassword->setObjectName(QStringLiteral("_linePassword"));
         _linePassword->setGeometry(QRect(360, 430, 381, 31));
+        _linePassword->setMaxLength(10);
         _linePassword->setEchoMode(QLineEdit::Password);
         _btnConnection = new QPushButton(centralWidget);
         _btnConnection->setObjectName(QStringLiteral("_btnConnection"));
