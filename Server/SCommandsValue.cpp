@@ -301,7 +301,7 @@ void		SCommandsValue::addRequest(std::vector<const char *> chars, std::vector<in
   std::string filename;
   std::string friendfilename;
   int	      id_to;
-  User		*user_to;
+  User	      *user_to;
 
   filename = getFilename(_user->get_login());
   friendfilename = getFilename(chars[0]);
@@ -323,11 +323,20 @@ void		SCommandsValue::removeRequest(std::vector<const char *> chars, std::vector
 {
   std::string	filename;
   std::string	friendfilename;
+  User		*user_to;
 
   filename = getFilename(_user->get_login());
   friendfilename = getFilenameById(ints[0]);
-  _xmlParser->removeChild(filename, intToStdString(ints[0]));
-  _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
+  if (friendfilename.size() == 0)
+    _user->removeAnswer(7);
+  else
+    {
+      _xmlParser->removeChild(filename, intToStdString(ints[0]));
+      _xmlParser->removeChild(friendfilename, intToStdString(getIdFromLogin(_user->get_login())));
+      user_to = _user->get_server()->get_users().find(ints[0])->second;
+      _user->removeAnswer(0);
+      user_to->removeRequest(_user->get_id());
+    }
 }
 
 void		SCommandsValue::call(std::vector<const char *> chars, std::vector<int> ints)

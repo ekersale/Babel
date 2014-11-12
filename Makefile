@@ -2405,32 +2405,7 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QCryptographicHash \
-		ui_Connection.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QToolBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtoolbar.h
+		ui_Connection.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Connection.o Gui/Connection.cpp
 
 Subscribe.o: Gui/Subscribe.cpp Includes/IGui.hh \
@@ -2711,28 +2686,7 @@ Subscribe.o: Gui/Subscribe.cpp Includes/IGui.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
 		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QCryptographicHash \
-		ui_Subscribe.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h
+		ui_Subscribe.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subscribe.o Gui/Subscribe.cpp
 
 Home.o: Gui/Home.cpp Includes/Home.hh \
@@ -3012,36 +2966,7 @@ Home.o: Gui/Home.cpp Includes/Home.hh \
 		Includes/CCommandsValue.hh \
 		Includes/ACommandsValue.hpp \
 		Includes/Serialize.hh \
-		ui_Home.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtCore/QVariant \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QAction \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QApplication \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLabel \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qpen.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QMenuBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenubar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qmenu.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/QTextEdit \
-		/opt/Qt5.3.2/5.3/gcc/include/QtWidgets/qtextedit.h \
-		/opt/Qt5.3.2/5.3/gcc/include/QtGui/qtextdocument.h
+		ui_Home.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Home.o Gui/Home.cpp
 
 UClientInfo.o: Modules/Network/UClientInfo.cpp Includes/UClientInfo.hh
