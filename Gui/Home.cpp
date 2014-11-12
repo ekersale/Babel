@@ -40,8 +40,8 @@ void    Home::load()
 	timer = new QTimer(this);
 
 	QLabel::connect(_video, SIGNAL(processedImage(QImage, int)), this, SLOT(updatePlayerUI(QImage, int)));
-
-
+	
+	
 	//QLabel::connect(_video, SIGNAL(sendFrame(std::vector<unsigned char*> *)),
 	//this, SLOT(sendFrameTo(std::vector<unsigned char *> *)));
 	
@@ -92,7 +92,6 @@ bool	Home::sendData(QString value, int nbCmd)
   serialize >> packet;
 
   if (((ThreadCom *)_com)->getNetwork()->sendSocket(1, (void *)serialize.str().c_str(), 65) == false)
-  // if ((_tcp->sendSocket(1, (void *)serialize.str().c_str(), 65) == false))
     {
       std::cout << "Error Send" << std::endl;
       return false;
@@ -108,8 +107,8 @@ void	Home::sendNewPhone()
 {
 	QString newvalue;
 	newvalue = ui->_linePhoneNumber->text();
-	// _musers[_activeUser]->set_phone(newvalue.toStdString());
-	// send to serv the newvalue surname 
+	_musers[_activeUser]->set_phone(newvalue.toStdString());
+
 	if ((sendData(newvalue, 11) == false))
 	  {
 	    QMessageBox::information(this, "Information", "L'update du téléphone n'a pas été send");
@@ -121,8 +120,8 @@ void	Home::sendNewLocalisation()
 {
 	QString newvalue;
 	newvalue = ui->_lineLocalisation->text();
-	
-	// send to serv the newvalue surname 
+	_musers[_activeUser]->set_adress(newvalue.toStdString());
+
 	if ((sendData(newvalue, 10) == false))
 	  {
 	    QMessageBox::information(this, "Information", "L'update de la location  n'a pas été send");
@@ -134,7 +133,7 @@ void	Home::sendNewBirthday()
 {
 	QString newvalue;
 	newvalue = ui->_lineBirthday->text();
-	// send to serv the newvalue birthday 
+	_musers[_activeUser]->set_birth(newvalue.toStdString());
        
 	if ((sendData(newvalue, 7) == false))
 	  {
@@ -145,15 +144,15 @@ void	Home::sendNewBirthday()
 
 void	Home::sendNewSurname()
 {
-	QString newvalue;
-	newvalue = ui->_lineSurnameEdit->text();
-	// send to serv the newvalue surname 
-	
-	if ((sendData(newvalue, 8) == false))
-	  {
-	    QMessageBox::information(this, "Information", "L'update du téléphone n'a pas été send");
-	    return;
-	  }
+  QString newvalue;
+  newvalue = ui->_lineSurnameEdit->text();
+  _musers[_activeUser]->set_surname(newvalue.toStdString());
+  
+  if ((sendData(newvalue, 8) == false))
+    {
+      QMessageBox::information(this, "Information", "L'update du téléphone n'a pas été send");
+      return;
+    }
 }
 
 void	Home::sendNewName()
@@ -167,17 +166,19 @@ void    Home::updatePlayerUI(QImage img, int value)
 {
 	if (!img.isNull())
 	{
-		if (value == 1) {
-			ui->_label_Video->setAlignment(Qt::AlignCenter);
-			ui->_label_Video->setPixmap(QPixmap::fromImage(img));
-			ui->_label_Video->show();
-		}
-		if (value == 0) {
-			ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
-			ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
-			ui->_label_VideoPerso->setScaledContents(true);
-			ui->_label_VideoPerso->show();
-		}
+	  if (value == 1)
+	    {
+	      ui->_label_Video->setAlignment(Qt::AlignCenter);
+	      ui->_label_Video->setPixmap(QPixmap::fromImage(img));
+	      ui->_label_Video->show();
+	    }
+	  if (value == 0)
+	    {
+	      ui->_label_VideoPerso->setAlignment(Qt::AlignCenter);
+	      ui->_label_VideoPerso->setPixmap(QPixmap::fromImage(img));
+	      ui->_label_VideoPerso->setScaledContents(true);
+	      ui->_label_VideoPerso->show();
+	    }
 	}
 }
 
@@ -204,8 +205,6 @@ void	Home::sendAddContact()
 	    QMessageBox::information(this, "Information", "L'update du téléphone n'a pas été send");
 	    return;
 	  }
-
-	///send ajout contact with contactname
 }
 
 void    Home::addContact(UserInfo *added)
@@ -308,66 +307,12 @@ void Home::contactClick()
 		ui->_lineLocalisation->setReadOnly(true);
 		ui->_linePhoneNumber->setReadOnly(true);
 	}
+	ui->_lineContactName->setText(_musers[_activeUser]->get_name().c_str());
+	ui->_lineSurnameEdit->setText(_musers[_activeUser]->get_surname().c_str());
 	ui->_lineBirthday->setText(_musers[_activeUser]->get_birth().c_str());
-	ui->_linePhoneNumber->setText(_musers[_activeUser]->get_phone().c_str());
 	ui->_lineLocalisation->setText(_musers[_activeUser]->get_address().c_str());
+	ui->_linePhoneNumber->setText(_musers[_activeUser]->get_phone().c_str());
 }
-
-// void    Home::invitContact()
-// {
-// 	// srv = new Network(AF_INET, SOCK_DGRAM, "UDP", 1106);
-// 	// srv->bindSocket("2000");
-// 	// if (!sound.initializePA())
-
-// 	//   std::cerr << "Error on InitPa()" << std::endl;
-// 	// if (!(sound.initializeInput()))
-// 	//   std::cerr << "Error on initParams()" << std::endl;
-// 	// if (!(sound.initializeOutput()))                                                                           
-// 	//   std::cerr << "Error on initParams()" << std::endl;
-// 	// sound.openStream();
-// 	// encode.opusEncoderCreate();
-// 	// encode.opusDecoderCreate();
-
-// 	_udp = new Network(AF_INET, SOCK_DGRAM, "UDP", 65000);
-// 	_udp->bindSocket("2000");
-// 	connect(timer, SIGNAL(timeout()), this, SLOT(recvFrameFrom()));
-// 	timer->start();
-// 	// while (1) {
-	
-// 	//   if (!(sound.readStream()))
-// 	//     std::cerr << "Error on writeStream()" << std::endl;
-// 	//   buffer = sound.getRecordedSamples();
-// 	//   sound.writeStream(buffer, 480);                                                                          
-// 	//   // tmp = encode.encodeFrame(buffer, 480);
-// 	//   // int i;
-// 	//   // for (i = 0; tmp[i]; i++);
-// 	//   // srv->sendToSocket(id1, (void *)tmp, i); // revoir à id1
-// 	//   // id1 = srv->recvFromSocket(); //premier recu, socket settée sur id1
-// 	// sound.writeStream(encode.decodeFrame((unsigned char *)srv->get_buffer(), 480), encode.getBytesDecode());
-// 	// }
-// }
-
-// void Home::threadReceive()
-// {
-// 	float *buffer;
-// 	unsigned char *tmp;
-
-// 	if (!(sound.readStream()))
-// 		std::cerr << "Error on writeStream()" << std::endl;
-// 	buffer = sound.getRecordedSamples();
-// 	tmp = encode.encodeFrame(buffer, 480);
-// 	clt->sendToSocket(id, tmp, encode.getEncodedDataSize()); //envoie à id2 séttée sur une socket par connect
-// 	clt->recvFromSocket();// recoit de n'importe qui qui connait
-// 	// std::cout << "LEN RECUE" << clt->get_filled() << std::endl;  
-// 	sound.writeStream(encode.decodeFrame((unsigned char *)clt->get_buffer(), 480), encode.getBytesDecode());
-// 	static_cast<void>(buffer);
-// 	static_cast<void>(tmp);
-// }
-// =======
-// >>>>>>> 6f681a416835c579df98c8cbe99fb5038fe3757b
-
-// }
-
 
 void    Home::callContact()
 {
@@ -537,13 +482,16 @@ void			Home::setThread(void *ptr)
 
 void		Home::setRemoveRequest(void *cmdptr, void *idptr)
 {
-	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
-	std::vector<int> *id = (std::vector<int> *)idptr;
+	// std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	// std::vector<int> *id = (std::vector<int> *)idptr;
+	static_cast<void>(idptr);	
+	static_cast<void>(cmdptr);
 }
 
 void		Home::setRemoveAnswer(void *cmdptr, void *idptr)
 {
-
+  static_cast<void>(cmdptr);
+  static_cast<void>(idptr);
 }
 
 void		Home::setCallRequest(void *cmdptr, void *idptr)
@@ -970,6 +918,8 @@ void		Home::setPhone(void *cmdptr, void *idptr)
 
 void		Home::setAddAnswer(void *cmdptr, void *idptr)
 {
-	std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
-	std::vector<int> *id = (std::vector<int> *)idptr;
+	// std::vector<const char *> *value = (std::vector<const char *> *)cmdptr;
+	// std::vector<int> *id = (std::vector<int> *)idptr;
+	static_cast<void>(cmdptr);
+	static_cast<void>(idptr);
 }
