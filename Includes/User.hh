@@ -36,14 +36,13 @@ public:
   void removeAnswer(char);
   void removeRequest(int);
   void addAnswer(char);
+  void requestCall();
+  void callAnswer();
   /*
-   void startCall(void);
-   void endCall(void);
-  */
   virtual void isConnected(void);
   virtual void isDisconnected(void);
   bool getConnected(void) const;
-
+  */
   User();
   User(const int &idSocket, int tmp_id, Server *server);
   User(const User& oldUser);

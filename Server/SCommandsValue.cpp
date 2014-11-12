@@ -196,9 +196,21 @@ void		SCommandsValue::subscribe(std::vector<const char *> chars, std::vector<int
 {
   // DAM : générer l'id
   std::string filename;
+  int		new_id;
 
+  new_id = _user->get_server()->get_tmpMax();
+  //std::cout << "\n\t Erase bloc at id : " <<_user->get_id() << "\n";
+  _user->get_server()->get_users().erase(_user->get_id());
+  //std::cout << "\tCreate bloc at id : " << _user->get_server()->get_tmpMax() << "\n\n";
+  _user->get_server()->get_users()[new_id] = _user;
+  _user->get_server()->increment_tmpMax();
+  
   (void) ints;
+
+
   filename = chars[0];
+  filename += "-";
+  filename += intToStdString(new_id);
   filename += ".xml";
   if (getFilename(filename).size() != 0)
     _user->authAnswer(3);

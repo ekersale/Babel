@@ -52,9 +52,9 @@ void User::contactLoop(User *usr_from, User *usr_to) {
 
   for_status[0] = usr_from->get_status();
   for_module[0] = usr_from->get_module();
-  if (usr_from->get_id() == usr_to->get_id())
-    usr_from_id = 0;
-  else
+  //  if (usr_from->get_id() == usr_to->get_id())
+  //usr_from_id = 0;
+  //else
     usr_from_id = usr_from->get_id();
   usr_to_id_socket = usr_to->get_idSocket();
   contactCmd(12, usr_from->get_nickname(), usr_from_id, usr_to_id_socket);
@@ -116,17 +116,14 @@ void User::addAnswer(char ret_val) {
   delete (packet_info);
 }
 
-/*
-bool User::startCall(void)
-{
-   // TODO : implement
+void User::requestCall() {
+
 }
 
-bool User::endCall(void)
-{
-   // TODO : implement
+void User::callAnswer() {
+
 }
-*/
+/*
 void User::isConnected(void) {
   _connected = true;
 }
@@ -138,3 +135,4 @@ void User::isDisconnected(void) {
 bool User::getConnected(void) const {
   return (_connected);
 }
+*/
