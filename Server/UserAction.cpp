@@ -27,7 +27,6 @@ void User::connectContactLoop(void) {
   std::vector<int>	all_clients;
   std::vector<int>::iterator	it_clients;
   std::map<int, User *>::iterator it_users;
-  int			id;
 
   contactLoop(this, this);
   all_clients = _server->get_xmlParser()->getClients(_commandsValue->getFilename(_login));
@@ -72,6 +71,8 @@ void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket
 {
   IPacketInfo	*packet_info;
 
+  std::cout << "\tVal de 0 : " << (int)(val[0]) << std::endl;
+  std::cout << "\tValue de : " << val << std::endl;
   packet_info = new PacketInfo();
   packet_info->setCmd(cmd);
   packet_info->getChars().push_back(val.c_str());
@@ -81,12 +82,26 @@ void	User::contactCmd(int cmd, const std::string val, int id_from, int id_socket
   delete (packet_info);
 }
  
-void User::removeAnswer(char &) {
-  
+void User::removeAnswer(char ret_val) {
+  IPacketInfo	*packet_info;
+  char		*cpy = new char[1];
+
+  cpy[0] = ret_val;
+  packet_info = new PacketInfo();
+  packet_info->setCmd(22);
+  packet_info->getChars().push_back(cpy);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
-void User::removeRequest(int) {
+void User::removeRequest(int from_id) {
+  IPacketInfo	*packet_info;
 
+  packet_info = new PacketInfo();
+  packet_info->setCmd(22);
+  packet_info->getInts().push_back(from_id);
+  _server->pushToSend(_idSocket, _server->get_parser()->encode(packet_info));
+  delete (packet_info);
 }
 
 void User::addAnswer(char ret_val) {

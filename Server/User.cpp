@@ -65,7 +65,7 @@ User::User(const int &idSocket, int tmp_id, Server *server)
   std::cout << "Id is :: " << _id << "\n";
 }
 
-User::User(const User& oldUser)
+User::User(const User& oldUser) : UserInfo()
 {
   _idSocket = oldUser._idSocket;
   _activeChat = oldUser._activeChat;

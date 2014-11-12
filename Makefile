@@ -2408,8 +2408,12 @@ Connection.o: Gui/Connection.cpp Includes/IGui.hh \
 		ui_Connection.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Connection.o Gui/Connection.cpp
 
-Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
-		Includes/IGui.hh \
+Subscribe.o: Gui/Subscribe.cpp Includes/IGui.hh \
+		Includes/Network.hh \
+		Includes/INetwork.hh \
+		Includes/WClientInfo.hh \
+		Includes/UClientInfo.hh \
+		Includes/Subscribe.hh \
 		../../../Qt/5.3/gcc/include/QtWidgets/QWidget \
 		../../../Qt/5.3/gcc/include/QtWidgets/qwidget.h \
 		../../../Qt/5.3/gcc/include/QtGui/qwindowdefs.h \
@@ -2518,10 +2522,6 @@ Subscribe.o: Gui/Subscribe.cpp Includes/Subscribe.hh \
 		../../../Qt/5.3/gcc/include/QtWidgets/QMessageBox \
 		../../../Qt/5.3/gcc/include/QtWidgets/qmessagebox.h \
 		../../../Qt/5.3/gcc/include/QtWidgets/qdialog.h \
-		Includes/Network.hh \
-		Includes/INetwork.hh \
-		Includes/WClientInfo.hh \
-		Includes/UClientInfo.hh \
 		Includes/Home.hh \
 		../../../Qt/5.3/gcc/include/QtWidgets/QMainWindow \
 		../../../Qt/5.3/gcc/include/QtWidgets/qmainwindow.h \
