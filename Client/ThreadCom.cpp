@@ -33,7 +33,7 @@ void ThreadCom::run()
 		{
 
 			ClientInfo	*clientInfo;
-			if (clientInfo = _network->get_connected(_socket))
+			if ((clientInfo = _network->get_connected(_socket)))
 			{
 				if (_network->recvSocket(_socket) == false)
 					exit(0);

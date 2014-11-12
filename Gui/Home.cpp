@@ -106,6 +106,7 @@ bool	Home::sendData(QString value, int nbCmd)
 void	Home::sendNewPhone()
 {
 	QString newvalue;
+	
 	newvalue = ui->_linePhoneNumber->text();
 	_musers[_activeUser]->set_phone(newvalue.toStdString());
 
@@ -119,6 +120,7 @@ void	Home::sendNewPhone()
 void	Home::sendNewLocalisation()
 {
 	QString newvalue;
+	
 	newvalue = ui->_lineLocalisation->text();
 	_musers[_activeUser]->set_adress(newvalue.toStdString());
 
@@ -132,6 +134,7 @@ void	Home::sendNewLocalisation()
 void	Home::sendNewBirthday()
 {
 	QString newvalue;
+	
 	newvalue = ui->_lineBirthday->text();
 	_musers[_activeUser]->set_birth(newvalue.toStdString());
        
